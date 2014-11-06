@@ -1,0 +1,47 @@
+.accordion
+  .accordion-group
+    %h4.text-center
+      = "Loan #{x}"
+    .accordion-body
+      .accordion-inner
+        .row
+          .span12
+            .span3
+              %b Creditor Name
+            .span3
+              %b Loan Type
+            .span3
+              %b Principal
+        .row
+          .span12
+            .span3
+              = f.text_field :"loan#{x}_name", class: "input-small"
+            .span3
+              = f.select :"loan#{x}_type", ([['Auto', 1], ['Business', 2], ['Homeowner', 3], ['Student', 4], ['Unsecured', 5], ['Other', 6]]), class: "input-small"
+            .span3
+              = f.text_field :"loan#{x}_principal", class: "input-small"
+        %br
+        .row
+          .span12
+            .span3
+              %b Date of Next Payment
+            .span3
+              %b Monthly Payment
+            .span3
+              %b Past Due
+        .row
+          .span12
+            .span3
+              = f.text_field :"loan#{x}_date_payment", class: "input-small"
+            .span3
+              = f.text_field :"loan#{x}_month_payment", class: "input-small"
+            .span3
+              .form-inline
+                = f.radio_button :"loan#{x}_pastdue", true
+                &nbsp
+                = f.label :"loan#{x}_pastdue", "Yes"
+                &nbsp
+                = f.radio_button :"loan#{x}_pastdue", false
+                &nbsp
+                = f.label :"loan#{x}_pastdue", "No"
+                &nbsp

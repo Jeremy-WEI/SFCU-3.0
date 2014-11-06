@@ -1,0 +1,36 @@
+.accordion
+  .accordion-group
+    %h4.text-center
+      = "Property Owned #{x}"
+    .accordion-body
+      .accordion-inner
+        .row
+          .span4
+            %b Street Address
+            %br
+            = f.text_field :"property#{x}_st_addr", class:"input-xlarge"
+          .span1
+            %b City
+            %br
+            = f.text_field :"property#{x}_city", class:"input-mini"
+          .span2
+            %b State
+            %br
+            = f.select :"property#{x}_state", options_for_select(us_states), class: "input-small"
+        %br
+        .row
+          .span4
+            %b Market Value
+            %br
+            = f.text_field :"property#{x}_market_val"
+          .span4
+            %b Pledged as Collateral for Another Loan?
+            .form-inline
+              = f.radio_button :"property#{x}_another_loan", true
+              &nbsp
+              = f.label :"property#{x}_another_loan_yes", "Yes"
+              &nbsp
+              = f.radio_button :"property#{x}_another_loan", false
+              &nbsp
+              = f.label :"property#{x}_another_loan_no", "No"
+              &nbsp

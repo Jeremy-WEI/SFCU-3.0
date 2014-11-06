@@ -270,382 +270,66 @@
     .row
       .span9
         Please list any sources of income and attach copies of verification.
-    %br
     %div
-      %br
-      .accordion
-        .accordion-group
-          %h4.text-center Employment Income 1
-          .accordion-body
-            .accordion-inner
-              .row
-                .span4
-                  %b Employer
-                  %br
-                  = f.text_field :employ1_employer, placeholder: "Employer name"
-                .span4
-                  %b Employer Address
-                  %br
-                  = f.text_field :employ1_employer_addr, placeholder: "Address", class:"input-xlarge"
-              %br
-              .row
-                .span4
-                  %b Position
-                  %br
-                  = f.text_field :employ1_position, placeholder: "Position"
-                .span4
-                  %b Supervisor
-                  %br
-                  = f.text_field :employ1_supervisor, placeholder: "", class:"input-xlarge"
-              %br
-              .row
-                .span4
-                  %b Grosspay
-                  %br
-                  = f.text_field :employ1_grosspay, placeholder: "In US dollars"
-                .span4
-                  %b Frequency
-                  .form-inline
-                    = f.radio_button(:employ1_freq, "Weekly")
-                    &nbsp
-                    = f.label(:age_child_weekly, "Weekly")
-                    &nbsp
-                    = f.radio_button(:employ1_freq, "Monthly")
-                    &nbsp
-                    = f.label(:employ1_freq_monthly, "Monthly")
-                    &nbsp
-                    = f.radio_button(:employ1_freq, "Yearly")
-                    &nbsp
-                    = f.label(:employ1_freq_yearly, "Yearly")
-              %br
-              .row
-                .span4
-                  %b Will this job continue for term of this loan?
-                  .form-inline
-                    = f.radio_button(:employ1_continue, true)
-                    &nbsp
-                    = f.label(:employ1_continue_yes, "Yes")
-                    &nbsp
-                    = f.radio_button(:employ1_continue, false)
-                    &nbsp
-                    = f.label(:employ1_continue_no, "No")
-                .span4
-                  %b If "No", please list expected duration:
-                  %br
-                  = f.text_field :employ1_expect_duration
-      .accordion
-        .accordion-group
-          %h4.text-center Employment Income 2
-          .accordion-body
-            .accordion-inner
-              .row
-                .span4
-                  %b Employer
-                  %br
-                  = f.text_field :employ2_employer, placeholder: "Employer name"
-                .span4
-                  %b Employer Address
-                  %br
-                  = f.text_field :employ2_employer_addr, placeholder: "Address", class:"input-xlarge"
-              %br
-              .row
-                .span4
-                  %b Position
-                  %br
-                  = f.text_field :employ2_position, placeholder: "Position"
-                .span4
-                  %b Supervisor
-                  %br
-                  = f.text_field :employ2_supervisor, placeholder: "", class:"input-xlarge"
-              %br
-              .row
-                .span4
-                  %b Grosspay
-                  %br
-                  = f.text_field :employ2_grosspay, placeholder: "In US dollars"
-                .span4
-                  %b Frequency
-                  .form-inline
-                    = f.radio_button(:employ2_freq, "Weekly")
-                    &nbsp
-                    = f.label(:age_child_weekly, "Weekly")
-                    &nbsp
-                    = f.radio_button(:employ2_freq, "Monthly")
-                    &nbsp
-                    = f.label(:employ2_freq_monthly, "Monthly")
-                    &nbsp
-                    = f.radio_button(:employ2_freq, "Yearly")
-                    &nbsp
-                    = f.label(:employ1_freq_yearly, "Yearly")
-              %br
-              .row
-                .span4
-                  %b Will this job continue for term of this loan?
-                  .form-inline
-                    = f.radio_button(:employ2_continue, true)
-                    &nbsp
-                    = f.label(:employ2_continue_yes, "Yes")
-                    &nbsp
-                    = f.radio_button(:employ2_continue, false)
-                    &nbsp
-                    = f.label(:employ2_continue_no, "No")
-                .span4
-                  %b If "No", please list expected duration:
-                  %br
-                  = f.text_field :employ2_expect_duration
+      - (1..2).each do |x|
+        = render "employ", :f => f, :x => x
   %hr
   .well
-    %h2.text-center Employment
+    %h2.text-center Additional Income
     .row
       .span9
-        Please list any sources of income and attach copies of verification.
+        Please list any additional income or benefits, including parental allowance, investment accounts, etc and attach copies of verification. Alimony, separate maintenance, and child support need not be disclosed unless you desire them to be considered in determining your credit worthiness.
+    %br
+    %div
+      - (1..3).each do |x|
+        = render "add_income", :f => f, :x =>x
+
+  %hr
+  .well
+    %h2.text-center Assets
+    .row
+      .span9
+        %b Bank Accounts
+        Please provide statements for the last 2 months as verification if you would like the SFCU to consider balances in your bank account(s).
+    %div
+      %br
+      - (1..4).each do |x|
+        = render "account", :f => f, :x =>x
+
+    .row
+      .span9
+        %b Property Owned
+        %br
+        Please provide copies of title(s) as verification.
+    %br
+    %div
+      - (1..2).each do |x|
+        = render "property", :f => f, :x =>x
+
+  %hr
+  .well
+    %h2.text-center Outstanding Debts
+    .row
+      .span9
+        %b Credit Cards
+        %br
+        Please provide any information on outstanding credit card(s) and credit card debt(s).
+    %div
+      %br
+      - (1..4).each do |x|
+        = render "credit_card", :f => f, :x =>x
+
+      .row
+      .span9
+        %b Loans
+        %br
+        Please list all outstanding loans and associated monthly payments.
+      %br
     %br
     %div
       %br
-      .accordion
-        .accordion-group
-          %h4.text-center Employment Income 2
-          .accordion-body
-            .accordion-inner
-              .row
-
-  .field
-    = f.label :add_income1_source
-    = f.text_field :add_income1_source
-  .field
-    = f.label :add_income1_amount
-    = f.text_field :add_income1_amount
-  .field
-    = f.label :add_income1_freq
-    = f.text_field :add_income1_freq
-  .field
-    = f.label :add_income2_source
-    = f.text_field :add_income2_source
-  .field
-    = f.label :add_income2_amount
-    = f.text_field :add_income2_amount
-  .field
-    = f.label :add_income2_freq
-    = f.text_field :add_income2_freq
-  .field
-    = f.label :add_income3_source
-    = f.text_field :add_income3_source
-  .field
-    = f.label :add_income3_amount
-    = f.text_field :add_income3_amount
-  .field
-    = f.label :add_income3_freq
-    = f.text_field :add_income3_freq
-  .field
-    = f.label :account1_depository
-    = f.text_field :account1_depository
-  .field
-    = f.label :account1_type
-    = f.text_field :account1_type
-  .field
-    = f.label :account1_current_balance
-    = f.text_field :account1_current_balance
-  .field
-    = f.label :account2_depository
-    = f.text_field :account2_depository
-  .field
-    = f.label :account2_type
-    = f.text_field :account2_type
-  .field
-    = f.label :account2_current_balance
-    = f.text_field :account2_current_balance
-  .field
-    = f.label :account3_depository
-    = f.text_field :account3_depository
-  .field
-    = f.label :account3_type
-    = f.text_field :account3_type
-  .field
-    = f.label :account3_current_balance
-    = f.text_field :account3_current_balance
-  .field
-    = f.label :account4_depository
-    = f.text_field :account4_depository
-  .field
-    = f.label :account4_type
-    = f.text_field :account4_type
-  .field
-    = f.label :account4_current_balance
-    = f.text_field :account4_current_balance
-  .field
-    = f.label :property1_st_addr
-    = f.text_field :property1_st_addr
-  .field
-    = f.label :property1_city
-    = f.text_field :property1_city
-  .field
-    = f.label :property1_state
-    = f.text_field :property1_state
-  .field
-    = f.label :property1_market_val
-    = f.text_field :property1_market_val
-  .field
-    = f.label :property1_another_loan
-    = f.check_box :property1_another_loan
-  .field
-    = f.label :property2_st_addr
-    = f.text_field :property2_st_addr
-  .field
-    = f.label :property2_city
-    = f.text_field :property2_city
-  .field
-    = f.label :property2_state
-    = f.text_field :property2_state
-  .field
-    = f.label :property2_market_val
-    = f.text_field :property2_market_val
-  .field
-    = f.label :property2_another_loan
-    = f.check_box :property2_another_loan
-  .field
-    = f.label :credit_card1_name
-    = f.text_field :credit_card1_name
-  .field
-    = f.label :credit_card1_limit
-    = f.text_field :credit_card1_limit
-  .field
-    = f.label :credit_card1_balance
-    = f.text_field :credit_card1_balance
-  .field
-    = f.label :credit_card1_date_payment
-    = f.date_select :credit_card1_date_payment
-  .field
-    = f.label :credit_card1_aveg_month_pay
-    = f.text_field :credit_card1_aveg_month_pay
-  .field
-    = f.label :credit_card1_pastdue
-    = f.check_box :credit_card1_pastdue
-  .field
-    = f.label :credit_card2_name
-    = f.text_field :credit_card2_name
-  .field
-    = f.label :credit_card2_limit
-    = f.text_field :credit_card2_limit
-  .field
-    = f.label :credit_card2_balance
-    = f.text_field :credit_card2_balance
-  .field
-    = f.label :credit_card2_date_payment
-    = f.date_select :credit_card2_date_payment
-  .field
-    = f.label :credit_card2_aveg_month_pay
-    = f.text_field :credit_card2_aveg_month_pay
-  .field
-    = f.label :credit_card2_pastdue
-    = f.check_box :credit_card2_pastdue
-  .field
-    = f.label :credit_card3_name
-    = f.text_field :credit_card3_name
-  .field
-    = f.label :credit_card3_limit
-    = f.text_field :credit_card3_limit
-  .field
-    = f.label :credit_card3_balance
-    = f.text_field :credit_card3_balance
-  .field
-    = f.label :credit_card3_date_payment
-    = f.date_select :credit_card3_date_payment
-  .field
-    = f.label :credit_card3_aveg_month_pay
-    = f.text_field :credit_card3_aveg_month_pay
-  .field
-    = f.label :credit_card3_pastdue
-    = f.check_box :credit_card3_pastdue
-  .field
-    = f.label :credit_card4_name
-    = f.text_field :credit_card4_name
-  .field
-    = f.label :credit_card4_limit
-    = f.text_field :credit_card4_limit
-  .field
-    = f.label :credit_card4_balance
-    = f.text_field :credit_card4_balance
-  .field
-    = f.label :credit_card4_date_payment
-    = f.date_select :credit_card4_date_payment
-  .field
-    = f.label :credit_card4_aveg_month_pay
-    = f.text_field :credit_card4_aveg_month_pay
-  .field
-    = f.label :credit_card4_pastdue
-    = f.check_box :credit_card4_pastdue
-  .field
-    = f.label :loan1_name
-    = f.text_field :loan1_name
-  .field
-    = f.label :loan1_type
-    = f.text_field :loan1_type
-  .field
-    = f.label :loan1_principal
-    = f.text_field :loan1_principal
-  .field
-    = f.label :loan1_date_payment
-    = f.date_select :loan1_date_payment
-  .field
-    = f.label :loan1_month_payment
-    = f.text_field :loan1_month_payment
-  .field
-    = f.label :loan1_pastdue
-    = f.check_box :loan1_pastdue
-  .field
-    = f.label :loan2_name
-    = f.text_field :loan2_name
-  .field
-    = f.label :loan2_type
-    = f.text_field :loan2_type
-  .field
-    = f.label :loan2_principal
-    = f.text_field :loan2_principal
-  .field
-    = f.label :loan2_date_payment
-    = f.date_select :loan2_date_payment
-  .field
-    = f.label :loan2_month_payment
-    = f.text_field :loan2_month_payment
-  .field
-    = f.label :loan2_pastdue
-    = f.check_box :loan2_pastdue
-  .field
-    = f.label :loan3_name
-    = f.text_field :loan3_name
-  .field
-    = f.label :loan3_type
-    = f.text_field :loan3_type
-  .field
-    = f.label :loan3_principal
-    = f.text_field :loan3_principal
-  .field
-    = f.label :loan3_date_payment
-    = f.date_select :loan3_date_payment
-  .field
-    = f.label :loan3_month_payment
-    = f.text_field :loan3_month_payment
-  .field
-    = f.label :loan3_pastdue
-    = f.check_box :loan3_pastdue
-  .field
-    = f.label :loan4_name
-    = f.text_field :loan4_name
-  .field
-    = f.label :loan4_type
-    = f.text_field :loan4_type
-  .field
-    = f.label :loan4_principal
-    = f.text_field :loan4_principal
-  .field
-    = f.label :loan4_date_payment
-    = f.date_select :loan4_date_payment
-  .field
-    = f.label :loan4_month_payment
-    = f.text_field :loan4_month_payment
-  .field
-    = f.label :loan4_pastdue
-    = f.check_box :loan4_pastdue
+      - (1..4).each do |x|
+        = render "loan", :f => f, :x =>x
   .field
     = f.label :rent_housing
     = f.text_field :rent_housing

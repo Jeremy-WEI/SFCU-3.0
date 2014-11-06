@@ -1,0 +1,61 @@
+.accordion
+  .accordion-group
+    %h4.text-center
+      = "Employment Income #{x}"
+    .accordion-body
+      .accordion-inner
+        .row
+          .span4
+            %b Employer
+            %br
+            = f.text_field :"employ#{x}_employer", placeholder: "Employer name"
+          .span4
+            %b Employer Address
+            %br
+            = f.text_field :"employ#{x}_employer_addr", placeholder: "Address", class:"input-xlarge"
+        %br
+        .row
+          .span4
+            %b Position
+            %br
+            = f.text_field :"employ#{x}_position", placeholder: "Position"
+          .span4
+            %b Supervisor
+            %br
+            = f.text_field :"employ#{x}_supervisor", placeholder: "", class:"input-xlarge"
+        %br
+        .row
+          .span4
+            %b Grosspay
+            %br
+            = f.text_field :"employ#{x}_grosspay", placeholder: "In US dollars"
+          .span4
+            %b Frequency
+            .form-inline
+              = f.radio_button(:"employ#{x}_freq", "Weekly")
+              &nbsp
+              = f.label(:age_child_weekly, "Weekly")
+              &nbsp
+              = f.radio_button(:"employ#{x}_freq", "Monthly")
+              &nbsp
+              = f.label(:"employ#{x}_freq_monthly", "Monthly")
+              &nbsp
+              = f.radio_button(:"employ#{x}_freq", "Yearly")
+              &nbsp
+              = f.label(:"employ#{x}_freq_yearly", "Yearly")
+        %br
+        .row
+          .span4
+            %b Will this job continue for term of this loan?
+            .form-inline
+              = f.radio_button(:"employ#{x}_continue", true)
+              &nbsp
+              = f.label(:"employ#{x}_continue_yes", "Yes")
+              &nbsp
+              = f.radio_button(:"employ#{x}_continue", false)
+              &nbsp
+              = f.label(:"employ#{x}_continue_no", "No")
+          .span4
+            %b If "No", please list expected duration:
+            %br
+            = f.text_field :"employ#{x}_expect_duration"
