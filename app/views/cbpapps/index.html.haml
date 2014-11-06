@@ -1,0 +1,69 @@
+%h1 Listing cbpapps
+
+%table
+  %tr
+    %th Period
+    %th First name
+    %th Middle name
+    %th Last name
+    %th Ssn
+    %th Dob
+    %th Mother maiden
+    %th Account number
+    %th Grad date
+    %th Non upenn email
+    %th How know
+    %th Local address line1
+    %th Local address line2
+    %th Local address city
+    %th Local address state
+    %th Local address zip
+    %th Local home phone
+    %th Biz phone
+    %th Perm address line1
+    %th Perm address line2
+    %th Perm address city
+    %th Perm address state
+    %th Perm address zip
+    %th Perm address country
+    %th Perm home phone
+    %th Student status
+    %th
+    %th
+    %th
+
+  - @cbpapps.each do |cbpapp|
+    %tr
+      %td= cbpapp.period
+      %td= cbpapp.first_name
+      %td= cbpapp.middle_name
+      %td= cbpapp.last_name
+      %td= cbpapp.ssn
+      %td= cbpapp.dob
+      %td= cbpapp.mother_maiden
+      %td= cbpapp.account_number
+      %td= cbpapp.grad_date
+      %td= cbpapp.non_upenn_email
+      %td= cbpapp.how_know
+      %td= cbpapp.local_address_line1
+      %td= cbpapp.local_address_line2
+      %td= cbpapp.local_address_city
+      %td= cbpapp.local_address_state
+      %td= cbpapp.local_address_zip
+      %td= cbpapp.local_home_phone
+      %td= cbpapp.biz_phone
+      %td= cbpapp.perm_address_line1
+      %td= cbpapp.perm_address_line2
+      %td= cbpapp.perm_address_city
+      %td= cbpapp.perm_address_state
+      %td= cbpapp.perm_address_zip
+      %td= cbpapp.perm_address_country
+      %td= cbpapp.perm_home_phone
+      %td= cbpapp.student_status
+      %td= link_to 'Show', cbpapp
+      %td= link_to 'Edit', edit_cbpapp_path(cbpapp)
+      %td= link_to 'Destroy', cbpapp, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Cbpapp', new_cbpapp_path

@@ -1,0 +1,708 @@
+= form_for @alapp, html: {class: "form-horizontal"} do |f|
+  - if @alapp.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@alapp.errors.count, "error")} prohibited this alapp from being saved:"
+      %ul
+        - @alapp.errors.full_messages.each do |msg|
+          %li= msg
+
+  %hr
+  .well
+    %h2.text-center General Information
+    .row
+      .span9
+        %strong Name*
+        .row
+          .span3
+            First*
+            = f.text_field :first, placeholder: "John", class: "input-medium"
+          .span3
+            Middle
+            = f.text_field :middle, class: "input-medium"
+          .span3
+            Last*
+            = f.text_field :last, placeholder: "Smith", class: "input-medium"
+    %br
+    .row
+      .span9
+        %b Date of birth*
+        .row
+          .span9
+            = f.date_select :dob
+    %br
+    .row
+      .span9
+        %b Social Security number*
+        .row
+          .span9
+            = f.text_field :ssn, placeholder: "###-##-####"
+        Please enter your SSN in the following format: ###-##-####.
+        If you do not have an SSN, please enter 000-00-0000.
+    %br
+    .row
+      .span9
+        %b Mother's Maiden Name*
+        .row
+          .span9
+            = f.text_field :mother_maiden
+    %br
+    .row
+      .span9
+        %b Alumni*
+        .form-inline
+          = f.radio_button :alumni, true
+          &nbsp
+          = f.label :alumni_yes, "Yes"
+          &nbsp
+          = f.radio_button :alumni, false
+          &nbsp
+          = f.label :alumni_yes, "No"
+          &nbsp
+  %hr
+  .well
+    %h2.text-center Credit Request
+
+    .row
+      .span9
+        %b Type*
+        .form-inline
+          = f.radio_button :credit_req_type, "Individual Credit"
+          &nbsp
+          = f.label :individual_credit, "Individual Credit"
+          &nbsp
+          = f.radio_button :credit_req_type, "Joint Credit"
+          &nbsp
+          = f.label :joint_credit, "Joint Credit"
+          &nbsp
+    %br
+    .row
+      .span9
+        %b Amount Requested*
+        .row
+          .span9
+            = f.text_field :amount_req, placeholder: "In US dollars"
+    %br
+    .row
+      .span9
+        %b Term*
+        .form-inline
+          = f.radio_button :term, "36 months"
+          &nbsp
+          = f.label :month36, "36 months"
+          &nbsp
+          = f.radio_button :term, "48 months"
+          &nbsp
+          = f.label :month48, "48 months"
+          &nbsp
+          = f.radio_button :term, "60 months"
+          &nbsp
+          = f.label :month60, "60 months"
+          &nbsp
+  %hr
+
+  .well
+    %h2.text-center Vehicle Information
+
+    .row
+      .span9
+        %b Vehicle Condition*
+        .form-inline
+          = f.radio_button :vehicle_condition, "New"
+          &nbsp
+          = f.label :vehicle_condition_new, "New"
+          &nbsp
+          = f.radio_button :vehicle_condition, "Old"
+          &nbsp
+          = f.label :vehicle_condition_old, "Old"
+          &nbsp
+    %br
+    .row
+      .span9
+        %b Price Range*
+        .row
+          .span9
+            Min
+            = f.text_field :price_range_min, placeholder: "In US dollars"
+            Max
+            = f.text_field :price_range_max, placeholder: "In US dollars"
+    %br
+    .row
+      .span9
+        %b Model Year*
+        .row
+        = f.number_field :model_year, placeholder: "YYYY"
+
+    %br
+    .row
+      .span9
+        %b Vehicle Type*
+        .form-inline
+          = f.check_box(:veh_subcompact)
+          &nbsp
+          = f.label(:veh_subcompact, "Subcompact")
+          &nbsp
+          = f.check_box(:veh_compact)
+          &nbsp
+          = f.label(:veh_compact, "Compact")
+          &nbsp
+          = f.check_box(:veh_mid_size)
+          &nbsp
+          = f.label(:veh_mid_size, "Mid-size")
+          &nbsp
+          = f.check_box(:veh_full_size)
+          &nbsp
+          = f.label(:veh_full_size, "Full-size")
+          &nbsp
+          = f.check_box(:veh_sports_car)
+          &nbsp
+          = f.label(:veh_sports_car, "Sports Car")
+          &nbsp
+          = f.check_box(:veh_truck)
+          &nbsp
+          = f.label(:veh_truck, "Truck")
+          &nbsp
+          = f.check_box(:veh_van)
+          &nbsp
+          = f.label(:veh_van, "Van")
+          &nbsp
+  %hr
+  .well
+    %h2.text-center Contact Information
+    .row
+      .span9
+        %b Local Address*
+    %br
+    .row
+      .span9
+        Address Line 1*
+        = f.text_field :local_address_line1, placeholder: "Local Address Line 1", class:"input-xlarge"
+    %br
+    .row
+      .span9
+        Address Line 2  &nbsp
+        = f.text_field :local_address_line2, placeholder: "Local Address Line 2", class:"input-xlarge"
+    %br
+    .row
+      .span2
+        = f.label :local_address_city, "City*"
+        = f.text_field :local_address_city, placeholder: "City", class: "input-small"
+      .span3
+        = f.label :local_address_state, "State*"
+        = f.select :local_address_state, options_for_select(us_states)
+      .span2
+        = f.label :local_address_zip, "ZIP*"
+        = f.text_field :local_address_zip, placeholder: "#####", class: "input-small"
+    %br
+    .row
+      .span9
+        %b Permanent Address
+    %br
+    .row
+      .span9
+        Address Line 1&nbsp
+        = f.text_field :perm_address_line1, placeholder: "Permanent Address Line 1", class:"input-xlarge"
+    %br
+    .row
+      .span9
+        Address Line 2&nbsp
+        = f.text_field :perm_address_line2, placeholder: "Permanent Address Line 2", class:"input-xlarge"
+    %br
+    .row
+      .span2
+        = f.label :perm_address_city, "City*"
+        = f.text_field :perm_address_city, placeholder: "City", class: "input-small"
+      .span3
+        = f.label :perm_address_state, "State*"
+        = f.select :perm_address_state, options_for_select(us_states), class: "input-small"
+      .span2
+        = f.label :perm_address_zip, "ZIP*"
+        = f.text_field :perm_address_zip, placeholder: "#####", class: "input-small"
+    %br
+    .row
+      .span9
+        = f.label :perm_country, "Country*"
+        -#= f.text_field :perm_country, placeholder: "Country Name", class: "input-small"
+        =f.select :perm_country, Country.all.sort
+    %br
+    .row
+      .span9
+        .row
+          .span4
+            %b Email*
+            %br
+            = f.text_field :e_mail, placeholder: "email"
+          .span4
+            %b Phone*
+            %br
+            = f.text_field :phone_number, placeholder: "###-###-####"
+        %br
+        .row
+          .span4
+            %b Name of Nearest Relative*
+            %br
+            = f.text_field :name_nearest_relative, placeholder: "Name of your relative"
+          .span4
+            %b Phone of Nearest Relative*
+            %br
+            = f.text_field :phone_nearest_relative, placeholder: "###-###-####"
+
+  %hr
+  .well
+    %h2.text-center Driver's License
+    .row
+      .span9
+        %b Driver's License Number
+        .row
+          .span9
+            = f.text_field :driver_lisence_num, placeholder: "##-###-###"
+        %br
+        %b Driver's License
+        .row
+          .span9
+            Please attach your driver's license in order to proceed with this application.
+            We cannot move forward with your auto loan application without a valid driver's license.
+            = f.label :driver_license_file
+            = f.file_field :driver_license_file
+
+  %hr
+  .well
+    %h2.text-center Employment
+    .row
+      .span9
+        Please list any sources of income and attach copies of verification.
+    %br
+    %div
+      %br
+      .accordion
+        .accordion-group
+          %h4.text-center Employment Income 1
+          .accordion-body
+            .accordion-inner
+              .row
+                .span4
+                  %b Employer
+                  %br
+                  = f.text_field :employ1_employer, placeholder: "Employer name"
+                .span4
+                  %b Employer Address
+                  %br
+                  = f.text_field :employ1_employer_addr, placeholder: "Address", class:"input-xlarge"
+              %br
+              .row
+                .span4
+                  %b Position
+                  %br
+                  = f.text_field :employ1_position, placeholder: "Position"
+                .span4
+                  %b Supervisor
+                  %br
+                  = f.text_field :employ1_supervisor, placeholder: "", class:"input-xlarge"
+              %br
+              .row
+                .span4
+                  %b Grosspay
+                  %br
+                  = f.text_field :employ1_grosspay, placeholder: "In US dollars"
+                .span4
+                  %b Frequency
+                  .form-inline
+                    = f.radio_button(:employ1_freq, "Weekly")
+                    &nbsp
+                    = f.label(:age_child_weekly, "Weekly")
+                    &nbsp
+                    = f.radio_button(:employ1_freq, "Monthly")
+                    &nbsp
+                    = f.label(:employ1_freq_monthly, "Monthly")
+                    &nbsp
+                    = f.radio_button(:employ1_freq, "Yearly")
+                    &nbsp
+                    = f.label(:employ1_freq_yearly, "Yearly")
+              %br
+              .row
+                .span4
+                  %b Will this job continue for term of this loan?
+                  .form-inline
+                    = f.radio_button(:employ1_continue, true)
+                    &nbsp
+                    = f.label(:employ1_continue_yes, "Yes")
+                    &nbsp
+                    = f.radio_button(:employ1_continue, false)
+                    &nbsp
+                    = f.label(:employ1_continue_no, "No")
+                .span4
+                  %b If "No", please list expected duration:
+                  %br
+                  = f.text_field :employ1_expect_duration
+      .accordion
+        .accordion-group
+          %h4.text-center Employment Income 2
+          .accordion-body
+            .accordion-inner
+              .row
+                .span4
+                  %b Employer
+                  %br
+                  = f.text_field :employ2_employer, placeholder: "Employer name"
+                .span4
+                  %b Employer Address
+                  %br
+                  = f.text_field :employ2_employer_addr, placeholder: "Address", class:"input-xlarge"
+              %br
+              .row
+                .span4
+                  %b Position
+                  %br
+                  = f.text_field :employ2_position, placeholder: "Position"
+                .span4
+                  %b Supervisor
+                  %br
+                  = f.text_field :employ2_supervisor, placeholder: "", class:"input-xlarge"
+              %br
+              .row
+                .span4
+                  %b Grosspay
+                  %br
+                  = f.text_field :employ2_grosspay, placeholder: "In US dollars"
+                .span4
+                  %b Frequency
+                  .form-inline
+                    = f.radio_button(:employ2_freq, "Weekly")
+                    &nbsp
+                    = f.label(:age_child_weekly, "Weekly")
+                    &nbsp
+                    = f.radio_button(:employ2_freq, "Monthly")
+                    &nbsp
+                    = f.label(:employ2_freq_monthly, "Monthly")
+                    &nbsp
+                    = f.radio_button(:employ2_freq, "Yearly")
+                    &nbsp
+                    = f.label(:employ1_freq_yearly, "Yearly")
+              %br
+              .row
+                .span4
+                  %b Will this job continue for term of this loan?
+                  .form-inline
+                    = f.radio_button(:employ2_continue, true)
+                    &nbsp
+                    = f.label(:employ2_continue_yes, "Yes")
+                    &nbsp
+                    = f.radio_button(:employ2_continue, false)
+                    &nbsp
+                    = f.label(:employ2_continue_no, "No")
+                .span4
+                  %b If "No", please list expected duration:
+                  %br
+                  = f.text_field :employ2_expect_duration
+  %hr
+  .well
+    %h2.text-center Employment
+    .row
+      .span9
+        Please list any sources of income and attach copies of verification.
+    %br
+    %div
+      %br
+      .accordion
+        .accordion-group
+          %h4.text-center Employment Income 2
+          .accordion-body
+            .accordion-inner
+              .row
+
+  .field
+    = f.label :add_income1_source
+    = f.text_field :add_income1_source
+  .field
+    = f.label :add_income1_amount
+    = f.text_field :add_income1_amount
+  .field
+    = f.label :add_income1_freq
+    = f.text_field :add_income1_freq
+  .field
+    = f.label :add_income2_source
+    = f.text_field :add_income2_source
+  .field
+    = f.label :add_income2_amount
+    = f.text_field :add_income2_amount
+  .field
+    = f.label :add_income2_freq
+    = f.text_field :add_income2_freq
+  .field
+    = f.label :add_income3_source
+    = f.text_field :add_income3_source
+  .field
+    = f.label :add_income3_amount
+    = f.text_field :add_income3_amount
+  .field
+    = f.label :add_income3_freq
+    = f.text_field :add_income3_freq
+  .field
+    = f.label :account1_depository
+    = f.text_field :account1_depository
+  .field
+    = f.label :account1_type
+    = f.text_field :account1_type
+  .field
+    = f.label :account1_current_balance
+    = f.text_field :account1_current_balance
+  .field
+    = f.label :account2_depository
+    = f.text_field :account2_depository
+  .field
+    = f.label :account2_type
+    = f.text_field :account2_type
+  .field
+    = f.label :account2_current_balance
+    = f.text_field :account2_current_balance
+  .field
+    = f.label :account3_depository
+    = f.text_field :account3_depository
+  .field
+    = f.label :account3_type
+    = f.text_field :account3_type
+  .field
+    = f.label :account3_current_balance
+    = f.text_field :account3_current_balance
+  .field
+    = f.label :account4_depository
+    = f.text_field :account4_depository
+  .field
+    = f.label :account4_type
+    = f.text_field :account4_type
+  .field
+    = f.label :account4_current_balance
+    = f.text_field :account4_current_balance
+  .field
+    = f.label :property1_st_addr
+    = f.text_field :property1_st_addr
+  .field
+    = f.label :property1_city
+    = f.text_field :property1_city
+  .field
+    = f.label :property1_state
+    = f.text_field :property1_state
+  .field
+    = f.label :property1_market_val
+    = f.text_field :property1_market_val
+  .field
+    = f.label :property1_another_loan
+    = f.check_box :property1_another_loan
+  .field
+    = f.label :property2_st_addr
+    = f.text_field :property2_st_addr
+  .field
+    = f.label :property2_city
+    = f.text_field :property2_city
+  .field
+    = f.label :property2_state
+    = f.text_field :property2_state
+  .field
+    = f.label :property2_market_val
+    = f.text_field :property2_market_val
+  .field
+    = f.label :property2_another_loan
+    = f.check_box :property2_another_loan
+  .field
+    = f.label :credit_card1_name
+    = f.text_field :credit_card1_name
+  .field
+    = f.label :credit_card1_limit
+    = f.text_field :credit_card1_limit
+  .field
+    = f.label :credit_card1_balance
+    = f.text_field :credit_card1_balance
+  .field
+    = f.label :credit_card1_date_payment
+    = f.date_select :credit_card1_date_payment
+  .field
+    = f.label :credit_card1_aveg_month_pay
+    = f.text_field :credit_card1_aveg_month_pay
+  .field
+    = f.label :credit_card1_pastdue
+    = f.check_box :credit_card1_pastdue
+  .field
+    = f.label :credit_card2_name
+    = f.text_field :credit_card2_name
+  .field
+    = f.label :credit_card2_limit
+    = f.text_field :credit_card2_limit
+  .field
+    = f.label :credit_card2_balance
+    = f.text_field :credit_card2_balance
+  .field
+    = f.label :credit_card2_date_payment
+    = f.date_select :credit_card2_date_payment
+  .field
+    = f.label :credit_card2_aveg_month_pay
+    = f.text_field :credit_card2_aveg_month_pay
+  .field
+    = f.label :credit_card2_pastdue
+    = f.check_box :credit_card2_pastdue
+  .field
+    = f.label :credit_card3_name
+    = f.text_field :credit_card3_name
+  .field
+    = f.label :credit_card3_limit
+    = f.text_field :credit_card3_limit
+  .field
+    = f.label :credit_card3_balance
+    = f.text_field :credit_card3_balance
+  .field
+    = f.label :credit_card3_date_payment
+    = f.date_select :credit_card3_date_payment
+  .field
+    = f.label :credit_card3_aveg_month_pay
+    = f.text_field :credit_card3_aveg_month_pay
+  .field
+    = f.label :credit_card3_pastdue
+    = f.check_box :credit_card3_pastdue
+  .field
+    = f.label :credit_card4_name
+    = f.text_field :credit_card4_name
+  .field
+    = f.label :credit_card4_limit
+    = f.text_field :credit_card4_limit
+  .field
+    = f.label :credit_card4_balance
+    = f.text_field :credit_card4_balance
+  .field
+    = f.label :credit_card4_date_payment
+    = f.date_select :credit_card4_date_payment
+  .field
+    = f.label :credit_card4_aveg_month_pay
+    = f.text_field :credit_card4_aveg_month_pay
+  .field
+    = f.label :credit_card4_pastdue
+    = f.check_box :credit_card4_pastdue
+  .field
+    = f.label :loan1_name
+    = f.text_field :loan1_name
+  .field
+    = f.label :loan1_type
+    = f.text_field :loan1_type
+  .field
+    = f.label :loan1_principal
+    = f.text_field :loan1_principal
+  .field
+    = f.label :loan1_date_payment
+    = f.date_select :loan1_date_payment
+  .field
+    = f.label :loan1_month_payment
+    = f.text_field :loan1_month_payment
+  .field
+    = f.label :loan1_pastdue
+    = f.check_box :loan1_pastdue
+  .field
+    = f.label :loan2_name
+    = f.text_field :loan2_name
+  .field
+    = f.label :loan2_type
+    = f.text_field :loan2_type
+  .field
+    = f.label :loan2_principal
+    = f.text_field :loan2_principal
+  .field
+    = f.label :loan2_date_payment
+    = f.date_select :loan2_date_payment
+  .field
+    = f.label :loan2_month_payment
+    = f.text_field :loan2_month_payment
+  .field
+    = f.label :loan2_pastdue
+    = f.check_box :loan2_pastdue
+  .field
+    = f.label :loan3_name
+    = f.text_field :loan3_name
+  .field
+    = f.label :loan3_type
+    = f.text_field :loan3_type
+  .field
+    = f.label :loan3_principal
+    = f.text_field :loan3_principal
+  .field
+    = f.label :loan3_date_payment
+    = f.date_select :loan3_date_payment
+  .field
+    = f.label :loan3_month_payment
+    = f.text_field :loan3_month_payment
+  .field
+    = f.label :loan3_pastdue
+    = f.check_box :loan3_pastdue
+  .field
+    = f.label :loan4_name
+    = f.text_field :loan4_name
+  .field
+    = f.label :loan4_type
+    = f.text_field :loan4_type
+  .field
+    = f.label :loan4_principal
+    = f.text_field :loan4_principal
+  .field
+    = f.label :loan4_date_payment
+    = f.date_select :loan4_date_payment
+  .field
+    = f.label :loan4_month_payment
+    = f.text_field :loan4_month_payment
+  .field
+    = f.label :loan4_pastdue
+    = f.check_box :loan4_pastdue
+  .field
+    = f.label :rent_housing
+    = f.text_field :rent_housing
+  .field
+    = f.label :rent_person
+    = f.text_field :rent_person
+  .field
+    = f.label :food
+    = f.text_field :food
+  .field
+    = f.label :food_person
+    = f.text_field :food_person
+  .field
+    = f.label :utilities
+    = f.text_field :utilities
+  .field
+    = f.label :utilities_person
+    = f.text_field :utilities_person
+  .field
+    = f.label :phone_bill
+    = f.text_field :phone_bill
+  .field
+    = f.label :phone_bill_person
+    = f.text_field :phone_bill_person
+  .field
+    = f.label :bursar_bill
+    = f.text_field :bursar_bill
+  .field
+    = f.label :miscellaneous
+    = f.text_field :miscellaneous
+  .field
+    = f.label :miscellaneous_expl
+    = f.text_field :miscellaneous_expl
+  .field
+    = f.label :document1
+    = f.text_field :document1
+  .field
+    = f.label :document2
+    = f.text_field :document2
+  .field
+    = f.label :document3
+    = f.text_field :document3
+  .field
+    = f.label :document4
+    = f.text_field :document4
+  .field
+    = f.label :document5
+    = f.text_field :document5
+  .field
+    = f.label :agree_terms
+    = f.check_box :agree_terms
+  .field
+    = f.label :signature
+    = f.text_field :signature
+  .field
+    = f.label :today_date
+    = f.date_select :today_date
+  .actions
+    = f.submit 'Save'
+

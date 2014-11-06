@@ -1,0 +1,2 @@
+module CbpappsHelper
+end

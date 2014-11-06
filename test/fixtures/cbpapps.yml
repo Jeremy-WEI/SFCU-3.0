@@ -1,0 +1,57 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  period: 1
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  ssn: 1
+  dob: 2014-11-04
+  mother_maiden: MyString
+  account_number: 1
+  grad_date: 1
+  non_upenn_email: MyString
+  how_know: MyString
+  local_address_line1: MyString
+  local_address_line2: MyString
+  local_address_city: MyString
+  local_address_state: MyString
+  local_address_zip: 1
+  local_home_phone: MyString
+  biz_phone: MyString
+  perm_address_line1: MyString
+  perm_address_line2: MyString
+  perm_address_city: MyString
+  perm_address_state: MyString
+  perm_address_zip: 1
+  perm_address_country: MyString
+  perm_home_phone: MyString
+  student_status: 1
+
+two:
+  period: 1
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  ssn: 1
+  dob: 2014-11-04
+  mother_maiden: MyString
+  account_number: 1
+  grad_date: 1
+  non_upenn_email: MyString
+  how_know: MyString
+  local_address_line1: MyString
+  local_address_line2: MyString
+  local_address_city: MyString
+  local_address_state: MyString
+  local_address_zip: 1
+  local_home_phone: MyString
+  biz_phone: MyString
+  perm_address_line1: MyString
+  perm_address_line2: MyString
+  perm_address_city: MyString
+  perm_address_state: MyString
+  perm_address_zip: 1
+  perm_address_country: MyString
+  perm_home_phone: MyString
+  student_status: 1

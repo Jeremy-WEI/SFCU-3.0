@@ -1,0 +1,84 @@
+%p#notice= notice
+
+%p
+  %b Period:
+  = @cbpapp.period
+%p
+  %b First name:
+  = @cbpapp.first_name
+%p
+  %b Middle name:
+  = @cbpapp.middle_name
+%p
+  %b Last name:
+  = @cbpapp.last_name
+%p
+  %b Ssn:
+  = @cbpapp.ssn
+%p
+  %b Dob:
+  = @cbpapp.dob
+%p
+  %b Mother maiden:
+  = @cbpapp.mother_maiden
+%p
+  %b Account number:
+  = @cbpapp.account_number
+%p
+  %b Grad date:
+  = @cbpapp.grad_date
+%p
+  %b Non upenn email:
+  = @cbpapp.non_upenn_email
+%p
+  %b How know:
+  = @cbpapp.how_know
+%p
+  %b Local address line1:
+  = @cbpapp.local_address_line1
+%p
+  %b Local address line2:
+  = @cbpapp.local_address_line2
+%p
+  %b Local address city:
+  = @cbpapp.local_address_city
+%p
+  %b Local address state:
+  = @cbpapp.local_address_state
+%p
+  %b Local address zip:
+  = @cbpapp.local_address_zip
+%p
+  %b Local home phone:
+  = @cbpapp.local_home_phone
+%p
+  %b Biz phone:
+  = @cbpapp.biz_phone
+%p
+  %b Perm address line1:
+  = @cbpapp.perm_address_line1
+%p
+  %b Perm address line2:
+  = @cbpapp.perm_address_line2
+%p
+  %b Perm address city:
+  = @cbpapp.perm_address_city
+%p
+  %b Perm address state:
+  = @cbpapp.perm_address_state
+%p
+  %b Perm address zip:
+  = @cbpapp.perm_address_zip
+%p
+  %b Perm address country:
+  = @cbpapp.perm_address_country
+%p
+  %b Perm home phone:
+  = @cbpapp.perm_home_phone
+%p
+  %b Student status:
+  = @cbpapp.student_status
+
+= link_to 'Edit', edit_cbpapp_path(@cbpapp)
+\|
+= link_to 'Back', cbpapps_path

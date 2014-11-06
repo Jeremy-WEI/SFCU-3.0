@@ -1,0 +1,210 @@
+= form_for @cbpapp do |f|
+  - if @cbpapp.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@cbpapp.errors.count, "error")} prohibited this cbpapp from being saved:"
+      %ul
+        - @cbpapp.errors.full_messages.each do |msg|
+          %li= msg
+
+  %hr
+  .well
+    %h2.text-center Section I: Credit Request
+    %br
+    You are applying for credit under the terms disclosed in this Credit Agreement.
+    %br
+    %br
+    %strong Amount Requested:
+    $1000
+    %br
+    %br
+    .row
+      .span5
+        %b Period*
+        .form-inline
+          = f.radio_button :period, 0
+          &nbsp
+          = f.label :periods_0, " 12 Months "
+          &nbsp
+          = f.radio_button :period, 1
+          &nbsp
+          = f.label :period_1, " 24 Months "
+          &nbsp
+    %br
+    .row
+
+
+  %hr
+  .well
+    %h2.text-center Section II: Applicant Information
+    %br
+    %br
+    %strong  <font size="5"><center>A. General Information</center></font>
+    %br
+
+    .row
+      .span9
+        %strong Name*
+        .row
+          .span3
+            First*
+            = f.text_field :first_name, class: "input-medium", placeholder: "First Name"
+          .span3
+            Middle
+            = f.text_field :middle_name, class: "input-medium", placeholder: "Middle Name"
+          .span3
+            Last*
+            = f.text_field :last_name, class: "input-medium", placeholder: "Last Name"
+
+    %br
+    .row
+      .span5
+        %b Social Security Number*
+        %br
+        = f.text_field :ssn, placeholder: "SSN"
+      .span9
+        If you do not have an SSN, we are required to have a W8BEN form on file for you.
+        Please download one Here, fill it out, and include it in your application.
+
+    %br
+    .row
+      .span9
+        %b Date of Birth*
+        .row
+          .span9
+            = f.date_select :dob
+
+    %br
+    .row
+      .span9
+        %b Mother's Maiden Name*
+        .row
+          .span9
+            = f.text_field :mother_maiden, placeholder: "Mother's Maiden Name"
+
+    %br
+    .row
+      .span9
+        %b SFCU Account Number*
+        .row
+          .span9
+            = f.text_field :account_number, placeholder: "Account Number"
+
+    %br
+    .row
+      .span9
+        %b Expected Graduation Date
+        .row
+          .span4
+            = f.text_field :grad_date, placeholder: "YYYY", class:"input-small"
+
+    %br
+    .row
+      .span9
+        %b Non-UPenn Email Address*
+        .row
+        = f.text_field :non_upenn_email, placeholder: "Alternate Email Address"
+
+    %br
+    .row
+      .span9
+        %b How did you hear about this program?*
+        .row
+        = f.text_field :how_know, placeholder: "How did you hear about this program?", class:"input-xxlarge"
+
+    %br
+    %br
+    %strong  <font size="5"><center>B. Contact Information</center></font>
+    %br
+
+    .row
+      .span9
+        %b Local Address
+        .row
+          .span9
+            Address Line 1*
+            = f.text_field :local_address_line1, placeholder: "Local Address Line1", class:"input-xlarge"
+        .row
+          .span9
+            Address Line 2&nbsp
+            = f.text_field :local_address_line2, placeholder: "Local Address Line2", class:"input-xlarge"
+        .row
+          .span2
+            = f.label :local_address_city, "City*"
+            = f.text_field :local_address_city, placeholder: "City", class: "input-small"
+          .span2
+            = f.label :local_address_state, "State*"
+            = f.text_field :local_address_state, placeholder: "State", class: "input-small"
+          .span2
+            = f.label :local_address_zip, "ZIP*"
+            = f.text_field :local_address_zip, placeholder: "ZIP", class: "input-small"
+
+    %br
+    .row
+      .span9
+        %b Local Home Phone*
+        .row
+        = f.text_field :local_home_phone, placeholder: "Home Phone"
+
+    %br
+    .row
+      .span9
+        %b Business Phone
+        .row
+        = f.text_field :biz_phone, placeholder: "Business Phone"
+
+    %br
+    .row
+      .span9
+        %b Permanent Address
+        .row
+          .span9
+            Address Line 1&nbsp
+            = f.text_field :perm_address_line1, placeholder: "Permanent Address Line1", class:"input-xlarge"
+        .row
+          .span9
+            Address Line 2&nbsp
+            = f.text_field :perm_address_line2, placeholder: "Permanent Address Line2", class:"input-xlarge"
+        .row
+          .span2
+            = f.label :perm_address_city, "City"
+            = f.text_field :perm_address_city, placeholder: "City", class: "input-small"
+          .span2
+            = f.label :perm_address_state, "State"
+            = f.text_field :perm_address_state, placeholder: "State", class: "input-small"
+          .span2
+            = f.label :perm_address_zip, "ZIP"
+            = f.text_field :perm_address_zip, placeholder: "ZIP", class: "input-small"
+          .span2
+            = f.label :perm_address_country, "Country"
+            = f.text_field :perm_address_country, placeholder: "Country", class: "input"
+
+    %br
+    .row
+      .span9
+        %b Permanent Home Phone
+        .row
+        = f.text_field :perm_home_phone, placeholder: "Home Phone"
+
+    %br
+    %br
+    %strong  <font size="5"><center>C. Residency</center></font>
+    %br
+    .row
+      .span9
+        %b Student Status*
+        .row
+          .span9
+            .form-inline
+              = f.radio_button :student_status, 1
+              &nbsp
+              = f.label :student_status_0, " US Citizen or permanent resident "
+              &nbsp
+              = f.radio_button :student_status, 1
+              &nbsp
+              = f.label :student_status_1, " International "
+              &nbsp
+
+    %br
+    .actions.text-center
+      = f.submit 'Submit'
+

@@ -1,0 +1,2 @@
+module AlappsHelper
+end
