@@ -33,6 +33,7 @@ bower.json
 
 .idea/workspace.xml
 .idea/tasks.xml
+.idea/.
 !/config/secrets.yml
 .DS_Store
 
