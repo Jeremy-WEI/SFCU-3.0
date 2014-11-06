@@ -29,7 +29,7 @@ gem 'spring',        group: :development
 gem 'haml-rails'
 gem 'haml'
 
-gem 'bootstrap-sass', '~> 2.3.1.0'
+gem 'bootstrap-sass', '~> 3.3.0.1'
 
 gem 'countries'
 gem 'country_select'
