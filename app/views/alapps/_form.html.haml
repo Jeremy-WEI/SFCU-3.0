@@ -1,392 +1,430 @@
-= form_for @alapp, html: {class: "form-horizontal"} do |f|
-  - if @alapp.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@alapp.errors.count, "error")} prohibited this alapp from being saved:"
-      %ul
-        - @alapp.errors.full_messages.each do |msg|
-          %li= msg
 
-  %hr
-  .well
-    %h2.text-center General Information
-    .row
-      .span9
-        %strong Name*
-        .row
-          .span3
-            First*
-            = f.text_field :first, placeholder: "John", class: "input-medium"
-          .span3
-            Middle
-            = f.text_field :middle, class: "input-medium"
-          .span3
-            Last*
-            = f.text_field :last, placeholder: "Smith", class: "input-medium"
-    %br
-    .row
-      .span9
-        %b Date of birth*
-        .row
-          .span9
-            = f.date_select :dob
-    %br
-    .row
-      .span9
-        %b Social Security number*
-        .row
-          .span9
-            = f.text_field :ssn, placeholder: "###-##-####"
-        Please enter your SSN in the following format: ###-##-####.
-        If you do not have an SSN, please enter 000-00-0000.
-    %br
-    .row
-      .span9
-        %b Mother's Maiden Name*
-        .row
-          .span9
-            = f.text_field :mother_maiden
-    %br
-    .row
-      .span9
-        %b Alumni*
-        .form-inline
-          = f.radio_button :alumni, true
-          &nbsp
-          = f.label :alumni_yes, "Yes"
-          &nbsp
-          = f.radio_button :alumni, false
-          &nbsp
-          = f.label :alumni_yes, "No"
-          &nbsp
-  %hr
-  .well
-    %h2.text-center Credit Request
+#rootwizard
+  %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+    .container
+      %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
+        %li
+          %a{"data-toggle" => "tab", :href => "#tab1"} General Information
+        %li
+          %a{"data-toggle" => "tab", :href => "#tab2"} Incomes and Assets
+        %li
+          %a{"data-toggle" => "tab", :href => "#tab3"} Outstanding Debts and Expenses
+        %li
+          %a{"data-toggle" => "tab", :href => "#tab4"} Supporting Documents
+  .progress
+    .progress-bar.progress-bar-success.progress-bar-striped.active.bar
+  = form_for @alapp, html: {class: "form-horizontal"} do |f|
+    - if @alapp.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@alapp.errors.count, "error")} prohibited this alapp from being saved:"
+        %ul
+          - @alapp.errors.full_messages.each do |msg|
+            %li= msg
+    .tab-content
+      #tab1.tab-pane
+        %hr
+        .well
+          %h2.text-center General Information
+          .row
+            .col-md-12
+              %strong Name*
+              .row
+                .col-md-4
+                  First*
+                  = f.text_field :first, placeholder: "John", class: "input-medium"
+                .col-md-4
+                  Middle
+                  = f.text_field :middle, class: "input-medium"
+                .col-md-4
+                  Last*
+                  = f.text_field :last, placeholder: "Smith", class: "input-medium"
+          %br
+          .row
+            .col-md-12
+              %b Date of birth*
+              .row
+                .col-md-12
+                  = f.date_select :dob
+          %br
+          .row
+            .col-md-12
+              %b Social Security number*
+              .row
+                .col-md-12
+                  = f.text_field :ssn, placeholder: "###-##-####"
+              Please enter your SSN in the following format: ###-##-####.
+              If you do not have an SSN, please enter 000-00-0000.
+          %br
+          .row
+            .col-md-12
+              %b Mother's Maiden Name*
+              .row
+                .col-md-12
+                  = f.text_field :mother_maiden
+          %br
+          .row
+            .col-md-12
+              %b Alumni*
+              .form-inline
+                = f.radio_button :alumni, true
+                &nbsp
+                = f.label :alumni_yes, "Yes"
+                &nbsp
+                = f.radio_button :alumni, false
+                &nbsp
+                = f.label :alumni_yes, "No"
+                &nbsp
+        %hr
+        .well
+          %h2.text-center Credit Request
 
-    .row
-      .span9
-        %b Type*
-        .form-inline
-          = f.radio_button :credit_req_type, "Individual Credit"
-          &nbsp
-          = f.label :individual_credit, "Individual Credit"
-          &nbsp
-          = f.radio_button :credit_req_type, "Joint Credit"
-          &nbsp
-          = f.label :joint_credit, "Joint Credit"
-          &nbsp
-    %br
-    .row
-      .span9
-        %b Amount Requested*
-        .row
-          .span9
-            = f.text_field :amount_req, placeholder: "In US dollars"
-    %br
-    .row
-      .span9
-        %b Term*
-        .form-inline
-          = f.radio_button :term, "36 months"
-          &nbsp
-          = f.label :month36, "36 months"
-          &nbsp
-          = f.radio_button :term, "48 months"
-          &nbsp
-          = f.label :month48, "48 months"
-          &nbsp
-          = f.radio_button :term, "60 months"
-          &nbsp
-          = f.label :month60, "60 months"
-          &nbsp
-  %hr
+          .row
+            .col-md-12
+              %b Type*
+              .form-inline
+                = f.radio_button :credit_req_type, "Individual Credit"
+                &nbsp
+                = f.label :individual_credit, "Individual Credit"
+                &nbsp
+                = f.radio_button :credit_req_type, "Joint Credit"
+                &nbsp
+                = f.label :joint_credit, "Joint Credit"
+                &nbsp
+          %br
+          .row
+            .col-md-12
+              %b Amount Requested*
+              .row
+                .col-md-12
+                  = f.text_field :amount_req, placeholder: "In US dollars"
+          %br
+          .row
+            .col-md-12
+              %b Term*
+              .form-inline
+                = f.radio_button :term, "36 months"
+                &nbsp
+                = f.label :month36, "36 months"
+                &nbsp
+                = f.radio_button :term, "48 months"
+                &nbsp
+                = f.label :month48, "48 months"
+                &nbsp
+                = f.radio_button :term, "60 months"
+                &nbsp
+                = f.label :month60, "60 months"
+                &nbsp
+        %hr
 
-  .well
-    %h2.text-center Vehicle Information
+        .well
+          %h2.text-center Vehicle Information
 
-    .row
-      .span9
-        %b Vehicle Condition*
-        .form-inline
-          = f.radio_button :vehicle_condition, "New"
-          &nbsp
-          = f.label :vehicle_condition_new, "New"
-          &nbsp
-          = f.radio_button :vehicle_condition, "Old"
-          &nbsp
-          = f.label :vehicle_condition_old, "Old"
-          &nbsp
-    %br
-    .row
-      .span9
-        %b Price Range*
-        .row
-          .span9
-            Min
-            = f.text_field :price_range_min, placeholder: "In US dollars"
-            Max
-            = f.text_field :price_range_max, placeholder: "In US dollars"
-    %br
-    .row
-      .span9
-        %b Model Year*
-        .row
-        = f.number_field :model_year, placeholder: "YYYY"
+          .row
+            .col-md-12
+              %b Vehicle Condition*
+              .form-inline
+                = f.radio_button :vehicle_condition, "New"
+                &nbsp
+                = f.label :vehicle_condition_new, "New"
+                &nbsp
+                = f.radio_button :vehicle_condition, "Old"
+                &nbsp
+                = f.label :vehicle_condition_old, "Old"
+                &nbsp
+          %br
+          .row
+            .col-md-12
+              %b Price Range*
+              .row
+                .col-md-12
+                  Min
+                  = f.text_field :price_range_min, placeholder: "In US dollars"
+                  Max
+                  = f.text_field :price_range_max, placeholder: "In US dollars"
+          %br
+          .row
+            .col-md-12
+              %b Model Year*
+              .row
+              = f.number_field :model_year, placeholder: "YYYY"
 
-    %br
-    .row
-      .span9
-        %b Vehicle Type*
-        .form-inline
-          = f.check_box(:veh_subcompact)
-          &nbsp
-          = f.label(:veh_subcompact, "Subcompact")
-          &nbsp
-          = f.check_box(:veh_compact)
-          &nbsp
-          = f.label(:veh_compact, "Compact")
-          &nbsp
-          = f.check_box(:veh_mid_size)
-          &nbsp
-          = f.label(:veh_mid_size, "Mid-size")
-          &nbsp
-          = f.check_box(:veh_full_size)
-          &nbsp
-          = f.label(:veh_full_size, "Full-size")
-          &nbsp
-          = f.check_box(:veh_sports_car)
-          &nbsp
-          = f.label(:veh_sports_car, "Sports Car")
-          &nbsp
-          = f.check_box(:veh_truck)
-          &nbsp
-          = f.label(:veh_truck, "Truck")
-          &nbsp
-          = f.check_box(:veh_van)
-          &nbsp
-          = f.label(:veh_van, "Van")
-          &nbsp
-  %hr
-  .well
-    %h2.text-center Contact Information
-    .row
-      .span9
-        %b Local Address*
-    %br
-    .row
-      .span9
-        Address Line 1*
-        = f.text_field :local_address_line1, placeholder: "Local Address Line 1", class:"input-xlarge"
-    %br
-    .row
-      .span9
-        Address Line 2  &nbsp
-        = f.text_field :local_address_line2, placeholder: "Local Address Line 2", class:"input-xlarge"
-    %br
-    .row
-      .span2
-        = f.label :local_address_city, "City*"
-        = f.text_field :local_address_city, placeholder: "City", class: "input-small"
-      .span3
-        = f.label :local_address_state, "State*"
-        = f.select :local_address_state, options_for_select(us_states)
-      .span2
-        = f.label :local_address_zip, "ZIP*"
-        = f.text_field :local_address_zip, placeholder: "#####", class: "input-small"
-    %br
-    .row
-      .span9
-        %b Permanent Address
-    %br
-    .row
-      .span9
-        Address Line 1&nbsp
-        = f.text_field :perm_address_line1, placeholder: "Permanent Address Line 1", class:"input-xlarge"
-    %br
-    .row
-      .span9
-        Address Line 2&nbsp
-        = f.text_field :perm_address_line2, placeholder: "Permanent Address Line 2", class:"input-xlarge"
-    %br
-    .row
-      .span2
-        = f.label :perm_address_city, "City*"
-        = f.text_field :perm_address_city, placeholder: "City", class: "input-small"
-      .span3
-        = f.label :perm_address_state, "State*"
-        = f.select :perm_address_state, options_for_select(us_states), class: "input-small"
-      .span2
-        = f.label :perm_address_zip, "ZIP*"
-        = f.text_field :perm_address_zip, placeholder: "#####", class: "input-small"
-    %br
-    .row
-      .span9
-        = f.label :perm_country, "Country*"
-        -#= f.text_field :perm_country, placeholder: "Country Name", class: "input-small"
-        =f.select :perm_country, Country.all.sort
-    %br
-    .row
-      .span9
-        .row
-          .span4
-            %b Email*
+          %br
+          .row
+            .col-md-12
+              %b Vehicle Type*
+              .form-inline
+                = f.check_box(:veh_subcompact)
+                &nbsp
+                = f.label(:veh_subcompact, "Subcompact")
+                &nbsp
+                = f.check_box(:veh_compact)
+                &nbsp
+                = f.label(:veh_compact, "Compact")
+                &nbsp
+                = f.check_box(:veh_mid_size)
+                &nbsp
+                = f.label(:veh_mid_size, "Mid-size")
+                &nbsp
+                = f.check_box(:veh_full_size)
+                &nbsp
+                = f.label(:veh_full_size, "Full-size")
+                &nbsp
+                = f.check_box(:veh_sports_car)
+                &nbsp
+                = f.label(:veh_sports_car, "Sports Car")
+                &nbsp
+                = f.check_box(:veh_truck)
+                &nbsp
+                = f.label(:veh_truck, "Truck")
+                &nbsp
+                = f.check_box(:veh_van)
+                &nbsp
+                = f.label(:veh_van, "Van")
+                &nbsp
+        %hr
+        .well
+          %h2.text-center Contact Information
+          .row
+            .col-md-12
+              %b Local Address*
+          %br
+          .row
+            .col-md-12
+              Address Line 1*
+              = f.text_field :local_address_line1, placeholder: "Local Address Line 1", class:"input-xlarge"
+          %br
+          .row
+            .col-md-12
+              Address Line 2  &nbsp
+              = f.text_field :local_address_line2, placeholder: "Local Address Line 2", class:"input-xlarge"
+          %br
+          .row
+            .col-md-3
+              = f.label :local_address_city, "City*"
+              = f.text_field :local_address_city, placeholder: "City", class: "input-small"
+            .col-md-4
+              = f.label :local_address_state, "State*"
+              = f.select :local_address_state, options_for_select(us_states)
+            .col-md-3
+              = f.label :local_address_zip, "ZIP*"
+              = f.text_field :local_address_zip, placeholder: "#####", class: "input-small"
+          %br
+          .row
+            .col-md-12
+              %b Permanent Address
+          %br
+          .row
+            .col-md-12
+              Address Line 1&nbsp
+              = f.text_field :perm_address_line1, placeholder: "Permanent Address Line 1", class:"input-xlarge"
+          %br
+          .row
+            .col-md-12
+              Address Line 2&nbsp
+              = f.text_field :perm_address_line2, placeholder: "Permanent Address Line 2", class:"input-xlarge"
+          %br
+          .row
+            .col-md-3
+              = f.label :perm_address_city, "City*"
+              = f.text_field :perm_address_city, placeholder: "City", class: "input-small"
+            .col-md-4
+              = f.label :perm_address_state, "State*"
+              = f.select :perm_address_state, options_for_select(us_states), class: "input-small"
+            .col-md-3
+              = f.label :perm_address_zip, "ZIP*"
+              = f.text_field :perm_address_zip, placeholder: "#####", class: "input-small"
+          %br
+          .row
+            .col-md-12
+              = f.label :perm_country, "Country*"
+              -#= f.text_field :perm_country, placeholder: "Country Name", class: "input-small"
+              =f.select :perm_country, Country.all.sort
+          %br
+          .row
+            .col-md-12
+              .row
+                .col-md-6
+                  %b Email*
+                  %br
+                  = f.text_field :e_mail, placeholder: "email"
+                .col-md-6
+                  %b Phone*
+                  %br
+                  = f.text_field :phone_number, placeholder: "###-###-####"
+              %br
+              .row
+                .col-md-6
+                  %b Name of Nearest Relative*
+                  %br
+                  = f.text_field :name_nearest_relative, placeholder: "Name of your relative"
+                .col-md-6
+                  %b Phone of Nearest Relative*
+                  %br
+                  = f.text_field :phone_nearest_relative, placeholder: "###-###-####"
+
+        %hr
+        .well
+          %h2.text-center Driver's License
+          .row
+            .col-md-12
+              %b Driver's License Number
+              .row
+                .col-md-12
+                  = f.text_field :driver_lisence_num, placeholder: "##-###-###"
+              %br
+              %b Driver's License
+              .row
+                .col-md-12
+                  Please attach your driver's license in order to proceed with this application.
+                  We cannot move forward with your auto loan application without a valid driver's license.
+                  = f.label :driver_license_file
+                  = f.file_field :driver_license_file
+      #tab2.tab-pane
+        %hr
+        .well
+          %h2.text-center Employment
+          .row
+            .col-md-12
+              Please list any sources of income and attach copies of verification.
+          %div
+            - (1..2).each do |x|
+              = render "employ", :f => f, :x => x
+        %hr
+        .well
+          %h2.text-center Additional Income
+          .row
+            .col-md-12
+              Please list any additional income or benefits, including parental allowance, investment accounts, etc and attach copies of verification. Alimony, separate maintenance, and child support need not be disclosed unless you desire them to be considered in determining your credit worthiness.
+          %br
+          %div
+            - (1..3).each do |x|
+              = render "add_income", :f => f, :x =>x
+
+        %hr
+        .well
+          %h2.text-center Assets
+          .row
+            .col-md-12
+              %b Bank Accounts
+              Please provide statements for the last 2 months as verification if you would like the SFCU to consider balances in your bank account(s).
+          %div
             %br
-            = f.text_field :e_mail, placeholder: "email"
-          .span4
-            %b Phone*
+            - (1..4).each do |x|
+              = render "account", :f => f, :x =>x
+
+          .row
+            .col-md-12
+              %b Property Owned
+              %br
+              Please provide copies of title(s) as verification.
+          %br
+          %div
+            - (1..2).each do |x|
+              = render "property", :f => f, :x =>x
+      #tab3.tab-pane
+        %hr
+        .well
+          %h2.text-center Outstanding Debts
+          .row
+            .col-md-12
+              %b Credit Cards
+              %br
+              Please provide any information on outstanding credit card(s) and credit card debt(s).
+          %div
             %br
-            = f.text_field :phone_number, placeholder: "###-###-####"
-        %br
-        .row
-          .span4
-            %b Name of Nearest Relative*
+            - (1..4).each do |x|
+              = render "credit_card", :f => f, :x =>x
+
+            .row
+            .col-md-12
+              %b Loans
+              %br
+              Please list all outstanding loans and associated monthly payments.
             %br
-            = f.text_field :name_nearest_relative, placeholder: "Name of your relative"
-          .span4
-            %b Phone of Nearest Relative*
+          %br
+          %div
             %br
-            = f.text_field :phone_nearest_relative, placeholder: "###-###-####"
+            - (1..4).each do |x|
+              = render "loan", :f => f, :x =>x
+        .field
+          = f.label :rent_housing
+          = f.text_field :rent_housing
+        .field
+          = f.label :rent_person
+          = f.text_field :rent_person
+        .field
+          = f.label :food
+          = f.text_field :food
+        .field
+          = f.label :food_person
+          = f.text_field :food_person
+        .field
+          = f.label :utilities
+          = f.text_field :utilities
+        .field
+          = f.label :utilities_person
+          = f.text_field :utilities_person
+        .field
+          = f.label :phone_bill
+          = f.text_field :phone_bill
+        .field
+          = f.label :phone_bill_person
+          = f.text_field :phone_bill_person
+        .field
+          = f.label :bursar_bill
+          = f.text_field :bursar_bill
+        .field
+          = f.label :miscellaneous
+          = f.text_field :miscellaneous
+        .field
+          = f.label :miscellaneous_expl
+          = f.text_field :miscellaneous_expl
+      #tab4.tab-pane
+        .field
+          = f.label :document1
+          = f.text_field :document1
+        .field
+          = f.label :document2
+          = f.text_field :document2
+        .field
+          = f.label :document3
+          = f.text_field :document3
+        .field
+          = f.label :document4
+          = f.text_field :document4
+        .field
+          = f.label :document5
+          = f.text_field :document5
+        .field
+          = f.label :agree_terms
+          = f.check_box :agree_terms
+        .field
+          = f.label :signature
+          = f.text_field :signature
+        .field
+          = f.label :today_date
+          = f.date_select :today_date
+        .actions
+          = f.submit 'Save'
+    %ul.pager.wizard
+      %li.previous.first
+        %a{:href => "javascript:;"} First
+      %li.previous
+        %a{:href => "javascript:;"} Previous
+      %li.next.last
+        %a{:href => "javascript:;"} Last
+      %li.next
+        %a{:href => "javascript:;"} Next
+      %li.next.finish{:style => "display:none;"}
+        %a{:href => "javascript:;"} Finish
 
-  %hr
-  .well
-    %h2.text-center Driver's License
-    .row
-      .span9
-        %b Driver's License Number
-        .row
-          .span9
-            = f.text_field :driver_lisence_num, placeholder: "##-###-###"
-        %br
-        %b Driver's License
-        .row
-          .span9
-            Please attach your driver's license in order to proceed with this application.
-            We cannot move forward with your auto loan application without a valid driver's license.
-            = f.label :driver_license_file
-            = f.file_field :driver_license_file
-
-  %hr
-  .well
-    %h2.text-center Employment
-    .row
-      .span9
-        Please list any sources of income and attach copies of verification.
-    %div
-      - (1..2).each do |x|
-        = render "employ", :f => f, :x => x
-  %hr
-  .well
-    %h2.text-center Additional Income
-    .row
-      .span9
-        Please list any additional income or benefits, including parental allowance, investment accounts, etc and attach copies of verification. Alimony, separate maintenance, and child support need not be disclosed unless you desire them to be considered in determining your credit worthiness.
-    %br
-    %div
-      - (1..3).each do |x|
-        = render "add_income", :f => f, :x =>x
-
-  %hr
-  .well
-    %h2.text-center Assets
-    .row
-      .span9
-        %b Bank Accounts
-        Please provide statements for the last 2 months as verification if you would like the SFCU to consider balances in your bank account(s).
-    %div
-      %br
-      - (1..4).each do |x|
-        = render "account", :f => f, :x =>x
-
-    .row
-      .span9
-        %b Property Owned
-        %br
-        Please provide copies of title(s) as verification.
-    %br
-    %div
-      - (1..2).each do |x|
-        = render "property", :f => f, :x =>x
-
-  %hr
-  .well
-    %h2.text-center Outstanding Debts
-    .row
-      .span9
-        %b Credit Cards
-        %br
-        Please provide any information on outstanding credit card(s) and credit card debt(s).
-    %div
-      %br
-      - (1..4).each do |x|
-        = render "credit_card", :f => f, :x =>x
-
-      .row
-      .span9
-        %b Loans
-        %br
-        Please list all outstanding loans and associated monthly payments.
-      %br
-    %br
-    %div
-      %br
-      - (1..4).each do |x|
-        = render "loan", :f => f, :x =>x
-  .field
-    = f.label :rent_housing
-    = f.text_field :rent_housing
-  .field
-    = f.label :rent_person
-    = f.text_field :rent_person
-  .field
-    = f.label :food
-    = f.text_field :food
-  .field
-    = f.label :food_person
-    = f.text_field :food_person
-  .field
-    = f.label :utilities
-    = f.text_field :utilities
-  .field
-    = f.label :utilities_person
-    = f.text_field :utilities_person
-  .field
-    = f.label :phone_bill
-    = f.text_field :phone_bill
-  .field
-    = f.label :phone_bill_person
-    = f.text_field :phone_bill_person
-  .field
-    = f.label :bursar_bill
-    = f.text_field :bursar_bill
-  .field
-    = f.label :miscellaneous
-    = f.text_field :miscellaneous
-  .field
-    = f.label :miscellaneous_expl
-    = f.text_field :miscellaneous_expl
-  .field
-    = f.label :document1
-    = f.text_field :document1
-  .field
-    = f.label :document2
-    = f.text_field :document2
-  .field
-    = f.label :document3
-    = f.text_field :document3
-  .field
-    = f.label :document4
-    = f.text_field :document4
-  .field
-    = f.label :document5
-    = f.text_field :document5
-  .field
-    = f.label :agree_terms
-    = f.check_box :agree_terms
-  .field
-    = f.label :signature
-    = f.text_field :signature
-  .field
-    = f.label :today_date
-    = f.date_select :today_date
-  .actions
-    = f.submit 'Save'
+:javascript
+  $(document).ready(function() {
+    	$('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
+  		var $total = navigation.find('li').length;
+  		var $current = index+1;
+  		var $percent = ($current/$total) * 100;
+  		$('#rootwizard').find('.bar').css({width:$percent+'%'});
+  	}});
+  });
 
