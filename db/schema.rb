@@ -255,7 +255,7 @@ ActiveRecord::Schema.define(version: 20141105022101) do
   end
 
   create_table "ulapps", force: true do |t|
-    t.integer  "type"
+    t.integer  "credit_type"
     t.text     "joint_applicant"
     t.integer  "amount"
     t.text     "purpose"
