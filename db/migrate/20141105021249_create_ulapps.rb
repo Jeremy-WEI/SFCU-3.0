@@ -129,7 +129,7 @@ class CreateUlapps < ActiveRecord::Migration
       t.string :file4
       t.string :file5
       t.string :file6
-      t.integer :yesorno
+      t.boolean :yesorno
       t.string :signature
 
       t.timestamps

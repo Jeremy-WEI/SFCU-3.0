@@ -114,6 +114,8 @@
               = f.text_field :file_id2, class: "form-control", placeholder: "File2"
           %br
           *Please email us your ID's if there is a "Could not access file" error. *
+        %br
+        %br
       #tab2.tab-pane
         %hr
         .well
@@ -185,6 +187,7 @@
               ZIP*
             .col-md-3
               = f.text_field :perm_address_zip, placeholder: "ZIP", class: "form-control"
+        %br
       #tab3.tab-pane
         %hr
         .well
@@ -362,6 +365,7 @@
                           %label.radio-inline
                             = f.radio_button :check_delivery, 2
                             SFCU Office for pickup
+        %br
       #tab4.tab-pane
         %hr
         .well
@@ -393,6 +397,7 @@
               Today's Date
             .col-md-3
               = f.text_field :today_date, placeholder: "MM/DD/YYYY", class: "form-control"
+          %br
         .actions.text-center
           = f.submit 'Submit', class: "btn btn-primary"
     %ul.pager.wizard
