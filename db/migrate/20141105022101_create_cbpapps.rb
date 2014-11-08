@@ -5,7 +5,7 @@ class CreateCbpapps < ActiveRecord::Migration
       t.string :first_name
       t.string :middle_name
       t.string :last_name
-      t.integer :ssn
+      t.string :ssn
       t.date :dob
       t.string :mother_maiden
       t.integer :account_number

@@ -810,14 +810,15 @@
     %b I have read this disclosure and understand and agree to all terms, conditions and requirements here stated.*
     %br
     .form-inline
-      = f.radio_button :yesorno, 0
-      &nbsp
-      = f.label :yesorno_0, " Yes "
-      &nbsp
-      = f.radio_button :yesorno, 1
-      &nbsp
-      = f.label :yesorno_1, " No "
-      &nbsp
+      = f.check_box :yesorno, " Yes "
+      -#= f.radio_button :yesorno, 0
+      -#&nbsp
+      -#= f.label :yesorno_0, " Yes "
+      -#&nbsp
+      -#= f.radio_button :yesorno, 1
+      -#&nbsp
+      -#= f.label :yesorno_1, " No "
+      -#&nbsp
 
   .field
     %b Electronic Signature*
