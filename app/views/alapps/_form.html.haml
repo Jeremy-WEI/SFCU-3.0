@@ -346,66 +346,137 @@
             %br
             - (1..4).each do |x|
               = render "loan", :f => f, :x =>x
-        .field
-          = f.label :rent_housing
-          = f.text_field :rent_housing
-        .field
-          = f.label :rent_person
-          = f.text_field :rent_person
-        .field
-          = f.label :food
-          = f.text_field :food
-        .field
-          = f.label :food_person
-          = f.text_field :food_person
-        .field
-          = f.label :utilities
-          = f.text_field :utilities
-        .field
-          = f.label :utilities_person
-          = f.text_field :utilities_person
-        .field
-          = f.label :phone_bill
-          = f.text_field :phone_bill
-        .field
-          = f.label :phone_bill_person
-          = f.text_field :phone_bill_person
-        .field
-          = f.label :bursar_bill
-          = f.text_field :bursar_bill
-        .field
-          = f.label :miscellaneous
-          = f.text_field :miscellaneous
-        .field
-          = f.label :miscellaneous_expl
-          = f.text_field :miscellaneous_expl
+        .well
+          %h2.text-center Montly Expenses
+          %br
+          %table
+            %tbody
+              %tr
+                %td.col-md-6
+                  %b Renting/Housing
+                  = f.text_field :rent_housing
+                %td.col-md-6
+                  If none, list the person who foots the expense
+                  = f.text_field :rent_person
+
+              %tr
+                %td.col-md-6
+                  %b Food
+                  = f.text_field :food
+                %td.col-md-6
+                  If none, list the person who foots the expense
+                  = f.text_field :food_person
+
+              %tr
+                %td.col-md-6
+                  %b Utilities
+                  = f.text_field :utilities
+                %td.col-md-6
+                  If none, list the person who foots the expense
+                  = f.text_field :utilities_person
+
+              %tr
+                %td.col-md-6
+                  %b Phone Bill
+                  = f.text_field :phone_bill
+                %td.col-md-6
+                  If none, list the person who foots the expense
+                  = f.text_field :phone_bill_person
+
+              %tr
+                %td.col-md-6
+                  %b Bursar Bill
+                  = f.text_field :bursar_bill
+                %td.col-md-6
+                  Please provide a copy of your bursar bill, which can be
+                  obtained from Penn-in-Touch for our verification.
+
+              %tr
+                %td.col-md-6
+                  %b Miscellaneous
+                  = f.text_field :miscellaneous
+                %td.col-md-6
+                  Explanation of miscellaneous expenses
+                  = f.text_field :miscellaneous_expl
+
       #tab4.tab-pane
-        .field
-          = f.label :document1
-          = f.text_field :document1
-        .field
-          = f.label :document2
-          = f.text_field :document2
-        .field
-          = f.label :document3
-          = f.text_field :document3
-        .field
-          = f.label :document4
-          = f.text_field :document4
-        .field
-          = f.label :document5
-          = f.text_field :document5
-        .field
-          = f.label :agree_terms
-          = f.check_box :agree_terms
-        .field
-          = f.label :signature
-          = f.text_field :signature
-        .field
-          = f.label :today_date
-          = f.date_select :today_date
-        .actions
-          = f.submit 'Save'
+        %br
+        .well
+          %h2.text-center Supporting Documents
+          %br
+          .row
+            .col-md-2
+              %b Document1
+            .col-md-1
+              = f.file_field :document1
+          %br
+          .row
+            .col-md-2
+              %b Document2
+            .col-md-1
+              = f.file_field :document2
+          %br
+          .row
+            .col-md-2
+              %b Document3
+            .col-md-1
+              = f.file_field :document3
+          %br
+          .row
+            .col-md-2
+              %b Document4
+            .col-md-1
+              = f.file_field :document4
+          %br
+          .row
+            .col-md-2
+              %b Document5
+            .col-md-1
+              = f.file_field :document5
+          %br
+
+        .well
+          %h2.text-center Terms & Conditions
+          %br
+          You promise that everything you have stated in this application is correct to
+          the best of your knowledge and that the above information is a complete listing
+          of what you owe. If there are any important changes you will notify us in writing
+          immediately. You authorize the SFCU to obtain credit reports in connection with this
+          application for credit and for any update, increase, renewal, extension or collection
+          of the credit received. You understand that the SFCU will rely on the information in
+          this application and your credit report to make its decision. If you request, the
+          SFCU will tell you the name and address of any credit bureau from which it received a
+          credit report on you. It is a federal crime to willfully and deliberately provide
+          incomplete or incorrect information on loan applications made to federal credit unions
+          or state chartered credit unions insured by the NCUA.
+          %br
+          %br
+          %b I have read this disclosure and understand and agree to all terms, conditions and
+          %b requirements here stated.*
+          %br
+          .row.text-center
+            .col-md-12.checkbox
+              %label
+                = f.check_box :agree_terms
+                Agree Terms
+          %br
+          .row
+            .col-md-2.col-md-offset-3
+              %b Signature*
+            .col-md-6
+              = f.text_field :signature
+          %br
+          .row
+            .col-md-2.col-md-offset-3
+              %b Date
+            .col-md-6
+              = f.date_select :today_date
+          %br
+          .row.text-center
+            .col-md-12
+              .actions
+                = f.submit 'Submit'
+
     %ul.pager.wizard
       %li.previous.first
         %a{:href => "javascript:;"} First
