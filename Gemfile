@@ -37,6 +37,15 @@ gem 'carmen'
 gem 'carmen-rails'
 
 gem 'carrierwave'
+
+group :test, :development do
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'launchy'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
