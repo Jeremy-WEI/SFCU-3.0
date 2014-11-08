@@ -26,373 +26,378 @@
     .tab-content
       #tab1.tab-pane
         %hr
-          .well
-            %h2.text-center Personal Info
-            %strong Name*
-            .row
-              .col-md-4
-                = f.text_field :first, class: "form-control", placeholder: "First Name"
-              .col-md-4
-                = f.text_field :middle, class: "form-control", placeholder: "Middle Name"
-              .col-md-4
-                = f.text_field :last, class: "form-control", placeholder: "Last Name"
-            %br
-            %b Date of birth*
-            .row
-              .col-md-4
-                = f.date_select :dob, {}, {class: "form-control"}
-            %br
-            %b Student Status*
-            .row
-              .col-md-3
-                %label.radio-inline
-                  = f.radio_button :student_status, 0
-                  Domestic
-              .col-md-3
-                %label.radio-inline
-                  = f.radio_button :student_status, 1
-                  International
-            %br
-            %b Penn Affiliation
-            .row
-              .col-md-3
-                %label.radio-inline
-                  = f.radio_button :penn_affiliation, 0
-                  Underfraduate
-              .col-md-3
-                %label.radio-inline
-                  = f.radio_button :penn_affiliation, 1
-                  Graduate
-              .col-md-3
-                %label.radio-inline
-                  = f.radio_button :penn_affiliation, 2
-                  Alumnus
-            %br
-            %b Year of Graduation
-            .row
-              .col-md-4
-                = f.select :grad_year, 1980..2030, {}, {class: "form-control"}
-            %br
-            %b PennID
-            .row
-              .col-md-4
-                = f.text_field :penn_id, class: "form-control", placeholder: "Penn ID"
-            %br
-            %b Social Security Number*
-            .row
-              .col-md-4
-                = f.text_field :ssn, class: "form-control", placeholder: "SSN"
-            .row
-              .col-md-12
-                If you do not have an SSN, we are required to have a W8BEN form on file for you. Please download one Here, fill it out, and include it in your application.
-            %br
-            %b File Upload
-            .row
-              .col-md-4
-                = f.text_field :file_ssn, class: "form-control"
-            %br
-            %b Passport # or Driver's License #*
-            .row
-              .col-md-4
-                = f.select :doc_type, options_for_select([["Passport", 0],["Driver's License", 1]], 0), {}, {class: "form-control"}
-              .col-md-4
-                = f.text_field :doc_id, class: "form-control", placeholder: "ID Number"
-            %br
-            %b Identification*
-            Please attach two forms of photo-bearing identification.
-            At least one must be government issued (e.g. passport or driver's license;
-            the other may be any form of ID that has a picture of you and your name
-            (e.g. PennCard, high school ID). Please note that we cannot open
-            your account unless you have included valid IDs; they are required by our Member Identification Program,
-            as required by the Bank Secrecy Act.
-            %br
-            Note: a picture of yourself is not a valid form of identification.
-            .row
-              .col-md-4
-                = f.text_field :file_id1, class: "form-control", placeholder: "File1"
-              .col-md-4
-                = f.text_field :file_id2, class: "form-control", placeholder: "File2"
-            %br
-            *Please email us your ID's if there is a "Could not access file" error. *
+        .well
+          %h2.text-center Personal Info
+          %b Name*
+          .row
+            .col-md-4
+              = f.text_field :first, class: "form-control", placeholder: "First Name"
+            .col-md-4
+              = f.text_field :middle, class: "form-control", placeholder: "Middle Name"
+            .col-md-4
+              = f.text_field :last, class: "form-control", placeholder: "Last Name"
+          %br
+          %b Date of birth*
+          .row
+            .col-md-4
+              = f.date_select :dob, {}, {class: "form-control"}
+          %br
+          %b Student Status*
+          .row
+            .col-md-3
+              %label.radio-inline
+                = f.radio_button :student_status, 0
+                Domestic
+            .col-md-3
+              %label.radio-inline
+                = f.radio_button :student_status, 1
+                International
+          %br
+          %b Penn Affiliation
+          .row
+            .col-md-3
+              %label.radio-inline
+                = f.radio_button :penn_affiliation, 0
+                Underfraduate
+            .col-md-3
+              %label.radio-inline
+                = f.radio_button :penn_affiliation, 1
+                Graduate
+            .col-md-3
+              %label.radio-inline
+                = f.radio_button :penn_affiliation, 2
+                Alumnus
+          %br
+          %b Year of Graduation
+          .row
+            .col-md-4
+              = f.select :grad_year, 1980..2030, {}, {class: "form-control"}
+          %br
+          %b PennID
+          .row
+            .col-md-4
+              = f.text_field :penn_id, class: "form-control", placeholder: "Penn ID"
+          %br
+          %b Social Security Number*
+          .row
+            .col-md-4
+              = f.text_field :ssn, class: "form-control", placeholder: "SSN"
+          .row
+            .col-md-12
+              If you do not have an SSN, we are required to have a W8BEN form on file for you. Please download one Here, fill it out, and include it in your application.
+          %br
+          %b File Upload
+          .row
+            .col-md-4
+              = f.text_field :file_ssn, class: "form-control"
+          %br
+          %b Passport # or Driver's License #*
+          .row
+            .col-md-4
+              = f.select :doc_type, options_for_select([["Passport", 0],["Driver's License", 1]], 0), {}, {class: "form-control"}
+            .col-md-4
+              = f.text_field :doc_id, class: "form-control", placeholder: "ID Number"
+          %br
+          %b Identification*
+          Please attach two forms of photo-bearing identification.
+          At least one must be government issued (e.g. passport or driver's license;
+          the other may be any form of ID that has a picture of you and your name
+          (e.g. PennCard, high school ID). Please note that we cannot open
+          your account unless you have included valid IDs; they are required by our Member Identification Program,
+          as required by the Bank Secrecy Act.
+          %br
+          Note: a picture of yourself is not a valid form of identification.
+          .row
+            .col-md-4
+              = f.text_field :file_id1, class: "form-control", placeholder: "File1"
+            .col-md-4
+              = f.text_field :file_id2, class: "form-control", placeholder: "File2"
+          %br
+          *Please email us your ID's if there is a "Could not access file" error. *
+        %br
+        %br
       #tab2.tab-pane
         %hr
-          .well
-            %h2.text-center Contact Info
-            .row
-              .col-md-6
-                %strong Mobile Phone*
-              .col-md-6
-                %strong Home Phone
-            .row
-              .col-md-6
-                = f.text_field :mobile_phone, class: "form-control", placeholder: "Mobile Phone"
-              .col-md-6
-                = f.text_field :home_phone, class: "form-control", placeholder: "Home Phone"
-            %br
-            .row
-              .col-md-6
-                %strong Penn Email*
-              .col-md-6
-                %strong Alternate Email*
-            .row
-              .col-md-6
-                = f.text_field :penn_email, class: "form-control", placeholder: "Penn Email Address"
-              .col-md-6
-                = f.text_field :alter_email, class: "form-control", placeholder: "Alternate Email Address"
-            %br
-            %b Local Address
-            .row
-              .col-md-3
-                Address Line 1*
-              .col-md-9
-                = f.text_field :local_address_line1, class: "form-control", placeholder: "Local Address Line1"
-              .col-md-3
-                Address Line 2
-              .col-md-9
-                = f.text_field :local_address_line2, class: "form-control", placeholder: "Local Address Line2"
-              .col-md-1
-                City*
-              .col-md-3
-                = f.text_field :local_address_city, placeholder: "City", class: "form-control"
-              .col-md-1
-                State*
-              .col-md-3
-                = f.text_field :local_address_state, placeholder: "State", class: "form-control"
-              .col-md-1
-                ZIP*
-              .col-md-3
-                = f.text_field :local_address_zip, placeholder: "ZIP", class: "form-control"
-            %br
-            %b Permanent Address
-            .row
-              .col-md-3
-                Address Line 1*
-              .col-md-9
-                = f.text_field :perm_address_line1, class: "form-control", placeholder: "perm Address Line1"
-              .col-md-3
-                Address Line 2
-              .col-md-9
-                = f.text_field :perm_address_line2, class: "form-control", placeholder: "perm Address Line2"
-              .col-md-1
-                City*
-              .col-md-3
-                = f.text_field :perm_address_city, placeholder: "City", class: "form-control"
-              .col-md-1
-                State*
-              .col-md-3
-                = f.text_field :perm_address_state, placeholder: "State", class: "form-control"
-              .col-md-1
-                ZIP*
-              .col-md-3
-                = f.text_field :perm_address_zip, placeholder: "ZIP", class: "form-control"
+        .well
+          %h2.text-center Contact Info
+          .row
+            .col-md-6
+              %b Mobile Phone*
+            .col-md-6
+              %b Home Phone
+          .row
+            .col-md-6
+              = f.text_field :mobile_phone, class: "form-control", placeholder: "Mobile Phone"
+            .col-md-6
+              = f.text_field :home_phone, class: "form-control", placeholder: "Home Phone"
+          %br
+          .row
+            .col-md-6
+              %b Penn Email*
+            .col-md-6
+              %b Alternate Email*
+          .row
+            .col-md-6
+              = f.text_field :penn_email, class: "form-control", placeholder: "Penn Email Address"
+            .col-md-6
+              = f.text_field :alter_email, class: "form-control", placeholder: "Alternate Email Address"
+          %br
+          %b Local Address
+          .row
+            .col-md-3
+              Address Line 1*
+            .col-md-9
+              = f.text_field :local_address_line1, class: "form-control", placeholder: "Local Address Line1"
+            .col-md-3
+              Address Line 2
+            .col-md-9
+              = f.text_field :local_address_line2, class: "form-control", placeholder: "Local Address Line2"
+            .col-md-1
+              City*
+            .col-md-3
+              = f.text_field :local_address_city, placeholder: "City", class: "form-control"
+            .col-md-1
+              State*
+            .col-md-3
+              = f.text_field :local_address_state, placeholder: "State", class: "form-control"
+            .col-md-1
+              ZIP*
+            .col-md-3
+              = f.text_field :local_address_zip, placeholder: "ZIP", class: "form-control"
+          %br
+          %b Permanent Address
+          .row
+            .col-md-3
+              Address Line 1*
+            .col-md-9
+              = f.text_field :perm_address_line1, class: "form-control", placeholder: "perm Address Line1"
+            .col-md-3
+              Address Line 2
+            .col-md-9
+              = f.text_field :perm_address_line2, class: "form-control", placeholder: "perm Address Line2"
+            .col-md-1
+              City*
+            .col-md-3
+              = f.text_field :perm_address_city, placeholder: "City", class: "form-control"
+            .col-md-1
+              State*
+            .col-md-3
+              = f.text_field :perm_address_state, placeholder: "State", class: "form-control"
+            .col-md-1
+              ZIP*
+            .col-md-3
+              = f.text_field :perm_address_zip, placeholder: "ZIP", class: "form-control"
+        %br
       #tab3.tab-pane
         %hr
-          .well
-            %h2.text-center Account Options
-            %b Statement Type*
-            .row
-              .col-md-3.checkbox
-                %label
-                  = f.check_box :statement_type_paper
-                  Paper
-              .col-md-3.checkbox
-                %label
-                  = f.check_box :statement_type_electronic
-                  Electronic
+        .well
+          %h2.text-center Account Options
+          %b Statement Type*
+          .row
+            .col-md-3.checkbox
+              %label
+                = f.check_box :statement_type_paper
+                Paper
+            .col-md-3.checkbox
+              %label
+                = f.check_box :statement_type_electronic
+                Electronic
+          %br
+          %b Savings Account
+          .row
+            .col-md-12
+              All members of the Credit Union are required to maintain a regular savings account with a balance of $5.
+          %br
+          %b Checking Account*
+          .row
+            .col-md-3
+              %label.radio-inline
+                = f.radio_button :checking_account, 0
+                None
+            .col-md-3
+              %label.radio-inline
+                = f.radio_button :checking_account, 1
+                Regular
+            .col-md-3
+              %label.radio-inline
+                = f.radio_button :checking_account, 2
+                Signature
+          %br
+          %div
             %br
-            %b Savings Account
-            .row
-              .col-md-12
-                All members of the Credit Union are required to maintain a regular savings account with a balance of $5.
-            %br
-            %b Checking Account*
-            .row
-              .col-md-3
-                %label.radio-inline
-                  = f.radio_button :checking_account, 0
-                  None
-              .col-md-3
-                %label.radio-inline
-                  = f.radio_button :checking_account, 1
-                  Regular
-              .col-md-3
-                %label.radio-inline
-                  = f.radio_button :checking_account, 2
-                  Signature
-            %br
-            %div
-              %br
-              .accordion
-                .accordion-group
-                  %h4.text-center Checking Account Customization
-                  .accordion-body
-                    .accordion-inner
-                      %b Courtesy Pay:
+            .accordion
+              .accordion-group
+                %h4.text-center Checking Account Customization
+                .accordion-body
+                  .accordion-inner
+                    %b Courtesy Pay:
+                    .row
+                      .col-md-12.checkbox
+                        %label
+                          = f.check_box :courtesy_pay
+                          Yes, I would like to enable courtesy pay
+                    %br
+                    %em *What is courtesy pay? With courtesy pay, the SFCU will approve all one-time debit and ATM transactions regardless of account balance. There is no fee for signing up for courtesy pay; however, a charge applies every time that you use it.
+                    %br
+                    .well
+                      %b Visa©CheckCard
                       .row
                         .col-md-12.checkbox
                           %label
-                            = f.check_box :courtesy_pay
-                            Yes, I would like to enable courtesy pay
+                            = f.check_box :visa_check_card
+                            I would like to order a VISA debit card (free)
                       %br
-                      %em *What is courtesy pay? With courtesy pay, the SFCU will approve all one-time debit and ATM transactions regardless of account balance. There is no fee for signing up for courtesy pay; however, a charge applies every time that you use it.
+                      %b Visa©CheckCard PIN
+                      .row
+                        .col-md-3
+                          PIN
+                        .col-md-3
+                          = f.text_field :visa_pin, placeholder: "PIN", class: "form-control"
+                        .col-md-4
+                          PIN cannot start with 0
+                      .row
+                        .col-md-3
+                          Please repeat PIN
+                        .col-md-3
+                          = f.text_field :visa_repeat_pin, placeholder: "PIN", class: "form-control"
                       %br
-                      .well
-                        %b Visa©CheckCard
-                        .row
-                          .col-md-12.checkbox
-                            %label
-                              = f.check_box :visa_check_card
-                              I would like to order a VISA debit card (free)
-                        %br
-                        %b Visa©CheckCard PIN
-                        .row
-                          .col-md-3
-                            PIN
-                          .col-md-3
-                            = f.text_field :visa_pin, placeholder: "PIN", class: "form-control"
-                          .col-md-4
-                            PIN cannot start with 0
-                        .row
-                          .col-md-3
-                            Please repeat PIN
-                          .col-md-3
-                            = f.text_field :visa_repeat_pin, placeholder: "PIN", class: "form-control"
-                        %br
-                        %b Visa©CheckCard Delivery
-                        .row
-                          .col-md-3
-                            %label.radio-inline
-                              = f.radio_button :visa_delivery, 0
-                              Local Address
-                          .col-md-4
-                            %label.radio-inline
-                              = f.radio_button :visa_delivery, 1
-                              Permanent Address
-                          .col-md-5
-                            %label.radio-inline
-                              = f.radio_button :visa_delivery, 2
-                              SFCU Office for Pickup
-                      .well
-                        %b PennCard Linkage
-                        .row
-                          .col-md-12.checkbox
-                            %label
-                              = f.check_box :penncard_link
-                              I would like to link my account to my PennCard (free)
-                        %b 16-digit PennCard Number
-                        .row
-                          .col-md-4
-                            = f.text_field :penncard_number, placeholder: "564343-XXXX-XXXX-XX", class: "form-control"
-                          .col-md-12
-                            Please come to our main branch to pin your card and complete the link to your account.
-                            %br
-                            Note:
-                            %em If your PennCard does not start with 564343, please visit the PennCard center to get it replaced with a card that does start with these digits. This is completely free of charge and only takes a couple of minutes.
-                            %br
-                            You can submit this application without requesting to link your PennCard, and contact us once you have the correct prefix to request it.
-                      .well
-                        %b Order Checks
-                        .row
-                          .col-md-12.checkbox
-                            %label
-                              = f.check_box :order_checks
-                              I would like to order additional checks (charges apply) Address on check
-                            %br
-                            %b Address on Checks:
-                        .row
-                          .col-md-3
-                            %label.radio-inline
-                              = f.radio_button :address_on_checks, 0
-                              Local Address
-                          .col-md-4
-                            %label.radio-inline
-                              = f.radio_button :address_on_checks, 1
-                              Permanent Address
-                          .col-md-3
-                            %label.radio-inline
-                              = f.radio_button :address_on_checks, 2
-                              None
-                              &nbsp
-                        %br
-                        %b Check Type:
-                        .row
-                          .col-md-3
-                            %label.radio-inline
-                              = f.radio_button :check_type, 0
-                              Single
-                          .col-md-3
-                            %label.radio-inline
-                              = f.radio_button :check_type, 1
-                              Duplicate
-                        %br
-                        %b Color(Speciality)
-                        .row
-                          .col-md-2
-                            %label.radio-inline
-                              = f.radio_button :color, 0
-                              Lemon
-                          .col-md-2
-                            %label.radio-inline
-                              = f.radio_button :color, 1
-                              Blue
-                          .col-md-2
-                            %label.radio-inline
-                              = f.radio_button :color, 2
-                              Gray
-                          .col-md-2
-                            %label.radio-inline
-                              = f.radio_button :color, 3
-                              Mint
-                          .col-md-4
-                            %label.radio-inline
-                              = f.radio_button :color, 4
-                              Personalized(please contact us)
-                        %br
-                        %b Check Delivery
-                        .row
-                          .col-md-3
-                            %label.radio-inline
-                              = f.radio_button :check_delivery, 0
-                              Local Address
-                          .col-md-4
-                            %label.radio-inline
-                              = f.radio_button :check_delivery, 1
-                              Permanent Address
-                          .col-md-5
-                            %label.radio-inline
-                              = f.radio_button :check_delivery, 2
-                              SFCU Office for pickup
+                      %b Visa©CheckCard Delivery
+                      .row
+                        .col-md-3
+                          %label.radio-inline
+                            = f.radio_button :visa_delivery, 0
+                            Local Address
+                        .col-md-4
+                          %label.radio-inline
+                            = f.radio_button :visa_delivery, 1
+                            Permanent Address
+                        .col-md-5
+                          %label.radio-inline
+                            = f.radio_button :visa_delivery, 2
+                            SFCU Office for Pickup
+                    .well
+                      %b PennCard Linkage
+                      .row
+                        .col-md-12.checkbox
+                          %label
+                            = f.check_box :penncard_link
+                            I would like to link my account to my PennCard (free)
+                      %b 16-digit PennCard Number
+                      .row
+                        .col-md-4
+                          = f.text_field :penncard_number, placeholder: "564343-XXXX-XXXX-XX", class: "form-control"
+                        .col-md-12
+                          Please come to our main branch to pin your card and complete the link to your account.
+                          %br
+                          Note:
+                          %em If your PennCard does not start with 564343, please visit the PennCard center to get it replaced with a card that does start with these digits. This is completely free of charge and only takes a couple of minutes.
+                          %br
+                          You can submit this application without requesting to link your PennCard, and contact us once you have the correct prefix to request it.
+                    .well
+                      %b Order Checks
+                      .row
+                        .col-md-12.checkbox
+                          %label
+                            = f.check_box :order_checks
+                            I would like to order additional checks (charges apply) Address on check
+                          %br
+                          %b Address on Checks:
+                      .row
+                        .col-md-3
+                          %label.radio-inline
+                            = f.radio_button :address_on_checks, 0
+                            Local Address
+                        .col-md-4
+                          %label.radio-inline
+                            = f.radio_button :address_on_checks, 1
+                            Permanent Address
+                        .col-md-3
+                          %label.radio-inline
+                            = f.radio_button :address_on_checks, 2
+                            None
+                            &nbsp
+                      %br
+                      %b Check Type:
+                      .row
+                        .col-md-3
+                          %label.radio-inline
+                            = f.radio_button :check_type, 0
+                            Single
+                        .col-md-3
+                          %label.radio-inline
+                            = f.radio_button :check_type, 1
+                            Duplicate
+                      %br
+                      %b Color(Speciality)
+                      .row
+                        .col-md-2
+                          %label.radio-inline
+                            = f.radio_button :color, 0
+                            Lemon
+                        .col-md-2
+                          %label.radio-inline
+                            = f.radio_button :color, 1
+                            Blue
+                        .col-md-2
+                          %label.radio-inline
+                            = f.radio_button :color, 2
+                            Gray
+                        .col-md-2
+                          %label.radio-inline
+                            = f.radio_button :color, 3
+                            Mint
+                        .col-md-4
+                          %label.radio-inline
+                            = f.radio_button :color, 4
+                            Personalized(please contact us)
+                      %br
+                      %b Check Delivery
+                      .row
+                        .col-md-3
+                          %label.radio-inline
+                            = f.radio_button :check_delivery, 0
+                            Local Address
+                        .col-md-4
+                          %label.radio-inline
+                            = f.radio_button :check_delivery, 1
+                            Permanent Address
+                        .col-md-5
+                          %label.radio-inline
+                            = f.radio_button :check_delivery, 2
+                            SFCU Office for pickup
+        %br
       #tab4.tab-pane
         %hr
-          .well
-            %h2.text-center Terms and Conditions
-            .row
-              .col-md-12
-                By submitting this application, I hereby make application for membership in and agree to all the by-laws and any amendments thereof in University of Pennsylvania Student Federal Credit Union and subscribed to the par value of one share ($5) in Savings Account. I acknowledge the receipt of the Account Disclosure Statements of the Credit Union. I acknowledge that terms and conditions in these statements are subject to change without notice. I authorize the Credit Union to verify credit and employment history by any necessary means, including preparation of a credit report by a credit reporting agency. I furthermore acknoweledge that the terms I agree to my submission of this form shall constitute the execution of this document in exactly the same manner as if I had signed, by hand, a paper version of this agreement. I certify that the information provided on this application is true and correct and that the ownership designated hereon apply to the type of account(s) noted above.
-            %br
+        .well
+          %h2.text-center Terms and Conditions
+          .row
+            .col-md-12
+              By submitting this application, I hereby make application for membership in and agree to all the by-laws and any amendments thereof in University of Pennsylvania Student Federal Credit Union and subscribed to the par value of one share ($5) in Savings Account. I acknowledge the receipt of the Account Disclosure Statements of the Credit Union. I acknowledge that terms and conditions in these statements are subject to change without notice. I authorize the Credit Union to verify credit and employment history by any necessary means, including preparation of a credit report by a credit reporting agency. I furthermore acknoweledge that the terms I agree to my submission of this form shall constitute the execution of this document in exactly the same manner as if I had signed, by hand, a paper version of this agreement. I certify that the information provided on this application is true and correct and that the ownership designated hereon apply to the type of account(s) noted above.
+          %br
+          .row
+            .col-md-12.checkbox
+              %label
+                = f.check_box :term
+                I agree to the terms and conditions stated above and in the Account Disclosure
+          %br
             .row
               .col-md-12.checkbox
                 %label
-                  = f.check_box :term
-                  I agree to the terms and conditions stated above and in the Account Disclosure
-            %br
-              .row
-                .col-md-12.checkbox
-                  %label
-                    = f.check_box :understand
-                    I understand that once my account is opened, I must make the minimum deposit of $5 into my account at the SFCU within 30 days.
-            %br
-            .row
-              .col-md-2
-                Signature
-              .col-md-3
-                = f.text_field :signature, placeholder: "Electronic Sigature", class: "form-control"
-              .col-md-2
-                (full name)
-              .col-md-2
-                Today's Date
-              .col-md-3
-                = f.text_field :today_date, placeholder: "MM/DD/YYYY", class: "form-control"
+                  = f.check_box :understand
+                  I understand that once my account is opened, I must make the minimum deposit of $5 into my account at the SFCU within 30 days.
+          %br
+          .row
+            .col-md-2
+              Signature
+            .col-md-3
+              = f.text_field :signature, placeholder: "Electronic Sigature", class: "form-control"
+            .col-md-2
+              (full name)
+            .col-md-2
+              Today's Date
+            .col-md-3
+              = f.text_field :today_date, placeholder: "MM/DD/YYYY", class: "form-control"
+          %br
         .actions.text-center
           = f.submit 'Submit', class: "btn btn-primary"
     %ul.pager.wizard
