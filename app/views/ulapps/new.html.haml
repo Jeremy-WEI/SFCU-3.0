@@ -107,7 +107,7 @@
               .row
                 %b Phone Number of Nearest Relative*
                 %br
-                -#= f.number_field :phone_relative
+                = f.text_field :phone_relative
 
               .row
                 %b Mothers Madien Name
@@ -192,7 +192,7 @@
                 %b Phone*
                 %br
                 Phone Number
-                = f.number_field :phone_number
+                = f.text_field :phone_number
 
               .row
                 %b Phone Type*
@@ -203,7 +203,7 @@
                 %b Alternate Phone*
                 %br
                 Phone Number
-                = f.number_field :alter_number
+                = f.text_field :alter_number
 
               .row
                 %b Phone Type*
