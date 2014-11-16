@@ -15,8 +15,10 @@ class Alapp < ActiveRecord::Base
   validates_presence_of :alumni, message: "Are you an alumni of Penn?"
   validates_format_of :ssn, {:with => /\A\d{9}\z/, message: "SSN must be 9 digits with no other symbols, for example: 123456789"}
   validates :credit_req_type, presence: {message: "You must select a credit request type"}
-  validates :amount_req, presence: {message: "amount is required and must be in numerical form" }
-  validates :amount_req, numericality: { greater_than_or_equal_to: 0.0, message: "amount is required and must be a positive number" }
+
+  validates :amount_req, presence: {message: "amount is required (in dollars) and must be in numerical form" }
+  validates :amount_req, numericality: { greater_than_or_equal_to: 0.0, message: "amount is required (in dollars) and must be a positive number" }
+
   validates :term, presence:  {message: "What is your requested term of loan?"}
   validates :vehicle_condition, presence:  {message: "What is the condition of your vehicle?"}
   validate :validates_vehicle_price_range
@@ -34,15 +36,52 @@ class Alapp < ActiveRecord::Base
   validates :driver_lisence_num, presence:  {message: "Driver's license can't be blank"}
   validates :driver_license_file, presence:  {message: "You must upload a driver's license file"}
 
+
+  validates :employ1_grosspay, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :employ2_grosspay, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :add_income1_amount, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :add_income2_amount, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :add_income3_amount, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :account1_current_balance, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :account2_current_balance, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :account3_current_balance, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :account4_current_balance, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :property1_market_val, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :property2_market_val, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :credit_card1_limit, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :credit_card1_balance, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :credit_card1_aveg_month_pay, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :credit_card2_limit, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :credit_card2_balance, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :credit_card2_aveg_month_pay, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :credit_card3_limit, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :credit_card3_balance, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :credit_card3_aveg_month_pay, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :credit_card4_limit, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :credit_card4_balance, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :credit_card4_aveg_month_pay, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :loan1_principal, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :loan1_month_payment, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :loan2_principal, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :loan2_month_payment, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :loan3_principal, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :loan3_month_payment, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :loan4_principal, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :loan4_month_payment, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :rent_housing, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :food, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :utilities, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :phone_bill, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :bursar_bill, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+  validates :miscellaneous, numericality: {greater_than_or_equal_to: 0.0, message: "amount must be positive and in numeric form" }, allow_nil: true
+
+
   validates :agree_terms, acceptance:  {message: "You must agree the terms in order to submit the form"}
   validates :signature, acceptance:  {message: "You must agree the terms and sign in order to submit the form"}
   validates :today_date, acceptance:  {message: "You must agree the terms and fill in today's date to submit the form"}
 
   #validates_with AlappsHelper::DollarValidator, fields: [:employ1_grosspay]
 
-  # def validates_dollars (:amount)
-  #   validates :amount_req, numericality: { greater_than_or_equal_to: 0.0, message: "amount is required,  and must be a positive number" }
-  # end
 
   def check_dob
     if not dob.present?

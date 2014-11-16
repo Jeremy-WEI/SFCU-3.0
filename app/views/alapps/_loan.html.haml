@@ -32,7 +32,7 @@
         .row
           .span12
             .span3
-              = f.text_field :"loan#{x}_date_payment", class: "input-small"
+              = f.date_select :"loan#{x}_date_payment"
             .span3
               = f.text_field :"loan#{x}_month_payment", class: "input-small"
             .span3

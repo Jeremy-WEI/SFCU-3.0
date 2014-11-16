@@ -39,17 +39,16 @@ module AlappsHelper
 
   end
 
-  class DollarValidator < ActiveModel::Validator
-    def validate(record)
-      options[:fields].each do |field|
-        number = record.send(field)
-        if number.blank?
-          return
-        elsif not number.match(//)
-        elsif not (number >= 0.0)
-          record.errors.add(field, "Amount of dollars is required in numeric and must be a positive number")
-        end
-      end
-    end
-  end
+  # class DollarValidator < ActiveModel::Validator
+  #   def validate(record)
+  #     options[:fields].each do |field|
+  #       number = record.send(field)
+  #       if number.blank?
+  #         return
+  #       elsif not (number >= 0.0)
+  #         record.errors.add(field, "Amount of dollars is required in numeric and must be a positive number")
+  #       end
+  #     end
+  #   end
+  # end
 end
