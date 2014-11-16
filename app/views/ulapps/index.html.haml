@@ -2,7 +2,7 @@
 
 %table
   %tr
-    %th Type
+    %th Credit Type
     %th Joint applicant
     %th Amount
     %th Purpose
@@ -28,10 +28,8 @@
     %th Perm address zip
     %th Perm country
     %th E mail
-    %th Phone areacode
     %th Phone number
     %th Phone type
-    %th Alter areacode
     %th Alter number
     %th Alter type
     %th Employer
@@ -136,7 +134,7 @@
 
   - @ulapps.each do |ulapp|
     %tr
-      %td= ulapp.type
+      %td= ulapp.credit_type
       %td= ulapp.joint_applicant
       %td= ulapp.amount
       %td= ulapp.purpose
@@ -162,10 +160,8 @@
       %td= ulapp.perm_address_zip
       %td= ulapp.perm_country
       %td= ulapp.e_mail
-      %td= ulapp.phone_areacode
       %td= ulapp.phone_number
       %td= ulapp.phone_type
-      %td= ulapp.alter_areacode
       %td= ulapp.alter_number
       %td= ulapp.alter_type
       %td= ulapp.employer

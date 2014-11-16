@@ -28,10 +28,8 @@ class CreateUlapps < ActiveRecord::Migration
       t.integer :perm_address_zip
       t.string :perm_country
       t.string :e_mail
-      t.integer :phone_areacode
       t.integer :phone_number
       t.integer :phone_type
-      t.integer :alter_areacode
       t.integer :alter_number
       t.integer :alter_type
       t.string :employer
