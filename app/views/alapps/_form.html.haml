@@ -16,7 +16,7 @@
   = form_for @alapp, html: {class: "form-horizontal"} do |f|
     - if @alapp.errors.any?
       #error_explanation
-        %h2= "#{pluralize(@alapp.errors.count, "error")} prohibited this alapp from being saved:"
+        %h2= "#{pluralize(@alapp.errors.count, "error")} occured, please correct them and submit again"
         %ul
           - @alapp.errors.full_messages.each do |msg|
             %li= msg
@@ -51,9 +51,9 @@
               %b Social Security number*
               .row
                 .col-md-12
-                  = f.text_field :ssn, placeholder: "###-##-####"
-              Please enter your SSN in the following format: ###-##-####.
-              If you do not have an SSN, please enter 000-00-0000.
+                  = f.text_field :ssn, placeholder: "#########"
+              Please enter your SSN in the following format: ######### (nine digits).
+              If you do not have an SSN, please enter 000000000.
           %br
           .row
             .col-md-12
@@ -146,12 +146,11 @@
             .col-md-12
               %b Model Year*
               .row
-              = f.number_field :model_year, placeholder: "YYYY"
-
+              = f.select :model_year, options_for_select((1800..2050), 2014),  placeholder: "YYYY"
           %br
           .row
             .col-md-12
-              %b Vehicle Type*
+              =f.label :veh_type, "Vehicle Type*"
               .form-inline
                 = f.check_box(:veh_subcompact)
                 &nbsp
@@ -267,7 +266,7 @@
           %h2.text-center Driver's License
           .row
             .col-md-12
-              %b Driver's License Number
+              %b Driver's License Number*
               .row
                 .col-md-12
                   = f.text_field :driver_lisence_num, placeholder: "##-###-###"
@@ -277,6 +276,7 @@
                 .col-md-12
                   Please attach your driver's license in order to proceed with this application.
                   We cannot move forward with your auto loan application without a valid driver's license.
+                  %br
                   = f.label :driver_license_file
                   = f.file_field :driver_license_file
       #tab2.tab-pane
@@ -468,7 +468,7 @@
           %br
           .row
             .col-md-2.col-md-offset-3
-              %b Date
+              %b Today's date
             .col-md-6
               = f.date_select :today_date
           %br

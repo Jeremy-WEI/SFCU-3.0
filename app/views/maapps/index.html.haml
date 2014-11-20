@@ -2,16 +2,16 @@
 
 %table
   %tr
-    %th First
-    %th Middle
-    %th Last
+    %th First name
+    %th Middle name
+    %th Last name
     %th Dob
     %th Student status
     %th Penn affiliation
     %th Grad year
     %th Penn
     %th Ssn
-    %th File ssn
+    %th W8ben form
     %th Doc type
     %th Doc
     %th File id1
@@ -30,13 +30,11 @@
     %th Perm address city
     %th Perm address state
     %th Perm address zip
-    %th Statement type paper
-    %th Statement type electronic
+    %th Statement type
     %th Checking account
     %th Courtesy pay
-    %th Visa check card
+    %th Visa checkcard
     %th Visa pin
-    %th Visa repeat pin
     %th Visa delivery
     %th Penncard link
     %th Penncard number
@@ -45,26 +43,24 @@
     %th Check type
     %th Color
     %th Check delivery
-    %th Term
-    %th Understand
     %th Signature
-    %th Today date
+    %th Apply date
     %th
     %th
     %th
 
   - @maapps.each do |maapp|
     %tr
-      %td= maapp.first
-      %td= maapp.middle
-      %td= maapp.last
+      %td= maapp.first_name
+      %td= maapp.middle_name
+      %td= maapp.last_name
       %td= maapp.dob
       %td= maapp.student_status
       %td= maapp.penn_affiliation
       %td= maapp.grad_year
       %td= maapp.penn_id
       %td= maapp.ssn
-      %td= maapp.file_ssn
+      %td= maapp.W8BEN_form
       %td= maapp.doc_type
       %td= maapp.doc_id
       %td= maapp.file_id1
@@ -83,13 +79,11 @@
       %td= maapp.perm_address_city
       %td= maapp.perm_address_state
       %td= maapp.perm_address_zip
-      %td= maapp.statement_type_paper
-      %td= maapp.statement_type_electronic
+      %td= maapp.statement_type
       %td= maapp.checking_account
       %td= maapp.courtesy_pay
-      %td= maapp.visa_check_card
+      %td= maapp.visa_checkcard
       %td= maapp.visa_pin
-      %td= maapp.visa_repeat_pin
       %td= maapp.visa_delivery
       %td= maapp.penncard_link
       %td= maapp.penncard_number
@@ -98,10 +92,8 @@
       %td= maapp.check_type
       %td= maapp.color
       %td= maapp.check_delivery
-      %td= maapp.term
-      %td= maapp.understand
       %td= maapp.signature
-      %td= maapp.today_date
+      %td= maapp.apply_date
       %td= link_to 'Show', maapp
       %td= link_to 'Edit', edit_maapp_path(maapp)
       %td= link_to 'Destroy', maapp, :method => :delete, :data => { :confirm => 'Are you sure?' }

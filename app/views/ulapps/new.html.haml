@@ -43,13 +43,13 @@
               .row
                 %b Type*
                 .form-inline
-                  = f.radio_button :type, 0
+                  = f.radio_button :credit_type, 0
                   &nbsp
-                  = f.label :type_0, " Individual Credit "
+                  = f.label :credit_type_0, " Individual Credit "
                   &nbsp
-                  = f.radio_button :type, 1
+                  = f.radio_button :credit_type, 1
                   &nbsp
-                  = f.label :type_1, " Joint Credit "
+                  = f.label :credit_type_1, " Joint Credit "
                   &nbsp
 
               .row
@@ -107,7 +107,7 @@
               .row
                 %b Phone Number of Nearest Relative*
                 %br
-                = f.number_field :phone_relative
+                = f.text_field :phone_relative
 
               .row
                 %b Mothers Madien Name
@@ -191,10 +191,8 @@
               .row
                 %b Phone*
                 %br
-                Area Code
-                = f.number_field :phone_areacode
                 Phone Number
-                = f.number_field :phone_number
+                = f.text_field :phone_number
 
               .row
                 %b Phone Type*
@@ -204,10 +202,8 @@
               .row
                 %b Alternate Phone*
                 %br
-                Area Code
-                = f.number_field :alter_areacode
                 Phone Number
-                = f.number_field :alter_number
+                = f.text_field :alter_number
 
               .row
                 %b Phone Type*

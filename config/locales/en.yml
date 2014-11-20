@@ -20,5 +20,31 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  hello: "Hello world"
+
+#en:
+#  errors:
+##    models:
+##    maapp:
+#    format: "%{message}"
+#en:
+#  activerecord:
+#    attributes:
+#      maapp:
+#        ssn: "SSN"
+#    errors:
+#      models:
+#        maapp:
+#          attributes:
+#            ssn:
+#              invalid: 'Must include uppercase & number'
+
+
+#en:
+#  activerecord:
+#    attributes:
+#      maapp:
+#        ssn: "SSN"
+en:
   errors:
     format: "%{message}"
