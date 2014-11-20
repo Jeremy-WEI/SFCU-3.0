@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
+  resources :maapps
+
   resources :cbpapps
 
   resources :alapps
 
   resources :ulapps
-
-  resources :maapps
   root 'maapps#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,99 +1,91 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first: MyString
-  middle: MyString
-  last: MyString
-  dob: 2014-11-02
-  student_status: 1
-  penn_affiliation: 1
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  dob: 2014-11-15
+  student_status: MyString
+  penn_affiliation: MyString
   grad_year: 1
-  penn_id: 1
-  ssn: 1
-  file_ssn: MyString
+  penn_id: MyString
+  ssn: MyString
+  W8BEN_form: MyString
   doc_type: MyString
-  doc_id: 1
+  doc_id: MyString
   file_id1: MyString
   file_id2: MyString
-  mobile_phone: 1
-  home_phone: 1
+  mobile_phone: MyString
+  home_phone: MyString
   penn_email: MyString
   alter_email: MyString
   local_address_line1: MyString
   local_address_line2: MyString
   local_address_city: MyString
   local_address_state: MyString
-  local_address_zip: 1
+  local_address_zip: MyString
   perm_address_line1: MyString
   perm_address_line2: MyString
   perm_address_city: MyString
   perm_address_state: MyString
-  perm_address_zip: 1
-  statement_type_paper: false
-  statement_type_electronic: false
-  checking_account: 1
+  perm_address_zip: MyString
+  statement_type: MyString
+  checking_account: MyString
   courtesy_pay: false
-  visa_check_card: false
-  visa_pin: 1
-  visa_repeat_pin: 1
-  visa_delivery: 1
+  visa_checkcard: false
+  visa_pin: MyString
+  visa_delivery: MyString
   penncard_link: false
-  penncard_number: 1
+  penncard_number: MyString
   order_checks: false
-  address_on_checks: 1
-  check_type: 1
+  address_on_checks: MyString
+  check_type: MyString
   color: MyString
   check_delivery: MyString
-  term: false
-  understand: false
   signature: MyString
-  today_date: 2014-11-02
+  apply_date: 2014-11-15
 
 two:
-  first: MyString
-  middle: MyString
-  last: MyString
-  dob: 2014-11-02
-  student_status: 1
-  penn_affiliation: 1
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  dob: 2014-11-15
+  student_status: MyString
+  penn_affiliation: MyString
   grad_year: 1
-  penn_id: 1
-  ssn: 1
-  file_ssn: MyString
+  penn_id: MyString
+  ssn: MyString
+  W8BEN_form: MyString
   doc_type: MyString
-  doc_id: 1
+  doc_id: MyString
   file_id1: MyString
   file_id2: MyString
-  mobile_phone: 1
-  home_phone: 1
+  mobile_phone: MyString
+  home_phone: MyString
   penn_email: MyString
   alter_email: MyString
   local_address_line1: MyString
   local_address_line2: MyString
   local_address_city: MyString
   local_address_state: MyString
-  local_address_zip: 1
+  local_address_zip: MyString
   perm_address_line1: MyString
   perm_address_line2: MyString
   perm_address_city: MyString
   perm_address_state: MyString
-  perm_address_zip: 1
-  statement_type_paper: false
-  statement_type_electronic: false
-  checking_account: 1
+  perm_address_zip: MyString
+  statement_type: MyString
+  checking_account: MyString
   courtesy_pay: false
-  visa_check_card: false
-  visa_pin: 1
-  visa_repeat_pin: 1
-  visa_delivery: 1
+  visa_checkcard: false
+  visa_pin: MyString
+  visa_delivery: MyString
   penncard_link: false
-  penncard_number: 1
+  penncard_number: MyString
   order_checks: false
-  address_on_checks: 1
-  check_type: 1
+  address_on_checks: MyString
+  check_type: MyString
   color: MyString
   check_delivery: MyString
-  term: false
-  understand: false
   signature: MyString
-  today_date: 2014-11-02
+  apply_date: 2014-11-15

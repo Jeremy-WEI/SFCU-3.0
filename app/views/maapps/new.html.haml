@@ -31,41 +31,41 @@
           %b Name*
           .row
             .col-md-4
-              = f.text_field :first, class: "form-control", placeholder: "First Name"
+              = f.text_field :first_name, class: "form-control", placeholder: "First Name"
             .col-md-4
-              = f.text_field :middle, class: "form-control", placeholder: "Middle Name"
+              = f.text_field :middle_name, class: "form-control", placeholder: "Middle Name"
             .col-md-4
-              = f.text_field :last, class: "form-control", placeholder: "Last Name"
+              = f.text_field :last_name, class: "form-control", placeholder: "Last Name"
           %br
           %b Date of birth*
           .row
             .col-md-4
-              = f.date_select :dob, {}, {class: "form-control"}
+              = f.date_select :dob
           %br
           %b Student Status*
           .row
             .col-md-3
               %label.radio-inline
-                = f.radio_button :student_status, 0
+                = f.radio_button :student_status, "Domestic"
                 Domestic
             .col-md-3
               %label.radio-inline
-                = f.radio_button :student_status, 1
+                = f.radio_button :student_status, "International"
                 International
           %br
           %b Penn Affiliation
           .row
             .col-md-3
               %label.radio-inline
-                = f.radio_button :penn_affiliation, 0
-                Underfraduate
+                = f.radio_button :penn_affiliation, "Undergraduate"
+                Undergraduate
             .col-md-3
               %label.radio-inline
-                = f.radio_button :penn_affiliation, 1
+                = f.radio_button :penn_affiliation, "Graduate"
                 Graduate
             .col-md-3
               %label.radio-inline
-                = f.radio_button :penn_affiliation, 2
+                = f.radio_button :penn_affiliation, "Alumnus"
                 Alumnus
           %br
           %b Year of Graduation
@@ -89,7 +89,7 @@
           %b File Upload
           .row
             .col-md-4
-              = f.text_field :file_ssn, class: "form-control"
+              = f.text_field :W8BEN_form, class: "form-control"
           %br
           %b Passport # or Driver's License #*
           .row
@@ -194,14 +194,18 @@
           %h2.text-center Account Options
           %b Statement Type*
           .row
-            .col-md-3.checkbox
-              %label
-                = f.check_box :statement_type_paper
+            .col-md-3
+              %label.radio-inline
+                = f.radio_button :statement_type, "Paper"
                 Paper
-            .col-md-3.checkbox
-              %label
-                = f.check_box :statement_type_electronic
+            .col-md-3
+              %label.radio-inline
+                = f.radio_button :statement_type, "Electronic"
                 Electronic
+            .col-md-3
+              %label.radio-inline
+                = f.radio_button :statement_type, "Paper + Electronic"
+                Paper + Electronic
           %br
           %b Savings Account
           .row
@@ -212,15 +216,15 @@
           .row
             .col-md-3
               %label.radio-inline
-                = f.radio_button :checking_account, 0
+                = f.radio_button :checking_account, "None"
                 None
             .col-md-3
               %label.radio-inline
-                = f.radio_button :checking_account, 1
+                = f.radio_button :checking_account, "Regular"
                 Regular
             .col-md-3
               %label.radio-inline
-                = f.radio_button :checking_account, 2
+                = f.radio_button :checking_account, "Signature"
                 Signature
           %br
           %div
@@ -244,7 +248,7 @@
                       .row
                         .col-md-12.checkbox
                           %label
-                            = f.check_box :visa_check_card
+                            = f.check_box :visa_checkcard
                             I would like to order a VISA debit card (free)
                       %br
                       %b Visa©CheckCard PIN
@@ -252,14 +256,14 @@
                         .col-md-3
                           PIN
                         .col-md-3
-                          = f.text_field :visa_pin, placeholder: "PIN", class: "form-control"
+                          = f.password_field :visa_pin, placeholder: "PIN", class: "form-control"
                         .col-md-4
                           PIN cannot start with 0
                       .row
                         .col-md-3
                           Please repeat PIN
                         .col-md-3
-                          = f.text_field :visa_repeat_pin, placeholder: "PIN", class: "form-control"
+                          = f.password_field :visa_pin_confirmation, placeholder: "PIN", class: "form-control"
                       %br
                       %b Visa©CheckCard Delivery
                       .row
@@ -300,70 +304,69 @@
                           %label
                             = f.check_box :order_checks
                             I would like to order additional checks (charges apply) Address on check
-                          %br
-                          %b Address on Checks:
+                      %br
+                      %b Address on Checks:
                       .row
                         .col-md-3
                           %label.radio-inline
-                            = f.radio_button :address_on_checks, 0
+                            = f.radio_button :address_on_checks, "Local Address"
                             Local Address
                         .col-md-4
                           %label.radio-inline
-                            = f.radio_button :address_on_checks, 1
+                            = f.radio_button :address_on_checks, "Permanent Address"
                             Permanent Address
                         .col-md-3
                           %label.radio-inline
-                            = f.radio_button :address_on_checks, 2
+                            = f.radio_button :address_on_checks, "None"
                             None
-                            &nbsp
                       %br
                       %b Check Type:
                       .row
                         .col-md-3
                           %label.radio-inline
-                            = f.radio_button :check_type, 0
+                            = f.radio_button :check_type, "Single"
                             Single
                         .col-md-3
                           %label.radio-inline
-                            = f.radio_button :check_type, 1
+                            = f.radio_button :check_type, "Duplicate"
                             Duplicate
                       %br
                       %b Color(Speciality)
                       .row
                         .col-md-2
                           %label.radio-inline
-                            = f.radio_button :color, 0
+                            = f.radio_button :color, "Lemon"
                             Lemon
                         .col-md-2
                           %label.radio-inline
-                            = f.radio_button :color, 1
+                            = f.radio_button :color, "Blue"
                             Blue
                         .col-md-2
                           %label.radio-inline
-                            = f.radio_button :color, 2
+                            = f.radio_button :color, "Gray"
                             Gray
                         .col-md-2
                           %label.radio-inline
-                            = f.radio_button :color, 3
+                            = f.radio_button :color, "Mint"
                             Mint
                         .col-md-4
                           %label.radio-inline
-                            = f.radio_button :color, 4
+                            = f.radio_button :color, "Personalized"
                             Personalized(please contact us)
                       %br
                       %b Check Delivery
                       .row
                         .col-md-3
                           %label.radio-inline
-                            = f.radio_button :check_delivery, 0
+                            = f.radio_button :check_delivery, "Local Address"
                             Local Address
                         .col-md-4
                           %label.radio-inline
-                            = f.radio_button :check_delivery, 1
+                            = f.radio_button :check_delivery, "Permanent Address"
                             Permanent Address
                         .col-md-5
                           %label.radio-inline
-                            = f.radio_button :check_delivery, 2
+                            = f.radio_button :check_delivery, "SFCU Office for pickup"
                             SFCU Office for pickup
         %br
       #tab4.tab-pane
@@ -377,7 +380,7 @@
           .row
             .col-md-12.checkbox
               %label
-                = f.check_box :term
+                = f.check_box :terms
                 I agree to the terms and conditions stated above and in the Account Disclosure
           %br
             .row
@@ -396,7 +399,7 @@
             .col-md-2
               Today's Date
             .col-md-3
-              = f.text_field :today_date, placeholder: "MM/DD/YYYY", class: "form-control"
+              = f.text_field :apply_date, placeholder: "MM/DD/YYYY", class: "form-control"
           %br
         .actions.text-center
           = f.submit 'Submit', class: "btn btn-primary"

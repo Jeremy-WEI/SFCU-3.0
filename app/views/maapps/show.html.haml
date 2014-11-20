@@ -1,14 +1,14 @@
 %p#notice= notice
 
 %p
-  %b First:
-  = @maapp.first
+  %b First name:
+  = @maapp.first_name
 %p
-  %b Middle:
-  = @maapp.middle
+  %b Middle name:
+  = @maapp.middle_name
 %p
-  %b Last:
-  = @maapp.last
+  %b Last name:
+  = @maapp.last_name
 %p
   %b Dob:
   = @maapp.dob
@@ -28,8 +28,8 @@
   %b Ssn:
   = @maapp.ssn
 %p
-  %b File ssn:
-  = @maapp.file_ssn
+  %b W8ben form:
+  = @maapp.W8BEN_form
 %p
   %b Doc type:
   = @maapp.doc_type
@@ -85,11 +85,8 @@
   %b Perm address zip:
   = @maapp.perm_address_zip
 %p
-  %b Statement type paper:
-  = @maapp.statement_type_paper
-%p
-  %b Statement type electronic:
-  = @maapp.statement_type_electronic
+  %b Statement type:
+  = @maapp.statement_type
 %p
   %b Checking account:
   = @maapp.checking_account
@@ -97,14 +94,11 @@
   %b Courtesy pay:
   = @maapp.courtesy_pay
 %p
-  %b Visa check card:
-  = @maapp.visa_check_card
+  %b Visa checkcard:
+  = @maapp.visa_checkcard
 %p
   %b Visa pin:
   = @maapp.visa_pin
-%p
-  %b Visa repeat pin:
-  = @maapp.visa_repeat_pin
 %p
   %b Visa delivery:
   = @maapp.visa_delivery
@@ -130,17 +124,11 @@
   %b Check delivery:
   = @maapp.check_delivery
 %p
-  %b Term:
-  = @maapp.term
-%p
-  %b Understand:
-  = @maapp.understand
-%p
   %b Signature:
   = @maapp.signature
 %p
-  %b Today date:
-  = @maapp.today_date
+  %b Apply date:
+  = @maapp.apply_date
 
 = link_to 'Edit', edit_maapp_path(@maapp)
 \|
