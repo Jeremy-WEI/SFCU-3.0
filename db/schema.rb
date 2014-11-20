@@ -164,8 +164,6 @@ ActiveRecord::Schema.define(version: 20141115202305) do
     t.string   "document3"
     t.string   "document4"
     t.string   "document5"
-    t.boolean  "agree_terms"
-    t.string   "signature"
     t.date     "today_date"
     t.datetime "created_at"
     t.datetime "updated_at"
