@@ -5,8 +5,14 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <style>
+      label{font-weight:normal !important}
+  </style>
 </head>
 <body>
+<%# flash.each do |name, msg| -%>
+    <%#= content_tag :div, msg, class: name %>
+<%# end -%>
 <div class="container" style="width:750px;margin-right:auto;margin-left:auto">
   <%= yield %>
 </div>

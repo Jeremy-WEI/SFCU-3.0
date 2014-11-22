@@ -460,6 +460,10 @@
   %b Today date:
   = @alapp.today_date
 
+%p
+  %b Application status:
+  = @alapp.application_status
+
 = link_to 'Edit', edit_alapp_path(@alapp)
 \|
 = link_to 'Back', alapps_path

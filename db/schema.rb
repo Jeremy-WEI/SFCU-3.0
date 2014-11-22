@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120033358) do
+
+ActiveRecord::Schema.define(version: 20141120041139) do
 
   create_table "alapps", force: true do |t|
     t.string   "first"
@@ -164,9 +165,11 @@ ActiveRecord::Schema.define(version: 20141120033358) do
     t.string   "document3"
     t.string   "document4"
     t.string   "document5"
+    t.string   "signature"
     t.date     "today_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "application_status",          default: "Unprocessed"
   end
 
   create_table "cbpapps", force: true do |t|
@@ -247,6 +250,7 @@ ActiveRecord::Schema.define(version: 20141120033358) do
     t.date     "apply_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "application_status",  default: "Unprocessed"
   end
 
   create_table "ulapps", force: true do |t|
@@ -380,6 +384,7 @@ ActiveRecord::Schema.define(version: 20141120033358) do
     t.string   "signature"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "application_status",      default: "Unprocessed"
   end
 
 end
