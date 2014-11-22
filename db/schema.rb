@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115202305) do
+ActiveRecord::Schema.define(version: 20141120041139) do
 
   create_table "alapps", force: true do |t|
     t.string   "first"
@@ -379,6 +379,7 @@ ActiveRecord::Schema.define(version: 20141115202305) do
     t.string   "signature"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "application_status",      default: "Unprocessed"
   end
 
 end

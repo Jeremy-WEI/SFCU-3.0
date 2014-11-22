@@ -21,6 +21,10 @@ class UlappsController < ApplicationController
   def edit
   end
 
+  def export
+    render text: params[:exports]
+  end
+
   # POST /ulapps
   # POST /ulapps.json
   def create
