@@ -79,40 +79,40 @@ class Alapp < ActiveRecord::Base
    validates :agree_terms, acceptance:  {message: "You must agree the terms in order to submit the form"}
    validates :signature, presence:  {message: "You must agree the terms and sign in order to submit the form"}
    validates :today_date, presence:  {message: "You must agree the terms and fill in today's date to submit the form"}
-  #
-  # #validates_with AlappsHelper::DollarValidator, fields: [:employ1_grosspay]
-  #
-  #
-  # def check_dob
-  #   if not dob.present?
-  #     errors.add(:dob, "Date of birth can't be blank")
-  #   elsif dob >= Date.today
-  #     errors.add(:dob, "Date of birth must be in the past")
-  #   end
-  # end
-  #
-  # def validates_vehicle_price_range
-  #   if not price_range_min.present?
-  #     errors.add(:price_range_min, "Price range required and must be in numerical form")
-  #   end
-  #   if not price_range_max.present?
-  #     errors.add(:price_range_max, "Price range required and must be in numerical form")
-  #   end
-  # end
-  #
-  # def validates_vehicle_type
-  #   if not (veh_subcompact.present? or veh_compact.present? or veh_mid_size.present? or veh_full_size.present? or veh_sports_car.present? or veh_truck.present? or veh_van.present?)
-  #     errors.add(:veh_type, "You must choose a vehicle type")
-  #   end
-  # end
-  #
-  # def check_non_upenn_email
-  #   if not non_upenn_email.present?
-  #     errors.add(:non_upenn_email, "Non upenn email can't be blank")
-  #   elsif validates_format_of :non_upenn_email, :with =>  /\A([^@\s]+)@(.+)upenn.edu/i
-  #     errors.add(:non_upenn_email, "Cannot use upenn email")
-  #   end
-  # end
+
+  #validates_with AlappsHelper::DollarValidator, fields: [:employ1_grosspay]
+
+
+  def check_dob
+    if not dob.present?
+      errors.add(:dob, "Date of birth can't be blank")
+    elsif dob >= Date.today
+      errors.add(:dob, "Date of birth must be in the past")
+    end
+  end
+
+  def validates_vehicle_price_range
+    if not price_range_min.present?
+      errors.add(:price_range_min, "Price range required and must be in numerical form")
+    end
+    if not price_range_max.present?
+      errors.add(:price_range_max, "Price range required and must be in numerical form")
+    end
+  end
+
+  def validates_vehicle_type
+    if not (veh_subcompact.present? or veh_compact.present? or veh_mid_size.present? or veh_full_size.present? or veh_sports_car.present? or veh_truck.present? or veh_van.present?)
+      errors.add(:veh_type, "You must choose a vehicle type")
+    end
+  end
+
+  def check_non_upenn_email
+    if not non_upenn_email.present?
+      errors.add(:non_upenn_email, "Non upenn email can't be blank")
+    elsif validates_format_of :non_upenn_email, :with =>  /\A([^@\s]+)@(.+)upenn.edu/i
+      errors.add(:non_upenn_email, "Cannot use upenn email")
+    end
+  end
 
   has_many :employments
 end
