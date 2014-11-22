@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+# <<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141120040224) do
+# =======
+# ActiveRecord::Schema.define(version: 20141120031421) do
+# >>>>>>> b6901c7e0c09a32a0c5c46ee8adb75f2f901bec4
 
   create_table "alapps", force: true do |t|
     t.string   "first"
@@ -248,6 +252,7 @@ ActiveRecord::Schema.define(version: 20141120040224) do
     t.date     "apply_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "application_status",  default: "Unprocessed"
   end
 
   create_table "ulapps", force: true do |t|
