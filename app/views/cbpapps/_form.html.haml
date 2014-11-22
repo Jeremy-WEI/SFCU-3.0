@@ -1,17 +1,16 @@
 %br
 %br
 %h1.text-center Credit Builder Program Application
-
 #rootwizard
   %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
     .container
       %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
         %li
-          %a{"data-toggle" => "tab", :href => "#tab1"} General Info
+          %a{"data-toggle" => "tab", :href => "#tab1"} Credit Request
         %li
-          %a{"data-toggle" => "tab", :href => "#tab2"} Contact Info
+          %a{"data-toggle" => "tab", :href => "#tab2"} General Information
         %li
-          %a{"data-toggle" => "tab", :href => "#tab3"} Credit Request
+          %a{"data-toggle" => "tab", :href => "#tab3"} Contact Information
   .progress
     .progress-bar.progress-bar-success.progress-bar-striped.active.bar
   = form_for @cbpapp, html: {class: "form-horizontal"} do |f|
@@ -24,7 +23,26 @@
     .tab-content
       #tab1.tab-pane
         %hr
-        %h2.text-center Section I: Applicant Information
+        %h2.text-center Section I: Credit Request
+        %hr
+        .well
+          You are applying for credit under the terms disclosed in this Credit Agreement.
+          %br
+          %b Amount Requested: $1000
+          %br
+          %br
+          %b Period*
+          .row
+            .col-md-4
+              %label.radio-inline
+                = f.radio_button :period, "12 Months"
+                12 Months
+              %label.radio-inline
+                = f.radio_button :period, "24 Months"
+                24 Months
+      #tab2.tab-pane
+        %hr
+        %h2.text-center Section II: Applicant Information
         %hr
         .well
           %h2.text-center A. General Information
@@ -42,14 +60,12 @@
           .row
             .col-md-4
               = f.text_field :ssn, class: "form-control", placeholder: "SSN"
-            .col-md-12
-              If you do not have an SSN, we are required to have a W8BEN form on file for you.
-              Please download one Here, fill it out, and include it in your application.
           %br
           %b Date of Birth*
           .row
             .col-md-9
-              = f.date_select :dob
+              = f.date_select :dob, { :start_year => 1900 }
+              -#= f.date_select :dob
           %br
           %b Mother's Maiden Name*
           .row
@@ -76,9 +92,9 @@
             .col-md-4
               = f.text_field :how_know, class: "form-control",placeholder: "How did you hear about this program?"
           %br
-      #tab2.tab-pane
+      #tab3.tab-pane
         %hr
-        %h2.text-center Section I: Applicant Information
+        %h2.text-center Section II: Applicant Information
         %hr
         .well
           %h2.text-center B. Contact Information
@@ -168,26 +184,6 @@
                 = f.radio_button :student_status, "International"
                 International
           %br
-          %br
-      #tab3.tab-pane
-        %hr
-        %h2.text-center Section II: Credit Request
-        %hr
-        .well
-          You are applying for credit under the terms disclosed in this Credit Agreement.
-          %br
-          %b Amount Requested: $1000
-          %br
-          %br
-          %b Period*
-          .row
-            .col-md-4
-              %label.radio-inline
-                = f.radio_button :period, "12 Months"
-                12 Months
-              %label.radio-inline
-                = f.radio_button :period, "24 Months"
-                24 Months
           %br
         .actions.text-center
           = f.submit 'Submit', class: "btn btn-primary"
