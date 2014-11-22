@@ -1,5 +1,14 @@
 class Ulapp < ActiveRecord::Base
+  mount_uploader :file1, File1Uploader
+  mount_uploader :file2, File2Uploader
+  mount_uploader :file3, File3Uploader
+  mount_uploader :file4, File4Uploader
+  mount_uploader :file5, File5Uploader
+  mount_uploader :file6, File6Uploader
+
   mount_uploader :ulapp_file1, UlappFile1Uploader
+
+
   validates :credit_type, presence: {message: "You must choose the credit type."}
   validates :amount, presence: {message: "Amount Requested cannot be blank."}
   validates :purpose, presence: {message: "Purpose cannot be blank."}

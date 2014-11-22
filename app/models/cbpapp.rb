@@ -6,7 +6,7 @@ class Cbpapp < ActiveRecord::Base
   # validates :mother_maiden, presence: {message: "Mother's maiden name can't be blank"}
   # validates :account_number, presence: {message: "SFCU account number can't be blank"}
   # validate :check_grad_date
-  # validate :check_non_upenn_email
+  validate :check_non_upenn_email
   # validates :how_know, presence: {message: "How did you hear about the program can't be blank"}
   #
   # validates :local_home_phone, presence: {message: "Local home phone can't be blank"}

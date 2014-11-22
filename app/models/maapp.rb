@@ -1,4 +1,8 @@
 class Maapp < ActiveRecord::Base
+  mount_uploader :W8BEN_form, W8BenFormUploader
+  mount_uploader :file_id1, FileId1Uploader
+  mount_uploader :file_id2, FileId2Uploader
+
 
   SSN_FORMAT = /\A\d{9}\z/
   PHONE_FORMAT =/\A\(?\d{3}[-\.)]?\d{3}[-\.]?\d{4}\z/

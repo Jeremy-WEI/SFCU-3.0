@@ -86,10 +86,10 @@
             .col-md-12
               If you do not have an SSN, we are required to have a W8BEN form on file for you. Please download one Here, fill it out, and include it in your application.
           %br
-          %b File Upload
+          %b W8BEN File Upload
           .row
             .col-md-4
-              = f.text_field :W8BEN_form, class: "form-control"
+              = f.file_field :W8BEN_form
           %br
           %b Passport # or Driver's License #*
           .row
@@ -109,9 +109,9 @@
           Note: a picture of yourself is not a valid form of identification.
           .row
             .col-md-4
-              = f.text_field :file_id1, class: "form-control", placeholder: "File1"
+              = f.file_field :file_id1
             .col-md-4
-              = f.text_field :file_id2, class: "form-control", placeholder: "File2"
+              = f.file_field :file_id2
           %br
           *Please email us your ID's if there is a "Could not access file" error. *
         %br

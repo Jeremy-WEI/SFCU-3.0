@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20141120041139) do
 
-
   create_table "alapps", force: true do |t|
     t.string   "first"
     t.string   "middle"
@@ -165,7 +164,6 @@ ActiveRecord::Schema.define(version: 20141120041139) do
     t.string   "document3"
     t.string   "document4"
     t.string   "document5"
-    t.string   "signature"
     t.date     "today_date"
     t.datetime "created_at"
     t.datetime "updated_at"
