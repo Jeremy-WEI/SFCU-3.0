@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20141120041139) do
 
-
   create_table "alapps", force: true do |t|
     t.string   "first"
     t.string   "middle"
