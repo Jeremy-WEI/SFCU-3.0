@@ -1,8 +1,7 @@
 class Maapp < ActiveRecord::Base
-  mount_uploader :W8BEN_form, W8BenFormUploader
+  mount_uploader :w8ben_form, W8BenFormUploader
   mount_uploader :file_id1, FileId1Uploader
   mount_uploader :file_id2, FileId2Uploader
-
 
   SSN_FORMAT = /\A\d{9}\z/
   PHONE_FORMAT =/\A\(?\d{3}[-\.)]?\d{3}[-\.]?\d{4}\z/
@@ -25,9 +24,25 @@ class Maapp < ActiveRecord::Base
   validates :visa_pin_confirmation, presence: true
   validates :terms, :understand, acceptance: true
 
+  validates_presence_of :w8ben_form
+
+
+
   def dob_validation
     errors.add(:dob, "Date of Birth can't be blank.") unless dob.present?
     errors.add(:dob, "Date of Birth must be in the past.") if dob >= Date.today
+  end
+
+  # def size_validation
+  #   errors[:w8ben_form] << "should be MORE than 5MB" if w8ben_form.size < 5.megabytes
+  #
+  # end
+
+  # validate :ssn_w8ben_validation
+  # , if: lambda {ssn.present? == false}
+
+  def ssn_w8ben_validation
+      validates_with MaappsHelper::FileSizeValidator, fields: [:w8ben_form]
   end
 
 end
