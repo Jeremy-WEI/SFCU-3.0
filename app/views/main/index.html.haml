@@ -1,10 +1,22 @@
-%h1 Main Page
+%h1 New Application Forms
+.row
+  .col-md-3
+    = button_to 'Member Account', {controller: 'maapps', action: 'new'}, method: :get
+  .col-md-3
+    = button_to 'Unsecured Loan', 'ulapps/new', method: 'get'
+  .col-md-3
+    = button_to 'Auto Loan', new_alapp_path, method: 'get'
+  .col-md-3
+    = button_to 'Credit Builder Program', 'cbpapps/new', method: 'get'
 
+%br
+%h1 Index Forms
 .row
-  = link_to 'Member Account Application', 'maapps/new'
-.row
-  = link_to 'Unsecured Loan Application', 'alapps/new'
-.row
-  = link_to 'Auto Loan Application', 'ulapps/new'
-.row
-  = link_to 'Credit Builder Program Application', 'cbpapps/new'
+  .col-md-3
+    = button_to 'Member Account', 'maapps', method: 'get'
+  .col-md-3
+    = button_to 'Unsecured Loan', 'ulapps', method: 'get'
+  .col-md-3
+    = button_to 'Auto Loan', 'alapps', method: 'get'
+  .col-md-3
+    = button_to 'Credit Builder Program', 'cbpapps', method: 'get'
