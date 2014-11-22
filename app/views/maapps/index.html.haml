@@ -1,103 +1,27 @@
-%h1 Listing maapps
-
-%table
-  %tr
-    %th First name
-    %th Middle name
-    %th Last name
-    %th Dob
-    %th Student status
-    %th Penn affiliation
-    %th Grad year
-    %th Penn
-    %th Ssn
-    %th W8ben form
-    %th Doc type
-    %th Doc
-    %th File id1
-    %th File id2
-    %th Mobile phone
-    %th Home phone
-    %th Penn email
-    %th Alter email
-    %th Local address line1
-    %th Local address line2
-    %th Local address city
-    %th Local address state
-    %th Local address zip
-    %th Perm address line1
-    %th Perm address line2
-    %th Perm address city
-    %th Perm address state
-    %th Perm address zip
-    %th Statement type
-    %th Checking account
-    %th Courtesy pay
-    %th Visa checkcard
-    %th Visa pin
-    %th Visa delivery
-    %th Penncard link
-    %th Penncard number
-    %th Order checks
-    %th Address on checks
-    %th Check type
-    %th Color
-    %th Check delivery
-    %th Signature
-    %th Apply date
-    %th
-    %th
-    %th
-
-  - @maapps.each do |maapp|
-    %tr
-      %td= maapp.first_name
-      %td= maapp.middle_name
-      %td= maapp.last_name
-      %td= maapp.dob
-      %td= maapp.student_status
-      %td= maapp.penn_affiliation
-      %td= maapp.grad_year
-      %td= maapp.penn_id
-      %td= maapp.ssn
-      %td= maapp.W8BEN_form
-      %td= maapp.doc_type
-      %td= maapp.doc_id
-      %td= maapp.file_id1
-      %td= maapp.file_id2
-      %td= maapp.mobile_phone
-      %td= maapp.home_phone
-      %td= maapp.penn_email
-      %td= maapp.alter_email
-      %td= maapp.local_address_line1
-      %td= maapp.local_address_line2
-      %td= maapp.local_address_city
-      %td= maapp.local_address_state
-      %td= maapp.local_address_zip
-      %td= maapp.perm_address_line1
-      %td= maapp.perm_address_line2
-      %td= maapp.perm_address_city
-      %td= maapp.perm_address_state
-      %td= maapp.perm_address_zip
-      %td= maapp.statement_type
-      %td= maapp.checking_account
-      %td= maapp.courtesy_pay
-      %td= maapp.visa_checkcard
-      %td= maapp.visa_pin
-      %td= maapp.visa_delivery
-      %td= maapp.penncard_link
-      %td= maapp.penncard_number
-      %td= maapp.order_checks
-      %td= maapp.address_on_checks
-      %td= maapp.check_type
-      %td= maapp.color
-      %td= maapp.check_delivery
-      %td= maapp.signature
-      %td= maapp.apply_date
-      %td= link_to 'Show', maapp
-      %td= link_to 'Edit', edit_maapp_path(maapp)
-      %td= link_to 'Destroy', maapp, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+%h1.text-center Individual Account Applicants
+%br
 %br
 
-= link_to 'New Maapp', new_maapp_path
+= form_tag url_for(:controller => 'maapps', :action => 'export'), method: 'get' do
+  %table.table.table-hover.col-md-12
+    %tr
+      %th.col-md-1
+      %th.col-md-3 Date Submitted
+      %th.col-md-3 Applicant
+      %th.col-md-2 Status
+      %th.col-md-1
+      %th.col-md-1
+
+    - @maapps.each do |applicant|
+      %tr{:class => "#{if applicant.application_status == 'Unprocessed' then 'active' elsif applicant.application_status == 'Processed' then 'success' else 'info' end}"}
+        %td= check_box_tag 'exports[]', applicant.id, false, id: "exports_#{applicant.id}"
+        %td= label_tag "exports_#{applicant.id}", applicant.created_at.strftime('%Y-%m-%d')
+        %td= label_tag "exports_#{applicant.id}", applicant.first_name +   ' ' + applicant.last_name
+        %td= label_tag applicant.application_status
+        %td= link_to 'Show', applicant
+        -#%td= link_to 'Edit', edit_maapp_path(applicant)
+        %td= link_to 'Destroy', applicant, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  -#
+  %br
+    = submit_tag 'Export', class: "btn btn-primary"
+-#= link_to 'New Maapp', new_maapp_path
