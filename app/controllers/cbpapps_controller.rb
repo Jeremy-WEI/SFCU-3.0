@@ -21,6 +21,10 @@ class CbpappsController < ApplicationController
   def edit
   end
 
+  def export
+    render text: params[:exports]
+  end
+
   # POST /cbpapps
   # POST /cbpapps.json
   def create

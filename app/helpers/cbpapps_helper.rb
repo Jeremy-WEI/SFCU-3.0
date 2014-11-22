@@ -5,10 +5,10 @@ module CbpappsHelper
         phone = record.send(field)
         unless phone.blank?
           phone_formats = [
-              /^\d{10}/,
-              /^\(\d\d\d\) \d\d\d-\d\d\d\d/,
-              /^\d\d\d\.\d\d\d\.\d\d\d\d/,
-              /^\d\d\d\-\d\d\d\-\d\d\d\d/
+              /^\d{10}\z/,
+              /^\(\d\d\d\) \d\d\d-\d\d\d\d\z/,
+              /^\d\d\d\.\d\d\d\.\d\d\d\d\z/,
+              /^\d\d\d\-\d\d\d\-\d\d\d\d\z/
           ]
           valid = false
           phone_formats.each do |format|

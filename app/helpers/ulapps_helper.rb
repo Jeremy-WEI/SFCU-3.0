@@ -9,10 +9,10 @@ module UlappsHelper
           record.errors.add(field, "#{field} cannot be blank.")
         else
           phone_formats = [
-              /^\d{10}/,
-              /^\(\d\d\d\) \d\d\d-\d\d\d\d/,
-              /^\d\d\d\.\d\d\d\.\d\d\d\d/,
-              /^\d\d\d\-\d\d\d\-\d\d\d\d/
+              /^\d{10}\z/,
+              /^\(\d\d\d\) \d\d\d-\d\d\d\d\z/,
+              /^\d\d\d\.\d\d\d\.\d\d\d\d\z/,
+              /^\d\d\d\-\d\d\d\-\d\d\d\d\z/
           ]
           valid = false
           phone_formats.each do |format|

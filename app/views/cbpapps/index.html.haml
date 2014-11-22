@@ -1,69 +1,24 @@
-%h1 Listing cbpapps
-
-%table
-  %tr
-    %th Period
-    %th First name
-    %th Middle name
-    %th Last name
-    %th Ssn
-    %th Dob
-    %th Mother maiden
-    %th Account number
-    %th Grad date
-    %th Non upenn email
-    %th How know
-    %th Local address line1
-    %th Local address line2
-    %th Local address city
-    %th Local address state
-    %th Local address zip
-    %th Local home phone
-    %th Biz phone
-    %th Perm address line1
-    %th Perm address line2
-    %th Perm address city
-    %th Perm address state
-    %th Perm address zip
-    %th Perm address country
-    %th Perm home phone
-    %th Student status
-    %th
-    %th
-    %th
-
-  - @cbpapps.each do |cbpapp|
+= form_tag 'export', method: 'get' do
+  %table.table.table-hover.col-md-12
     %tr
-      %td= cbpapp.period
-      %td= cbpapp.first_name
-      %td= cbpapp.middle_name
-      %td= cbpapp.last_name
-      %td= cbpapp.ssn
-      %td= cbpapp.dob
-      %td= cbpapp.mother_maiden
-      %td= cbpapp.account_number
-      %td= cbpapp.grad_date
-      %td= cbpapp.non_upenn_email
-      %td= cbpapp.how_know
-      %td= cbpapp.local_address_line1
-      %td= cbpapp.local_address_line2
-      %td= cbpapp.local_address_city
-      %td= cbpapp.local_address_state
-      %td= cbpapp.local_address_zip
-      %td= cbpapp.local_home_phone
-      %td= cbpapp.biz_phone
-      %td= cbpapp.perm_address_line1
-      %td= cbpapp.perm_address_line2
-      %td= cbpapp.perm_address_city
-      %td= cbpapp.perm_address_state
-      %td= cbpapp.perm_address_zip
-      %td= cbpapp.perm_address_country
-      %td= cbpapp.perm_home_phone
-      %td= cbpapp.student_status
-      %td= link_to 'Show', cbpapp
-      %td= link_to 'Edit', edit_cbpapp_path(cbpapp)
-      %td= link_to 'Destroy', cbpapp, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th.col-md-1
+      %th.col-md-3 Date Submitted
+      %th.col-md-3 Applicant
+      %th.col-md-2 Status
+      %th.col-md-1
+      %th.col-md-1
 
-%br
+    - @cbpapps.each do |applicant|
+      %tr{:class => "#{if applicant.application_status == 'Unprocessed' then 'active' elsif applicant.application_status == 'Processed' then 'success' else 'info' end}"}
+        %td= check_box_tag 'exports[]', applicant.id, false, id: "exports_#{applicant.id}"
+        %td= label_tag "exports_#{applicant.id}", applicant.created_at.strftime('%Y-%m-%d')
+        %td= label_tag "exports_#{applicant.id}", applicant.first_name + ' ' + applicant.last_name
+        %td= applicant.application_status
+        %td= link_to 'Show', applicant
+        -#%td= link_to 'Edit', edit_maapp_path(applicant)
+        %td= link_to 'Destroy', applicant, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  -#
+  %br
+    = submit_tag 'Export', class: "btn btn-primary"
 
-= link_to 'New Cbpapp', new_cbpapp_path
+-#= link_to 'New Cbpapp', new_cbpapp_path
