@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'cbpapps/export', to: 'cbpapps#export'
+
   resources :maapps
 
   resources :cbpapps
