@@ -1,3 +1,5 @@
+require 'file_size_validator'
+
 class Maapp < ActiveRecord::Base
   mount_uploader :w8ben_form, W8BenFormUploader
   mount_uploader :file_id1, FileId1Uploader
@@ -24,26 +26,18 @@ class Maapp < ActiveRecord::Base
   validates :visa_pin_confirmation, presence: true
   validates :terms, :understand, acceptance: true
 
-  validates_presence_of :w8ben_form
 
-
+  validates :w8ben_form,
+            :presence => true,
+            :file_size => {
+                :maximum => 0.5.megabytes.to_i
+            }
 
   def dob_validation
     errors.add(:dob, "Date of Birth can't be blank.") unless dob.present?
     errors.add(:dob, "Date of Birth must be in the past.") if dob >= Date.today
   end
 
-  # def size_validation
-  #   errors[:w8ben_form] << "should be MORE than 5MB" if w8ben_form.size < 5.megabytes
-  #
-  # end
-
-  # validate :ssn_w8ben_validation
-  # , if: lambda {ssn.present? == false}
-
-  def ssn_w8ben_validation
-      validates_with MaappsHelper::FileSizeValidator, fields: [:w8ben_form]
-  end
 
 end
 
