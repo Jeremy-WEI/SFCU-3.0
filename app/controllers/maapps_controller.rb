@@ -51,6 +51,10 @@ class MaappsController < ApplicationController
     end
   end
 
+  def export
+    render text: params[:exports]
+  end
+
   # DELETE /maapps/1
   # DELETE /maapps/1.json
   def destroy
