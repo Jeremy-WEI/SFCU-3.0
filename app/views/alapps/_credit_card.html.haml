@@ -5,43 +5,26 @@
     .accordion-body
       .accordion-inner
         .row
-          .span12
-            .span3
-              %b Creditor Name
-            .span3
-              %b Credit Limit
-            .span3
-              %b Current Balance
-        .row
-          .span12
-            .span3
-              = f.text_field :"credit_card#{x}_name", class: "input-small"
-            .span3
-              = f.text_field :"credit_card#{x}_limit", class: "input-small"
-            .span3
-              = f.text_field :"credit_card#{x}_balance", class: "input-small"
+          = render "text_field4", :f => f, :title => "Creditor Name", :var => "credit_card#{x}_name", :place_holder => ""
+          = render "text_field4", :f => f, :title => "Credit Limit", :var => "credit_card#{x}_limit", :place_holder => ""
+          = render "text_field4", :f => f, :title => "Credit Balance", :var => "credit_card#{x}_balance", :place_holder => ""
         %br
         .row
-          .span12
-            .span3
-              %b Date of Next Payment
-            .span3
-              %b Average Monthly Payment
-            .span3
-              %b Past Due
-        .row
-          .span12
-            .span3
-              = f.date_select :"credit_card#{x}_date_payment", class: "input-small"
-            .span3
-              = f.text_field :"credit_card#{x}_aveg_month_pay", class: "input-small"
-            .span3
-              .form-inline
-                = f.radio_button :"credit_card#{x}_pastdue", true
-                &nbsp
-                = f.label :"credit_card#{x}_pastdue", "Yes"
-                &nbsp
-                = f.radio_button :"credit_card#{x}_pastdue", false
-                &nbsp
-                = f.label :"credit_card#{x}_pastdue", "No"
-                &nbsp
+          = render "text_field4", :f => f, :title => "Average Monthly Payment", :var => "credit_card#{x}_aveg_month_pay", :place_holder => ""
+          .col-md-5
+            %b Date of Next Payment
+            %br
+            = f.date_select :"credit_card#{x}_date_payment", class: "input-small"
+          .col-md-3
+            %b Past Due
+            %br
+            .form-inline
+              = f.radio_button :"credit_card#{x}_pastdue", true
+              &nbsp
+              = f.label :"credit_card#{x}_pastdue", "Yes"
+              &nbsp
+              = f.radio_button :"credit_card#{x}_pastdue", false
+              &nbsp
+              = f.label :"credit_card#{x}_pastdue", "No"
+              &nbsp
+%br

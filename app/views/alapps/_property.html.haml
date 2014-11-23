@@ -5,25 +5,16 @@
     .accordion-body
       .accordion-inner
         .row
-          .span4
-            %b Street Address
-            %br
-            = f.text_field :"property#{x}_st_addr", class:"input-xlarge"
-          .span1
-            %b City
-            %br
-            = f.text_field :"property#{x}_city", class:"input-mini"
-          .span2
+          = render "text_field4", :f => f, :title => "Street Address", :var => "property#{x}_st_addr", :place_holder => ""
+          = render "text_field4", :f => f, :title => "City", :var => "property#{x}_city", :place_holder => ""
+          .col-md-4
             %b State
             %br
-            = f.select :"property#{x}_state", options_for_select(us_states), class: "input-small"
+            = f.select :"property#{x}_state", options_for_select(us_states), {}, {class: "form-control"}
         %br
         .row
-          .span4
-            %b Market Value
-            %br
-            = f.text_field :"property#{x}_market_val"
-          .span4
+          = render "text_field4", :f => f, :title => "Market Value", :var => "property#{x}_market_val", :place_holder => ""
+          .col-md-6
             %b Pledged as Collateral for Another Loan?
             .form-inline
               = f.radio_button :"property#{x}_another_loan", true
