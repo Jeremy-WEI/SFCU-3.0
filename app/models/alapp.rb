@@ -57,7 +57,7 @@ class Alapp < ActiveRecord::Base
             :driver_lisence_num, :signature, :today_date,
             presence: true
   validate :check_dob
-  validates :ssn, format: {with: SSN_FORMAT, message: "SSN must be 9 digits with no other symbols, for example: 123456789"}
+  validates :ssn, format: {with: SSN_FORMAT}
 
   validates :amount_req, numericality: { greater_than_or_equal_to: 0.0}
 
