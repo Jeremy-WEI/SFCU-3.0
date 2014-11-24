@@ -1,3 +1,5 @@
+require 'file_size_validator'
+
 class Alapp < ActiveRecord::Base
   mount_uploader :driver_license_file, NormalFileUploader
   mount_uploader :document1, NormalFileUploader
