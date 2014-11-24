@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20141120041139) do
 
-
   create_table "alapps", force: true do |t|
     t.string   "first"
     t.string   "middle"
@@ -211,10 +210,10 @@ ActiveRecord::Schema.define(version: 20141120041139) do
     t.date     "dob"
     t.string   "student_status"
     t.string   "penn_affiliation"
-    t.integer  "grad_year"
+    t.string   "grad_year"
     t.string   "penn_id"
     t.string   "ssn"
-    t.string   "W8BEN_form"
+    t.string   "w8ben_form"
     t.string   "doc_type"
     t.string   "doc_id"
     t.string   "file_id1"
@@ -254,7 +253,7 @@ ActiveRecord::Schema.define(version: 20141120041139) do
   end
 
   create_table "ulapps", force: true do |t|
-    t.integer  "credit_type"
+    t.string   "credit_type"
     t.text     "joint_applicant"
     t.integer  "amount"
     t.text     "purpose"

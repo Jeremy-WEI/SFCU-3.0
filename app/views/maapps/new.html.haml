@@ -59,17 +59,27 @@
               %label.radio-inline
                 = f.radio_button :penn_affiliation, "Undergraduate"
                 Undergraduate
-            .col-md-3
+            .col-md-2
               %label.radio-inline
                 = f.radio_button :penn_affiliation, "Graduate"
                 Graduate
-            .col-md-3
+            .col-md-2
               %label.radio-inline
                 = f.radio_button :penn_affiliation, "Alumnus"
                 Alumnus
+            .col-md-5
+              %label.radio-inline
+                = f.radio_button :penn_affiliation, "others", id: "other_affiliation"
+                .row
+                  .col-md-3
+                    others
+                  .col-md-5.form-inline
+                    = text_field_tag :other_penn_affiliation, nil, {placeholder: "Others", class: "input-small", id: "other_penn_affiliation"}
           %br
-          %b Year of Graduation
+          %b  Year of Graduation
           .row
+            .col-md-4
+              = f.select :grad_season, options_for_select(['Spring', 'Summer', 'Autumn', 'Winter'], 'Spring'), {}, {class: "form-control"}
             .col-md-4
               = f.select :grad_year, 1980..2030, {}, {class: "form-control"}
           %br
@@ -84,12 +94,13 @@
               = f.text_field :ssn, class: "form-control", placeholder: "SSN"
           .row
             .col-md-12
-              If you do not have an SSN, we are required to have a W8BEN form on file for you. Please download one Here, fill it out, and include it in your application.
+              = surround 'If you do not have an SSN, we are required to have a W8BEN form on file for you. Please download one ', ', fill it out, and include it in your application.' do
+                %a{href: "http://www.irs.gov/pub/irs-pdf/fw8ben.pdf", target: "_blank"} here
           %br
-          %b File Upload
+          %b W8BEN File Upload (.pdf only, max file size: 5MB)
           .row
             .col-md-4
-              = f.text_field :W8BEN_form, class: "form-control"
+              = f.file_field :w8ben_form
           %br
           %b Passport # or Driver's License #*
           .row
@@ -106,12 +117,20 @@
           your account unless you have included valid IDs; they are required by our Member Identification Program,
           as required by the Bank Secrecy Act.
           %br
+          %br
           Note: a picture of yourself is not a valid form of identification.
+          %br
+          %br
           .row
+            .col-md-1
+              ID1:
             .col-md-4
-              = f.text_field :file_id1, class: "form-control", placeholder: "File1"
+              = f.file_field :file_id1
+          .row
+            .col-md-1
+              ID2:
             .col-md-4
-              = f.text_field :file_id2, class: "form-control", placeholder: "File2"
+              = f.file_field :file_id2
           %br
           *Please email us your ID's if there is a "Could not access file" error. *
         %br
@@ -165,28 +184,35 @@
             .col-md-3
               = f.text_field :local_address_zip, placeholder: "ZIP", class: "form-control"
           %br
-          %b Permanent Address
           .row
-            .col-md-3
-              Address Line 1*
-            .col-md-9
-              = f.text_field :perm_address_line1, class: "form-control", placeholder: "perm Address Line1"
-            .col-md-3
-              Address Line 2
-            .col-md-9
-              = f.text_field :perm_address_line2, class: "form-control", placeholder: "perm Address Line2"
-            .col-md-1
-              City*
-            .col-md-3
-              = f.text_field :perm_address_city, placeholder: "City", class: "form-control"
-            .col-md-1
-              State*
-            .col-md-3
-              = f.text_field :perm_address_state, placeholder: "State", class: "form-control"
-            .col-md-1
-              ZIP*
-            .col-md-3
-              = f.text_field :perm_address_zip, placeholder: "ZIP", class: "form-control"
+            .col-md-12.checkbox
+              %label
+                = f.check_box :same_perm_address
+                Is your permanent address the same as your local address?
+          %br
+          #permanent_address
+            %b Permanent Address
+            .row
+              .col-md-3
+                Address Line 1*
+              .col-md-9
+                = f.text_field :perm_address_line1, class: "form-control", placeholder: "perm Address Line1"
+              .col-md-3
+                Address Line 2
+              .col-md-9
+                = f.text_field :perm_address_line2, class: "form-control", placeholder: "perm Address Line2"
+              .col-md-1
+                City*
+              .col-md-3
+                = f.text_field :perm_address_city, placeholder: "City", class: "form-control"
+              .col-md-1
+                State*
+              .col-md-3
+                = f.text_field :perm_address_state, placeholder: "State", class: "form-control"
+              .col-md-1
+                ZIP*
+              .col-md-3
+                = f.text_field :perm_address_zip, placeholder: "ZIP", class: "form-control"
         %br
       #tab3.tab-pane
         %hr
@@ -250,35 +276,36 @@
                           %label
                             = f.check_box :visa_checkcard
                             I would like to order a VISA debit card (free)
-                      %br
-                      %b Visa©CheckCard PIN
-                      .row
-                        .col-md-3
-                          PIN
-                        .col-md-3
-                          = f.password_field :visa_pin, placeholder: "PIN", class: "form-control"
-                        .col-md-4
-                          PIN cannot start with 0
-                      .row
-                        .col-md-3
-                          Please repeat PIN
-                        .col-md-3
-                          = f.password_field :visa_pin_confirmation, placeholder: "PIN", class: "form-control"
-                      %br
-                      %b Visa©CheckCard Delivery
-                      .row
-                        .col-md-3
-                          %label.radio-inline
-                            = f.radio_button :visa_delivery, 0
-                            Local Address
-                        .col-md-4
-                          %label.radio-inline
-                            = f.radio_button :visa_delivery, 1
-                            Permanent Address
-                        .col-md-5
-                          %label.radio-inline
-                            = f.radio_button :visa_delivery, 2
-                            SFCU Office for Pickup
+                      #visa_options
+                        %br
+                        %b Visa©CheckCard PIN
+                        .row
+                          .col-md-3
+                            PIN
+                          .col-md-3
+                            = f.password_field :visa_pin, placeholder: "PIN", class: "form-control"
+                          .col-md-4
+                            PIN cannot start with 0
+                        .row
+                          .col-md-3
+                            Please repeat PIN
+                          .col-md-3
+                            = f.password_field :visa_pin_confirmation, placeholder: "PIN", class: "form-control"
+                        %br
+                        %b Visa©CheckCard Delivery
+                        .row
+                          .col-md-3
+                            %label.radio-inline
+                              = f.radio_button :visa_delivery, 0
+                              Local Address
+                          .col-md-4
+                            %label.radio-inline
+                              = f.radio_button :visa_delivery, 1
+                              Permanent Address
+                          .col-md-5
+                            %label.radio-inline
+                              = f.radio_button :visa_delivery, 2
+                              SFCU Office for Pickup
                     .well
                       %b PennCard Linkage
                       .row
@@ -286,17 +313,18 @@
                           %label
                             = f.check_box :penncard_link
                             I would like to link my account to my PennCard (free)
-                      %b 16-digit PennCard Number
-                      .row
-                        .col-md-4
-                          = f.text_field :penncard_number, placeholder: "564343-XXXX-XXXX-XX", class: "form-control"
-                        .col-md-12
-                          Please come to our main branch to pin your card and complete the link to your account.
-                          %br
-                          Note:
-                          %em If your PennCard does not start with 564343, please visit the PennCard center to get it replaced with a card that does start with these digits. This is completely free of charge and only takes a couple of minutes.
-                          %br
-                          You can submit this application without requesting to link your PennCard, and contact us once you have the correct prefix to request it.
+                      #penncard_linkage
+                        %b 16-digit PennCard Number
+                        .row
+                          .col-md-4
+                            = f.text_field :penncard_number, placeholder: "564343-XXXX-XXXX-XX", class: "form-control"
+                          .col-md-12
+                            Please come to our main branch to pin your card and complete the link to your account.
+                            %br
+                            Note:
+                            %em If your PennCard does not start with 564343, please visit the PennCard center to get it replaced with a card that does start with these digits. This is completely free of charge and only takes a couple of minutes.
+                            %br
+                            You can submit this application without requesting to link your PennCard, and contact us once you have the correct prefix to request it.
                     .well
                       %b Order Checks
                       .row
@@ -304,70 +332,71 @@
                           %label
                             = f.check_box :order_checks
                             I would like to order additional checks (charges apply) Address on check
-                      %br
-                      %b Address on Checks:
-                      .row
-                        .col-md-3
-                          %label.radio-inline
-                            = f.radio_button :address_on_checks, "Local Address"
-                            Local Address
-                        .col-md-4
-                          %label.radio-inline
-                            = f.radio_button :address_on_checks, "Permanent Address"
-                            Permanent Address
-                        .col-md-3
-                          %label.radio-inline
-                            = f.radio_button :address_on_checks, "None"
-                            None
-                      %br
-                      %b Check Type:
-                      .row
-                        .col-md-3
-                          %label.radio-inline
-                            = f.radio_button :check_type, "Single"
-                            Single
-                        .col-md-3
-                          %label.radio-inline
-                            = f.radio_button :check_type, "Duplicate"
-                            Duplicate
-                      %br
-                      %b Color(Speciality)
-                      .row
-                        .col-md-2
-                          %label.radio-inline
-                            = f.radio_button :color, "Lemon"
-                            Lemon
-                        .col-md-2
-                          %label.radio-inline
-                            = f.radio_button :color, "Blue"
-                            Blue
-                        .col-md-2
-                          %label.radio-inline
-                            = f.radio_button :color, "Gray"
-                            Gray
-                        .col-md-2
-                          %label.radio-inline
-                            = f.radio_button :color, "Mint"
-                            Mint
-                        .col-md-4
-                          %label.radio-inline
-                            = f.radio_button :color, "Personalized"
-                            Personalized(please contact us)
-                      %br
-                      %b Check Delivery
-                      .row
-                        .col-md-3
-                          %label.radio-inline
-                            = f.radio_button :check_delivery, "Local Address"
-                            Local Address
-                        .col-md-4
-                          %label.radio-inline
-                            = f.radio_button :check_delivery, "Permanent Address"
-                            Permanent Address
-                        .col-md-5
-                          %label.radio-inline
-                            = f.radio_button :check_delivery, "SFCU Office for pickup"
-                            SFCU Office for pickup
+                      #check_options
+                        %br
+                        %b Address on Checks:
+                        .row
+                          .col-md-3
+                            %label.radio-inline
+                              = f.radio_button :address_on_checks, "Local Address"
+                              Local Address
+                          .col-md-4
+                            %label.radio-inline
+                              = f.radio_button :address_on_checks, "Permanent Address"
+                              Permanent Address
+                          .col-md-3
+                            %label.radio-inline
+                              = f.radio_button :address_on_checks, "None"
+                              None
+                        %br
+                        %b Check Type:
+                        .row
+                          .col-md-3
+                            %label.radio-inline
+                              = f.radio_button :check_type, "Single"
+                              Single
+                          .col-md-3
+                            %label.radio-inline
+                              = f.radio_button :check_type, "Duplicate"
+                              Duplicate
+                        %br
+                        %b Color(Speciality)
+                        .row
+                          .col-md-2
+                            %label.radio-inline
+                              = f.radio_button :color, "Lemon"
+                              Lemon
+                          .col-md-2
+                            %label.radio-inline
+                              = f.radio_button :color, "Blue"
+                              Blue
+                          .col-md-2
+                            %label.radio-inline
+                              = f.radio_button :color, "Gray"
+                              Gray
+                          .col-md-2
+                            %label.radio-inline
+                              = f.radio_button :color, "Mint"
+                              Mint
+                          .col-md-4
+                            %label.radio-inline
+                              = f.radio_button :color, "Personalized"
+                              Personalized(please contact us)
+                        %br
+                        %b Check Delivery
+                        .row
+                          .col-md-3
+                            %label.radio-inline
+                              = f.radio_button :check_delivery, "Local Address"
+                              Local Address
+                          .col-md-4
+                            %label.radio-inline
+                              = f.radio_button :check_delivery, "Permanent Address"
+                              Permanent Address
+                          .col-md-5
+                            %label.radio-inline
+                              = f.radio_button :check_delivery, "SFCU Office for pickup"
+                              SFCU Office for pickup
         %br
       #tab4.tab-pane
         %hr
@@ -426,4 +455,32 @@
   		var $percent = ($current/$total) * 100;
   		$('#rootwizard').find('.bar').css({width:$percent+'%'});
   	}});
+  });
+  $(document).ready(function(){
+    $("#other_penn_affiliation").hide();
+    $("input:radio[name='maapp[penn_affiliation]']").change(function(){
+      if(this.value == 'others' && this.checked){
+        $("#other_penn_affiliation").show();
+      }else{
+        $("#other_penn_affiliation").hide();
+      }
+    });
+    $("#other_penn_affiliation").keyup(function(){
+      $("#other_affiliation").val($(this).val())
+    })
+    $("#check_options").hide();
+    $('#maapp_order_checks').click(function(){
+      $("#check_options").toggle(this.checked)
+    });
+    $('#maapp_same_perm_address').click(function(){
+      $('#permanent_address').toggle(!this.checked)
+    });
+    $('#penncard_linkage').hide();
+    $('#maapp_penncard_link').click(function(){
+      $('#penncard_linkage').toggle(this.checked)
+    });
+    $('#visa_options').hide();
+    $('#maapp_visa_checkcard').click(function(){
+      $('#visa_options').toggle(this.checked);
+    });
   });

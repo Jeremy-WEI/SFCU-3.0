@@ -7,10 +7,10 @@ class CreateMaapps < ActiveRecord::Migration
       t.date :dob
       t.string :student_status
       t.string :penn_affiliation
-      t.integer :grad_year
+      t.string :grad_year
       t.string :penn_id
       t.string :ssn
-      t.string :W8BEN_form
+      t.string :w8ben_form
       t.string :doc_type
       t.string :doc_id
       t.string :file_id1

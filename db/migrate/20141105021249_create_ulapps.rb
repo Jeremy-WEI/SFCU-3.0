@@ -1,7 +1,7 @@
 class CreateUlapps < ActiveRecord::Migration
   def change
     create_table :ulapps do |t|
-      t.integer :credit_type
+      t.string :credit_type
       t.text :joint_applicant
       t.integer :amount
       t.text :purpose

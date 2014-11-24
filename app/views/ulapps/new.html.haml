@@ -3,7 +3,7 @@
 %h1.text-center Unsecured Loan Application
 
 
-#rootwizard
+.vcenter#rootwizard
   %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
     .container
       %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
@@ -18,7 +18,7 @@
         %li
           %a{"data-toggle" => "tab", :href => "#tab5"} Additional Income
         %li
-          %a{"data-toggle" => "tab", :href => "#tab6"} Assets
+          %a{"data-toggle" => "tab", :href => "#tab6"} Assets <br>
         %li
           %a{"data-toggle" => "tab", :href => "#tab7"} Outstanding Debts
         %li
@@ -39,176 +39,188 @@
         %hr
           .well
             %h2.text-center Credit Request
+            %b Type*
+            .row
+              .col-md-4
+                %label.radio-inline
+                  = f.radio_button :credit_type, "Individual Credit"
+                  Individual Credit
+              .col-md-4
+                %label.radio-inline
+                  = f.radio_button :credit_type, "Joint Credit"
+                  Joint Credit
             %br
-              .row
-                %b Type*
-                .form-inline
-                  = f.radio_button :credit_type, 0
-                  &nbsp
-                  = f.label :credit_type_0, " Individual Credit "
-                  &nbsp
-                  = f.radio_button :credit_type, 1
-                  &nbsp
-                  = f.label :credit_type_1, " Joint Credit "
-                  &nbsp
-
-              .row
-                %b For joint accounts please make two seperate submissions of this form. On each form identify the full name and last 4 digits of SSN of the other co-signer/co-maker.
-                %br
-                %strong Joint applicants, please enter the full name and last 4 digits of SSN # of the other co-signer/co-marker*
-                %br
-                = f.text_area :joint_applicant
-
-              .row
-                %b Amount Requested*
-                %br
-                = f.number_field :amount
-
-              .row
-                %b Purpose*
-                %br
-                = f.text_area :purpose
+            .row
+              .col-md-12
+                For joint accounts please make two seperate submissions of this form. On each form identify the full name and last 4 digits of SSN of the other co-signer/co-maker.
+            %br
+            %b Joint applicants, please enter the full name and last 4 digits of SSN # of the other co-signer/co-marker*
+            .row
+              .col-md-6
+                = f.text_area :joint_applicant, class: "form-control"
+            %br
+            %b Amount Requested*
+            .row
+              .col-md-4
+                = f.text_field :amount, class: "form-control"
+            %br
+            %b Purpose*
+            .row
+              .col-md-12
+                = f.text_field :purpose, class: "form-control", placeholder: "Please enter your purpose here"
 
       #tab2.tab-pane
         %hr
           .well
             %h2.text-center General Information
+            %b Name*
+            .row
+              .col-md-6
+                = f.text_field :first_name, class: "form-control", placeholder: "First Name"
+              .col-md-6
+                = f.text_field :last_name, class: "form-control", placeholder: "Last Name"
             %br
-              .row
-                %b Full Name*
-                .row
-                  .col-md-3
-                    First Name
-                    = f.text_field :first_name
-                  .col-md-3
-                    Last Name
-                    = f.text_field :last_name
-
-              .row
-                %b Birth Date*
-                %br
-                = f.date_select :dob
-
-              .row
+            %b Birth Date*
+            .row
+              .col-md-4
+                = f.date_select :dob, { start_year: 1900, end_year: Date.today.year }
+            %br
+            .row
+              .col-md-6
                 %b Social Security Number*
-                %br
-                = f.number_field :ssn
-
-              .row
+              .col-md-6
                 %b SFCU Account Number
-                %br
-                = f.number_field :sfcu_account
-
-              .row
+            .row
+              .col-md-6
+                = f.text_field :ssn, class: "form-control"
+              .col-md-6
+                = f.text_field :sfcu_account, class: "form-control"
+            .row
+              .col-md-6
                 %b Name of Nearest Relative*
-                %br
-                = f.text_field :name_relative
-
-              .row
+              .col-md-6
                 %b Phone Number of Nearest Relative*
-                %br
-                = f.text_field :phone_relative
-
-              .row
-                %b Mothers Madien Name
-                %br
-                = f.text_field :mothers
-
-              .row
-                %b Expected Graduation Date
-                %br
-                = f.date_select :graduation
+            .row
+              .col-md-6
+                = f.text_field :name_relative, class: "form-control"
+              .col-md-6
+                = f.text_field :phone_relative, class: "form-control"
+            %br
+            %b Mothers Madien Name
+            .row
+              .col-md-4
+                = f.text_field :mothers, class: "form-control"
+            %br
+            %b Expected Graduation Date
+            .row
+              .col-md-4
+                = f.date_select :graduation, class: "form-control"
       #tab3.tab-pane
         %hr
           .well
             %h2.text-center Contact Information
             %br
+            %b Local Address
+            .row
+              .col-md-3
+                Address Line 1*
+              .col-md-9
+                = f.text_field :local_address_line1, class: "form-control", placeholder: "Local Address Line1"
+            .row
+              .col-md-3
+                Address Line 2
+              .col-md-9
+                = f.text_field :local_address_line2, class: "form-control", placeholder: "Local Address Line2"
+            .row
+              .col-md-1
+                City*
+              .col-md-3
+                = f.text_field :local_address_city, placeholder: "City", class: "form-control"
+              .col-md-1
+                State*
+              .col-md-3
+                = f.text_field :local_address_state, placeholder: "State", class: "form-control"
+              .col-md-1
+                ZIP*
+              .col-md-3
+                = f.text_field :local_address_zip, placeholder: "ZIP", class: "form-control"
+            .row
+              .col-md-1
+                Country*
+              .col-md-4
+                = f.select :local_country, Country.all.sort, {}, {class: "form-control"}
+            %br
+            .row
+              .col-md-12.checkbox
+                %label
+                  = f.check_box :same
+                  %b Permanent Address Same as Local Address?
+            %br
+            -#.row
+            -#  .col-md-4
+            -#    = f.radio_button :same, 0
+            -#    = f.label :same_0, " Yes "
+            -#  .col-md-4
+            -#    = f.radio_button :same, 1
+            -#    = f.label :same_1, " No "
+            #permanent_address
+              %b Permanent Address
               .row
-                %b Local Address
-                .row
-                  .col-md-9
-                    Address Line 1*
-                    = f.text_field :local_address_line1, placeholder: "Local Address Line1", class:"input-xlarge"
-                .row
-                  .col-md-9
-                    Address Line 2&nbsp
-                    = f.text_field :local_address_line2, placeholder: "Local Address Line2", class:"input-xlarge"
-                .row
-                  .col-md-2
-                    = f.label :local_address_city, "City*"
-                    = f.text_field :local_address_city, placeholder: "City", class: "input-small"
-                  .col-md-2
-                    = f.label :local_address_state, "State*"
-                    = f.text_field :local_address_state, placeholder: "State", class: "input-small"
-                  .col-md-2
-                    = f.label :local_address_zip, "ZIP*"
-                    = f.text_field :local_address_zip, placeholder: "ZIP", class: "input-small"
-                  .col-md-2
-                    = f.label :local_country, "Country*"
-                    = f.select :local_country, Country.all.sort
-
+                .col-md-3
+                  Address Line 1
+                .col-md-9
+                  = f.text_field :perm_address_line1, class: "form-control", placeholder: "Permanent Address Line1"
               .row
-                %b Permanent Address Same as Local Address?*
-                .form-inline
-                  = f.radio_button :same, 0
-                  &nbsp
-                  = f.label :same_0, " Yes "
-                  &nbsp
-                  = f.radio_button :same, 1
-                  &nbsp
-                  = f.label :same_1, " No "
-                  &nbsp
-
+                .col-md-3
+                  Address Line 2
+                .col-md-9
+                  = f.text_field :perm_address_line2, class: "form-control", placeholder: "Permanent Address Line2"
               .row
-                %b Permanent Address
-                .row
-                  .col-md-9
-                    Address Line 1*
-                    = f.text_field :perm_address_line1, placeholder: "Permanent Address Line1", class:"input-xlarge"
-                .row
-                  .col-md-9
-                    Address Line 2&nbsp
-                    = f.text_field :perm_address_line2, placeholder: "Permanent Address Line2", class:"input-xlarge"
-                .row
-                  .col-md-2
-                    = f.label :perm_address_city, "City*"
-                    = f.text_field :perm_address_city, placeholder: "City", class: "input-small"
-                  .col-md-2
-                    = f.label :perm_address_state, "State*"
-                    = f.text_field :perm_address_state, placeholder: "State", class: "input-small"
-                  .col-md-2
-                    = f.label :perm_address_zip, "ZIP*"
-                    = f.text_field :perm_address_zip, placeholder: "ZIP", class: "input-small"
-                  .col-md-2
-                    = f.label :perm_country, "Country*"
-                    = f.select :perm_country, Country.all.sort
-
+                .col-md-1
+                  City
+                .col-md-3
+                  = f.text_field :perm_address_city, placeholder: "City", class: "form-control"
+                .col-md-1
+                  State
+                .col-md-3
+                  = f.text_field :perm_address_state, placeholder: "State", class: "form-control"
+                .col-md-1
+                  ZIP
+                .col-md-3
+                  = f.text_field :perm_address_zip, placeholder: "ZIP", class: "form-control"
               .row
-                %b E-mail*
-                %br
-                = f.text_field :e_mail
-
-              .row
-                %b Phone*
-                %br
+                .col-md-1
+                  Country
+                .col-md-4
+                  = f.select :perm_country, Country.all.sort, {}, {class: "form-control"}
+              %br
+            %b E-mail*
+            .row
+              .col-md-6
+                = f.text_field :e_mail, class: "form-control"
+            %br
+            %b Phone*
+            .row
+              .col-md-3
                 Phone Number
-                = f.text_field :phone_number
-
-              .row
-                %b Phone Type*
-                %br
-                = f.select :phone_type, ([['Home', 1], ['Cell', 2], ['Business', 3]])
-
-              .row
-                %b Alternate Phone*
-                %br
+              .col-md-3
+                = f.text_field :phone_number, class: "form-control"
+              .col-md-2
+                Phone Type*
+              .col-md-4
+                = f.select :phone_type, ([['Home', 1], ['Cell', 2], ['Business', 3]]), {}, {class: "form-control"}
+            %br
+            %b Alternate Phone*
+            .row
+              .col-md-3
                 Phone Number
-                = f.text_field :alter_number
-
-              .row
-                %b Phone Type*
-                %br
-                = f.select :alter_type, ([['Home', 1], ['Cell', 2], ['Business', 3]])
+              .col-md-3
+                = f.text_field :alter_number, class: "form-control"
+              .col-md-2
+                Phone Type*
+              .col-md-4
+                = f.select :alter_type, ([['Home', 1], ['Cell', 2], ['Business', 3]]), {}, {class: "form-control"}
+            %br
       #tab4.tab-pane
         %hr
           .well
@@ -222,193 +234,200 @@
             %li Please supply your most recent pay stub or an email from your employer confirming your employment as  well as income or a fellowship/financial aid offer letter.
             %li If you have just graduated and will be starting a new job, please provide an employment offer acceptance  letter for verification of income.
             %li If you are self-employed, please provide IRS returns for the last two years.
+            %br
+          .well
+            %h3.text-center Employment I
+            %b Employer*
             .row
-              %b Employment I
-              %br
-
+              .col-md-4
+                = f.text_field :employer
+            %br
+            %b Employer Address
             .row
-              %b Employer*
-              %br
-              = f.text_field :employer
-
+              .col-md-3
+                Address Line 1
+              .col-md-9
+                = f.text_field :employee_address_line1, class: "form-control", placeholder: "Address Line1"
             .row
-              %b Employer Address
-              .row
-                .col-md-9
-                  Address Line 1*
-                  = f.text_field :employee_address_line1, placeholder: "Permanent Address Line1", class:"input-xlarge"
-              .row
-                .col-md-9
-                  Address Line 2&nbsp
-                  = f.text_field :employee_address_line2, placeholder: "Permanent Address Line2", class:"input-xlarge"
-              .row
-                .col-md-2
-                  = f.label :employee_address_city, "City*"
-                  = f.text_field :employee_address_city, placeholder: "City", class: "input-small"
-                .col-md-2
-                  = f.label :employee_address_state, "State*"
-                  = f.text_field :employee_address_state, placeholder: "State", class: "input-small"
-                .col-md-2
-                  = f.label :employee_address_zip, "ZIP*"
-                  = f.text_field :employee_address_zip, placeholder: "ZIP", class: "input-small"
-                .col-md-2
-                  = f.label :employee_country, "Country*"
-                  = f.select :employee_country, Country.all.sort
-
+              .col-md-3
+                Address Line 2
+              .col-md-9
+                = f.text_field :employee_address_line2, class: "form-control", placeholder: "Address Line2"
             .row
-              %b Position
-              %br
-              = f.text_field :position
-
+              .col-md-1
+                City
+              .col-md-3
+                = f.text_field :employee_address_city, placeholder: "City", class: "form-control"
+              .col-md-1
+                State
+              .col-md-3
+                = f.text_field :employee_address_state, placeholder: "State", class: "form-control"
+              .col-md-1
+                ZIP
+              .col-md-3
+                = f.text_field :employee_address_zip, placeholder: "ZIP", class: "form-control"
             .row
-              %b Supervisor*
-              .row
-                .col-md-3
-                  First Name
-                  = f.text_field :supervisor_firstname
-                .col-md-3
-                  Last Name
-                  = f.text_field :supervisor_lastname
-
+              .col-md-1
+                Country
+              .col-md-4
+                = f.select :employee_country, Country.all.sort
+            %br
+            %b Position
             .row
-              %b GrossPay*
-              %br
-              = f.number_field :grosspay
-
+              .col-md-4
+                = f.text_field :position
+            %br
+            %b Supervisor*
             .row
-              %b Grosspay Disbursement
-              .form-inline
+              .col-md-2
+                First Name
+              .col-md-3
+                = f.text_field :supervisor_firstname
+              .col-md-2
+                Last Name
+              .col-md-3
+                = f.text_field :supervisor_lastname
+            %br
+            %b GrossPay*
+            .row
+              .col-md-4
+                = f.text_field :grosspay
+            %br
+            %b Grosspay Disbursement
+            .row
+              .col-md-1
+                Week
+              .col-md-1
                 = f.radio_button :disbursement, 0
-                &nbsp
-                = f.label :disbursement_0, " Week "
-                &nbsp
+              .col-md-1
+                Month
+              .col-md-1
                 = f.radio_button :disbursement, 1
-                &nbsp
-                = f.label :disbursement_1, " Month "
-                &nbsp
+              .col-md-1
+                Year
+              .col-md-1
                 = f.radio_button :disbursement, 2
-                &nbsp
-                = f.label :disbursement_2, " Year "
-                &nbsp
-
+            %br
+            %b Date Started/Starting
             .row
-              %b Date Started/Starting
-              %br
-              = f.date_select :startingdate
-
+              .col-md-4
+                = f.date_select :startingdate
+            %br
+            %b Will this job continue for term of this loan?
             .row
-              %b Will this job continue for term of this loan?
-              .form-inline
+              .col-md-1
+                Yes
+              .col-md-1
                 = f.radio_button :continue, 0
-                &nbsp
-                = f.label :continue_0, " Yes "
-                &nbsp
+              .col-md-1
+                No
+              .col-md-1
                 = f.radio_button :continue, 1
-                &nbsp
-                = f.label :continue_1, " No "
-                &nbsp
-
+            %br
+            %b If "No", please list expected duration
             .row
-              %b If "No", please list expected duration
-              %br
-              = f.text_area :no
-
+              .col-md-9
+                = f.text_area :no, class: "form-control"
+            %br
+            %b Additional Information
             .row
-              %b Additional Information
-              %br
-              = f.text_area :additional
-
-
+              .col-md-9
+                = f.text_area :additional, class: "form-control"
+            %br
+          .well
+            %h3.text-center Employment II
+            %b Employer*
             .row
-              %b Employment II
-              %br
-
+              .col-md-4
+                = f.text_field :employer2
+            %br
+            %b Employer Address
             .row
-              %b Employer*
-              %br
-              = f.text_field :employer2
-
+              .col-md-3
+                Address Line 1
+              .col-md-9
+                = f.text_field :employee2_address_line1, class: "form-control", placeholder: "Address Line1"
             .row
-              %b Employer Address
-              .row
-                .col-md-9
-                  Address Line 1*
-                  = f.text_field :employee2_address_line1, placeholder: "Permanent Address Line1", class:"input-xlarge"
-              .row
-                .col-md-9
-                  Address Line 2&nbsp
-                  = f.text_field :employee2_address_line2, placeholder: "Permanent Address Line2", class:"input-xlarge"
-              .row
-                .col-md-2
-                  = f.label :employee2_address_city, "City*"
-                  = f.text_field :employee2_address_city, placeholder: "City", class: "input-small"
-                .col-md-2
-                  = f.label :employee2_address_state, "State*"
-                  = f.text_field :employee2_address_state, placeholder: "State", class: "input-small"
-                .col-md-2
-                  = f.label :employee2_address_zip, "ZIP*"
-                  = f.text_field :employee2_address_zip, placeholder: "ZIP", class: "input-small"
-                .col-md-2
-                  = f.label :employee2_country, "Country*"
-                  = f.select :employee2_country, Country.all.sort
-
+              .col-md-3
+                Address Line 2
+              .col-md-9
+                = f.text_field :employee2_address_line2, class: "form-control", placeholder: "Address Line2"
             .row
-              %b Position
-              %br
-              = f.text_field :position2
-
+              .col-md-1
+                City
+              .col-md-3
+                = f.text_field :employee2_address_city, placeholder: "City", class: "form-control"
+              .col-md-1
+                State
+              .col-md-3
+                = f.text_field :employee2_address_state, placeholder: "State", class: "form-control"
+              .col-md-1
+                ZIP
+              .col-md-3
+                = f.text_field :employee2_address_zip, placeholder: "ZIP", class: "form-control"
             .row
-              %b Supervisor*
-              .row
-                .col-md-3
-                  First Name
-                  = f.text_field :supervisor2_firstname
-                .col-md-3
-                  Last Name
-                  = f.text_field :supervisor2_lastname
-
+              .col-md-1
+                Country
+              .col-md-4
+                = f.select :employee2_country, Country.all.sort
+            %br
+            %b Position
             .row
-              %b GrossPay*
-              %br
-              = f.number_field :grosspay2
-
+              .col-md-4
+                = f.text_field :position2
+            %br
+            %b Supervisor*
             .row
-              %b Grosspay Disbursement
-              .form-inline
+              .col-md-2
+                First Name
+              .col-md-3
+                = f.text_field :supervisor2_firstname
+              .col-md-2
+                Last Name
+              .col-md-3
+                = f.text_field :supervisor2_lastname
+            %br
+            %b GrossPay*
+            .row
+              .col-md-4
+                = f.text_field :grosspay2
+            %br
+            %b Grosspay Disbursement
+            .row
+              .col-md-1
+                Week
+              .col-md-1
                 = f.radio_button :disbursement2, 0
-                &nbsp
-                = f.label :disbursement2_0, " Week "
-                &nbsp
+              .col-md-1
+                Month
+              .col-md-1
                 = f.radio_button :disbursement2, 1
-                &nbsp
-                = f.label :disbursement2_1, " Month "
-                &nbsp
-                = f.radio_button :disbursement2, 2
-                &nbsp
-                = f.label :disbursement2_2, " Year "
-                &nbsp
-
+              .col-md-1
+                Year
+              .col-md-1
+                = f.radio_button :disbursement, 2
+            %br
+            %b Date Started/Starting
             .row
-              %b Date Started/Starting
-              %br
-              = f.date_select :startingdate2
-
+              .col-md-4
+                = f.date_select :startingdate2
+            %br
+            %b Will this job continue for term of this loan?
             .row
-              %b Will this job continue for term of this loan?
-              .form-inline
+              .col-md-1
+                Yes
+              .col-md-1
                 = f.radio_button :continue2, 0
-                &nbsp
-                = f.label :continue2_0, " Yes "
-                &nbsp
+              .col-md-1
+                No
+              .col-md-1
                 = f.radio_button :continue2, 1
-                &nbsp
-                = f.label :continue2_1, " No "
-                &nbsp
-
+            %br
+            %b If "No", please list expected duration
             .row
-              %b If "No", please list expected duration
-              %br
-              = f.text_area :no2
+              .col-md-9
+                = f.text_area :no2, class: "form-control"
+            %br
       #tab5.tab-pane
         %hr
           .well
@@ -416,385 +435,444 @@
             %br
             Please list any additional income or benefits, including parental allowance, investment accounts, etc and attach copies of verification.  Alimony, separate maintenance, and child support need not be revealed unless you desire them to be considered in determining your credit worthiness.
             %br
+            %b Source 1
             .row
-              %b Source 1
-              %br
-              = f.text_field :source1
-            .row
-              %b Amount
-              %br
-              = f.number_field :amount1
-            .row
+              .col-md-1
+                Source
+              .col-md-4
+                = f.text_field :source1
+              .col-md-1
+                Amount
+              .col-md-4
+                = f.text_field :amount1
+            %br
+            #source_2
               %b Source 2
+              .row
+                .col-md-1
+                  Source
+                .col-md-4
+                  = f.text_field :source2
+                .col-md-1
+                  Amount
+                .col-md-4
+                  = f.text_field :amount2
               %br
-              = f.text_field :source2
-            .row
-              %b Amount
-              %br
-              = f.number_field :amount2
-            .row
+            #source_3
               %b Source 3
+              .row
+                .col-md-1
+                  Source
+                .col-md-4
+                  = f.text_field :source3
+                .col-md-1
+                  Amount
+                .col-md-4
+                  = f.text_field :amount3
               %br
-              = f.text_field :source3
             .row
-              %b Amount
-              %br
-              = f.number_field :amount3
+              .col-md-4
+                %button{id: "add_another_source", type: "button"} Add Another Source
       #tab6.tab-pane
         %hr
           .well
-            %h2.text-center Assets
-            %br
-            %b Bank Accounts
+            %h3.text-center Bank Accounts
             %br
             If you want the SFCU to consider balances in your bank account(s), please provide statements for the last 2 months as verification.
-            .row
-              %b Name of Depository
+            %br
+            .well
+              %h4.text-center Bank Account1
               %br
-              = f.text_field :depository1
-
-            .row
-              %b Type of Account
+              .row
+                .col-md-4
+                  %b Name of Depository
+                .col-md-4
+                  %b Type of Account
+                .col-md-4
+                  %b Current Balance
+              .row
+                .col-md-4
+                  = f.text_field :depository1, {class: "form-control"}
+                .col-md-4
+                  = f.select :account_type1, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]]), {}, {class: "form-control"}
+                .col-md-4
+                  = f.text_field :balance1, {class: "form-control"}
               %br
-              = f.select :account_type1, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]])
-
+            #bank_account_2
+              .well
+                %h4.text-center Bank Account2
+                %br
+                .row
+                  .col-md-4
+                    %b Name of Depository
+                  .col-md-4
+                    %b Type of Account
+                  .col-md-4
+                    %b Current Balance
+                %br
+                .row
+                  .col-md-4
+                    = f.text_field :depository2, {class: "form-control"}
+                  .col-md-4
+                    = f.select :account_type2, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]]), {}, {class: "form-control"}
+                  .col-md-4
+                    = f.text_field :balance2, {class: "form-control"}
+                %br
+            #bank_account_3
+              .well
+                %h4.text-center Bank Account3
+                %br
+                .row
+                  .col-md-4
+                    %b Name of Depository
+                  .col-md-4
+                    %b Type of Account
+                  .col-md-4
+                    %b Current Balance
+                %br
+                .row
+                  .col-md-4
+                    = f.text_field :depository3, {class: "form-control"}
+                  .col-md-4
+                    = f.select :account_type3, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]]), {}, {class: "form-control"}
+                  .col-md-4
+                    = f.text_field :balance3, {class: "form-control"}
+                %br
             .row
-              %b Current Balance
+              .col-md-4
+                %button{id: "add_another_bankaccount", type: "button"} Add Another Bank Account
+          .well
+            %h3.text-center Property Owned
+            %br
+            Please provide copies of title(s) as verification.
+            %br
+            .well
+              %h4.text-center Property Owned1
               %br
-              = f.number_field :balance1
-
-            .row
-              %b Name of Depository
-              %br
-              = f.text_field :depository2
-
-            .row
-              %b Type of Account
-              %br
-              = f.select :account_type2, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]])
-
-            .row
-              %b Current Balance
-              %br
-              = f.number_field :balance2
-
-            .row
-              %b Name of Depository
-              %br
-              = f.text_field :depository3
-
-            .row
-              %b Type of Account
-              %br
-              = f.select :account_type3, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]])
-
-            .row
-              %b Current Balance
-              %br
-              = f.number_field :balance3
-
-            .row
-              %b Property Owned
-              %br
-              Please provide copies of title(s) as verification.
-              %br
-
-            .row
               %b Address
+              .row
+                .col-md-4
+                  = f.text_field :addr1
               %br
-              = f.text_field :addr1
-
-            .row
               %b Market Value
+              .row
+                .col-md-4
+                  = f.text_field :market_value1
               %br
-              = f.number_field :market_value1
-
-            .row
               %b Pledged as Collateral for Another Loan?
+              .row
+                .col-md-1
+                  Yes
+                .col-md-1
+                  = f.radio_button :pledged1, 0
+                .col-md-1
+                  No
+                .col-md-1
+                  = f.radio_button :pledged1, 1
               %br
-              .form-inline
-                = f.radio_button :pledged1, 0
-                &nbsp
-                = f.label :pledged1_0, " Yes "
-                &nbsp
-                = f.radio_button :pledged1, 1
-                &nbsp
-                = f.label :pledged1_1, " No "
-                &nbsp
-
+            #property_2
+              .well
+                %h4.text-center Property Owned2
+                %br
+                %b Address
+                .row
+                  .col-md-4
+                    = f.text_field :addr2
+                %br
+                %b Market Value
+                .row
+                  .col-md-4
+                    = f.text_field :market_value2
+                %br
+                %b Pledged as Collateral for Another Loan?
+                .row
+                  .col-md-1
+                    Yes
+                  .col-md-1
+                    = f.radio_button :pledged2, 0
+                  .col-md-1
+                    No
+                  .col-md-1
+                    = f.radio_button :pledged2, 1
+                %br
+            #property_3
+              .well
+                %h4.text-center Property Owned3
+                %br
+                %b Address
+                .row
+                  .col-md-4
+                    = f.text_field :addr3
+                %br
+                %b Market Value
+                .row
+                  .col-md-4
+                    = f.text_field :market_value3
+                %br
+                %b Pledged as Collateral for Another Loan?
+                .row
+                  .col-md-1
+                    Yes
+                  .col-md-1
+                    = f.radio_button :pledged3, 0
+                  .col-md-1
+                    No
+                  .col-md-1
+                    = f.radio_button :pledged3, 1
+                %br
             .row
-              %b Address
-              %br
-              = f.text_field :addr2
-
-            .row
-              %b Market Value
-              %br
-              = f.number_field :market_value2
-
-            .row
-              %b Pledged as Collateral for Another Loan?
-              %br
-              .form-inline
-                = f.radio_button :pledged2, 0
-                &nbsp
-                = f.label :pledged2_0, " Yes "
-                &nbsp
-                = f.radio_button :pledged2, 1
-                &nbsp
-                = f.label :pledged2_1, " No "
-                &nbsp
-
-            .row
-              %b Address
-              %br
-              = f.text_field :addr3
-
-            .row
-              %b Market Value
-              %br
-              = f.number_field :market_value3
-
-            .row
-              %b Pledged as Collateral for Another Loan?
-              %br
-              .form-inline
-                = f.radio_button :pledged3, 0
-                &nbsp
-                = f.label :pledged3_0, " Yes "
-                &nbsp
-                = f.radio_button :pledged3, 1
-                &nbsp
-                = f.label :pledged3_1, " No "
-                &nbsp
+              .col-md-4
+                %button{id: "add_another_property", type: "button"} Add Another Property Owned
       #tab7.tab-pane
         %hr
           .well
-            %h2.text-center Outstanding Debts
+            %h2.text-center Credit Cards
             %br
-            %b Credit Cards
-            .row
-              %b Creditor 1
+            .well
+              %h3.text-center Creditor1
+              .row
+                .col-md-6
+                  %b Creditor Name
+                .col-md-6
+                  %b Current Balance
               %br
-              %b Creditor Name
+              .row
+                .col-md-6
+                  = f.text_field :creditor1
+                .col-md-6
+                  = f.text_field :cbalance1
               %br
-              = f.text_field :creditor1
-
-            .row
-              %b Current Balance
+              .row
+                .col-md-6
+                  %b Date of Next Payment
+                .col-md-6
+                  %b Average Monthly Payment
               %br
-              = f.number_field :cbalance1
-
-            .row
-              %b Date of Next Payment
+              .row
+                .col-md-6
+                  = f.date_select :nextpayment1
+                .col-md-6
+                  = f.text_field :avg1
               %br
-              = f.date_select :nextpayment1
-
-            .row
-              %b Average Monthly Payment
-              %br
-              = f.number_field :avg1
-
-            .row
               %b Past Due
+              .row
+                .col-md-1
+                  Yes
+                .col-md-1
+                  = f.radio_button :pastdue1, 0
+                .col-md-1
+                  No
+                .col-md-1
+                  = f.radio_button :pastdue1, 1
               %br
-              .form-inline
-                = f.radio_button :pastdue1, 0
-                &nbsp
-                = f.label :pastdue1_0, " Yes "
-                &nbsp
-                = f.radio_button :pastdue1, 1
-                &nbsp
-                = f.label :pastdue1_1, " No "
-                &nbsp
-
+            #creditor_2
+              .well
+                %h3.text-center Creditor2
+                .row
+                  .col-md-6
+                    %b Creditor Name
+                  .col-md-6
+                    %b Current Balance
+                %br
+                .row
+                  .col-md-6
+                    = f.text_field :creditor2
+                  .col-md-6
+                    = f.text_field :cbalance2
+                %br
+                .row
+                  .col-md-6
+                    %b Date of Next Payment
+                  .col-md-6
+                    %b Average Monthly Payment
+                %br
+                .row
+                  .col-md-6
+                    = f.date_select :nextpayment2
+                  .col-md-6
+                    = f.text_field :avg2
+                %br
+                %b Past Due
+                .row
+                  .col-md-1
+                    Yes
+                  .col-md-1
+                    = f.radio_button :pastdue2, 0
+                  .col-md-1
+                    No
+                  .col-md-1
+                    = f.radio_button :pastdue2, 1
+                %br
+            #creditor_3
+              .well
+                %h3.text-center Creditor3
+                .row
+                  .col-md-6
+                    %b Creditor Name
+                  .col-md-6
+                    %b Current Balance
+                %br
+                .row
+                  .col-md-6
+                    = f.text_field :creditor3
+                  .col-md-6
+                    = f.text_field :cbalance3
+                %br
+                .row
+                  .col-md-6
+                    %b Date of Next Payment
+                  .col-md-6
+                    %b Average Monthly Payment
+                %br
+                .row
+                  .col-md-6
+                    = f.date_select :nextpayment3
+                  .col-md-6
+                    = f.text_field :avg3
+                %br
+                %b Past Due
+                .row
+                  .col-md-1
+                    Yes
+                  .col-md-1
+                    = f.radio_button :pastdue3, 0
+                  .col-md-1
+                    No
+                  .col-md-1
+                    = f.radio_button :pastdue3, 1
+                %br
+            #creditor_4
+              .well
+                %h3.text-center Creditor4
+                .row
+                  .col-md-6
+                    %b Creditor Name
+                  .col-md-6
+                    %b Current Balance
+                %br
+                .row
+                  .col-md-6
+                    = f.text_field :creditor4
+                  .col-md-6
+                    = f.text_field :cbalance4
+                %br
+                .row
+                  .col-md-6
+                    %b Date of Next Payment
+                  .col-md-6
+                    %b Average Monthly Payment
+                %br
+                .row
+                  .col-md-6
+                    = f.date_select :nextpayment4
+                  .col-md-6
+                    = f.text_field :avg4
+                %br
+                %b Past Due
+                .row
+                  .col-md-1
+                    Yes
+                  .col-md-1
+                    = f.radio_button :pastdue4, 0
+                  .col-md-1
+                    No
+                  .col-md-1
+                    = f.radio_button :pastdue4, 1
+                %br
             .row
-              %b Creditor 2
-              %br
-              %b Creditor Name
-              %br
-              = f.text_field :creditor2
-
+              .col-md-4
+                %button{id: "add_another_creditor", type: "button"} Add Another Creditor
+        .well
+          %h2.text-center Loans
+          %br
+          .well
+            %h3.text-center Creditor 1
             .row
-              %b Current Balance
-              %br
-              = f.number_field :cbalance2
-
-            .row
-              %b Date of Next Payment
-              %br
-              = f.date_select :nextpayment2
-
-            .row
-              %b Average Monthly Payment
-              %br
-              = f.number_field :avg2
-
-            .row
-              %b Past Due
-              %br
-              .form-inline
-                = f.radio_button :pastdue2, 0
-                &nbsp
-                = f.label :pastdue2_0, " Yes "
-                &nbsp
-                = f.radio_button :pastdue2, 1
-                &nbsp
-                = f.label :pastdue2_1, " No "
-                &nbsp
-
-            .row
-              %b Creditor 3
-              %br
-              %b Creditor Name
-              %br
-              = f.text_field :creditor3
-
-            .row
-              %b Current Balance
-              %br
-              = f.number_field :cbalance3
-
-            .row
-              %b Date of Next Payment
-              %br
-              = f.date_select :nextpayment3
-
-            .row
-              %b Average Monthly Payment
-              %br
-              = f.number_field :avg3
-
-            .row
-              %b Past Due
-              %br
-              .form-inline
-                = f.radio_button :pastdue3, 0
-                &nbsp
-                = f.label :pastdue3_0, " Yes "
-                &nbsp
-                = f.radio_button :pastdue3, 1
-                &nbsp
-                = f.label :pastdue3_1, " No "
-                &nbsp
-
-            .row
-              %b Creditor 4
-              %br
-              %b Creditor Name
-              %br
-              = f.text_field :creditor4
-
-            .row
-              %b Current Balance
-              %br
-              = f.number_field :cbalance4
-
-            .row
-              %b Date of Next Payment
-              %br
-              = f.date_select :nextpayment4
-
-            .row
-              %b Average Monthly Payment
-              %br
-              = f.number_field :avg4
-
-            .row
-              %b Past Due
-              %br
-              .form-inline
-                = f.radio_button :pastdue4, 0
-                &nbsp
-                = f.label :pastdue4_0, " Yes "
-                &nbsp
-                = f.radio_button :pastdue4, 1
-                &nbsp
-                = f.label :pastdue4_1, " No "
-                &nbsp
-
-            .row
-            %b Loans
+              .col-md-6
+                %b Creditor Name
+              .col-md-6
+                %b Creditor Type
             %br
             .row
-              %b Creditor 1
-              %br
-              %b Creditor Name
-              %br
-              = f.text_field :loan_creditor1
-
+              .col-md-6
+                = f.text_field :loan_creditor1
+              .col-md-6
+                = f.text_field :creditor_type1
+            %br
             .row
-              %b Creditor Type
-              %br
-              = f.number_field :creditor_type1
-
+              .col-md-6
+                %b Date of First Payment
+              .col-md-6
+                %b Date of Last Payment
+            %br
             .row
-              %b Date of First Payment
-              %br
-              = f.date_select :first_payment1
-
+              .col-md-6
+                = f.date_select :first_payment1
+              .col-md-6
+                = f.date_select :last_payment1
+            %br
             .row
-              %b Date of Last Payment
-              %br
-              = f.date_select :last_payment1
-
+              .col-md-6
+                %b Monthly Payment
+              .col-md-6
+                %b Past Due
+            %br
             .row
-              %b Monthly Payment
-              %br
-              = f.number_field :monthly1
-
-            .row
-              %b Past Due
-              %br
-              .form-inline
+              .col-md-6
+                = f.text_field :monthly1
+              .col-md-1
+                Yes
+              .col-md-1
                 = f.radio_button :past_due1, 0
-                &nbsp
-                = f.label :past_due1_0, " Yes "
-                &nbsp
+              .col-md-1
+                No
+              .col-md-1
                 = f.radio_button :past_due1, 1
-                &nbsp
-                = f.label :past_due1_1, " No "
-                &nbsp
-
+            %br
+          .well
+            %h3.text-center Creditor 2
             .row
-              %b Creditor 2
-              %br
-              %b Creditor Name
-              %br
-              = f.text_field :loan_creditor2
-
+              .col-md-6
+                %b Creditor Name
+              .col-md-6
+                %b Creditor Type
+            %br
             .row
-              %b Creditor Type
-              %br
-              = f.number_field :creditor_type2
-
+              .col-md-6
+                = f.text_field :loan_creditor2
+              .col-md-6
+                = f.text_field :creditor_type2
+            %br
             .row
-              %b Date of First Payment
-              %br
-              = f.date_select :first_payment2
-
+              .col-md-6
+                %b Date of First Payment
+              .col-md-6
+                %b Date of Last Payment
+            %br
             .row
-              %b Date of Last Payment
-              %br
-              = f.date_select :last_payment2
-
+              .col-md-6
+                = f.date_select :first_payment2
+              .col-md-6
+                = f.date_select :last_payment2
+            %br
             .row
-              %b Monthly Payment
-              %br
-              = f.number_field :monthly2
-
+              .col-md-6
+                %b Monthly Payment
+              .col-md-6
+                %b Past Due
+            %br
             .row
-              %b Past Due
-              %br
-              .form-inline
+              .col-md-6
+                = f.text_field :monthly2
+              .col-md-1
+                Yes
+              .col-md-1
                 = f.radio_button :past_due2, 0
-                &nbsp
-                = f.label :past_due2_0, " Yes "
-                &nbsp
+              .col-md-1
+                No
+              .col-md-1
                 = f.radio_button :past_due2, 1
-                &nbsp
-                = f.label :past_due2_1, " No "
-                &nbsp
+            %br
       #tab8.tab-pane
         %hr
           .well
@@ -802,60 +880,81 @@
             %br
             Please estimate your monthly expenses.  If any expense is paid by another party, you must show provide proof of this.  Proof can be in the form of a notarized letter from that party.
             %br
+            %br
+            %b Expenses
+            .col-md-12
+              = f.text_area :expenses, value: "Rent/Housing $_______________ If none, list the person who foots the expense_______________ Food $_______________ If none, list the person who foots the expense_______________ Utilities $_______________ If none, list the person who foots the expense_______________ Bursar Bill.", rows:3, class:"form-control"
+            %br
+            %br
+            %br
+            %br
+            %b Upload Documents
             .row
-              %b Expenses
+              .col-md-12
+                Please use the attachment upload features below to upload any necessary documentation previously mention within the form. Additional upload field will propogate when file is uploaded.
+            %br
+            %br
+            %b File1
+            .row
+              .col-md-4
+                = f.file_field :file1
+            %br
+            #file_option_2
+              %b File2
+              .row
+                .col-md-4
+                  = f.file_field :file2
               %br
-              = f.text_area :expenses, placeholder: "Rent/Housing $_______________ If none, list the person who foots the expense_______________ Food $_______________ If none, list the person who foots the expense_______________ Utilities $_______________ If none, list the person who foots the expense_______________ Bursar Bill "
-
-            .row
-              %b Upload Documents
+            #file_option_3
+              %b File3
+              .row
+                .col-md-4
+                  = f.file_field :file3
               %br
-              Please use the attachment upload features below to upload any necessary documentation previously mention within the form. Additional upload field will propogate when file is uploaded.
-
+            #file_option_4
+              %b File4
+              .row
+                .col-md-4
+                  = f.file_field :file4
+              %br
+            #file_option_5
+              %b File5
+              .row
+                .col-md-4
+                  = f.file_field :file5
+              %br
+            #file_option_6
+              %b File6
+              .row
+                .col-md-4
+                  = f.file_field :file6
+              %br
             .row
-              = f.label :file1
-              = f.file_field :ulapp_file1
-            .row
-              = f.label :file2
-              = f.text_field :file2
-            .row
-              = f.label :file3
-              = f.text_field :file3
-            .row
-              = f.label :file4
-              = f.text_field :file4
-            .row
-              = f.label :file5
-              = f.text_field :file5
-            .row
-              = f.label :file6
-              = f.text_field :file6
+              .col-md-4
+                %button{id: "add_another_file", type: "button"} Add Another File
       #tab9.tab-pane
         %hr
           .well
             %h2.text-center Applicant's Signature
             %br
-            You promise that everything you have stated in this application is correct to the best of your knowledge and that the above information is a complete listing of what you owe.  If there are any important changes you will notify us in writing immediately.  You authorize the SFCU to obtain credit reports in connection with this application for credit and for any update, increase, renewal, extension or collection of the credit received.  You understand that the SFCU will rely on the information in this application and your credit report to make its decision. If you request, the SFCU will tell you the name and address of any credit bureau from which it received a credit report on you. It is a federal crime to willfully and deliberately provide incomplete or incorrect information on loan applications made to federal credit unions or state chartered credit unions insured by the NCUA.
+            .row
+              .col-md-12
+                You promise that everything you have stated in this application is correct to the best of your knowledge and that the above information is a complete listing of what you owe.  If there are any important changes you will notify us in writing immediately.  You authorize the SFCU to obtain credit reports in connection with this application for credit and for any update, increase, renewal, extension or collection of the credit received.  You understand that the SFCU will rely on the information in this application and your credit report to make its decision. If you request, the SFCU will tell you the name and address of any credit bureau from which it received a credit report on you. It is a federal crime to willfully and deliberately provide incomplete or incorrect information on loan applications made to federal credit unions or state chartered credit unions insured by the NCUA.
             %br
             .row
-              %b I have read this disclosure and understand and agree to all terms, conditions and requirements here stated.*
+              .col-md-12
+                %b I have read this disclosure and understand and agree to all terms, conditions and requirements here stated.*
               %br
-              .form-inline
-                = f.check_box :yesorno
-                = f.label :yesorno, " Yes "
-                -#= f.radio_button :yesorno, 0
-                -#&nbsp
-                -#= f.label :yesorno_0, " Yes "
-                -#&nbsp
-                -#= f.radio_button :yesorno, 1
-                -#&nbsp
-                -#= f.label :yesorno_1, " No "
-                -#&nbsp
-
+              .row
+                .col-md-1
+                  Yes
+                .col-md-1
+                  = f.check_box :yesorno
+              %br
+            %b Electronic Signature*
             .row
-              %b Electronic Signature*
-              %br
-              = f.text_field :signature
+              .col-md-4
+                = f.text_field :signature
         .actions.text-center
           = f.submit 'Submit', class: "btn btn-primary"
     %ul.pager.wizard
@@ -880,6 +979,72 @@
   		var $current = index+1;
   		var $percent = ($current/$total) * 100;
   		$('#rootwizard').find('.bar').css({width:$percent+'%'});
+  		for ( var i = 2; i <= 6; i++ ) {
+            $("#file_option_"+i).hide();
+        }
+        var $count_file = 2;
+        $('#add_another_file').click(function(){
+          $("#file_option_"+$count_file).show();
+          $count_file++;
+          if ($count_file>6){
+            $('#add_another_file').hide();
+          }
+        });
+        for ( var i = 2; i <= 3; i++ ) {
+            $("#source_"+i).hide();
+        }
+        var $count_source = 2;
+        $('#add_another_source').click(function(){
+          $("#source_"+$count_source).show();
+          $count_source++;
+          if ($count_source>3){
+            $('#add_another_source').hide();
+          }
+        });
+        for ( var i = 2; i <= 3; i++ ) {
+            $("#bank_account_"+i).hide();
+        }
+        var $count_account = 2;
+        $('#add_another_bankaccount').click(function(){
+          $("#bank_account_"+$count_account).show();
+          $count_account++;
+          if ($count_account>3){
+            $('#add_another_bankaccount').hide();
+          }
+        });
+        for ( var i = 2; i <= 3; i++ ) {
+            $("#property_"+i).hide();
+        }
+        var $count_property = 2;
+        $('#add_another_property').click(function(){
+          $("#property_"+$count_property).show();
+          $count_property++;
+          if ($count_property>3){
+            $('#add_another_property').hide();
+          }
+        });
+        for ( var i = 2; i <= 4; i++ ) {
+            $("#creditor_"+i).hide();
+        }
+        var $count_creditor = 2;
+        $('#add_another_creditor').click(function(){
+          $("#creditor_"+$count_creditor).show();
+          $count_creditor++;
+          if ($count_creditor>4){
+            $('#add_another_creditor').hide();
+          }
+        });
+
+        $('#ulapp_same').change(function(){
+          if(this.checked){
+            $("#permanent_address").hide();
+          }else{
+            $("#permanent_address").show();
+          }
+
+        });
+
+
   	}});
   });
 
