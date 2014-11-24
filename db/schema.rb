@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20141123212030) do
 
   create_table "alapps", force: true do |t|
@@ -291,7 +290,7 @@ ActiveRecord::Schema.define(version: 20141123212030) do
     t.string   "last_name"
     t.date     "dob"
     t.integer  "ssn"
-    t.string   "sfcu_account"
+    t.integer  "sfcu_account"
     t.string   "name_relative"
     t.integer  "phone_relative"
     t.string   "mothers"
