@@ -290,7 +290,7 @@ ActiveRecord::Schema.define(version: 20141123212030) do
     t.string   "last_name"
     t.date     "dob"
     t.integer  "ssn"
-    t.integer  "sfcu_account"
+    t.string   "sfcu_account"
     t.string   "name_relative"
     t.integer  "phone_relative"
     t.string   "mothers"

@@ -1,20 +1,55 @@
 require 'file_size_validator'
 
 class Ulapp < ActiveRecord::Base
-  # mount_uploader :file1, File1Uploader
-  # mount_uploader :file2, File2Uploader
-  # mount_uploader :file3, File3Uploader
-  # mount_uploader :file4, File4Uploader
-  # mount_uploader :file5, File5Uploader
-  # mount_uploader :file6, File6Uploader
+  mount_uploader :file1, NormalFileUploader
+  mount_uploader :file2, NormalFileUploader
+  mount_uploader :file3, NormalFileUploader
+  mount_uploader :file4, NormalFileUploader
+  mount_uploader :file5, NormalFileUploader
+  mount_uploader :file6, NormalFileUploader
 
   SFCU_ACCOUNT_FORMAT = /\A\d+\z/
   SSN_FORMAT = /\A\d{9}\z/
   EMAIL_FORMAT = /\A[^@\s]+@(?:\w+\.)+[a-z]{2,}\z/i
 
+  validates :file1,
+            :presence => true,
+            :file_size => {
+                :maximum => 5.megabytes.to_i
+            }
+
+  validates :file2,
+            :presence => true,
+            :file_size => {
+                :maximum => 5.megabytes.to_i
+            }
+
+  validates :file3,
+            :presence => true,
+            :file_size => {
+                :maximum => 5.megabytes.to_i
+            }
+  validates :file4,
+            :presence => true,
+            :file_size => {
+                :maximum => 5.megabytes.to_i
+            }
+
+  validates :file5,
+            :presence => true,
+            :file_size => {
+                :maximum => 5.megabytes.to_i
+            }
+
+  validates :file6,
+            :presence => true,
+            :file_size => {
+                :maximum => 5.megabytes.to_i
+            }
+
   validates :credit_type, :purpose, :first_name, :last_name,
             :name_relative, :phone_type, :alter_type, :employer,
-            :supervisor_firstname, :supervisor_lastname, :grosspay,
+            :supervisor_firstname, :supervisor_lastname,
             presence: true
   validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0, only_integer: true}
   validate :sfcu_account, format: {with: SFCU_ACCOUNT_FORMAT}
@@ -41,7 +76,7 @@ class Ulapp < ActiveRecord::Base
 
   def dob_validation
     if dob.present? && dob >= Date.today
-      errors.add(:dob, "Date of birth must be in the past")
+      errors.add(:dob, "must be in the past")
     end
   end
 
