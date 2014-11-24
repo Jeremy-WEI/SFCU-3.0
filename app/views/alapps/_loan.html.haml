@@ -18,7 +18,7 @@
           .col-md-5
             %b Date of Next Payment
             %br
-            = f.date_select :"loan#{x}_date_payment"
+            = f.date_select :"loan#{x}_date_payment", { start_year: Date.today.year, end_year: Date.today.year + 100 }
           .col-md-3
             %b Past Due
             %br
