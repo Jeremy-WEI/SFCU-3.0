@@ -14,7 +14,7 @@ class Ulapp < ActiveRecord::Base
 
   validates :credit_type, :purpose, :first_name, :last_name,
             :name_relative, :phone_type, :alter_type, :employer,
-            :supervisor_firstname, :supervisor_lastname, :grosspay,
+            :supervisor_firstname, :supervisor_lastname,
             presence: true
   validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0, only_integer: true}
   validate :sfcu_account, format: {with: SFCU_ACCOUNT_FORMAT}

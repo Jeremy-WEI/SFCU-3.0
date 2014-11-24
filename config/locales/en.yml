@@ -31,8 +31,8 @@ en:
   activerecord:
     models:
       alapp: "Auto Loan Application"
-      ulapp: "Unsecure Loan Application"
-      cbpapp: "Credit Builder Program Appkication"
+      ulapp: "Unsecured Loan Application"
+      cbpapp: "Credit Builder Program Application"
       maapp: "Individual Account Applicants"
     attributes:
       alapp:
@@ -71,18 +71,20 @@ en:
         amount: "Amount Requested"
         first_name: "First Name"
         last_name: "Last Name"
-        check_sfcu_account: "SFCU Accoount"
+        check_sfcu_account: "SFCU Account"
         name_relative: "Name of Nearest Relative"
         phone_type: "Phone Type"
         alter_type: "Alternative Phone Type"
         ssn: "SSN"
-        supervisor_firstname: "Supervisor's Frist Name"
+        supervisor_firstname: "Supervisor's First Name"
         supervisor_firstname: "Supervisor's Last Name"
         yesorno: "Terms"
       cbpapp:
         ssn: "SSN"
         first_name: "First Name"
         last_name: "Last Name"
+      maapp:
+        
   errors:
     messages:
       wrong_size: "is the wrong size (should be %{file_size})"
