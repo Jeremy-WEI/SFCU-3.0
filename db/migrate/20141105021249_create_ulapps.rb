@@ -9,7 +9,7 @@ class CreateUlapps < ActiveRecord::Migration
       t.string :last_name
       t.date :dob
       t.integer :ssn
-      t.integer :sfcu_account
+      t.string :sfcu_account
       t.string :name_relative
       t.integer :phone_relative
       t.string :mothers

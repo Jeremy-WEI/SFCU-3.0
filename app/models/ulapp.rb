@@ -1,3 +1,5 @@
+require 'file_size_validator'
+
 class Ulapp < ActiveRecord::Base
   # mount_uploader :file1, File1Uploader
   # mount_uploader :file2, File2Uploader

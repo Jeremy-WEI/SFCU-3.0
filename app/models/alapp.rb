@@ -1,10 +1,47 @@
 class Alapp < ActiveRecord::Base
-  mount_uploader :driver_license_file, DriverLicenseFileUploader
-  mount_uploader :document1, Document1Uploader
-  mount_uploader :document2, Document2Uploader
-  mount_uploader :document3, Document3Uploader
-  mount_uploader :document4, Document4Uploader
-  mount_uploader :document5, Document5Uploader
+  mount_uploader :driver_license_file, NormalFileUploader
+  mount_uploader :document1, NormalFileUploader
+  mount_uploader :document2, NormalFileUploader
+  mount_uploader :document3, NormalFileUploader
+  mount_uploader :document4, NormalFileUploader
+  mount_uploader :document5, NormalFileUploader
+
+
+  validates :driver_license_file,
+            :presence => true,
+            :file_size => {
+                :maximum => 5.megabytes.to_i
+            }
+
+  validates :document1,
+            :presence => true,
+            :file_size => {
+                :maximum => 5.megabytes.to_i
+            }
+
+  validates :document2,
+            :presence => true,
+            :file_size => {
+                :maximum => 5.megabytes.to_i
+            }
+  validates :document3,
+            :presence => true,
+            :file_size => {
+                :maximum => 5.megabytes.to_i
+            }
+
+  validates :document4,
+            :presence => true,
+            :file_size => {
+                :maximum => 5.megabytes.to_i
+            }
+
+  validates :document5,
+            :presence => true,
+            :file_size => {
+                :maximum => 5.megabytes.to_i
+            }
+
 
   has_many :employments
 

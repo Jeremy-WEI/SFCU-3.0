@@ -52,7 +52,8 @@ module ApplicationHelper
         ['Washington', 'WA'],
         ['West Virginia', 'WV'],
         ['Wisconsin', 'WI'],
-        ['Wyoming', 'WY']
+        ['Wyoming', 'WY'],
+        ['Foreign Country', 'N/A']
     ]
   end
 end

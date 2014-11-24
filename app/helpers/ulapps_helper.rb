@@ -27,7 +27,9 @@ module UlappsHelper
       end
     end
   end
+
   class AmountValidator < ActiveModel::Validator
+
     def validate(record)
       options[:fields].each do |field|
         amount = record.send(field)
@@ -39,4 +41,5 @@ module UlappsHelper
       end
     end
   end
+
 end

@@ -87,16 +87,9 @@ en:
             price_range_max:
               invalid: "be numeric and larger than minimum price"
 
-#en:
-#  activerecord:
-#    attributes:
-#      maapp:
-#        ssn: "SSN"
-#en:
-#  errors:
-#    messages:
-#      wrong_size: "is the wrong size (should be %{file_size})"
-#      size_too_small: "is too small (should be at least %{file_size})"
-#      size_too_big: "is too big (should be at most %{file_size})"
-
-
+en:
+  errors:
+    messages:
+      wrong_size: "is the wrong size (should be %{file_size})"
+      size_too_small: "is too small (should be at least %{file_size})"
+      size_too_big: "is too big (should be at most %{file_size})"

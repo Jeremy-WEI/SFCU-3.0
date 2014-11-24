@@ -9,6 +9,7 @@
       %th.col-md-1
 
     - @cbpapps.each do |applicant|
+
       %tr{:class => "#{if applicant.application_status == 'Unprocessed' then 'active' elsif applicant.application_status == 'Processed' then 'success' else 'info' end}"}
         %td= check_box_tag 'exports[]', applicant.id, false, id: "exports_#{applicant.id}"
         %td= label_tag "exports_#{applicant.id}", applicant.created_at.strftime('%Y-%m-%d')

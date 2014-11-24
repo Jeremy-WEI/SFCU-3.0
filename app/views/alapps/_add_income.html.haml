@@ -1,3 +1,4 @@
+%br
 .accordion
   .accordion-group
     %h4.text-center
@@ -5,17 +6,9 @@
     .accordion-body
       .accordion-inner
         .row
-          .span4
-            %b Source
-            %br
-            = f.text_field :"add_income#{x}_source", class:"input-large"
-          .span4
-            %b Amount
-            %br
-            = f.text_field :"add_income#{x}_amount", placeholder:"in US dollars", class:"input-large"
-        %br
-        .row
-          .span4
+          = render "text_field4", :f => f, :title => "Source", :var => "add_income#{x}_source", :place_holder => ""
+          = render "text_field3", :f => f, :title => "Amount", :var => "add_income#{x}_amount", :place_holder => "in US dollars"
+          .col-md-5
             %b Frequency
             .form-inline
               = f.radio_button :"add_income#{x}_freq", "Weekly"
@@ -30,3 +23,4 @@
               &nbsp
               = f.label :"add_income#{x}_freq", "Yearly"
               &nbsp
+%br
