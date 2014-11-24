@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class Document3Uploader < CarrierWave::Uploader::Base
+class NormalFileUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -39,13 +39,13 @@ class Document3Uploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_white_list
-  #   %w(jpg jpeg gif png)
+  #   %w(pdf)
   # end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    "#{model.class.to_s.underscore}_#{mounted_as}" if original_filename
+  end
 
 end

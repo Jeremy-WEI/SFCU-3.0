@@ -1,3 +1,5 @@
+require 'file_size_validator'
+
 class Ulapp < ActiveRecord::Base
   # mount_uploader :file1, File1Uploader
   # mount_uploader :file2, File2Uploader
@@ -29,6 +31,7 @@ class Ulapp < ActiveRecord::Base
                                                          :market_value1, :market_value2, :market_value3,
                                                          :cbalance1, :cbalance2, :cbalance3, :cbalance4,
                                                          :avg1, :avg2, :avg3, :avg4, :monthly1, :monthly2]
+
 
 
   def check_alter

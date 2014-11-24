@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120041139) do
+ActiveRecord::Schema.define(version: 20141123212030) do
 
   create_table "alapps", force: true do |t|
     t.string   "first"
@@ -169,6 +169,35 @@ ActiveRecord::Schema.define(version: 20141120041139) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "application_status",          default: "Unprocessed"
+    t.string   "property3_st_addr"
+    t.string   "property3_city"
+    t.string   "property3_state"
+    t.float    "property3_market_val"
+    t.boolean  "property3_another_loan"
+    t.string   "property4_st_addr"
+    t.string   "property4_city"
+    t.string   "property4_state"
+    t.float    "property4_market_val"
+    t.boolean  "property4_another_loan"
+    t.string   "add_income4_source"
+    t.float    "add_income4_amount"
+    t.string   "add_income4_freq"
+    t.string   "employ3_employer"
+    t.string   "employ3_employer_addr"
+    t.string   "employ3_position"
+    t.string   "employ3_supervisor"
+    t.float    "employ3_grosspay"
+    t.string   "employ3_freq"
+    t.boolean  "employ3_continue"
+    t.string   "employ3_expect_duration"
+    t.string   "employ4_employer"
+    t.string   "employ4_employer_addr"
+    t.string   "employ4_position"
+    t.string   "employ4_supervisor"
+    t.float    "employ4_grosspay"
+    t.string   "employ4_freq"
+    t.boolean  "employ4_continue"
+    t.string   "employ4_expect_duration"
   end
 
   create_table "cbpapps", force: true do |t|
@@ -213,7 +242,7 @@ ActiveRecord::Schema.define(version: 20141120041139) do
     t.integer  "grad_year"
     t.string   "penn_id"
     t.string   "ssn"
-    t.string   "W8BEN_form"
+    t.string   "w8ben_form"
     t.string   "doc_type"
     t.string   "doc_id"
     t.string   "file_id1"

@@ -1,0 +1,26 @@
+%br
+.row
+  .col-md-8
+    %b Address Line 1*
+    = f.text_field :"#{x}_address_line1", placeholder: "#{y} Address Line 1", class:"form-control"
+%br
+.row
+  .col-md-8
+    %b Address Line 2
+    = f.text_field :"#{x}_address_line2", placeholder: "#{y} Address Line 2", class: "form-control"
+%br
+.row
+  .col-md-4
+    %b City*
+  .col-md-4
+    %b State*
+  .col-md-4
+    %b ZIP*
+.row
+  .col-md-4
+    = f.text_field :"#{x}_address_city", placeholder: "City", class: "input-small", class: "form-control"
+  .col-md-4
+    = f.select :"#{x}_address_state", options_for_select(us_states), {}, {class: "form-control"}
+  .col-md-4
+    = f.text_field :"#{x}_address_zip", placeholder: "#####", class: "input-small", class: "form-control"
+%br

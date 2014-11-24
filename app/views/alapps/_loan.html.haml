@@ -1,3 +1,4 @@
+%br
 .accordion
   .accordion-group
     %h4.text-center
@@ -5,43 +6,29 @@
     .accordion-body
       .accordion-inner
         .row
-          .span12
-            .span3
-              %b Creditor Name
-            .span3
-              %b Loan Type
-            .span3
-              %b Principal
-        .row
-          .span12
-            .span3
-              = f.text_field :"loan#{x}_name", class: "input-small"
-            .span3
-              = f.select :"loan#{x}_type", ([['Auto', 1], ['Business', 2], ['Homeowner', 3], ['Student', 4], ['Unsecured', 5], ['Other', 6]]), class: "input-small"
-            .span3
-              = f.text_field :"loan#{x}_principal", class: "input-small"
+          = render "text_field4", :f => f, :title => "Creditor Name", :var => "loan#{x}_name", :place_holder => ""
+          .col-md-4
+            %b Loan Type
+            %br
+            = f.select :"loan#{x}_type", ([['Auto', 1], ['Business', 2], ['Homeowner', 3], ['Student', 4], ['Unsecured', 5], ['Other', 6]]), {}, {class: "form-control"}
+          = render "text_field4", :f => f, :title => "Principal", :var => "loan#{x}_principal", :place_holder => ""
         %br
         .row
-          .span12
-            .span3
-              %b Date of Next Payment
-            .span3
-              %b Monthly Payment
-            .span3
-              %b Past Due
-        .row
-          .span12
-            .span3
-              = f.date_select :"loan#{x}_date_payment"
-            .span3
-              = f.text_field :"loan#{x}_month_payment", class: "input-small"
-            .span3
-              .form-inline
-                = f.radio_button :"loan#{x}_pastdue", true
-                &nbsp
-                = f.label :"loan#{x}_pastdue", "Yes"
-                &nbsp
-                = f.radio_button :"loan#{x}_pastdue", false
-                &nbsp
-                = f.label :"loan#{x}_pastdue", "No"
-                &nbsp
+          = render "text_field4", :f => f, :title => "Monthly Payment", :var => "loan#{x}_month_payment", :place_holder => ""
+          .col-md-5
+            %b Date of Next Payment
+            %br
+            = f.date_select :"loan#{x}_date_payment"
+          .col-md-3
+            %b Past Due
+            %br
+            .form-inline
+              = f.radio_button :"loan#{x}_pastdue", true
+              &nbsp
+              = f.label :"loan#{x}_pastdue", "Yes"
+              &nbsp
+              = f.radio_button :"loan#{x}_pastdue", false
+              &nbsp
+              = f.label :"loan#{x}_pastdue", "No"
+              &nbsp
+%br

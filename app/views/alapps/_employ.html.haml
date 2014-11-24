@@ -1,3 +1,4 @@
+%br
 .accordion
   .accordion-group
     %h4.text-center
@@ -5,31 +6,16 @@
     .accordion-body
       .accordion-inner
         .row
-          .span4
-            %b Employer
-            %br
-            = f.text_field :"employ#{x}_employer", placeholder: "Employer name"
-          .span4
-            %b Employer Address
-            %br
-            = f.text_field :"employ#{x}_employer_addr", placeholder: "Address", class:"input-xlarge"
+          = render "text_field6", :f => f, :title => "Employer", :var => "employ#{x}_employer", :place_holder => "Employer name"
+          = render "text_field6", :f => f, :title => "Employer Address", :var => "employ#{x}_employer_addr", :place_holder => "Address"
         %br
         .row
-          .span4
-            %b Position
-            %br
-            = f.text_field :"employ#{x}_position", placeholder: "Position"
-          .span4
-            %b Supervisor
-            %br
-            = f.text_field :"employ#{x}_supervisor", placeholder: "", class:"input-xlarge"
+          = render "text_field6", :f => f, :title => "Position", :var => "employ#{x}_position", :place_holder => "Position"
+          = render "text_field6", :f => f, :title => "Supervisor", :var => "employ#{x}_supervisor", :place_holder => ""
         %br
         .row
-          .span4
-            %b Grosspay
-            %br
-            = f.text_field :"employ#{x}_grosspay", placeholder: "In US dollars"
-          .span4
+          = render "text_field6", :f => f, :title => "Grosspay", :var => "employ#{x}_grosspay", :place_holder => "In US dollars"
+          .col-md-6
             %b Frequency
             .form-inline
               = f.radio_button(:"employ#{x}_freq", "Weekly")
@@ -45,7 +31,7 @@
               = f.label(:"employ#{x}_freq_yearly", "Yearly")
         %br
         .row
-          .span4
+          .col-md-6
             %b Will this job continue for term of this loan?
             .form-inline
               = f.radio_button(:"employ#{x}_continue", true)
@@ -55,7 +41,5 @@
               = f.radio_button(:"employ#{x}_continue", false)
               &nbsp
               = f.label(:"employ#{x}_continue_no", "No")
-          .span4
-            %b If "No", please list expected duration:
-            %br
-            = f.text_field :"employ#{x}_expect_duration"
+          = render "text_field6", :f => f, :title => 'If "No", please list expected duration:', :var => "employ#{x}_expect_duration", :place_holder => ""
+%br
