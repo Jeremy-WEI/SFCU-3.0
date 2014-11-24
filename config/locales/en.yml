@@ -81,9 +81,11 @@ en:
         supervisor_lastname: "Supervisor's Last Name"
         yesorno: "Terms"
       cbpapp:
+        dob: "Date of Birth"
         ssn: "SSN"
         first_name: "First Name"
         last_name: "Last Name"
+        non_upenn_email: "Email"
   errors:
     messages:
       wrong_size: "is the wrong size (should be %{file_size})"

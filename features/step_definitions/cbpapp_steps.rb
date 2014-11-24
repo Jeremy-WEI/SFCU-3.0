@@ -2,30 +2,6 @@ Given(/^I'm on the Cbpapp form page$/) do
   visit new_cbpapp_path
 end
 
-# validates :first_name, presence: {message: "First name can't be blank"}
-# validates :last_name, presence: {message: "Last name can't be blank"}
-# validates :ssn, length: {is: 9, message: "Invalid SSN"}
-
-# validate :check_dob
-# validates :mother_maiden, presence: {message: "Mother's maiden name can't be blank"}
-# validates :account_number, presence: {message: "SFCU account number can't be blank"}
-# validate :check_grad_date
-# # validate :check_non_upenn_email
-# # validates :how_know, presence: {message: "How did you hear about the program can't be blank"}
-#
-# # validates :local_home_phone, presence: {message: "Local home phone can't be blank"}
-# validates_with CbpappsHelper::PhoneValidator, fields: [:local_home_phone, :biz_phone, :perm_home_phone]
-#
-# # validates :local_address_line1, presence: {message: "Local address line 1 can't be blank"}
-# # validates :local_address_city, presence: {message: "Local address city can't be blank"}
-# # validates :local_address_state, presence: {message: "Local address state can't be blank"}
-#
-# validates :student_status, presence: {message: "Student status can't be blank"}
-# validates :period, presence: {message: "Period can't be blank"}
-
-
-
-
 When(/^I fill in the form and submit the form$/) do
   fill_in('cbpapp_first_name', :with => 'Mike')
   fill_in('cbpapp_last_name', :with => 'Farmer')
@@ -65,7 +41,7 @@ end
 
 Then(/^I should see errors of ssn on the page$/) do
   assert page.has_css?('div.field_with_errors')
-  assert page.has_content?('Invalid SSN')
+  assert page.has_content?('SSN is invalid')
 end
 
 When(/^I fill in the form with an invalid date birth$/) do
@@ -80,7 +56,7 @@ end
 
 Then(/^I should see errors of invalid date birth$/) do
   assert page.has_css?('div.field_with_errors')
-  assert page.has_content?("Date of birth must be in the past")
+  assert page.has_content?("Date of Birth must be in the past")
 end
 
 When(/^I fill in the form with Upenn email$/) do
@@ -94,7 +70,7 @@ end
 
 Then(/^I should see errors of invalid email$/) do
   assert page.has_css?('div.field_with_errors')
-  assert page.has_content?("Cannot use upenn email")
+  assert page.has_content?("Email cannot be upenn email")
 end
 
 
