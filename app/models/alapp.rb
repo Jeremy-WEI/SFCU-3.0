@@ -11,36 +11,30 @@ class Alapp < ActiveRecord::Base
 
 
   validates :driver_license_file,
-            :presence => true,
             :file_size => {
                 :maximum => 5.megabytes.to_i
             }
 
   validates :document1,
-            :presence => true,
             :file_size => {
                 :maximum => 5.megabytes.to_i
             }
 
   validates :document2,
-            :presence => true,
             :file_size => {
                 :maximum => 5.megabytes.to_i
             }
   validates :document3,
-            :presence => true,
             :file_size => {
                 :maximum => 5.megabytes.to_i
             }
 
   validates :document4,
-            :presence => true,
             :file_size => {
                 :maximum => 5.megabytes.to_i
             }
 
   validates :document5,
-            :presence => true,
             :file_size => {
                 :maximum => 5.megabytes.to_i
             }

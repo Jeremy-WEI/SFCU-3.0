@@ -36,4 +36,4 @@ bower.json
 .idea/*
 !/config/secrets.yml
 .DS_Store
-
+public/uploads/tmp/*
