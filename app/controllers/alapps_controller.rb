@@ -8,7 +8,33 @@ class AlappsController < ApplicationController
   end
 
   def export
-    render text: params[:exports]
+
+    @applicants = Alapp.find(params[:exports])
+
+    @header = Alapp.column_names
+
+    file = "alapps_file.csv"
+    File.open(file, "w") do |csv|
+      tmp = ''
+      @header.each do |attr|
+        tmp << '"' << attr << '",'
+      end
+      tmp = tmp[0..-2]
+      tmp << "\n"
+      csv << tmp
+
+      @applicants.each do |c|
+        tmp = ''
+        c.attributes.each  do | _,val|
+          tmp << '"' << (val.nil? ? '':val.to_s) << '",'
+        end
+        tmp = tmp[0..-2]
+        tmp << "\n"
+        csv << tmp
+      end
+    end
+    send_file(file)
+
   end
 
   # GET /alapps/1

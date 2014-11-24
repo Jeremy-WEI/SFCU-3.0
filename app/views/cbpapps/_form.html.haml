@@ -162,7 +162,7 @@
             .col-md-1
               Country
             .col-md-2
-              = f.text_field :perm_address_country, class:"form-control", placeholder: "Country"
+              = f.select :perm_address_country, Country.all.sort, {}, {class: "form-control"}
           %br
           %b Permanent Home Phone
           .row
