@@ -43,10 +43,10 @@ en:
         mother_maiden: "Mother's Maiden Name"
         credit_req_type: "Credit Request Type"
         amount_req: "Amount Requested"
-        term: "Term"
+        term: "You must agree to the terms & conditions in order to proceed"
         vehicle_condition: "Vechile Condition"
-        price_range_min: "Price Range Min"
-        price_range_max: "Price Range Max"
+        price_range_min: "Price Range"
+        price_range_max: "Price Range"
         e_mail: "Email"
         phone_number: "Phone Number"
         name_nearest_relative: "Nearest Relative Name"
@@ -66,6 +66,7 @@ en:
         rent_housing: "Rent/Housing"
         phone_bill: "Phone Bill"
         bursar_bill: "Bursar Bill"
+        agree_terms: "Terms and Conditions"
       ulapp:
         dob: "Date of Birth"
         credit_type: "Credit Type"
@@ -88,6 +89,15 @@ en:
         non_upenn_email: "Email"
   errors:
     messages:
+      accepted: "must be accepted in order to proceed"
       wrong_size: "is the wrong size (should be %{file_size})"
       size_too_small: "is too small (should be at least %{file_size})"
       size_too_big: "is too big (should be at most %{file_size})"
+
+#  errors:
+#    models:
+#      alapp:
+#        attributes:
+#          agree_terms:
+#            accepted: "agree to the terms & conditions in order to proceed"
+
