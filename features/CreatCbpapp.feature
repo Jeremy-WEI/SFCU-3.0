@@ -21,6 +21,7 @@ Feature: Cbp Application submission
     Given I'm on the Cbpapp form page
     When I fill in the form with Upenn email
     Then I should see errors of invalid email
+
 #
 #  Scenario: Submit a CBP application form without account number
 #    Given I'm on the Cbpapp form page
