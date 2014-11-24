@@ -48,7 +48,7 @@
               %b Date of birth*
               .row
                 .col-md-12
-                  = f.date_select :dob, class: "form-control"
+                  = f.date_select :dob, { start_year: 1900, end_year: Date.today.year, class: "form-control"}
           %br
           .row
             .col-md-12
@@ -193,9 +193,16 @@
               %b Local Address*
           = render "address", :f => f, :x => 'local', :y => "Local"
           .row
-            .col-md-12
-              %b Permanent Address
-          = render "address", :f => f, :x => 'perm', :y => "Permanent"
+            .col-md-12.checkbox
+              %label
+                = f.check_box :same
+                %b Permanent Address the same as Local Address?
+          %br
+          #permanent_address
+            .row
+              .col-md-12
+                %b Permanent Address
+            = render "address", :f => f, :x => 'perm', :y => "Permanent"
           .row
             .col-md-12
               .row
@@ -540,6 +547,14 @@
           $count_file++;
           if ($count_file>5){
             $('#add_another_file').hide();
+          }
+        });
+
+        $('#alapp_same').change(function(){
+          if(this.checked){
+            $("#permanent_address").hide();
+          }else{
+            $("#permanent_address").show();
           }
         });
   	}});
