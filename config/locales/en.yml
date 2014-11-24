@@ -79,7 +79,7 @@ en:
         alter_type: "Alternative Phone Type"
         ssn: "SSN"
         supervisor_firstname: "Supervisor's First Name"
-
+        graduation: "Graduation Date"
         supervisor_lastname: "Supervisor's Last Name"
         yesorno: "Terms"
       cbpapp:
