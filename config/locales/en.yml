@@ -29,6 +29,11 @@ en:
 #    format: "%{message}"
 en:
   activerecord:
+    models:
+      alapp: "Auto Loan Application"
+      ulapp: "Unsecure Loan Application"
+      cbpapp: "Credit Builder Program Appkication"
+      maapp: "Individual Account Applicants"
     attributes:
       alapp:
         first: "First Name"
@@ -61,39 +66,25 @@ en:
         rent_housing: "Rent/Housing"
         phone_bill: "Phone Bill"
         bursar_bill: "Bursar Bill"
-#      ulapp:
-#        credit_type: "Credit Type"
-#        amount: "Amount Requested"
-#        first_name: "First Name"
-#        last_name: "Last Name"
-#        check_sfcu_account: "SFCU Accoount"
-#        name_relative: "Name of Nearest Relative"
-#        phone_type: "Phone Type"
-#        alter_type: "Alternative Phone Type"
-#        ssn: "SSN"
-#        supervisor_firstname: "Supervisor's Frist Name"
-#        supervisor_firstname: "Supervisor's Last Name"
-#        yesorno: "Terms"
-#      cbpapp:
-#        ssn: "SSN"
-#        first_name: "First Name"
-#        last_name: "Last Name"
-    errors:
-      models:
-        alapp:
-          attributes:
-            ssn:
-              invalid: "must be of 9 digits, e.g. 123456789"
-            amount_req:
-              invalid: "is required (in dollars) and must be a positive number"
-            price_range_min:
-              invalid: "is required and must be a positive number"
-            price_range_max:
-              invalid: "be numeric and larger than minimum price"
-
-#en:
-#  errors:
-#    messages:
-#      wrong_size: "is the wrong size (should be %{file_size})"
-#      size_too_small: "is too small (should be at least %{file_size})"
-#      size_too_big: "is too big (should be at most %{file_size})"
+      ulapp:
+        credit_type: "Credit Type"
+        amount: "Amount Requested"
+        first_name: "First Name"
+        last_name: "Last Name"
+        check_sfcu_account: "SFCU Accoount"
+        name_relative: "Name of Nearest Relative"
+        phone_type: "Phone Type"
+        alter_type: "Alternative Phone Type"
+        ssn: "SSN"
+        supervisor_firstname: "Supervisor's Frist Name"
+        supervisor_firstname: "Supervisor's Last Name"
+        yesorno: "Terms"
+      cbpapp:
+        ssn: "SSN"
+        first_name: "First Name"
+        last_name: "Last Name"
+  errors:
+    messages:
+      wrong_size: "is the wrong size (should be %{file_size})"
+      size_too_small: "is too small (should be at least %{file_size})"
+      size_too_big: "is too big (should be at most %{file_size})"
