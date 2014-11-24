@@ -12,9 +12,9 @@ class Cbpapp < ActiveRecord::Base
 
   def check_dob
     if not dob.present?
-      errors.add(:dob, "Date of birth can't be blank")
+      errors.add(:dob, "can't be blank")
     elsif dob > Date.today
-      errors.add(:dob, "Date of birth must be in the past")
+      errors.add(:dob, "must be in the past")
     end
   end
 
@@ -29,11 +29,11 @@ class Cbpapp < ActiveRecord::Base
 
   def check_non_upenn_email
     if not non_upenn_email.present?
-      errors.add(:non_upenn_email, "Non upenn email can't be blank")
+      errors.add(:non_upenn_email, "can't be blank")
     elsif not non_upenn_email =~ /\A[^@\s]+@(?:\w+\.)+[a-z]{2,}\z/i
-      errors.add(:non_upenn_email, "The email format is invalid.")
+      errors.add(:non_upenn_email, "format is invalid.")
     elsif non_upenn_email =~ /\A([^@\s]+)@(?:\w+\.)*upenn.edu\z/i
-      errors.add(:non_upenn_email, "Cannot use upenn email")
+      errors.add(:non_upenn_email, "cannot be upenn email")
     end
   end
 
