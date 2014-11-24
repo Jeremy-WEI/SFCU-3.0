@@ -1,4 +1,7 @@
+require "file_size_validator"
+
 class Alapp < ActiveRecord::Base
+
   mount_uploader :driver_license_file, NormalFileUploader
   mount_uploader :document1, NormalFileUploader
   mount_uploader :document2, NormalFileUploader
@@ -8,36 +11,30 @@ class Alapp < ActiveRecord::Base
 
 
   validates :driver_license_file,
-            :presence => true,
             :file_size => {
                 :maximum => 5.megabytes.to_i
             }
 
   validates :document1,
-            :presence => true,
             :file_size => {
                 :maximum => 5.megabytes.to_i
             }
 
   validates :document2,
-            :presence => true,
             :file_size => {
                 :maximum => 5.megabytes.to_i
             }
   validates :document3,
-            :presence => true,
             :file_size => {
                 :maximum => 5.megabytes.to_i
             }
 
   validates :document4,
-            :presence => true,
             :file_size => {
                 :maximum => 5.megabytes.to_i
             }
 
   validates :document5,
-            :presence => true,
             :file_size => {
                 :maximum => 5.megabytes.to_i
             }
