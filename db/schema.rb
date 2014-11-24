@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141123212030) do
+ActiveRecord::Schema.define(version: 20141124031557) do
 
   create_table "alapps", force: true do |t|
     t.string   "first"
@@ -198,6 +198,7 @@ ActiveRecord::Schema.define(version: 20141123212030) do
     t.string   "employ4_freq"
     t.boolean  "employ4_continue"
     t.string   "employ4_expect_duration"
+    t.integer  "same"
   end
 
   create_table "cbpapps", force: true do |t|
