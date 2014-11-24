@@ -44,6 +44,7 @@ class Alapp < ActiveRecord::Base
   validates :e_mail, format: {with: EMAIL_FORMAT}
   validates :phone_number, :phone_nearest_relative, format: {with: PHONE_FORMAT}
 
+
   validates :employ1_grosspay, :employ2_grosspay, :employ3_grosspay,
             :account1_current_balance, :account2_current_balance, :account3_current_balance, :account4_current_balance,
             :property1_market_val, :property2_market_val,
@@ -78,6 +79,18 @@ class Alapp < ActiveRecord::Base
     end
   end
 
-
+  def validates_address
+    @username = "test_58d0bda464b7082a64604d18519f94ec619"
+    @lob = Lob.load(api_key: @username)
+    Lob.api_key = @username
+    @lob = Lob.load
+    @result = @lob.addresses.verify(
+        address_line1: local_address_line1,
+        address_line2: local_address_line2,
+        city: local_address_city,
+        state: local_address_state,
+        zip: local_address_zip
+    )
+  end
 
 end
