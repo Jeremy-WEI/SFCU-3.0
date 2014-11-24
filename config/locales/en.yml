@@ -19,8 +19,8 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-#en:
-#  hello: "Hello world"
+en:
+  hello: "Hello world"
 
 #en:
 #  errors:
@@ -61,19 +61,23 @@ en:
         rent_housing: "Rent/Housing"
         phone_bill: "Phone Bill"
         bursar_bill: "Bursar Bill"
-      ulapp:
-        credit_type: "Credit Type"
-        amount: "Amount Requested"
-        first_name: "First Name"
-        last_name: "Last Name"
-        check_sfcu_account: "SFCU Accoount"
-        name_relative: "Name of Nearest Relative"
-        phone_type: "Phone Type"
-        alter_type: "Alternative Phone Type"
-        ssn: "SSN"
-        supervisor_firstname: "Supervisor's Frist Name"
-        supervisor_firstname: "Supervisor's Last Name"
-        yesorno: "Terms"
+#      ulapp:
+#        credit_type: "Credit Type"
+#        amount: "Amount Requested"
+#        first_name: "First Name"
+#        last_name: "Last Name"
+#        check_sfcu_account: "SFCU Accoount"
+#        name_relative: "Name of Nearest Relative"
+#        phone_type: "Phone Type"
+#        alter_type: "Alternative Phone Type"
+#        ssn: "SSN"
+#        supervisor_firstname: "Supervisor's Frist Name"
+#        supervisor_firstname: "Supervisor's Last Name"
+#        yesorno: "Terms"
+#      cbpapp:
+#        ssn: "SSN"
+#        first_name: "First Name"
+#        last_name: "Last Name"
     errors:
       models:
         alapp:
@@ -87,9 +91,9 @@ en:
             price_range_max:
               invalid: "be numeric and larger than minimum price"
 
-en:
-  errors:
-    messages:
-      wrong_size: "is the wrong size (should be %{file_size})"
-      size_too_small: "is too small (should be at least %{file_size})"
-      size_too_big: "is too big (should be at most %{file_size})"
+#en:
+#  errors:
+#    messages:
+#      wrong_size: "is the wrong size (should be %{file_size})"
+#      size_too_small: "is too small (should be at least %{file_size})"
+#      size_too_big: "is too big (should be at most %{file_size})"
