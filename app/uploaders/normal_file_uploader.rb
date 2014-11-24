@@ -45,7 +45,7 @@ class NormalFileUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    "#{model.class.to_s.underscore}_#{mounted_as}" if original_filename
+    "#{model.class.to_s.underscore}_#{mounted_as}.#{file.extension}" if original_filename
   end
 
 end

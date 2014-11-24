@@ -19,35 +19,73 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
+#en:
+#  hello: "Hello world"
 
 #en:
 #  errors:
 ##    models:
 ##    maapp:
 #    format: "%{message}"
-#en:
-#  activerecord:
-#    attributes:
-#      maapp:
-#        ssn: "SSN"
-#    errors:
-#      models:
-#        maapp:
-#          attributes:
-#            ssn:
-#              invalid: 'Must include uppercase & number'
-
-
-#en:
-#  activerecord:
-#    attributes:
-#      maapp:
-#        ssn: "SSN"
-#en:
-#  errors:
-#    format: "%{message}"
+en:
+  activerecord:
+    attributes:
+      alapp:
+        first: "First Name"
+        last: "Last Name"
+        dob: "Date of Birth"
+        ssn: "SSN"
+        mother_maiden: "Mother's Maiden Name"
+        credit_req_type: "Credit Request Type"
+        amount_req: "Amount Requested"
+        term: "Term"
+        vehicle_condition: "Vechile Condition"
+        price_range_min: "Price Range Min"
+        price_range_max: "Price Range Max"
+        e_mail: "Email"
+        phone_number: "Phone Number"
+        name_nearest_relative: "Nearest Relative Name"
+        phone_nearest_relative: "Phone of Nearest Relative"
+        driver_lisence_num: "Driver's License"
+        employ1_grosspay: "Employer1's Gross Pay"
+        employ2_grosspay: "Employer2's Gross Pay"
+        add_income1_amount: "Additional income 1"
+        add_income2_amount: "Additional income 2"
+        add_income3_amount: "Additional income 3"
+        account1_current_balance: "Account 1 Current Balance"
+        account2_current_balance: "Account 2 Current Balance"
+        account3_current_balance: "Account 3 Current Balance"
+        account4_current_balance: "Account 4 Current Balance"
+        property1_market_val: "Property 1 Market Value"
+        property2_market_val: "Property 2 Market Value"
+        rent_housing: "Rent/Housing"
+        phone_bill: "Phone Bill"
+        bursar_bill: "Bursar Bill"
+      ulapp:
+        credit_type: "Credit Type"
+        amount: "Amount Requested"
+        first_name: "First Name"
+        last_name: "Last Name"
+        check_sfcu_account: "SFCU Accoount"
+        name_relative: "Name of Nearest Relative"
+        phone_type: "Phone Type"
+        alter_type: "Alternative Phone Type"
+        ssn: "SSN"
+        supervisor_firstname: "Supervisor's Frist Name"
+        supervisor_firstname: "Supervisor's Last Name"
+        yesorno: "Terms"
+    errors:
+      models:
+        alapp:
+          attributes:
+            ssn:
+              invalid: "must be of 9 digits, e.g. 123456789"
+            amount_req:
+              invalid: "is required (in dollars) and must be a positive number"
+            price_range_min:
+              invalid: "is required and must be a positive number"
+            price_range_max:
+              invalid: "be numeric and larger than minimum price"
 
 en:
   errors:

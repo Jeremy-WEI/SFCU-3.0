@@ -20,16 +20,26 @@ module UlappsHelper
               valid = true
             end
           end
-
           unless valid
             record.errors.add(field, "Format of #{field} isn't recognized")
           end
         end
       end
     end
-
   end
 
+  class AmountValidator < ActiveModel::Validator
 
+    def validate(record)
+      options[:fields].each do |field|
+        amount = record.send(field)
+        if not amount.blank?
+          if not amount =~ /\A\d+\z/
+            record.errors.add(field, "The format of #{field} is invalid.")
+          end
+        end
+      end
+    end
+  end
 
 end

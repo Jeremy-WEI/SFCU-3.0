@@ -7,7 +7,7 @@ class CreateMaapps < ActiveRecord::Migration
       t.date :dob
       t.string :student_status
       t.string :penn_affiliation
-      t.integer :grad_year
+      t.string :grad_year
       t.string :penn_id
       t.string :ssn
       t.string :w8ben_form
