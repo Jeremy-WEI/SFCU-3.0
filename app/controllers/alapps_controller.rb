@@ -1,6 +1,5 @@
 class AlappsController < ApplicationController
   before_action :set_alapp, only: [:show, :edit, :update, :destroy]
-  before_action :make_perm_address, only: [:create, :update]
   # GET /alapps
   # GET /alapps.json
   def index
@@ -200,16 +199,6 @@ class AlappsController < ApplicationController
                                   :employ4_continue,
                                   :employ4_expect_duration,
                                   :same)
-  end
-  def make_perm_address
-    if self.same == 1
-      self.perm_address_line1 = self.local_address_line1
-      self.perm_address_line2 = self.local_address_line2
-      self.perm_address_city = self.local_address_city
-      self.perm_address_state = self.local_address_state
-      self.perm_address_zip = self.local_address_zip
-      self.perm_country = self.local_country
-    end
   end
 # def alapp_status
 #   #params.require(:alapp).permit(:application_status)
