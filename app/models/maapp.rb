@@ -1,4 +1,9 @@
+require 'file_size_validator'
+
 class Maapp < ActiveRecord::Base
+  mount_uploader :w8ben_form, W8BenFormUploader
+  mount_uploader :file_id1, FileId1Uploader
+  mount_uploader :file_id2, FileId2Uploader
 
   SSN_FORMAT = /\A\d{9}\z/
   PHONE_FORMAT =/\A\(?\d{3}[-\.)]?\d{3}[-\.]?\d{4}\z/
@@ -21,10 +26,18 @@ class Maapp < ActiveRecord::Base
   validates :visa_pin_confirmation, presence: true
   validates :terms, :understand, acceptance: true
 
+
+  validates :w8ben_form,
+            :presence => true,
+            :file_size => {
+                :maximum => 0.5.megabytes.to_i
+            }
+
   def dob_validation
     errors.add(:dob, "Date of Birth can't be blank.") unless dob.present?
     errors.add(:dob, "Date of Birth must be in the past.") if dob >= Date.today
   end
+
 
 end
 
