@@ -18,9 +18,14 @@
     %b ZIP*
 .row
   .col-md-4
-    = f.text_field :"#{x}_address_city", placeholder: "City", class: "input-small", class: "form-control"
+    = f.text_field :"#{x}_address_city", placeholder: "City", class: "form-control"
   .col-md-4
     = f.select :"#{x}_address_state", options_for_select(us_states), {}, {class: "form-control"}
+.row
   .col-md-4
-    = f.text_field :"#{x}_address_zip", placeholder: "#####", class: "input-small", class: "form-control"
+    = f.text_field :"#{x}_address_zip", placeholder: "#####", class: "form-control"
+  .col-md-4
+    = f.label :"#{x}_country", "Country*"
+    %br
+    = f.select :"#{x}_country", Country.all.sort, {}, {class: "form-control"}
 %br

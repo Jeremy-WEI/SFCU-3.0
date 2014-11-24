@@ -74,7 +74,6 @@ class AlappsController < ApplicationController
   # POST /alapps.json
   def create
     @alapp = Alapp.new(alapp_params)
-
     respond_to do |format|
       if @alapp.save
         # flash[:notice] = "You have successfully submitted the form!"
