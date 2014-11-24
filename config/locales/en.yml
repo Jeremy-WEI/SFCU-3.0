@@ -29,6 +29,11 @@
 #    format: "%{message}"
 en:
   activerecord:
+    models:
+      alapp: "Auto Loan Application"
+      ulapp: "Unsecure Loan Application"
+      cbpapp: "Credit Builder Program Appkication"
+      maapp: "Individual Account Applicants"
     attributes:
       alapp:
         first: "First Name"
@@ -74,20 +79,10 @@ en:
         supervisor_firstname: "Supervisor's Frist Name"
         supervisor_firstname: "Supervisor's Last Name"
         yesorno: "Terms"
-    errors:
-      models:
-        alapp:
-          attributes:
-            ssn:
-              invalid: "must be of 9 digits, e.g. 123456789"
-            amount_req:
-              invalid: "is required (in dollars) and must be a positive number"
-            price_range_min:
-              invalid: "is required and must be a positive number"
-            price_range_max:
-              invalid: "be numeric and larger than minimum price"
-
-en:
+      cbpapp:
+        ssn: "SSN"
+        first_name: "First Name"
+        last_name: "Last Name"
   errors:
     messages:
       wrong_size: "is the wrong size (should be %{file_size})"
