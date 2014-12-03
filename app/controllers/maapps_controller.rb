@@ -58,6 +58,7 @@ class MaappsController < ApplicationController
       render :index
     else
       @applicants = Maapp.find(params[:exports])
+      # render text: params[:exports]
 
       @header = Maapp.column_names
 

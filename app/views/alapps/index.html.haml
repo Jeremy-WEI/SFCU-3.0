@@ -1,32 +1,32 @@
 
 
-= form_tag url_for(:controller => 'alapps', :action => 'export'), method: 'get' do
-  -#- unless @error.nil?
-  -#  #error_explanation
-  -#    = @error
-  %table.table.table-hover.col-md-12
-    %tr
-      %th.col-md-1
-      %th.col-md-2 Date Submitted
-      %th.col-md-1 Applicant
-      %th.col-md-2 Loan Amount($)
-      %th.col-md-3 Status
-      %th.col-md-1
-      %th.col-md-1
+-#- unless @error.nil?
+-#  #error_explanation
+-#    = @error
+%table.table.table-hover.col-md-12
+  %tr
+    %th.col-md-1
+    %th.col-md-2 Date Submitted
+    %th.col-md-1 Applicant
+    %th.col-md-2 Loan Amount($)
+    %th.col-md-3 Status
+    %th.col-md-1
+    %th.col-md-1
 
-    - @alapps.each do |applicant|
-      %tr{:class => "#{if applicant.application_status == 'Unprocessed' then 'active' elsif applicant.application_status == 'Processed' then 'success' else 'info' end}"}
-      %tr
-        %td= check_box_tag 'exports[]', applicant.id, false, id: "exports_#{applicant.id}", class: "checkbox"
-        %td= label_tag "exports_#{applicant.id}", applicant.created_at.strftime('%Y-%m-%d')
-        %td= label_tag "exports_#{applicant.id}", applicant.first + ' ' + applicant.last
-        %td= label_tag "exports_#{applicant.id}", applicant.amount_req.to_s
-        %td.text-center= form_for applicant do |f| f.select :application_status, options_for_select([ "Unprocessed", "Processed", "Hold" ], applicant.application_status), {}, id: "status_#{applicant.id}", :onchange => 'this.form.submit()' end
-        %td= link_to 'Show', applicant
-        -#%td= link_to 'Save', save_alapp_url(applicant), :method => :post
-        %td= link_to 'Destroy', applicant, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  - @alapps.each do |applicant|
+    %tr{:class => "#{if applicant.application_status == 'Unprocessed' then 'active' elsif applicant.application_status == 'Processed' then 'success' else 'info' end}"}
+    %tr
+      %td= check_box_tag 'exports[]', applicant.id, false, id: "exports_#{applicant.id}", class: "checkbox", form: "exports"
+      %td= label_tag "exports_#{applicant.id}", applicant.created_at.strftime('%Y-%m-%d')
+      %td= label_tag "exports_#{applicant.id}", applicant.first + ' ' + applicant.last
+      %td= label_tag "exports_#{applicant.id}", applicant.amount_req.to_s
+      %td.text-center= form_for applicant do |f| f.select :application_status, options_for_select([ "Unprocessed", "Processed", "Hold" ], applicant.application_status), {}, id: "status_#{applicant.id}", :onchange => 'this.form.submit()' end
+      %td= link_to 'Show', applicant
+      -#%td= link_to 'Save', save_alapp_url(applicant), :method => :post
+      %td= link_to 'Destroy', applicant, :method => :delete, :data => { :confirm => 'Are you sure?' }
   %br
-    = submit_tag 'Export', id: "export_button", class: "btn btn-primary"
+= form_tag url_for(:controller => 'alapps', :action => 'export'), method: 'get', name: "exports", id: "exports" do
+  = submit_tag 'Export', id: "export_button", class: "btn btn-primary"
 
 :javascript
   $(document).ready(function() {

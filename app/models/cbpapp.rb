@@ -2,13 +2,13 @@ class Cbpapp < ActiveRecord::Base
 
   SSN_FORMAT = /\A\d{9}\z/
 
-  validates :first_name, :last_name, :mother_maiden,:account_number, :how_know,
-            :local_home_phone, :local_address_line1, :local_address_city, :local_address_state,
-            :student_status, :period,
-            presence: true
-  validates :ssn, format: {with: SSN_FORMAT}
-  validate :check_dob, :check_non_upenn_email, :check_grad_date
-  validates_with CbpappsHelper::PhoneValidator, fields: [:local_home_phone, :biz_phone, :perm_home_phone]
+  # validates :first_name, :last_name, :mother_maiden,:account_number, :how_know,
+  #           :local_home_phone, :local_address_line1, :local_address_city, :local_address_state,
+  #           :student_status, :period,
+  #           presence: true
+  # validates :ssn, format: {with: SSN_FORMAT}
+  # validate :check_dob, :check_non_upenn_email, :check_grad_date
+  # validates_with CbpappsHelper::PhoneValidator, fields: [:local_home_phone, :biz_phone, :perm_home_phone]
 
   def check_dob
     if not dob.present?

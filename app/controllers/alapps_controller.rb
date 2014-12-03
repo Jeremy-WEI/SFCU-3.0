@@ -199,7 +199,7 @@ class AlappsController < ApplicationController
                                   :employ4_freq,
                                   :employ4_continue,
                                   :employ4_expect_duration,
-                                  :same)
+                                  :same, :application_status)
   end
 # def alapp_status
 #   #params.require(:alapp).permit(:application_status)

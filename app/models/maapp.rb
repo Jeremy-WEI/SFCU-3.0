@@ -28,7 +28,6 @@ class Maapp < ActiveRecord::Base
   #
   # validates :first_name, :last_name, :student_status, :penn_affiliation,
   #           :local_address_line1, :local_address_city, :local_address_state, :local_address_zip,
-  #           :perm_address_line1, :perm_address_city, :perm_address_state, :perm_address_zip,
   #           :statement_type, :checking_account,
   #           presence: true
   # validate :dob_validation
