@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141123212030) do
+ActiveRecord::Schema.define(version: 20141203025309) do
 
   create_table "alapps", force: true do |t|
     t.string   "first"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 20141123212030) do
     t.string   "local_address_city"
     t.string   "local_address_state"
     t.string   "local_address_zip"
-    t.integer  "local_country"
     t.string   "perm_address_line1"
     t.string   "perm_address_line2"
     t.string   "perm_address_city"
@@ -198,6 +197,7 @@ ActiveRecord::Schema.define(version: 20141123212030) do
     t.string   "employ4_freq"
     t.boolean  "employ4_continue"
     t.string   "employ4_expect_duration"
+    t.string   "local_country"
   end
 
   create_table "cbpapps", force: true do |t|
@@ -242,7 +242,7 @@ ActiveRecord::Schema.define(version: 20141123212030) do
     t.string   "grad_year"
     t.string   "penn_id"
     t.string   "ssn"
-    t.string   "w8ben_form"
+    t.string   "W8BEN_form"
     t.string   "doc_type"
     t.string   "doc_id"
     t.string   "file_id1"

@@ -2,6 +2,8 @@ require 'file_size_validator'
 
 class Maapp < ActiveRecord::Base
 
+  USERNAME = "test_58d0bda464b7082a64604d18519f94ec619" #for lob API
+
   mount_uploader :w8ben_form, W8BenFormUploader
   mount_uploader :file_id1, IdPhotoUploader
   mount_uploader :file_id2, IdPhotoUploader
@@ -15,6 +17,8 @@ class Maapp < ActiveRecord::Base
   attr_accessor :grad_season, :same_perm_address
   before_validation :make_grad_year, :make_perm_address
 
+  validate :validates_local_address
+  validate :validates_perm_address
   # validates :w8ben_form,
   #           presence: true,
   #           file_size: {
@@ -38,10 +42,12 @@ class Maapp < ActiveRecord::Base
   # validates :alter_email, format: {with: EMAIL_FORMAT}
   # validates :penncard_number, format: {with: PENNCARD_NUMBER_FORMAT}, if: lambda { penncard_link == true }
   # validates :check_type, :check_delivery, :address_on_checks, :color, presence: true, if: lambda {order_checks == true}
+
   validates :visa_pin, presence:true, confirmation: true, if: lambda {visa_checkcard == true}
   validates :visa_pin_confirmation, presence: true, if: lambda {visa_checkcard == true}
   # validates :visa_delivery, presence: true, if: lambda {visa_checkcard == true}
   validates :terms, :understand, acceptance: true
+
 
   def dob_validation
     errors.add(:dob, "Date of Birth can't be blank.") unless dob.present?
@@ -52,8 +58,58 @@ class Maapp < ActiveRecord::Base
     self.grad_year = [grad_season, grad_year].join('-')
   end
 
+  def empty_field? (field)
+    return (field.nil? or field.to_s == '')
+  end
+
+  def validates_local_address
+    begin
+      @lob = Lob.load(api_key: USERNAME)
+      @result = @lob.addresses.verify(
+          address_line1: self.local_address_line1,
+          address_line2: self.local_address_line2,
+          city: self.local_address_city,
+          state: self.local_address_state,
+          zip: self.local_address_zip
+      )
+      self.local_address_line1 = @result["address"]["address_line1"]
+      self.local_address_line2 = @result["address"]["address_line2"]
+      self.local_address_city = @result["address"]["address_city"]
+      self.local_address_state = @result["address"]["address_state"]
+      self.local_address_zip = @result["address"]["address_zip"]
+    rescue
+      errors.add(:local_address_line1, "Invalid address")
+    end
+  end
+
+  def validates_perm_address
+    if empty_field?(perm_address_line1) and empty_field?(perm_address_line2) #if not filled (perm address not required)
+      self.perm_address_city = ""
+      self.perm_address_zip = ""
+      self.perm_address_state = ""
+    else
+      begin
+        @lob = Lob.load(api_key: USERNAME)
+        @result = @lob.addresses.verify(
+            address_line1: self.perm_address_line1,
+            address_line2: self.perm_address_line2,
+            city: self.perm_address_city,
+            state: self.perm_address_state,
+            zip: self.perm_address_zip
+        )
+        self.perm_address_line1 = @result["address"]["address_line1"]
+        self.perm_address_line2 = @result["address"]["address_line2"]
+        self.perm_address_city = @result["address"]["address_city"]
+        self.perm_address_state = @result["address"]["address_state"]
+        self.perm_address_zip = @result["address"]["address_zip"]
+      rescue
+        errors.add(:perm_address_line1, "Invalid address")
+      end
+    end
+  end
+
   def make_perm_address
-    if same_perm_address == '1' then
+    if same_perm_address == "1" then
       self.perm_address_line1 = self.local_address_line1
       self.perm_address_line2 = self.local_address_line2
       self.perm_address_city = self.local_address_city
