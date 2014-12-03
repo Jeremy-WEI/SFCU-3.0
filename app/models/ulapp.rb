@@ -2,6 +2,8 @@ require 'file_size_validator'
 
 class Ulapp < ActiveRecord::Base
 
+  USERNAME = "test_58d0bda464b7082a64604d18519f94ec619"
+
   mount_uploader :file1, NormalFileUploader
   mount_uploader :file2, NormalFileUploader
   mount_uploader :file3, NormalFileUploader
@@ -37,6 +39,8 @@ class Ulapp < ActiveRecord::Base
                                                          :market_value1, :market_value2, :market_value3,
                                                          :cbalance1, :cbalance2, :cbalance3, :cbalance4,
                                                          :avg1, :avg2, :avg3, :avg4, :monthly1, :monthly2]
+  validate :validates_local_address
+  validate :validates_perm_address
 
   def check_sfcu_account
     if sfcu_account.present?
@@ -66,13 +70,72 @@ class Ulapp < ActiveRecord::Base
     end
   end
 
+
+  def empty_field? (field)
+    return (field.nil? or field.to_s == '')
+  end
+
+  def validates_local_address
+    if ["us", "united states"].include? self.local_country.chomp.downcase
+      begin
+        @lob = Lob.load(api_key: USERNAME)
+        @result = @lob.addresses.verify(
+            address_line1: self.local_address_line1,
+            address_line2: self.local_address_line2,
+            city: self.local_address_city,
+            state: self.local_address_state,
+            zip: self.local_address_zip
+        )
+        self.local_address_line1 = @result["address"]["address_line1"]
+        self.local_address_line2 = @result["address"]["address_line2"]
+        self.local_address_city = @result["address"]["address_city"]
+        self.local_address_state = @result["address"]["address_state"]
+        self.local_address_zip = @result["address"]["address_zip"]
+        self.local_country = @result["address"]["address_country"]
+      rescue
+        errors.add(:local_address_line1, "Invalid address")
+      end
+    end
+  end
+
+  def validates_perm_address
+    if ["us", "united states"].include? self.perm_country.chomp.downcase
+      if empty_field?(perm_address_line1) and empty_field?(perm_address_line2) #if not filled (perm address not required)
+        self.perm_address_city = ""
+        self.perm_address_zip = ""
+        self.perm_address_state = ""
+        self.perm_country = ""
+      else
+        begin
+          @lob = Lob.load(api_key: USERNAME)
+          @result = @lob.addresses.verify(
+              address_line1: self.perm_address_line1,
+              address_line2: self.perm_address_line2,
+              city: self.perm_address_city,
+              state: self.perm_address_state,
+              zip: self.perm_address_zip
+          )
+          self.perm_address_line1 = @result["address"]["address_line1"]
+          self.perm_address_line2 = @result["address"]["address_line2"]
+          self.perm_address_city = @result["address"]["address_city"]
+          self.perm_address_state = @result["address"]["address_state"]
+          self.perm_address_zip = @result["address"]["address_zip"]
+          self.perm_country = @result["address"]["address_country"]
+        rescue
+          errors.add(:perm_address_line1, "Invalid address")
+        end
+      end
+    end
+  end
+
   def make_perm_address
-    if same
+    if same == "1"
       self.perm_address_line1 = self.local_address_line1
       self.perm_address_line2 = self.local_address_line2
       self.perm_address_city = self.local_address_city
       self.perm_address_state = self.local_address_state
       self.perm_address_zip = self.local_address_zip
+      self.perm_country = self.local_country
     end
   end
 

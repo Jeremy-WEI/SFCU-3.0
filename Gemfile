@@ -37,6 +37,7 @@ gem 'carmen'
 gem 'carmen-rails'
 
 gem 'carrierwave'
+gem 'lob'
 
 group :test, :development do
   gem 'cucumber-rails', :require => false

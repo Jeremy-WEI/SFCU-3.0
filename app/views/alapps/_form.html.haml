@@ -195,7 +195,7 @@
           .row
             .col-md-12.checkbox
               %label
-                = f.check_box :same
+                = f.check_box :same, {}, "1", "0"
                 %b Permanent Address the same as Local Address?
           %br
           #permanent_address

@@ -1,7 +1,9 @@
 require "file_size_validator"
 
 class Alapp < ActiveRecord::Base
-
+  
+  USERNAME = "test_58d0bda464b7082a64604d18519f94ec619"
+  
   mount_uploader :driver_license_file, NormalFileUploader
   mount_uploader :document1, NormalFileUploader
   mount_uploader :document2, NormalFileUploader
@@ -9,6 +11,7 @@ class Alapp < ActiveRecord::Base
   mount_uploader :document4, NormalFileUploader
   mount_uploader :document5, NormalFileUploader
 
+  before_validation :make_perm_address
 
   validates :driver_license_file,
             presence: true,
@@ -21,8 +24,6 @@ class Alapp < ActiveRecord::Base
             }
 
   attr_accessor :same
-
-  before_validation :make_perm_address
 
   has_many :employments
 
@@ -43,9 +44,12 @@ class Alapp < ActiveRecord::Base
   validates :price_range_min, numericality: { greater_than_or_equal_to: 0.0}
   validates :price_range_max, numericality: { greater_than_or_equal_to: :price_range_min}
   validate :validates_vehicle_type
+  validate :validates_local_address
+  validate :validates_perm_address
 
   validates :e_mail, format: {with: EMAIL_FORMAT}
   validates :phone_number, :phone_nearest_relative, format: {with: PHONE_FORMAT}
+
 
   validates :employ1_grosspay, :employ2_grosspay, :employ3_grosspay,
             :account1_current_balance, :account2_current_balance, :account3_current_balance, :account4_current_balance,
@@ -54,9 +58,6 @@ class Alapp < ActiveRecord::Base
             numericality: {greater_than_or_equal_to: 0.0}, allow_nil: true
 
    validates :agree_terms, acceptance: true
-
-  #validates_with AlappsHelper::DollarValidator, fields: [:employ1_grosspay]
-
 
   def check_dob
     if not dob.present?
@@ -81,8 +82,66 @@ class Alapp < ActiveRecord::Base
     end
   end
 
+
+  def empty_field? (field)
+    return (field.nil? or field.to_s == '')
+  end
+
+  def validates_local_address
+    if ["us", "united states"].include? self.local_country.chomp.downcase
+      begin
+        @lob = Lob.load(api_key: USERNAME)
+        @result = @lob.addresses.verify(
+            address_line1: self.local_address_line1,
+            address_line2: self.local_address_line2,
+            city: self.local_address_city,
+            state: self.local_address_state,
+            zip: self.local_address_zip
+        )
+        self.local_address_line1 = @result["address"]["address_line1"]
+        self.local_address_line2 = @result["address"]["address_line2"]
+        self.local_address_city = @result["address"]["address_city"]
+        self.local_address_state = @result["address"]["address_state"]
+        self.local_address_zip = @result["address"]["address_zip"]
+        self.local_country = @result["address"]["address_country"]
+      rescue
+        errors.add(:local_address_line1, "Invalid address")
+      end
+    end
+  end
+
+  def validates_perm_address
+    if ["us", "united states"].include? self.perm_country.chomp.downcase
+      if empty_field?(perm_address_line1) and empty_field?(perm_address_line2) #if not filled (perm address not required)
+        self.perm_address_city = ""
+        self.perm_address_zip = ""
+        self.perm_address_state = ""
+        self.perm_country = ""
+      else
+        begin
+          @lob = Lob.load(api_key: USERNAME)
+          @result = @lob.addresses.verify(
+              address_line1: self.perm_address_line1,
+              address_line2: self.perm_address_line2,
+              city: self.perm_address_city,
+              state: self.perm_address_state,
+              zip: self.perm_address_zip
+          )
+          self.perm_address_line1 = @result["address"]["address_line1"]
+          self.perm_address_line2 = @result["address"]["address_line2"]
+          self.perm_address_city = @result["address"]["address_city"]
+          self.perm_address_state = @result["address"]["address_state"]
+          self.perm_address_zip = @result["address"]["address_zip"]
+          self.perm_country = @result["address"]["address_country"]
+        rescue
+          errors.add(:perm_address_line1, "Invalid address")
+        end
+      end
+    end
+  end
+
   def make_perm_address
-    if same == 1
+    if same == "1"
       self.perm_address_line1 = self.local_address_line1
       self.perm_address_line2 = self.local_address_line2
       self.perm_address_city = self.local_address_city
@@ -91,6 +150,5 @@ class Alapp < ActiveRecord::Base
       self.perm_country = self.local_country
     end
   end
-
 
 end
