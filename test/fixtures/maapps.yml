@@ -1,91 +1,181 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first_name: MyString
-  middle_name: MyString
-  last_name: MyString
-  dob: 2014-11-15
-  student_status: MyString
-  penn_affiliation: MyString
-  grad_year: 1
-  penn_id: MyString
-  ssn: MyString
-  W8BEN_form: MyString
-  doc_type: MyString
-  doc_id: MyString
+  first_name: Jeremy
+  middle_name:
+  last_name: Wei
+  dob: 1990-11-15
+  student_status: Domestic
+  penn_affiliation: Graduate
+  grad_year: Spring-2016
+  penn_id: 12323242
+  ssn: 123456789
+  w8ben_form:
+  doc_type: Passport
+  doc_id: G2138914
   file_id1: MyString
-  file_id2: MyString
-  mobile_phone: MyString
-  home_phone: MyString
-  penn_email: MyString
-  alter_email: MyString
-  local_address_line1: MyString
-  local_address_line2: MyString
-  local_address_city: MyString
-  local_address_state: MyString
-  local_address_zip: MyString
-  perm_address_line1: MyString
-  perm_address_line2: MyString
-  perm_address_city: MyString
-  perm_address_state: MyString
-  perm_address_zip: MyString
-  statement_type: MyString
-  checking_account: MyString
-  courtesy_pay: false
+  file_id2: MyString.png
+  mobile_phone: 2153992034
+  home_phone: 3245467686
+  penn_email: jeremywei@seas.upenn.edu
+  alter_email: jeremywei@gmail.com
+  local_address_line1: Room 1302, 3600 Chestnut St.
+  local_address_line2:
+  local_address_city: Philadelphia
+  local_address_state: PA
+  local_address_zip: 19104
+  perm_address_line1: Room 1302, 3600 Chestnut St.
+  perm_address_line2:
+  perm_address_city: Philadelphia
+  perm_address_state: PA
+  perm_address_zip: 19104
+  statement_type: Paper
+  checking_account: Regular
+  courtesy_pay: true
   visa_checkcard: false
-  visa_pin: MyString
-  visa_delivery: MyString
+  visa_pin:
+  visa_delivery:
   penncard_link: false
-  penncard_number: MyString
+  penncard_number:
   order_checks: false
   address_on_checks: MyString
   check_type: MyString
   color: MyString
   check_delivery: MyString
-  signature: MyString
+  signature: Jeremy Wei
   apply_date: 2014-11-15
 
 two:
-  first_name: MyString
-  middle_name: MyString
-  last_name: MyString
-  dob: 2014-11-15
-  student_status: MyString
-  penn_affiliation: MyString
-  grad_year: 1
-  penn_id: MyString
-  ssn: MyString
-  W8BEN_form: MyString
-  doc_type: MyString
-  doc_id: MyString
+  first_name: Jeremy
+  middle_name:
+  last_name: Wei
+  dob: 1990-11-15
+  student_status: Domestic
+  penn_affiliation: Graduate
+  grad_year: Spring-2016
+  penn_id: 12323242
+  ssn:
+  w8ben_form:
+  doc_type: Passport
+  doc_id: G2138914
   file_id1: MyString
-  file_id2: MyString
-  mobile_phone: MyString
-  home_phone: MyString
-  penn_email: MyString
-  alter_email: MyString
-  local_address_line1: MyString
-  local_address_line2: MyString
-  local_address_city: MyString
-  local_address_state: MyString
-  local_address_zip: MyString
-  perm_address_line1: MyString
-  perm_address_line2: MyString
-  perm_address_city: MyString
-  perm_address_state: MyString
-  perm_address_zip: MyString
-  statement_type: MyString
-  checking_account: MyString
-  courtesy_pay: false
+  file_id2: MyString.png
+  mobile_phone: 2153992034
+  home_phone: 3245467686
+  penn_email: jeremywei@seas.upenn.edu
+  alter_email: jeremywei@gmail.com
+  local_address_line1: Room 1302, 3600 Chestnut St.
+  local_address_line2:
+  local_address_city: Philadelphia
+  local_address_state: PA
+  local_address_zip: 19104
+  perm_address_line1: Room 1302, 3600 Chestnut St.
+  perm_address_line2:
+  perm_address_city: Philadelphia
+  perm_address_state: PA
+  perm_address_zip: 19104
+  statement_type: Paper
+  checking_account: Regular
+  courtesy_pay: true
   visa_checkcard: false
-  visa_pin: MyString
-  visa_delivery: MyString
+  visa_pin:
+  visa_delivery:
   penncard_link: false
-  penncard_number: MyString
+  penncard_number:
   order_checks: false
   address_on_checks: MyString
   check_type: MyString
   color: MyString
   check_delivery: MyString
-  signature: MyString
+  signature: Jeremy Wei
   apply_date: 2014-11-15
+
+three:
+  first_name: Jeremy
+  middle_name:
+  last_name: Wei
+  dob: 1990-11-15
+  student_status: Domestic
+  penn_affiliation: Graduate
+  grad_year: Spring-2016
+  penn_id: 12323242
+  ssn: 123456789
+  w8ben_form:
+  doc_type: Passport
+  doc_id: G2138914
+  file_id1: MyString.png
+  file_id2: MyString.png
+  mobile_phone: 2153992034
+  home_phone: 3245467686
+  penn_email:
+  alter_email: jeremywei@gmail.com
+  local_address_line1: Room 1302, 3600 Chestnut St.
+  local_address_line2:
+  local_address_city: Philadelphia
+  local_address_state: PA
+  local_address_zip: 19104
+  perm_address_line1: Room 1302, 3600 Chestnut St.
+  perm_address_line2:
+  perm_address_city: Philadelphia
+  perm_address_state: PA
+  perm_address_zip: 19104
+  statement_type: Paper
+  checking_account: Regular
+  courtesy_pay: true
+  visa_checkcard: false
+  visa_pin:
+  visa_delivery:
+  penncard_link: false
+  penncard_number:
+  order_checks: false
+  address_on_checks: MyString
+  check_type: MyString
+  color: MyString
+  check_delivery: MyString
+  signature: Jeremy Wei
+  apply_date: 2014-11-15
+
+#two:
+#  first_name: MyString
+#  middle_name: MyString
+#  last_name: MyString
+#  dob: 2014-11-15
+#  student_status: MyString
+#  penn_affiliation: MyString
+#  grad_year: 1
+#  penn_id: MyString
+#  ssn: MyString
+#  W8BEN_form: MyString
+#  doc_type: MyString
+#  doc_id: MyString
+#  file_id1: MyString
+#  file_id2: MyString
+#  mobile_phone: MyString
+#  home_phone: MyString
+#  penn_email: MyString
+#  alter_email: MyString
+#  local_address_line1: MyString
+#  local_address_line2: MyString
+#  local_address_city: MyString
+#  local_address_state: MyString
+#  local_address_zip: MyString
+#  perm_address_line1: MyString
+#  perm_address_line2: MyString
+#  perm_address_city: MyString
+#  perm_address_state: MyString
+#  perm_address_zip: MyString
+#  statement_type: MyString
+#  checking_account: MyString
+#  courtesy_pay: false
+#  visa_checkcard: false
+#  visa_pin: MyString
+#  visa_delivery: MyString
+#  penncard_link: false
+#  penncard_number: MyString
+#  order_checks: false
+#  address_on_checks: MyString
+#  check_type: MyString
+#  color: MyString
+#  check_delivery: MyString
+#  signature: MyString
+#  apply_date: 2014-11-15

@@ -199,18 +199,18 @@
             .col-md-2
               Phone Type*
             .col-md-4
-              = f.select :phone_type, ([['Home', 1], ['Cell', 2], ['Business', 3]]), {}, {class: "form-control"}
+              = f.select :phone_type, ([['Home', 'Home'], ['Cell', 'Cell'], ['Business', 'Business']]), {}, {class: "form-control"}
           %br
-          %b Alternate Phone*
+          %b Alternate Phone
           .row
             .col-md-3
               Phone Number
             .col-md-3
               = f.text_field :alter_number, class: "form-control"
             .col-md-2
-              Phone Type*
+              Phone Type
             .col-md-4
-              = f.select :alter_type, ([['Home', 1], ['Cell', 2], ['Business', 3]]), {}, {class: "form-control"}
+              = f.select :alter_type, ([['Home', 'Home'], ['Cell', 'Cell'], ['Business', 'Business']]), {}, {class: "form-control"}
           %br
       #tab4.tab-pane
         %hr
@@ -304,12 +304,12 @@
           .row
             .col-md-3
               %label.radio-inline
-                = f.radio_button :continue, false
-                No
-            .col-md-3
-              %label.radio-inline
                 = f.radio_button :continue, true
                 Yes
+            .col-md-3
+              %label.radio-inline
+                = f.radio_button :continue, false
+                No
           %br
           %b If "No", please list expected duration
           .row

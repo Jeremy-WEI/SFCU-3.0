@@ -7,7 +7,7 @@ class CreateAlapps < ActiveRecord::Migration
       t.date :dob
       t.string :mother_maiden
       t.string :ssn
-      t.boolean :alumni
+      t.string :alumni
       t.string :credit_req_type
       t.float :amount_req
       t.string :term

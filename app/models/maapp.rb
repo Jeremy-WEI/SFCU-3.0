@@ -19,7 +19,7 @@ class Maapp < ActiveRecord::Base
             presence: true,
             file_size: {
                 maximum: 5.megabytes.to_i
-            }, if: lambda { ssn == '' }
+            }, if: lambda { not ssn.present? }
   validates :file_id1, :file_id2,
             presence: true,
             file_size: {

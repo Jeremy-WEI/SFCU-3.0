@@ -11,7 +11,7 @@ class CreateUlapps < ActiveRecord::Migration
       t.string :ssn
       t.string :sfcu_account
       t.string :name_relative
-      t.integer :phone_relative
+      t.string :phone_relative
       t.string :mothers
       t.date :graduation
       t.string :local_address_line1
@@ -27,10 +27,10 @@ class CreateUlapps < ActiveRecord::Migration
       t.integer :perm_address_zip
       t.string :perm_country
       t.string :e_mail
-      t.integer :phone_number
-      t.integer :phone_type
-      t.integer :alter_number
-      t.integer :alter_type
+      t.string :phone_number
+      t.string :phone_type
+      t.string :alter_number
+      t.string :alter_type
       t.string :employer
       t.string :employee_address_line1
       t.string :employee_address_line2
@@ -126,7 +126,7 @@ class CreateUlapps < ActiveRecord::Migration
       t.string :file4
       t.string :file5
       t.string :file6
-      t.boolean :yesorno
+      t.integer :yesorno
       t.string :signature
 
       t.timestamps
