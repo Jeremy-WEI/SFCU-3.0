@@ -15,7 +15,7 @@
         %td= label_tag "exports_#{applicant.id}", applicant.created_at.strftime('%Y-%m-%d')
         %td= label_tag "exports_#{applicant.id}", applicant.first_name +   ' ' + applicant.last_name
         %td= label_tag "exports_#{applicant.id}", applicant.amount
-        %td= label_tag "exports_#{applicant.id}", applicant.application_status
+        %td.text-center= form_for applicant do |f| f.select :application_status, options_for_select([ "Unprocessed", "Processed", "Hold" ], applicant.application_status), {}, id: "status_#{applicant.id}", :onchange => 'this.form.submit()' end
         %td= link_to 'Show', applicant
         -#%td= link_to 'Edit', edit_maapp_path(applicant)
         %td= link_to 'Destroy', applicant, :method => :delete, :data => { :confirm => 'Are you sure?' }

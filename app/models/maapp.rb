@@ -13,30 +13,30 @@ class Maapp < ActiveRecord::Base
   PENNCARD_NUMBER_FORMAT = /\A\d{16}\z/
 
   attr_accessor :grad_season, :same_perm_address
-  before_validation :make_grad_year, :make_perm_address
-
-  validates :w8ben_form,
-            presence: true,
-            file_size: {
-                maximum: 5.megabytes.to_i
-            }, if: lambda { ssn == '' }
-  validates :file_id1, :file_id2,
-            presence: true,
-            file_size: {
-                maximum: 5.megabytes.to_i
-            }
-
-  validates :first_name, :last_name, :student_status, :penn_affiliation,
-            :local_address_line1, :local_address_city, :local_address_state, :local_address_zip,
-            :perm_address_line1, :perm_address_city, :perm_address_state, :perm_address_zip,
-            :statement_type, :checking_account,
-            presence: true
-  validate :dob_validation
-  validates :ssn, format: {with: SSN_FORMAT, allow_blank: true}
-  validates :mobile_phone, format: {with: PHONE_FORMAT}
-  validates :home_phone, format: {with: PHONE_FORMAT, allow_blank: true}
-  validates :penn_email, format: {with: PENNEMAIL_FORMAT}, if: lambda { penn_affiliation == 'Graduate' || penn_affiliation == 'Undergraduate'}
-  validates :alter_email, format: {with: EMAIL_FORMAT}
+  # before_validation :make_grad_year, :make_perm_address
+  #
+  # validates :w8ben_form,
+  #           presence: true,
+  #           file_size: {
+  #               maximum: 5.megabytes.to_i
+  #           }, if: lambda { ssn == '' }
+  # validates :file_id1, :file_id2,
+  #           presence: true,
+  #           file_size: {
+  #               maximum: 5.megabytes.to_i
+  #           }
+  #
+  # validates :first_name, :last_name, :student_status, :penn_affiliation,
+  #           :local_address_line1, :local_address_city, :local_address_state, :local_address_zip,
+  #           :perm_address_line1, :perm_address_city, :perm_address_state, :perm_address_zip,
+  #           :statement_type, :checking_account,
+  #           presence: true
+  # validate :dob_validation
+  # validates :ssn, format: {with: SSN_FORMAT, allow_blank: true}
+  # validates :mobile_phone, format: {with: PHONE_FORMAT}
+  # validates :home_phone, format: {with: PHONE_FORMAT, allow_blank: true}
+  # validates :penn_email, format: {with: PENNEMAIL_FORMAT}, if: lambda { penn_affiliation == 'Graduate' || penn_affiliation == 'Undergraduate'}
+  # validates :alter_email, format: {with: EMAIL_FORMAT}
   validates :penncard_number, format: {with: PENNCARD_NUMBER_FORMAT}, if: lambda { penncard_link == true }
   validates :check_type, :check_delivery, :address_on_checks, :color, presence: true, if: lambda {order_checks == true}
   validates :visa_pin, presence:true, confirmation: true, if: lambda {visa_checkcard == true}

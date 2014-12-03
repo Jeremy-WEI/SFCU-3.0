@@ -92,7 +92,8 @@ class AlappsController < ApplicationController
   def update
     respond_to do |format|
       if @alapp.update(alapp_params)
-        format.html { redirect_to @alapp, notice: 'Alapp was successfully updated.' }
+        format.html { redirect_to action: :index }
+        # format.html { redirect_to @alapp, notice: 'Alapp was successfully updated.' }
         format.json { render :show, status: :ok, location: @alapp }
       else
         format.html { render :edit }

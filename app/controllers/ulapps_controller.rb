@@ -62,7 +62,8 @@ class UlappsController < ApplicationController
 
     respond_to do |format|
       if @ulapp.save
-        format.html { redirect_to @ulapp, notice: 'Ulapp was successfully created.' }
+        # format.html { redirect_to @ulapp, notice: 'Ulapp was successfully created.' }
+        format.html { redirect_to action: :index }
         format.json { render :show, status: :created, location: @ulapp }
       else
         format.html { render :new }
