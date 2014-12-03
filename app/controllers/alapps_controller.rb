@@ -74,6 +74,9 @@ class AlappsController < ApplicationController
   # POST /alapps.json
   def create
     @alapp = Alapp.new(alapp_params)
+    # if ["us", "united states"].include? @alapp.local_country.chomp.downcase
+    #   lob_address
+    # end
     respond_to do |format|
       if @alapp.save
         # flash[:notice] = "You have successfully submitted the form!"
@@ -115,6 +118,28 @@ class AlappsController < ApplicationController
   def set_alapp
     @alapp = Alapp.find(params[:id])
   end
+
+  # def lob_address
+  #   begin
+  #     @username = "test_58d0bda464b7082a64604d18519f94ec619"
+  #     @lob = Lob.load(api_key: @username)
+  #     @result = @lob.addresses.verify(
+  #         address_line1: @alapp.local_address_line1,
+  #         address_line2: @alapp.local_address_line2,
+  #         city: @alapp.local_address_city,
+  #         state: @alapp.local_address_state,
+  #         zip: @alapp.local_address_zip
+  #     )
+  #     @alapp.local_address_line1 = @result["address"]["address_line1"]
+  #     @alapp.local_address_line2 = @result["address"]["address_line2"]
+  #     @alapp.local_address_city = @result["address"]["address_city"]
+  #     @alapp.local_address_zip = @result["address"]["address_zip"]
+  #     @alapp.local_address_state = @result["address"]["address_state"]
+  #     @alapp.local_country = @result["address"]["address_country"]
+  #   rescue
+  #     @alapp.local_address_state = "invalid"
+  #   end
+  # end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def alapp_params

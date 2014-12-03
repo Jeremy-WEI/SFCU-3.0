@@ -1,31 +1,42 @@
+- if x == "local" #when it's local, it's required, permanent address is not required
+  - @y = "*"
+- else
+  - @y = ""
 %br
 .row
   .col-md-8
-    %b Address Line 1*
+    %b
+      = "Address Line 1" + @y
     = f.text_field :"#{x}_address_line1", placeholder: "#{y} Address Line 1", class:"form-control"
 %br
 .row
   .col-md-8
-    %b Address Line 2
+    %b
+      = "Address Line 2"
     = f.text_field :"#{x}_address_line2", placeholder: "#{y} Address Line 2", class: "form-control"
 %br
 .row
   .col-md-4
-    %b City*
+    %b
+      = "City" + @y
   .col-md-4
-    %b State*
+    %b
+      = "State" + @y
   .col-md-4
-    %b ZIP*
+    %b
+      = "ZIP" + @y
 .row
   .col-md-4
     = f.text_field :"#{x}_address_city", placeholder: "City", class: "form-control"
   .col-md-4
-    = f.select :"#{x}_address_state", options_for_select(us_states), {}, {class: "form-control"}
-.row
+    = f.select :"#{x}_address_state", options_for_select(us_states, "PA"), {}, {class: "form-control"}
   .col-md-4
     = f.text_field :"#{x}_address_zip", placeholder: "#####", class: "form-control"
+%br
+.row
   .col-md-4
-    = f.label :"#{x}_country", "Country*"
+    %b
+      = "Country" + @y
     %br
-    = f.select :"#{x}_country", Country.all.sort, {}, {class: "form-control"}
+    = f.select :"#{x}_country", options_for_select(Country.all.sort, "US"), {}, {class: "form-control"}
 %br
