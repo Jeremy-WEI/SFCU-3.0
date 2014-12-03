@@ -22,31 +22,35 @@ class CbpappsController < ApplicationController
   end
 
   def export
-    @applicants = Cbpapp.find(params[:exports])
-    @header = Cbpapp.column_names
+    if params[:exports].nil?
+      @cbpapps = Cbpapp.all
+      render :index
+    else
+      @applicants = Cbpapp.find(params[:exports])
+      @header = Cbpapp.column_names
 
-    file = "cbpapps_file.csv"
-    File.open(file, "w") do |csv|
-      tmp = ''
-      @header.each do |attr|
-        tmp << '"' << attr << '",'
-      end
-      tmp = tmp[0..-2]
-      tmp << "\n"
-      csv << tmp
-
-      @applicants.each do |c|
+      file = "cbpapps_file.csv"
+      File.open(file, "w") do |csv|
         tmp = ''
-        c.attributes.each  do | _,val|
-          tmp << '"' << (val.nil? ? '':val.to_s) << '",'
+        @header.each do |attr|
+          tmp << '"' << attr << '",'
         end
         tmp = tmp[0..-2]
         tmp << "\n"
         csv << tmp
-      end
-    end
-    send_file(file)
 
+        @applicants.each do |c|
+          tmp = ''
+          c.attributes.each  do | _,val|
+            tmp << '"' << (val.nil? ? '':val.to_s) << '",'
+          end
+          tmp = tmp[0..-2]
+          tmp << "\n"
+          csv << tmp
+        end
+      end
+      send_file(file)
+    end
   end
 
   # POST /cbpapps

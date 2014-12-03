@@ -12,12 +12,13 @@ class Ulapp < ActiveRecord::Base
   SFCU_ACCOUNT_FORMAT = /\A\d+\z/
   SSN_FORMAT = /\A\d{9}\z/
   EMAIL_FORMAT = /\A[^@\s]+@(?:\w+\.)+[a-z]{2,}\z/i
-
+  attr_accessor :same
   validates :file1, :file2, :file3, :file4, :file5, :file6,
-            :presence => true,
-            :file_size => {
-                :maximum => 5.megabytes.to_i
+            file_size: {
+                maximum: 5.megabytes.to_i
             }
+
+  before_validation :make_perm_address
 
   validates :credit_type, :purpose, :first_name, :last_name,
             :name_relative, :phone_type, :alter_type, :employer,
@@ -54,6 +55,16 @@ class Ulapp < ActiveRecord::Base
       errors.add(:graduation, "can't be blank")
     elsif graduation < Date.today
       errors.add(:graduation, "must be in the future")
+    end
+  end
+
+  def make_perm_address
+    if same
+      self.perm_address_line1 = self.local_address_line1
+      self.perm_address_line2 = self.local_address_line2
+      self.perm_address_city = self.local_address_city
+      self.perm_address_state = self.local_address_state
+      self.perm_address_zip = self.local_address_zip
     end
   end
 

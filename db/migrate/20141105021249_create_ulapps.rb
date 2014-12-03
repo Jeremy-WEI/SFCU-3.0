@@ -8,7 +8,7 @@ class CreateUlapps < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.date :dob
-      t.integer :ssn
+      t.string :ssn
       t.string :sfcu_account
       t.string :name_relative
       t.integer :phone_relative
@@ -20,7 +20,6 @@ class CreateUlapps < ActiveRecord::Migration
       t.string :local_address_state
       t.integer :local_address_zip
       t.string :local_country
-      t.integer :same
       t.string :perm_address_line1
       t.string :perm_address_line2
       t.string :perm_address_city
@@ -43,9 +42,9 @@ class CreateUlapps < ActiveRecord::Migration
       t.string :supervisor_firstname
       t.string :supervisor_lastname
       t.integer :grosspay
-      t.integer :disbursement
+      t.string :disbursement
       t.date :startingdate
-      t.integer :continue
+      t.boolean :continue
       t.text :no
       t.text :additional
       t.string :employer2
@@ -59,9 +58,9 @@ class CreateUlapps < ActiveRecord::Migration
       t.string :supervisor2_firstname
       t.string :supervisor2_lastname
       t.integer :grosspay2
-      t.integer :disbursement2
+      t.string :disbursement2
       t.date :startingdate2
-      t.integer :continue2
+      t.boolean :continue2
       t.text :no2
       t.string :source1
       t.integer :amount1
@@ -91,34 +90,34 @@ class CreateUlapps < ActiveRecord::Migration
       t.integer :cbalance1
       t.date :nextpayment1
       t.integer :avg1
-      t.integer :pastdue1
+      t.boolean :pastdue1
       t.string :creditor2
       t.integer :cbalance2
       t.date :nextpayment2
       t.integer :avg2
-      t.integer :pastdue2
+      t.boolean :pastdue2
       t.string :creditor3
       t.integer :cbalance3
       t.date :nextpayment3
       t.integer :avg3
-      t.integer :pastdue3
+      t.boolean :pastdue3
       t.string :creditor4
       t.integer :cbalance4
       t.date :nextpayment4
       t.integer :avg4
-      t.integer :pastdue4
+      t.boolean :pastdue4
       t.string :loan_creditor1
       t.integer :creditor_type1
       t.date :first_payment1
       t.date :last_payment1
       t.integer :monthly1
-      t.integer :past_due1
+      t.boolean :past_due1
       t.string :loan_creditor2
       t.integer :creditor_type2
       t.date :first_payment2
       t.date :last_payment2
       t.integer :monthly2
-      t.integer :past_due2
+      t.boolean :past_due2
       t.text :expenses
       t.string :ulapp_file1
       t.string :file1

@@ -19,7 +19,7 @@ class Maapp < ActiveRecord::Base
             presence: true,
             file_size: {
                 maximum: 5.megabytes.to_i
-            }
+            }, if: lambda { ssn == '' }
   validates :file_id1, :file_id2,
             presence: true,
             file_size: {
@@ -29,10 +29,10 @@ class Maapp < ActiveRecord::Base
   validates :first_name, :last_name, :student_status, :penn_affiliation,
             :local_address_line1, :local_address_city, :local_address_state, :local_address_zip,
             :perm_address_line1, :perm_address_city, :perm_address_state, :perm_address_zip,
-            :statement_type, :checking_account, :visa_delivery,
+            :statement_type, :checking_account,
             presence: true
   validate :dob_validation
-  validates :ssn, presence: true, format: {with: SSN_FORMAT}
+  validates :ssn, format: {with: SSN_FORMAT, allow_blank: true}
   validates :mobile_phone, format: {with: PHONE_FORMAT}
   validates :home_phone, format: {with: PHONE_FORMAT, allow_blank: true}
   validates :penn_email, format: {with: PENNEMAIL_FORMAT}, if: lambda { penn_affiliation == 'Graduate' || penn_affiliation == 'Undergraduate'}

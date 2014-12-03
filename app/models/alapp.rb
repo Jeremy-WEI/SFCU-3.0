@@ -20,6 +20,9 @@ class Alapp < ActiveRecord::Base
                 :maximum => 5.megabytes.to_i
             }
 
+  attr_accessor :same
+
+  before_validation :make_perm_address
 
   has_many :employments
 

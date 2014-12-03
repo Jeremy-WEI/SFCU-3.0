@@ -23,5 +23,24 @@
         %td= link_to 'Destroy', applicant, :method => :delete, :data => { :confirm => 'Are you sure?' }
   -#
   %br
-    = submit_tag 'Export', class: "btn btn-primary"
--#= link_to 'New Maapp', new_maapp_path
+    = submit_tag 'Export', id: "export_button", class: "btn btn-primary"
+
+:javascript
+  $(document).ready(function() {
+
+    $('#export_button').click(function(){
+      var empty = true;
+      var checkboxes = document.getElementsByName('exports[]');
+      for(var i = 0, n = checkboxes.length;i < n; i++) {
+        if(checkboxes[i].checked) {
+          empty = false;
+          break;
+        }
+      }
+      if(empty) {
+        alert("No application selected");
+
+      }
+    }
+    );
+  });
