@@ -13,8 +13,8 @@ class Maapp < ActiveRecord::Base
   PENNCARD_NUMBER_FORMAT = /\A\d{16}\z/
 
   attr_accessor :grad_season, :same_perm_address
-  # before_validation :make_grad_year, :make_perm_address
-  #
+  before_validation :make_grad_year, :make_perm_address
+
   # validates :w8ben_form,
   #           presence: true,
   #           file_size: {
@@ -37,11 +37,11 @@ class Maapp < ActiveRecord::Base
   # validates :home_phone, format: {with: PHONE_FORMAT, allow_blank: true}
   # validates :penn_email, format: {with: PENNEMAIL_FORMAT}, if: lambda { penn_affiliation == 'Graduate' || penn_affiliation == 'Undergraduate'}
   # validates :alter_email, format: {with: EMAIL_FORMAT}
-  validates :penncard_number, format: {with: PENNCARD_NUMBER_FORMAT}, if: lambda { penncard_link == true }
-  validates :check_type, :check_delivery, :address_on_checks, :color, presence: true, if: lambda {order_checks == true}
+  # validates :penncard_number, format: {with: PENNCARD_NUMBER_FORMAT}, if: lambda { penncard_link == true }
+  # validates :check_type, :check_delivery, :address_on_checks, :color, presence: true, if: lambda {order_checks == true}
   validates :visa_pin, presence:true, confirmation: true, if: lambda {visa_checkcard == true}
   validates :visa_pin_confirmation, presence: true, if: lambda {visa_checkcard == true}
-  validates :visa_delivery, presence: true, if: lambda {visa_checkcard == true}
+  # validates :visa_delivery, presence: true, if: lambda {visa_checkcard == true}
   validates :terms, :understand, acceptance: true
 
   def dob_validation
@@ -54,7 +54,7 @@ class Maapp < ActiveRecord::Base
   end
 
   def make_perm_address
-    if same_perm_address then
+    if same_perm_address == '1' then
       self.perm_address_line1 = self.local_address_line1
       self.perm_address_line2 = self.local_address_line2
       self.perm_address_city = self.local_address_city
