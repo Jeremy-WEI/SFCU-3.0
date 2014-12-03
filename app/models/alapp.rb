@@ -20,6 +20,9 @@ class Alapp < ActiveRecord::Base
                 :maximum => 5.megabytes.to_i
             }
 
+  attr_accessor :same
+
+  before_validation :make_perm_address
 
   has_many :employments
 
@@ -78,6 +81,16 @@ class Alapp < ActiveRecord::Base
     end
   end
 
+  def make_perm_address
+    if same == 1
+      self.perm_address_line1 = self.local_address_line1
+      self.perm_address_line2 = self.local_address_line2
+      self.perm_address_city = self.local_address_city
+      self.perm_address_state = self.local_address_state
+      self.perm_address_zip = self.local_address_zip
+      self.perm_country = self.local_country
+    end
+  end
 
 
 end
