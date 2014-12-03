@@ -89,6 +89,7 @@ class Alapp < ActiveRecord::Base
           state: local_address_state,
           zip: local_address_zip
       )
+
     rescue
       errors.add(:local_address_line1, "Invalid address")
     end
