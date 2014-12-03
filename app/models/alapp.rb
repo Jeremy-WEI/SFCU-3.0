@@ -10,6 +10,7 @@ class Alapp < ActiveRecord::Base
   mount_uploader :document3, NormalFileUploader
   mount_uploader :document4, NormalFileUploader
   mount_uploader :document5, NormalFileUploader
+
   before_validation :make_perm_address
 
   validates :driver_license_file,

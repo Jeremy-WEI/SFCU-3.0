@@ -21,26 +21,26 @@ class Ulapp < ActiveRecord::Base
             }
 
   before_validation :make_perm_address
-
-  validates :credit_type, :purpose, :first_name, :last_name,
-            :name_relative, :phone_type, :alter_type, :employer,
-            :supervisor_firstname, :supervisor_lastname,
-            presence: true
-  validates :amount, numericality: { greater_than_or_equal_to: 0, only_integer: true}
-  validates :sfcu_account, format: {with: SFCU_ACCOUNT_FORMAT}
-  validates :e_mail, format: {with: EMAIL_FORMAT}
-  validates :ssn, format: {with: SSN_FORMAT}
+  #
+  # validates :credit_type, :purpose, :first_name, :last_name,
+  #           :name_relative, :phone_type, :alter_type, :employer,
+  #           :supervisor_firstname, :supervisor_lastname,
+  #           presence: true
+  # validates :amount, numericality: { greater_than_or_equal_to: 0, only_integer: true}
+  # validates :sfcu_account, format: {with: SFCU_ACCOUNT_FORMAT}
+  # validates :e_mail, format: {with: EMAIL_FORMAT}
+  # validates :ssn, format: {with: SSN_FORMAT}
+  # validates :grosspay, numericality: { greater_than_or_equal_to: 0, only_integer: true}
+  # validates_with UlappsHelper::PhoneValidator, fields: [:phone_relative, :phone_number]
+  # validate :check_alter, :dob_validation, :check_grad_date
+  # validates :yesorno, acceptance: true
+  # validates_with UlappsHelper::AmountValidator, fields: [:grosspay2, :amount1, :amount2, :amount3,
+  #                                                        :balance1, :balance2, :balance3,
+  #                                                        :market_value1, :market_value2, :market_value3,
+  #                                                        :cbalance1, :cbalance2, :cbalance3, :cbalance4,
+  #                                                        :avg1, :avg2, :avg3, :avg4, :monthly1, :monthly2]
   validate :validates_local_address
   validate :validates_perm_address
-  validates :grosspay, numericality: { greater_than_or_equal_to: 0, only_integer: true}
-  validates_with UlappsHelper::PhoneValidator, fields: [:phone_relative, :phone_number]
-  validate :check_alter, :dob_validation, :check_grad_date
-  validates :yesorno, acceptance: true
-  validates_with UlappsHelper::AmountValidator, fields: [:grosspay2, :amount1, :amount2, :amount3,
-                                                         :balance1, :balance2, :balance3,
-                                                         :market_value1, :market_value2, :market_value3,
-                                                         :cbalance1, :cbalance2, :cbalance3, :cbalance4,
-                                                         :avg1, :avg2, :avg3, :avg4, :monthly1, :monthly2]
 
   def check_alter
     if alter_number.present?
