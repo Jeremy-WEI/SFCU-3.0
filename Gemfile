@@ -38,6 +38,8 @@ gem 'carmen-rails'
 
 gem 'carrierwave'
 
+gem 'rubyzip'
+gem 'zip-zip'
 group :test, :development do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'

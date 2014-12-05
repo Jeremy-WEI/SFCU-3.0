@@ -53,34 +53,58 @@ class MaappsController < ApplicationController
 
   def export
     if params[:exports].nil?
-      @maapps = Maapp.all
+      @ulapps = Maapp.all
       render :index
     else
-      @applicants = Maapp.find(params[:exports])
+      csv_path = "public/uploads/maapp/maapps_file.csv"
+      create_csv(csv_path)
 
-      @header = Maapp.column_names
+      zip_folder_path = "public/uploads/maapp"
+      zip_files(zip_folder_path, csv_path, params[:exports])
+    end
 
-      file = "maapps_file.csv"
-      File.open(file, "w") do |csv|
+  end
+
+  def create_csv(file)
+    @applicants = Maapp.find(params[:exports])
+
+    @header = Maapp.column_names
+
+    File.open(file, "w") do |csv|
+      tmp = ''
+      @header.each do |attr|
+        tmp << '"' << attr << '",'
+      end
+      tmp = tmp[0..-2]
+      tmp << "\n"
+      csv << tmp
+
+      @applicants.each do |c|
         tmp = ''
-        @header.each do |attr|
-          tmp << '"' << attr << '",'
+        c.attributes.each  do | _,val|
+          tmp << '"' << (val.nil? ? '':val.to_s) << '",'
         end
         tmp = tmp[0..-2]
         tmp << "\n"
         csv << tmp
+      end
+    end
+    send_file(file)
+  end
 
-        @applicants.each do |c|
-          tmp = ''
-          c.attributes.each  do | _,val|
-            tmp << '"' << (val.nil? ? '':val.to_s) << '",'
-          end
-          tmp = tmp[0..-2]
-          tmp << "\n"
-          csv << tmp
+  def zip_files(folder_path, csv_path, export_lists)
+    folder_path.sub!(%r[/$],'')
+    archive = File.join(folder_path,File.basename(folder_path))+'.zip'
+    FileUtils.rm archive, :force=>true
+    Zip::ZipFile.open(archive, 'w') do |zipfile|
+      Dir["#{folder_path}/**/**"].reject{|f|f==archive}.each do |file|
+        applicantID = file.sub(folder_path +'/','').sub(/\/.*/, '')
+        if export_lists.include?(applicantID)
+          zipfile.add(file.sub(folder_path + '/',''),file)
         end
       end
-      send_file(file)
+      csv_name = csv_path.sub(folder_path + '/','')
+      zipfile.add(csv_name, csv_path)
     end
   end
 

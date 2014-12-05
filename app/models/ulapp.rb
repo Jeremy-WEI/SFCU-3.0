@@ -13,6 +13,7 @@ class Ulapp < ActiveRecord::Base
   SSN_FORMAT = /\A\d{9}\z/
   EMAIL_FORMAT = /\A[^@\s]+@(?:\w+\.)+[a-z]{2,}\z/i
   attr_accessor :same
+
   validates :file1, :file2, :file3, :file4, :file5, :file6,
             file_size: {
                 maximum: 5.megabytes.to_i
@@ -37,6 +38,7 @@ class Ulapp < ActiveRecord::Base
                                                          :market_value1, :market_value2, :market_value3,
                                                          :cbalance1, :cbalance2, :cbalance3, :cbalance4,
                                                          :avg1, :avg2, :avg3, :avg4, :monthly1, :monthly2]
+
 
   def check_alter
     if alter_number.present?

@@ -10,50 +10,50 @@ class Alapp < ActiveRecord::Base
   mount_uploader :document5, NormalFileUploader
 
 
-  validates :driver_license_file,
-            presence: true,
-            :file_size => {
-                :maximum => 5.megabytes.to_i
-            }
-  validates :document1, :document3, :document4, :document5, :document2,
-            :file_size => {
-                :maximum => 5.megabytes.to_i
-            }
+  # validates :driver_license_file,
+  #           presence: true,
+  #           :file_size => {
+  #               :maximum => 5.megabytes.to_i
+  #           }
+  # validates :document1, :document3, :document4, :document5, :document2,
+  #           :file_size => {
+  #               :maximum => 5.megabytes.to_i
+  #           }
+  #
+  # attr_accessor :same
+  #
+  # before_validation :make_perm_address
+  #
+  # has_many :employments
+  #
+  # SSN_FORMAT = /\A\d{9}\z/
+  # EMAIL_FORMAT = /\A[^@\s]+@(?:\w+\.)+[a-z]{2,}\z/i
+  # PHONE_FORMAT =/\A\(?\d{3}[-\.)]?\d{3}[-\.]?\d{4}\z/
 
-  attr_accessor :same
-
-  before_validation :make_perm_address
-
-  has_many :employments
-
-  SSN_FORMAT = /\A\d{9}\z/
-  EMAIL_FORMAT = /\A[^@\s]+@(?:\w+\.)+[a-z]{2,}\z/i
-  PHONE_FORMAT =/\A\(?\d{3}[-\.)]?\d{3}[-\.]?\d{4}\z/
-
-  validates :first, :last, :alumni, :mother_maiden, :credit_req_type,
-            :term, :vehicle_condition, :name_nearest_relative, :phone_nearest_relative,
-            :driver_lisence_num, :signature, :today_date,
-            presence: true
-  validate :check_dob
-  validates :ssn, format: {with: SSN_FORMAT}
-
-  validates :amount_req, numericality: { greater_than_or_equal_to: 0.0}
-
-  validate :validates_vehicle_price_range
-  validates :price_range_min, numericality: { greater_than_or_equal_to: 0.0}
-  validates :price_range_max, numericality: { greater_than_or_equal_to: :price_range_min}
-  validate :validates_vehicle_type
-
-  validates :e_mail, format: {with: EMAIL_FORMAT}
-  validates :phone_number, :phone_nearest_relative, format: {with: PHONE_FORMAT}
-
-  validates :employ1_grosspay, :employ2_grosspay, :employ3_grosspay,
-            :account1_current_balance, :account2_current_balance, :account3_current_balance, :account4_current_balance,
-            :property1_market_val, :property2_market_val,
-            :rent_housing, :food, :utilities, :phone_bill, :bursar_bill, :miscellaneous,
-            numericality: {greater_than_or_equal_to: 0.0}, allow_nil: true
-
-   validates :agree_terms, acceptance: true
+  # validates :first, :last, :alumni, :mother_maiden, :credit_req_type,
+  #           :term, :vehicle_condition, :name_nearest_relative, :phone_nearest_relative,
+  #           :driver_lisence_num, :signature, :today_date,
+  #           presence: true
+  # validate :check_dob
+  # validates :ssn, format: {with: SSN_FORMAT}
+  #
+  # validates :amount_req, numericality: { greater_than_or_equal_to: 0.0}
+  #
+  # validate :validates_vehicle_price_range
+  # validates :price_range_min, numericality: { greater_than_or_equal_to: 0.0}
+  # validates :price_range_max, numericality: { greater_than_or_equal_to: :price_range_min}
+  # validate :validates_vehicle_type
+  #
+  # validates :e_mail, format: {with: EMAIL_FORMAT}
+  # validates :phone_number, :phone_nearest_relative, format: {with: PHONE_FORMAT}
+  #
+  # validates :employ1_grosspay, :employ2_grosspay, :employ3_grosspay,
+  #           :account1_current_balance, :account2_current_balance, :account3_current_balance, :account4_current_balance,
+  #           :property1_market_val, :property2_market_val,
+  #           :rent_housing, :food, :utilities, :phone_bill, :bursar_bill, :miscellaneous,
+  #           numericality: {greater_than_or_equal_to: 0.0}, allow_nil: true
+  #
+  validates :agree_terms, acceptance: true
 
   #validates_with AlappsHelper::DollarValidator, fields: [:employ1_grosspay]
 
