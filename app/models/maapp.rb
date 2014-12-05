@@ -17,16 +17,16 @@ class Maapp < ActiveRecord::Base
   attr_accessor :grad_season, :same_perm_address
   before_validation :make_grad_year, :make_perm_address
 
-  validates :w8ben_form,
-            presence: true,
-            file_size: {
-                maximum: 5.megabytes.to_i
-            }, if: lambda { not ssn.present? }
-  validates :file_id1, :file_id2,
-            presence: true,
-            file_size: {
-                maximum: 5.megabytes.to_i
-            }
+  # validates :w8ben_form,
+  #           presence: true,
+  #           file_size: {
+  #               maximum: 5.megabytes.to_i
+  #           }, if: lambda { not ssn.present? }
+  # validates :file_id1, :file_id2,
+  #           presence: true,
+  #           file_size: {
+  #               maximum: 5.megabytes.to_i
+  #           }
 
   validates :first_name, :last_name, :student_status, :penn_affiliation,
             :local_address_line1, :local_address_city, :local_address_state, :local_address_zip,

@@ -8,7 +8,7 @@ class AlappsController < ApplicationController
 
   def export
     if params[:exports].nil?
-      @ulapps = Ulapp.all
+      @alapps = Alapp.all
       render :index
     else
       csv_path = "public/uploads/alapp/alapps_file.csv"
@@ -107,8 +107,9 @@ class AlappsController < ApplicationController
     # end
     respond_to do |format|
       if @alapp.save
+        format.html { redirect_to @alapp, notice: 'Alapp was successfully created.' }
         # flash[:notice] = "You have successfully submitted the form!"
-        format.html { redirect_to alapps_path }
+        # format.html { redirect_to alapps_path }
         format.json { render :show, status: :created, location: @alapp }
       else
         format.html { render :new }
@@ -121,14 +122,14 @@ class AlappsController < ApplicationController
   # PATCH/PUT /alapps/1.json
   def update
     respond_to do |format|
-      if @alapp.update(alapp_params)
+      # if @alapp.update(alapp_params)
         format.html { redirect_to action: :index }
         # format.html { redirect_to @alapp, notice: 'Alapp was successfully updated.' }
-        format.json { render :show, status: :ok, location: @alapp }
-      else
-        format.html { render :edit }
-        format.json { render json: @alapp.errors, status: :unprocessable_entity }
-      end
+        # format.json { render :show, status: :ok, location: @alapp }
+      # else
+      #   format.html { render :edit }
+      #   format.json { render json: @alapp.errors, status: :unprocessable_entity }
+      # end
     end
   end
 

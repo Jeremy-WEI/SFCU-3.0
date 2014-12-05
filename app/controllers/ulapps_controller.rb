@@ -85,8 +85,8 @@ class UlappsController < ApplicationController
 
     respond_to do |format|
       if @ulapp.save
-        # format.html { redirect_to @ulapp, notice: 'Ulapp was successfully created.' }
-        format.html { redirect_to action: :index }
+        format.html { redirect_to @ulapp, notice: 'Ulapp was successfully created.' }
+        # format.html { redirect_to action: :index }
         format.json { render :show, status: :created, location: @ulapp }
       else
         format.html { render :new }
@@ -99,13 +99,13 @@ class UlappsController < ApplicationController
   # PATCH/PUT /ulapps/1.json
   def update
     respond_to do |format|
-      if @ulapp.update(ulapp_params)
-        format.html { redirect_to @ulapp, notice: 'Ulapp was successfully updated.' }
-        format.json { render :show, status: :ok, location: @ulapp }
-      else
-        format.html { render :edit }
-        format.json { render json: @ulapp.errors, status: :unprocessable_entity }
-      end
+      @ulapp.update(ulapp_params)
+        format.html { redirect_to action: :index }
+        # format.json { render :show, status: :ok, location: @ulapp }
+      # else
+      #   format.html { render :edit }
+      #   format.json { render json: @ulapp.errors, status: :unprocessable_entity }
+      # end
     end
   end
 

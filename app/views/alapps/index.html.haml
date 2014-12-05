@@ -18,7 +18,7 @@
     %tr
       %td= check_box_tag 'exports[]', applicant.id, false, id: "exports_#{applicant.id}", class: "checkbox", form: "exports"
       %td= label_tag "exports_#{applicant.id}", applicant.created_at.strftime('%Y-%m-%d')
-      %td= label_tag "exports_#{applicant.id}", applicant.first + ' ' + applicant.last
+      %td= label_tag "exports_#{applicant.id}", applicant.first.to_s + ' ' + applicant.last.to_s
       %td= label_tag "exports_#{applicant.id}", applicant.amount_req.to_s
       %td.text-center= form_for applicant do |f| f.select :application_status, options_for_select([ "Unprocessed", "Processed", "Hold" ], applicant.application_status), {}, id: "status_#{applicant.id}", :onchange => 'this.form.submit()' end
       %td= link_to 'Show', applicant

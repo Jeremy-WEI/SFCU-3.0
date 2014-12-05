@@ -3,8 +3,7 @@ require 'test_helper'
 class AlappTest < ActiveSupport::TestCase
   test "create an ALapplication" do
     @alapp = alapps(:one)
-    @alapp.save
-    puts @alapp.errors.full_messages
+    assert @alapp.save
   end
 
   test "should not save an invalid ALapplication" do
