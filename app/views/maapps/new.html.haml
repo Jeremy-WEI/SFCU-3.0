@@ -118,8 +118,6 @@
             .col-md-4
               = f.input :file_id2, as: :file, label: false, error: "Please upload the file"
           *Please email us your ID's if there is a "Could not access file" error. *
-        %br
-        %br
       #tab2.tab-pane
         %hr
         .well
@@ -367,9 +365,11 @@
   		var $percent = ($current/$total) * 100;
   		$('#rootwizard').find('.bar').css({width:$percent+'%'});
   	}});
-  });
-  $(document).ready(function(){
-    $("#maapp_other_penn_affiliation").hide();
+    $("#maapp_other_penn_affiliation").toggle($("#maapp_penn_affiliation_others").is(":checked"));
+    $('#permanent_address').toggle(!$('#maapp_same_perm_address').is(":checked"));
+    $("#visa_options").toggle($('#maapp_visa_checkcard').is(":checked"));
+    $("#penncard_linkage").toggle($('#maapp_penncard_link').is(":checked"));
+    $("#check_options").toggle($("#maapp_order_checks").is(":checked"));
     $("input:radio[name='maapp[penn_affiliation]']").change(function(){
       if(this.value == 'others' && this.checked){
         $("#maapp_other_penn_affiliation").show();
@@ -377,18 +377,15 @@
         $("#maapp_other_penn_affiliation").hide();
       }
     });
-    $("#check_options").hide();
     $('#maapp_order_checks').click(function(){
       $("#check_options").toggle(this.checked)
     });
     $('#maapp_same_perm_address').click(function(){
       $('#permanent_address').toggle(!this.checked)
     });
-    $('#penncard_linkage').hide();
     $('#maapp_penncard_link').click(function(){
       $('#penncard_linkage').toggle(this.checked)
     });
-    $('#visa_options').hide();
     $('#maapp_visa_checkcard').click(function(){
       $('#visa_options').toggle(this.checked);
     });
