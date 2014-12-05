@@ -19,5 +19,10 @@ class UlappTest < ActiveSupport::TestCase
     assert @app_error2.errors.full_messages.include? "Terms must be accepted in order to proceed"
   end
 
+  test "should not save a blank form" do
+    @app_error3 = ulapps(:four)
+    assert_not @app_error3.save
+  end
+
 
 end
