@@ -78,21 +78,21 @@ class AlappsController < ApplicationController
   end
 
   #save updates at index page
-  def save
-    @alapp = Alapp.find(params[:id])
-    respond_to do |format|
-      @alapp.update(:application_status => 'Not working')
-      format.html { redirect_to @alapp, notice: 'Alapp was successfully updated.' }
-      format.json { render :show, status: :ok, location: @alapp }
-    end
-    # respond_to do |format|
-    #   #set_alapp
-    #   @alapp.update(alapp_status(@alapp))
-    #   #@alapps = Alapp.all
-    #   format.html { redirect_to alapps_url }
-    #   # format.json { head :no_content }
-    # end
-  end
+  # def save
+  #   @alapp = Alapp.find(params[:id])
+  #   respond_to do |format|
+  #     @alapp.update(:application_status => 'Not working')
+  #     format.html { redirect_to @alapp, notice: 'Alapp was successfully updated.' }
+  #     format.json { render :show, status: :ok, location: @alapp }
+  #   end
+  #   # respond_to do |format|
+  #   #   #set_alapp
+  #   #   @alapp.update(alapp_status(@alapp))
+  #   #   #@alapps = Alapp.all
+  #   #   format.html { redirect_to alapps_url }
+  #   #   # format.json { head :no_content }
+  #   # end
+  # end
 
   # GET /alapps/1/edit
   def edit
@@ -121,14 +121,9 @@ class AlappsController < ApplicationController
   # PATCH/PUT /alapps/1.json
   def update
     respond_to do |format|
-      if @alapp.update(alapp_params)
-        format.html { redirect_to action: :index }
-        # format.html { redirect_to @alapp, notice: 'Alapp was successfully updated.' }
-        format.json { render :show, status: :ok, location: @alapp }
-      else
-        format.html { render :edit }
-        format.json { render json: @alapp.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to action: :index }
+      # format.html { redirect_to @alapp, notice: 'Alapp was successfully updated.' }
+      format.json { render :show, status: :ok, location: @alapp }
     end
   end
 

@@ -39,9 +39,8 @@
 
 Rails.application.routes.draw do
 
-
-  get 'cbpapps/export', to: 'cbpapps#export'
   get 'main/index'
+  get 'cbpapps/export', to: 'cbpapps#export'
   get '/ulapps/export', to: 'ulapps#export'
   #get '/alapps/new', to: 'alapps#new'
   get '/alapps/export', to: 'alapps#export'
@@ -51,9 +50,7 @@ Rails.application.routes.draw do
 
   resources :cbpapps
 
-  resources :alapps do
-    post 'save', to: 'alapps#save', on: :member
-  end
+  resources :alapps
 
   resources :ulapps
 
