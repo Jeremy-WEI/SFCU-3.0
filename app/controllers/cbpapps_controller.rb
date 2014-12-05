@@ -85,7 +85,8 @@ class CbpappsController < ApplicationController
 
     respond_to do |format|
       if @cbpapp.save
-        format.html { redirect_to @cbpapp, notice: 'Cbpapp was successfully created.' }
+        # format.html { redirect_to @cbpapp, notice: 'Cbpapp was successfully created.' }
+        format.html { redirect_to action: :index }
         format.json { render :show, status: :created, location: @cbpapp }
       else
         format.html { render :new }
