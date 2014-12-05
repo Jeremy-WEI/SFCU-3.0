@@ -1,45 +1,45 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first: MyString
+  first: Dichen
   middle: MyString
-  last: MyString
-  dob: 2014-11-04
-  mother_maiden: MyString
-  ssn: MyString
+  last: Li
+  dob: 1990-11-04
+  mother_maiden: Li
+  ssn: 213456789
   alumni: false
-  credit_req_type: MyString
-  amount_req: 1.5
-  term: MyString
-  vehicle_condition: MyString
-  price_range_min: 1.5
-  price_range_max: 1.5
-  model_year: 1
-  veh_subcompact: false
+  credit_req_type: Individual Credit
+  amount_req: 123040
+  term: 36 months
+  vehicle_condition: New
+  price_range_min: 10000
+  price_range_max: 30000
+  model_year: 2013
+  veh_subcompact: true
   veh_compact: false
   veh_mid_size: false
   veh_full_size: false
   veh_sports_car: false
   veh_truck: false
   veh_van: false
-  local_address_line1: MyString
-  local_address_line2: MyString
-  local_address_city: MyString
-  local_address_state: MyString
-  local_address_zip: MyString
-  local_country: 1
-  perm_address_line1: MyString
-  perm_address_line2: MyString
-  perm_address_city: MyString
-  perm_address_state: MyString
-  perm_address_zip: MyString
-  perm_country: MyString
-  e_mail: MyString
-  phone_number: MyString
-  name_nearest_relative: MyString
-  phone_nearest_relative: MyString
-  driver_lisence_num: MyString
-  driver_license_file: MyString
+  local_address_line1: Room 1203, 3600 Chestnut St.
+  local_address_line2:
+  local_address_city: Philadelphia
+  local_address_state: PA
+  local_address_zip: 19104
+  local_country: US
+  perm_address_line1: Room 1203, 3600 Chestnut St.
+  perm_address_line2:
+  perm_address_city: Philadelphia
+  perm_address_state: PA
+  perm_address_zip: 19104
+  perm_country: US
+  e_mail: dichenli@gmail.com
+  phone_number: 212-324-5356
+  name_nearest_relative: Dili
+  phone_nearest_relative: 234-345-4902
+  driver_lisence_num: 6738298
+  driver_license_file:
   employ1_employer: MyString
   employ1_employer_addr: MyString
   employ1_position: MyString
@@ -151,7 +151,6 @@ one:
   document3: MyString
   document4: MyString
   document5: MyString
-  agree_terms: false
   signature: MyString
   today_date: 2014-11-04
 
@@ -306,6 +305,5 @@ two:
   document3: MyString
   document4: MyString
   document5: MyString
-  agree_terms: false
   signature: MyString
   today_date: 2014-11-04

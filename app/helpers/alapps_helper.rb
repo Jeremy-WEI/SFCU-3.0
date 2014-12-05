@@ -8,6 +8,14 @@ module AlappsHelper
     ]
   end
 
+  class AddressValidator < ActiveModel::Validator
+    def validate(record)
+      options[:fields].each do |field|
+
+      end
+    end
+  end
+
   class PhoneValidator < ActiveModel::Validator
 
     def validate(record)

@@ -1,261 +1,386 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  type: 1
-  joint_applicant: MyText
-  amount: 1
-  purpose: MyText
-  first_name: MyString
-  last_name: MyString
-  dob: 2014-11-04
-  ssn: 1
-  sfcu_account: 1
-  name_relative: MyString
-  phone_relative: 1
-  mothers: MyString
-  graduation: 2014-11-04
-  local_address_line1: MyString
-  local_address_line2: MyString
-  local_address_city: MyString
-  local_address_state: MyString
-  local_address_zip: 1
-  local_country: 1
-  perm_address_line1: MyString
-  perm_address_line2: MyString
-  perm_address_city: MyString
-  perm_address_state: MyString
-  perm_address_zip: 1
-  perm_country: 1
-  e_mail: MyString
-  phone_areacode: 1
-  phone_number: 1
+  credit_type: Individual Credit
+  joint_applicant: Linda, 1203
+  amount: 10000
+  purpose: I want to pay for my tuition.
+  first_name: Jingyuan
+  last_name: Wu
+  dob: 1992-03-04
+  ssn: 218938972
+  sfcu_account:
+  name_relative: Yiping Wu
+  phone_relative: 2157778930
+  mothers: Liu
+  graduation: 2016-06-01
+  local_address_line1: Room 1508, 3650 Chestnut St.
+  local_address_line2:
+  local_address_city: Philadelphia
+  local_address_state: PA
+  local_address_zip: 19104
+  local_country: US
+  perm_address_line1: Room 1508, 3650 Chestnut St.
+  perm_address_line2:
+  perm_address_city: Philadelphia
+  perm_address_state: PA
+  perm_address_zip: 19104
+  perm_country: US
+  e_mail: wujingyu@seas.upenn.edu
+  phone_number: 2158394039
   phone_type: 1
-  alter_areacode: 1
-  alter_number: 1
-  alter_type: 1
-  employer: MyString
-  employee_address_line1: MyString
-  employee_address_line2: MyString
-  employee_address_city: MyString
-  employee_address_state: MyString
-  employee_address_zip: 1
-  employee_country: 1
-  position: MyString
-  supervisor_firstname: MyString
-  supervisor_lastname: MyString
-  grosspay: 1
-  disbursement: 1
-  startingdate: 2014-11-04
-  continue: 1
-  'no': MyText
-  additional: MyText
-  employer2: MyString
-  employee2_address_line1: MyString
-  employee2_address_line2: MyString
-  employee2_address_city: MyString
-  employee2_address_state: MyString
-  employee2_address_zip: 1
-  employee2_country: 1
-  position2: MyString
-  supervisor2_firstname: MyString
-  supervisor2_lastname: MyString
-  grosspay2: 1
-  disbursement2: 1
-  startingdate2: 2014-11-04
-  continue2: 1
-  no2: MyText
-  source1: MyString
-  amount1: 1
-  source2: MyString
-  amount2: 1
-  source3: MyString
-  amount3: 1
-  depository1: MyString
-  account_type1: 1
-  balance1: 1
-  depository2: MyString
-  account_type2: 1
-  balance2: 1
-  depository3: MyString
-  account_type3: 1
-  balance3: 1
-  addr1: MyString
-  market_value1: 1
-  pledged1: 1
-  addr2: MyString
-  market_value2: 1
-  pledged2: 1
-  addr3: MyString
-  market_value3: 1
-  pledged3: 1
-  creditor1: MyString
-  cbalance1: 1
-  nextpayment1: 2014-11-04
-  avg1: 1
-  pastdue1: 1
-  creditor2: MyString
-  cbalance2: 1
-  nextpayment2: 2014-11-04
-  avg2: 1
-  pastdue2: 1
-  creditor3: MyString
-  cbalance3: 1
-  nextpayment3: 2014-11-04
-  avg3: 1
-  pastdue3: 1
-  creditor4: MyString
-  cbalance4: 1
-  nextpayment4: 2014-11-04
-  avg4: 1
-  pastdue4: 1
-  loan_creditor1: MyString
-  creditor_type1: 1
-  first_payment1: 2014-11-04
-  last_payment1: 2014-11-04
-  monthly1: 1
-  past_due1: 1
-  loan_creditor2: MyString
-  creditor_type2: 1
-  first_payment2: 2014-11-04
-  last_payment2: 2014-11-04
-  monthly2: 1
-  past_due2: 1
-  expenses: MyText
-  file1: MyString
-  file2: MyString
-  file3: MyString
-  file4: MyString
-  file5: MyString
-  file6: MyString
+  alter_number:
+  alter_type:
+  employer: University of Pennsylvania
+  employee_address_line1:
+  employee_address_line2:
+  employee_address_city:
+  employee_address_state:
+  employee_address_zip:
+  employee_country:
+  position:
+  supervisor_firstname: Jack
+  supervisor_lastname: Liu
+  grosspay: 500000
+  disbursement: Week
+  startingdate: 2012-11-04
+  continue: true
+  'no':
+#  additional: MyText
+#  employer2: MyString
+#  employee2_address_line1: MyString
+#  employee2_address_line2: MyString
+#  employee2_address_city: MyString
+#  employee2_address_state: MyString
+#  employee2_address_zip: 1
+#  employee2_country: 1
+#  position2: MyString
+#  supervisor2_firstname: MyString
+#  supervisor2_lastname: MyString
+#  grosspay2: 1
+#  disbursement2: 1
+#  startingdate2: 2014-11-04
+#  continue2: 1
+#  no2: MyText
+#  source1: MyString
+#  amount1: 1
+#  source2: MyString
+#  amount2: 1
+#  source3: MyString
+#  amount3: 1
+#  depository1: MyString
+#  account_type1: 1
+#  balance1: 1
+#  depository2: MyString
+#  account_type2: 1
+#  balance2: 1
+#  depository3: MyString
+#  account_type3: 1
+#  balance3: 1
+#  addr1: MyString
+#  market_value1: 1
+#  pledged1: 1
+#  addr2: MyString
+#  market_value2: 1
+#  pledged2: 1
+#  addr3: MyString
+#  market_value3: 1
+#  pledged3: 1
+#  creditor1: MyString
+#  cbalance1: 1
+#  nextpayment1: 2014-11-04
+#  avg1: 1
+#  pastdue1: 1
+#  creditor2: MyString
+#  cbalance2: 1
+#  nextpayment2: 2014-11-04
+#  avg2: 1
+#  pastdue2: 1
+#  creditor3: MyString
+#  cbalance3: 1
+#  nextpayment3: 2014-11-04
+#  avg3: 1
+#  pastdue3: 1
+#  creditor4: MyString
+#  cbalance4: 1
+#  nextpayment4: 2014-11-04
+#  avg4: 1
+#  pastdue4: 1
+#  loan_creditor1: MyString
+#  creditor_type1: 1
+#  first_payment1: 2014-11-04
+#  last_payment1: 2014-11-04
+#  monthly1: 1
+#  past_due1: 1
+#  loan_creditor2: MyString
+#  creditor_type2: 1
+#  first_payment2: 2014-11-04
+#  last_payment2: 2014-11-04
+#  monthly2: 1
+#  past_due2: 1
+#  expenses: MyText
+#  file1:
+#  file2:
+#  file3:
+#  file4:
+#  file5:
+#  file6:
   yesorno: 1
-  signature: MyString
+  signature: Wu Jingyuan
+
 
 two:
-  type: 1
-  joint_applicant: MyText
-  amount: 1
-  purpose: MyText
-  first_name: MyString
-  last_name: MyString
-  dob: 2014-11-04
-  ssn: 1
-  sfcu_account: 1
-  name_relative: MyString
-  phone_relative: 1
-  mothers: MyString
-  graduation: 2014-11-04
-  local_address_line1: MyString
-  local_address_line2: MyString
-  local_address_city: MyString
-  local_address_state: MyString
-  local_address_zip: 1
-  local_country: 1
-  perm_address_line1: MyString
-  perm_address_line2: MyString
-  perm_address_city: MyString
-  perm_address_state: MyString
-  perm_address_zip: 1
-  perm_country: 1
-  e_mail: MyString
-  phone_areacode: 1
-  phone_number: 1
+  credit_type: Individual Credit
+  joint_applicant: Linda, 1203
+  amount: 10000
+  purpose: I want to pay for my tuition.
+  first_name: Jingyuan
+  last_name: Wu
+  dob: 1992-03-04
+  ssn: 218938972
+  sfcu_account:
+  name_relative: Yiping Wu
+  phone_relative: 2157778930
+  mothers: Liu
+  graduation: 2016-06-01
+  local_address_line1: Room 1508, 3650 Chestnut St.
+  local_address_line2:
+  local_address_city: Philadelphia
+  local_address_state: PA
+  local_address_zip: 19104
+  local_country: US
+  perm_address_line1: Room 1508, 3650 Chestnut St.
+  perm_address_line2:
+  perm_address_city: Philadelphia
+  perm_address_state: PA
+  perm_address_zip: 19104
+  perm_country: US
+  e_mail: wujingyu@seas.upenn.edu
+  phone_number: 2132456
   phone_type: 1
-  alter_areacode: 1
-  alter_number: 1
-  alter_type: 1
-  employer: MyString
-  employee_address_line1: MyString
-  employee_address_line2: MyString
-  employee_address_city: MyString
-  employee_address_state: MyString
-  employee_address_zip: 1
-  employee_country: 1
-  position: MyString
-  supervisor_firstname: MyString
-  supervisor_lastname: MyString
-  grosspay: 1
-  disbursement: 1
-  startingdate: 2014-11-04
-  continue: 1
-  'no': MyText
-  additional: MyText
-  employer2: MyString
-  employee2_address_line1: MyString
-  employee2_address_line2: MyString
-  employee2_address_city: MyString
-  employee2_address_state: MyString
-  employee2_address_zip: 1
-  employee2_country: 1
-  position2: MyString
-  supervisor2_firstname: MyString
-  supervisor2_lastname: MyString
-  grosspay2: 1
-  disbursement2: 1
-  startingdate2: 2014-11-04
-  continue2: 1
-  no2: MyText
-  source1: MyString
-  amount1: 1
-  source2: MyString
-  amount2: 1
-  source3: MyString
-  amount3: 1
-  depository1: MyString
-  account_type1: 1
-  balance1: 1
-  depository2: MyString
-  account_type2: 1
-  balance2: 1
-  depository3: MyString
-  account_type3: 1
-  balance3: 1
-  addr1: MyString
-  market_value1: 1
-  pledged1: 1
-  addr2: MyString
-  market_value2: 1
-  pledged2: 1
-  addr3: MyString
-  market_value3: 1
-  pledged3: 1
-  creditor1: MyString
-  cbalance1: 1
-  nextpayment1: 2014-11-04
-  avg1: 1
-  pastdue1: 1
-  creditor2: MyString
-  cbalance2: 1
-  nextpayment2: 2014-11-04
-  avg2: 1
-  pastdue2: 1
-  creditor3: MyString
-  cbalance3: 1
-  nextpayment3: 2014-11-04
-  avg3: 1
-  pastdue3: 1
-  creditor4: MyString
-  cbalance4: 1
-  nextpayment4: 2014-11-04
-  avg4: 1
-  pastdue4: 1
-  loan_creditor1: MyString
-  creditor_type1: 1
-  first_payment1: 2014-11-04
-  last_payment1: 2014-11-04
-  monthly1: 1
-  past_due1: 1
-  loan_creditor2: MyString
-  creditor_type2: 1
-  first_payment2: 2014-11-04
-  last_payment2: 2014-11-04
-  monthly2: 1
-  past_due2: 1
-  expenses: MyText
-  file1: MyString
-  file2: MyString
-  file3: MyString
-  file4: MyString
-  file5: MyString
-  file6: MyString
+  alter_number:
+  alter_type:
+  employer: University of Pennsylvania
+  employee_address_line1:
+  employee_address_line2:
+  employee_address_city:
+  employee_address_state:
+  employee_address_zip:
+  employee_country:
+  position:
+  supervisor_firstname: Jack
+  supervisor_lastname: Liu
+  grosspay: 500000
+  disbursement: Week
+  startingdate: 2012-11-04
+  continue: true
+  'no':
+#  additional: MyText
+#  employer2: MyString
+#  employee2_address_line1: MyString
+#  employee2_address_line2: MyString
+#  employee2_address_city: MyString
+#  employee2_address_state: MyString
+#  employee2_address_zip: 1
+#  employee2_country: 1
+#  position2: MyString
+#  supervisor2_firstname: MyString
+#  supervisor2_lastname: MyString
+#  grosspay2: 1
+#  disbursement2: 1
+#  startingdate2: 2014-11-04
+#  continue2: 1
+#  no2: MyText
+#  source1: MyString
+#  amount1: 1
+#  source2: MyString
+#  amount2: 1
+#  source3: MyString
+#  amount3: 1
+#  depository1: MyString
+#  account_type1: 1
+#  balance1: 1
+#  depository2: MyString
+#  account_type2: 1
+#  balance2: 1
+#  depository3: MyString
+#  account_type3: 1
+#  balance3: 1
+#  addr1: MyString
+#  market_value1: 1
+#  pledged1: 1
+#  addr2: MyString
+#  market_value2: 1
+#  pledged2: 1
+#  addr3: MyString
+#  market_value3: 1
+#  pledged3: 1
+#  creditor1: MyString
+#  cbalance1: 1
+#  nextpayment1: 2014-11-04
+#  avg1: 1
+#  pastdue1: 1
+#  creditor2: MyString
+#  cbalance2: 1
+#  nextpayment2: 2014-11-04
+#  avg2: 1
+#  pastdue2: 1
+#  creditor3: MyString
+#  cbalance3: 1
+#  nextpayment3: 2014-11-04
+#  avg3: 1
+#  pastdue3: 1
+#  creditor4: MyString
+#  cbalance4: 1
+#  nextpayment4: 2014-11-04
+#  avg4: 1
+#  pastdue4: 1
+#  loan_creditor1: MyString
+#  creditor_type1: 1
+#  first_payment1: 2014-11-04
+#  last_payment1: 2014-11-04
+#  monthly1: 1
+#  past_due1: 1
+#  loan_creditor2: MyString
+#  creditor_type2: 1
+#  first_payment2: 2014-11-04
+#  last_payment2: 2014-11-04
+#  monthly2: 1
+#  past_due2: 1
+#  expenses: MyText
+#  file1:
+#  file2:
+#  file3:
+#  file4:
+#  file5:
+#  file6:
   yesorno: 1
-  signature: MyString
+  signature: Wu Jingyuan
+
+three:
+  credit_type: Individual Credit
+  joint_applicant: Linda, 1203
+  amount: 10000
+  purpose: I want to pay for my tuition.
+  first_name: Jingyuan
+  last_name: Wu
+  dob: 1992-03-04
+  ssn: 218938972
+  sfcu_account:
+  name_relative: Yiping Wu
+  phone_relative: 2157778930
+  mothers: Liu
+  graduation: 2016-06-01
+  local_address_line1: Room 1508, 3650 Chestnut St.
+  local_address_line2:
+  local_address_city: Philadelphia
+  local_address_state: PA
+  local_address_zip: 19104
+  local_country: US
+  perm_address_line1: Room 1508, 3650 Chestnut St.
+  perm_address_line2:
+  perm_address_city: Philadelphia
+  perm_address_state: PA
+  perm_address_zip: 19104
+  perm_country: US
+  e_mail: wujingyu@seas.upenn.edu
+  phone_number: 2158394039
+  phone_type: 1
+  alter_number:
+  alter_type:
+  employer: University of Pennsylvania
+  employee_address_line1:
+  employee_address_line2:
+  employee_address_city:
+  employee_address_state:
+  employee_address_zip:
+  employee_country:
+  position:
+  supervisor_firstname: Jack
+  supervisor_lastname: Liu
+  grosspay: 500000
+  disbursement: Week
+  startingdate: 2012-11-04
+  continue: true
+  'no':
+#  additional: MyText
+#  employer2: MyString
+#  employee2_address_line1: MyString
+#  employee2_address_line2: MyString
+#  employee2_address_city: MyString
+#  employee2_address_state: MyString
+#  employee2_address_zip: 1
+#  employee2_country: 1
+#  position2: MyString
+#  supervisor2_firstname: MyString
+#  supervisor2_lastname: MyString
+#  grosspay2: 1
+#  disbursement2: 1
+#  startingdate2: 2014-11-04
+#  continue2: 1
+#  no2: MyText
+#  source1: MyString
+#  amount1: 1
+#  source2: MyString
+#  amount2: 1
+#  source3: MyString
+#  amount3: 1
+#  depository1: MyString
+#  account_type1: 1
+#  balance1: 1
+#  depository2: MyString
+#  account_type2: 1
+#  balance2: 1
+#  depository3: MyString
+#  account_type3: 1
+#  balance3: 1
+#  addr1: MyString
+#  market_value1: 1
+#  pledged1: 1
+#  addr2: MyString
+#  market_value2: 1
+#  pledged2: 1
+#  addr3: MyString
+#  market_value3: 1
+#  pledged3: 1
+#  creditor1: MyString
+#  cbalance1: 1
+#  nextpayment1: 2014-11-04
+#  avg1: 1
+#  pastdue1: 1
+#  creditor2: MyString
+#  cbalance2: 1
+#  nextpayment2: 2014-11-04
+#  avg2: 1
+#  pastdue2: 1
+#  creditor3: MyString
+#  cbalance3: 1
+#  nextpayment3: 2014-11-04
+#  avg3: 1
+#  pastdue3: 1
+#  creditor4: MyString
+#  cbalance4: 1
+#  nextpayment4: 2014-11-04
+#  avg4: 1
+#  pastdue4: 1
+#  loan_creditor1: MyString
+#  creditor_type1: 1
+#  first_payment1: 2014-11-04
+#  last_payment1: 2014-11-04
+#  monthly1: 1
+#  past_due1: 1
+#  loan_creditor2: MyString
+#  creditor_type2: 1
+#  first_payment2: 2014-11-04
+#  last_payment2: 2014-11-04
+#  monthly2: 1
+#  past_due2: 1
+#  expenses: MyText
+#  file1:
+#  file2:
+#  file3:
+#  file4:
+#  file5:
+#  file6:
+  yesorno: 0
+  signature: Wu Jingyuan

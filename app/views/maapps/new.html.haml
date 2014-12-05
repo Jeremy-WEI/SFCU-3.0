@@ -105,7 +105,7 @@
           %b Passport # or Driver's License #*
           .row
             .col-md-4
-              = f.select :doc_type, options_for_select([["Passport", 0],["Driver's License", 1]], 0), {}, {class: "form-control"}
+              = f.select :doc_type, options_for_select([["Passport", "Passport"],["Driver's License", "Driver's License"]], 0), {}, {class: "form-control"}
             .col-md-4
               = f.text_field :doc_id, class: "form-control", placeholder: "ID Number"
           %br

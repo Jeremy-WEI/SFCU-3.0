@@ -195,7 +195,7 @@
           .row
             .col-md-12.checkbox
               %label
-                = f.check_box :same
+                = f.check_box :same, {}, "1", "0"
                 %b Permanent Address the same as Local Address?
           %br
           #permanent_address
@@ -218,7 +218,7 @@
           .row
             .col-md-12
               .row
-                = render "text_field4", :f => f, :title => "Driver's License Number*", :var => "driver_lisence_num", :place_holder => "##-###-###"
+                = render "text_field4", :f => f, :title => "Driver's License Number*", :var => "driver_lisence_num", :place_holder => "##-##-###"
               %br
               %b Driver's License
               .row
