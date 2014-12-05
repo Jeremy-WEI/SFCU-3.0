@@ -16,66 +16,51 @@
           %a{"data-toggle" => "tab", :href => "#tab4"} Terms and Conitions
   .progress
     .progress-bar.progress-bar-success.progress-bar-striped.active.bar
-  = form_for @maapp, html: {class: "form-horizontal"} do |f|
-    - if @maapp.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(@maapp.errors.count, "error")} prohibited this maapp from being saved:"
-        %ul
-          - @maapp.errors.full_messages.each do |msg|
-            %li= msg
+  = simple_form_for @maapp, html: {class: "form-horizontal"} do |f|
+    -#- if @maapp.errors.any?
+    -#  #error_explanation
+    -#    %h2= "#{pluralize(@maapp.errors.count, "error")} prohibited this maapp from being saved:"
+    -#    %ul
+    -#      - @maapp.errors.full_messages.each do |msg|
+    -#        %li= msg
     .tab-content
       #tab1.tab-pane
         %hr
-        .well
+        .well.well-lg
           %h2.text-center Personal Info
-          %b Name*
+          .row
+            .col-md-12
+              %b Name*
           .row
             .col-md-4
-              = f.text_field :first_name, class: "form-control", placeholder: "First Name"
+              .col-md-12
+                = f.input :first_name, placeholder: "First Name", label: false, error: "First Name can't be blank"
             .col-md-4
-              = f.text_field :middle_name, class: "form-control", placeholder: "Middle Name"
+              .col-md-12
+                = f.input :middle_name, placeholder: "Middle Name", label: false
             .col-md-4
-              = f.text_field :last_name, class: "form-control", placeholder: "Last Name"
-          %br
+              .col-md-12
+                = f.input :last_name, placeholder: "Last Name", label: false, error: "Last Name can't be blank"
           %b Date of birth*
           .row
             .col-md-4
-              = f.date_select :dob
-          %br
+              .col-md-12
+                = f.input :dob, label: false
           %b Student Status*
           .row
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :student_status, "Domestic"
-                Domestic
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :student_status, "International"
-                International
-          %br
+            .col-md-9
+              = f.input :student_status,
+                        :collection => ["Domestic", "International"],
+                        :as => :radio_buttons, :item_wrapper_class => 'radio-inline', label: false, error: false
           %b Penn Affiliation
           .row
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :penn_affiliation, "Undergraduate"
-                Undergraduate
-            .col-md-2
-              %label.radio-inline
-                = f.radio_button :penn_affiliation, "Graduate"
-                Graduate
-            .col-md-2
-              %label.radio-inline
-                = f.radio_button :penn_affiliation, "Alumnus"
-                Alumnus
-            .col-md-5
-              %label.radio-inline
-                = f.radio_button :penn_affiliation, "others", id: "other_affiliation"
-                .row
-                  .col-md-3
-                    others
-                  .col-md-5.form-inline
-                    = text_field_tag :other_penn_affiliation, nil, {placeholder: "Others", class: "input-small", id: "other_penn_affiliation"}
-          %br
+            .col-md-8
+              = f.input :penn_affiliation,
+                        :collection => ["Undergraduate", "Graduate", "Alumnus", "others"],
+                        :as => :radio_buttons,
+                        label: false, :item_wrapper_class => 'radio-inline', error: false
+            .col-md-3.form-inline
+              = f.input :other_penn_affiliation, placeholder: "Others", id: "other_penn_affiliation", label: false
           %b  Year of Graduation
           .row
             .col-md-4
@@ -86,12 +71,13 @@
           %b PennID
           .row
             .col-md-4
-              = f.text_field :penn_id, class: "form-control", placeholder: "Penn ID"
-          %br
+              .col-md-12
+                = f.input :penn_id, placeholder: "Penn ID", label: false
           %b Social Security Number*
           .row
             .col-md-4
-              = f.text_field :ssn, class: "form-control", placeholder: "SSN"
+              .col-md-12
+                = f.input :ssn, placeholder: "SSN", label: false
           .row
             .col-md-12
               = surround 'If you do not have an SSN, we are required to have a W8BEN form on file for you. Please download one ', ', fill it out, and include it in your application.' do
@@ -99,9 +85,9 @@
           %br
           %b W8BEN File Upload (.pdf only, max file size: 5MB)
           .row
-            .col-md-4
-              = f.file_field :w8ben_form
-          %br
+            .col-md-12
+              .col-md-12
+                = f.input :w8ben_form, as: :file, label: false, error: "You must upload the W8BEN form or fill in your SSN"
           %b Passport # or Driver's License #*
           .row
             .col-md-4
@@ -125,13 +111,12 @@
             .col-md-1
               ID1:
             .col-md-4
-              = f.file_field :file_id1
+              = f.input :file_id1, as: :file, label: false, error: "Please upload the file"
           .row
             .col-md-1
               ID2:
             .col-md-4
-              = f.file_field :file_id2
-          %br
+              = f.input :file_id2, as: :file, label: false, error: "Please upload the file"
           *Please email us your ID's if there is a "Could not access file" error. *
         %br
         %br
@@ -146,10 +131,11 @@
               %b Home Phone
           .row
             .col-md-6
-              = f.text_field :mobile_phone, class: "form-control", placeholder: "Mobile Phone"
+              .col-md-12
+                = f.input :mobile_phone, placeholder: "(XXX)XXX-XXXX", label: false, error: "Mobile Phone is invalid"
             .col-md-6
-              = f.text_field :home_phone, class: "form-control", placeholder: "Home Phone"
-          %br
+              .col-md-12
+                = f.input :home_phone, placeholder: "(XXX)XXX-XXXX", label: false
           .row
             .col-md-6
               %b Penn Email*
@@ -157,33 +143,38 @@
               %b Alternate Email*
           .row
             .col-md-6
-              = f.text_field :penn_email, class: "form-control", placeholder: "Penn Email Address"
+              .col-md-12
+                = f.input :penn_email, placeholder: "Penn Email Address", label: false, error: "Penn Email is invalid"
             .col-md-6
-              = f.text_field :alter_email, class: "form-control", placeholder: "Alternate Email Address"
-          %br
+              .col-md-12
+                = f.input :alter_email, placeholder: "Alternate Email Address", label: false, error: "Alternate Email is invalid"
           %b Local Address
           .row
-            .col-md-3
+            .col-md-2
               Address Line 1*
-            .col-md-9
-              = f.text_field :local_address_line1, class: "form-control", placeholder: "Local Address Line1"
-            .col-md-3
+            .col-md-10
+              .col-md-12
+                = f.input :local_address_line1, placeholder: "Local Address Line1", label: false, error: "Address is invalid"
+            .col-md-2
               Address Line 2
-            .col-md-9
-              = f.text_field :local_address_line2, class: "form-control", placeholder: "Local Address Line2"
+            .col-md-10
+              .col-md-12
+                = f.input :local_address_line2, placeholder: "Local Address Line1", label: false
             .col-md-1
               City*
             .col-md-3
-              = f.text_field :local_address_city, placeholder: "City", class: "form-control"
+              .col-md-12
+              = f.input :local_address_city, placeholder: "City", label: false, error: "City is invalid"
             .col-md-1
               State*
             .col-md-3
-              = f.text_field :local_address_state, placeholder: "State", class: "form-control"
+              .col-md-12
+              = f.input :local_address_state, placeholder: "State", label: false, error: "State is invalid"
             .col-md-1
               ZIP*
             .col-md-3
-              = f.text_field :local_address_zip, placeholder: "ZIP", class: "form-control"
-          %br
+              .col-md-12
+                = f.input :local_address_zip, placeholder: "ZIP", label: false, error: "Zip is invalid"
           .row
             .col-md-12.checkbox
               %label
@@ -193,46 +184,42 @@
           #permanent_address
             %b Permanent Address
             .row
-              .col-md-3
+              .col-md-2
                 Address Line 1*
-              .col-md-9
-                = f.text_field :perm_address_line1, class: "form-control", placeholder: "perm Address Line1"
-              .col-md-3
+              .col-md-10
+                .col-md-12
+                  = f.input :perm_address_line1, placeholder: "perm Address Line1", label: false, error: "Address is invalid"
+              .col-md-2
                 Address Line 2
-              .col-md-9
-                = f.text_field :perm_address_line2, class: "form-control", placeholder: "perm Address Line2"
+              .col-md-10
+                .col-md-12
+                  = f.input :perm_address_line2, placeholder: "perm Address Line1", label: false
               .col-md-1
                 City*
               .col-md-3
-                = f.text_field :perm_address_city, placeholder: "City", class: "form-control"
+                .col-md-12
+                = f.input :perm_address_city, placeholder: "City", label: false, error: "City is invalid"
               .col-md-1
                 State*
               .col-md-3
-                = f.text_field :perm_address_state, placeholder: "State", class: "form-control"
+                .col-md-12
+                = f.input :perm_address_state, placeholder: "State", label: false, error: "State is invalid"
               .col-md-1
                 ZIP*
               .col-md-3
-                = f.text_field :perm_address_zip, placeholder: "ZIP", class: "form-control"
-        %br
+                .col-md-12
+                  = f.input :perm_address_zip, placeholder: "ZIP", label: false, error: "Zip is invalid"
       #tab3.tab-pane
         %hr
         .well
           %h2.text-center Account Options
           %b Statement Type*
           .row
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :statement_type, "Paper"
-                Paper
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :statement_type, "Electronic"
-                Electronic
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :statement_type, "Paper + Electronic"
-                Paper + Electronic
-          %br
+            .col-md-12
+              = f.input :statement_type,
+                :collection => ["Paper", "Electronic", "Paper + Electronic"],
+                :as => :radio_buttons,
+                label: false, :item_wrapper_class => 'radio-inline', error: false
           %b Savings Account
           .row
             .col-md-12
@@ -240,19 +227,11 @@
           %br
           %b Checking Account*
           .row
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :checking_account, "None"
-                None
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :checking_account, "Regular"
-                Regular
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :checking_account, "Signature"
-                Signature
-          %br
+            .col-md-12
+              = f.input :checking_account,
+                :collection => ["None", "Regular", "Signature"],
+                :as => :radio_buttons,
+                label: false, :item_wrapper_class => 'radio-inline', error: false
           %div
             %br
             .accordion
@@ -283,29 +262,19 @@
                           .col-md-3
                             PIN
                           .col-md-3
-                            = f.password_field :visa_pin, placeholder: "PIN", class: "form-control"
+                            = f.input :visa_pin, as: :password, placeholder: "PIN", label: false, error: "Visa Pin can't be blank"
                           .col-md-4
                             PIN cannot start with 0
                         .row
                           .col-md-3
                             Please repeat PIN
                           .col-md-3
-                            = f.password_field :visa_pin_confirmation, placeholder: "PIN", class: "form-control"
+                            = f.input :visa_pin_confirmation, as: :password, placeholder: "Repeat Your PIN", label: false, error: "Pin Mismatched"
                         %br
                         %b Visa©CheckCard Delivery
                         .row
-                          .col-md-3
-                            %label.radio-inline
-                              = f.radio_button :visa_delivery, 0
-                              Local Address
-                          .col-md-4
-                            %label.radio-inline
-                              = f.radio_button :visa_delivery, 1
-                              Permanent Address
-                          .col-md-5
-                            %label.radio-inline
-                              = f.radio_button :visa_delivery, 2
-                              SFCU Office for Pickup
+                          .col-md-12
+                            = f.input :visa_delivery, :collection => ["Local Address", "Permanent Address", "SFCU Office for Pickup"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
                     .well
                       %b PennCard Linkage
                       .row
@@ -317,7 +286,8 @@
                         %b 16-digit PennCard Number
                         .row
                           .col-md-4
-                            = f.text_field :penncard_number, placeholder: "564343-XXXX-XXXX-XX", class: "form-control"
+                            .col-md-12
+                              = f.input :penncard_number, placeholder: "564343-XXXX-XXXX-XX", label: false, error: "Penncard Number is invalid"
                           .col-md-12
                             Please come to our main branch to pin your card and complete the link to your account.
                             %br
@@ -336,67 +306,20 @@
                         %br
                         %b Address on Checks:
                         .row
-                          .col-md-3
-                            %label.radio-inline
-                              = f.radio_button :address_on_checks, "Local Address"
-                              Local Address
-                          .col-md-4
-                            %label.radio-inline
-                              = f.radio_button :address_on_checks, "Permanent Address"
-                              Permanent Address
-                          .col-md-3
-                            %label.radio-inline
-                              = f.radio_button :address_on_checks, "None"
-                              None
-                        %br
+                          .col-md-12
+                            = f.input :address_on_checks, :collection => ["Local Address", "Permanent Address", "None"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
                         %b Check Type:
                         .row
-                          .col-md-3
-                            %label.radio-inline
-                              = f.radio_button :check_type, "Single"
-                              Single
-                          .col-md-3
-                            %label.radio-inline
-                              = f.radio_button :check_type, "Duplicate"
-                              Duplicate
-                        %br
+                          .col-md-12
+                            = f.input :check_type, :collection => ["Single", "Duplicate"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
                         %b Color(Speciality)
                         .row
-                          .col-md-2
-                            %label.radio-inline
-                              = f.radio_button :color, "Lemon"
-                              Lemon
-                          .col-md-2
-                            %label.radio-inline
-                              = f.radio_button :color, "Blue"
-                              Blue
-                          .col-md-2
-                            %label.radio-inline
-                              = f.radio_button :color, "Gray"
-                              Gray
-                          .col-md-2
-                            %label.radio-inline
-                              = f.radio_button :color, "Mint"
-                              Mint
-                          .col-md-4
-                            %label.radio-inline
-                              = f.radio_button :color, "Personalized"
-                              Personalized(please contact us)
-                        %br
+                          .col-md-12
+                            = f.input :color, :collection => ["Lemon", "Blue", "Gray", "Mint", "Personalized(Please Contact Us)"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
                         %b Check Delivery
                         .row
-                          .col-md-3
-                            %label.radio-inline
-                              = f.radio_button :check_delivery, "Local Address"
-                              Local Address
-                          .col-md-4
-                            %label.radio-inline
-                              = f.radio_button :check_delivery, "Permanent Address"
-                              Permanent Address
-                          .col-md-5
-                            %label.radio-inline
-                              = f.radio_button :check_delivery, "SFCU Office for pickup"
-                              SFCU Office for pickup
+                          .col-md-12
+                            = f.input :check_delivery, :collection => ["Local Address", "Permanent Address", "SFCU Office for pockup"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
         %br
       #tab4.tab-pane
         %hr
@@ -407,29 +330,18 @@
               By submitting this application, I hereby make application for membership in and agree to all the by-laws and any amendments thereof in University of Pennsylvania Student Federal Credit Union and subscribed to the par value of one share ($5) in Savings Account. I acknowledge the receipt of the Account Disclosure Statements of the Credit Union. I acknowledge that terms and conditions in these statements are subject to change without notice. I authorize the Credit Union to verify credit and employment history by any necessary means, including preparation of a credit report by a credit reporting agency. I furthermore acknoweledge that the terms I agree to my submission of this form shall constitute the execution of this document in exactly the same manner as if I had signed, by hand, a paper version of this agreement. I certify that the information provided on this application is true and correct and that the ownership designated hereon apply to the type of account(s) noted above.
           %br
           .row
-            .col-md-12.checkbox
-              %label
-                = f.check_box :terms
-                I agree to the terms and conditions stated above and in the Account Disclosure
-          %br
-            .row
-              .col-md-12.checkbox
-                %label
-                  = f.check_box :understand
-                  I understand that once my account is opened, I must make the minimum deposit of $5 into my account at the SFCU within 30 days.
-          %br
+            .col-md-12
+              .col-md-12
+                = f.input :terms, as: :boolean, label: "I agree to the terms and conditions stated above and in the Account Disclosure", error: false
+          .row
+            .col-md-12
+              .col-md-12
+                = f.input :understand, as: :boolean, label: "I understand that once my account is opened, I must make the minimum deposit of $5 into my account at the SFCU within 30 days.", error: false
           .row
             .col-md-2
               Signature
-            .col-md-3
-              = f.text_field :signature, placeholder: "Electronic Sigature", class: "form-control"
-            .col-md-2
-              (full name)
-            .col-md-2
-              Today's Date
-            .col-md-3
-              = f.text_field :apply_date, placeholder: "MM/DD/YYYY", class: "form-control"
-          %br
+            .col-md-4
+              = f.input :signature, placeholder: "Electronic Sigature", label: false, error: "Please Sign here"
         .actions.text-center
           = f.submit 'Submit', class: "btn btn-primary"
     %ul.pager.wizard
@@ -457,17 +369,14 @@
   	}});
   });
   $(document).ready(function(){
-    $("#other_penn_affiliation").hide();
+    $("#maapp_other_penn_affiliation").hide();
     $("input:radio[name='maapp[penn_affiliation]']").change(function(){
       if(this.value == 'others' && this.checked){
-        $("#other_penn_affiliation").show();
+        $("#maapp_other_penn_affiliation").show();
       }else{
-        $("#other_penn_affiliation").hide();
+        $("#maapp_other_penn_affiliation").hide();
       }
     });
-    $("#other_penn_affiliation").keyup(function(){
-      $("#other_affiliation").val($(this).val())
-    })
     $("#check_options").hide();
     $('#maapp_order_checks').click(function(){
       $("#check_options").toggle(this.checked)

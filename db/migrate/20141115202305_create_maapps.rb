@@ -43,7 +43,6 @@ class CreateMaapps < ActiveRecord::Migration
       t.string :color
       t.string :check_delivery
       t.string :signature
-      t.date :apply_date
 
       t.timestamps
     end
