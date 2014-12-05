@@ -88,6 +88,7 @@ class Alapp < ActiveRecord::Base
   end
 
   def validates_local_address
+    self.local_country = "" if self.local_country.nil?
     if ["us", "united states"].include? self.local_country.chomp.downcase
       begin
         @lob = Lob.load(api_key: USERNAME)
@@ -111,6 +112,7 @@ class Alapp < ActiveRecord::Base
   end
 
   def validates_perm_address
+    self.perm_country = "" if self.perm_country.nil?
     if ["us", "united states"].include? self.perm_country.chomp.downcase
       if empty_field?(perm_address_line1) and empty_field?(perm_address_line2) #if not filled (perm address not required)
         self.perm_address_city = ""
