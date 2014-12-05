@@ -24,7 +24,7 @@ one:
   perm_address_city:
   perm_address_state:
   perm_address_zip:
-  perm_address_country:
+  perm_address_country: US
   perm_home_phone:
   student_status: International
 
@@ -52,7 +52,7 @@ two:
   perm_address_city:
   perm_address_state:
   perm_address_zip:
-  perm_address_country:
+  perm_address_country: US
   perm_home_phone:
   student_status: International
 #two:

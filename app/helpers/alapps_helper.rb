@@ -16,36 +16,36 @@ module AlappsHelper
     end
   end
 
-  class PhoneValidator < ActiveModel::Validator
-
-    def validate(record)
-      options[:fields].each do |field|
-
-        phone = record.send(field)
-        if phone.blank?
-          return
-        else
-          phone_formats = [
-              /^\d{10}/,
-              /^\(\d\d\d\) \d\d\d-\d\d\d\d/,
-              /^\d\d\d\.\d\d\d\.\d\d\d\d/,
-              /^\d\d\d\-\d\d\d\-\d\d\d\d/
-          ]
-          valid = false
-          phone_formats.each do |format|
-            if phone.match( format )
-              valid = true
-            end
-          end
-
-          unless valid
-            record.errors.add(field, "Format of phone number isn't recognized")
-          end
-        end
-      end
-    end
-
-  end
+  # class PhoneValidator < ActiveModel::Validator
+  #
+  #   def validate(record)
+  #     options[:fields].each do |field|
+  #
+  #       phone = record.send(field)
+  #       if phone.blank?
+  #         return
+  #       else
+  #         phone_formats = [
+  #             /^\d{10}/,
+  #             /^\(\d\d\d\) \d\d\d-\d\d\d\d/,
+  #             /^\d\d\d\.\d\d\d\.\d\d\d\d/,
+  #             /^\d\d\d\-\d\d\d\-\d\d\d\d/
+  #         ]
+  #         valid = false
+  #         phone_formats.each do |format|
+  #           if phone.match( format )
+  #             valid = true
+  #           end
+  #         end
+  #
+  #         unless valid
+  #           record.errors.add(field, "Format of phone number isn't recognized")
+  #         end
+  #       end
+  #     end
+  #   end
+  #
+  # end
 
   # class DollarValidator < ActiveModel::Validator
   #   def validate(record)

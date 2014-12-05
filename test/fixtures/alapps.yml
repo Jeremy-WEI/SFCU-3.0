@@ -155,19 +155,19 @@ one:
   today_date: 2014-11-04
 
 two:
-  first: MyString
+  first:
   middle: MyString
-  last: MyString
-  dob: 2014-11-04
+  last:
+  dob: 2016-11-04
   mother_maiden: MyString
-  ssn: MyString
+  ssn: joirjoq
   alumni: false
   credit_req_type: MyString
-  amount_req: 1.5
+  amount_req: -13918
   term: MyString
   vehicle_condition: MyString
-  price_range_min: 1.5
-  price_range_max: 1.5
+  price_range_min: jdas
+  price_range_max: afwf
   model_year: 1
   veh_subcompact: false
   veh_compact: false
@@ -189,9 +189,9 @@ two:
   perm_address_zip: MyString
   perm_country: MyString
   e_mail: MyString
-  phone_number: MyString
+  phone_number: 82901
   name_nearest_relative: MyString
-  phone_nearest_relative: MyString
+  phone_nearest_relative: 80913
   driver_lisence_num: MyString
   driver_license_file: MyString
   employ1_employer: MyString
@@ -214,7 +214,7 @@ two:
   add_income1_amount: 1.5
   add_income1_freq: MyString
   add_income2_source: MyString
-  add_income2_amount: 1.5
+  add_income2_amount: -12380
   add_income2_freq: MyString
   add_income3_source: MyString
   add_income3_amount: 1.5
@@ -305,5 +305,5 @@ two:
   document3: MyString
   document4: MyString
   document5: MyString
-  signature: MyString
+  signature:
   today_date: 2014-11-04

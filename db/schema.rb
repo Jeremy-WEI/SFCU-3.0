@@ -242,7 +242,7 @@ ActiveRecord::Schema.define(version: 20141203025309) do
     t.string   "grad_year"
     t.string   "penn_id"
     t.string   "ssn"
-    t.string   "W8BEN_form"
+    t.string   "w8ben_form"
     t.string   "doc_type"
     t.string   "doc_id"
     t.string   "file_id1"
