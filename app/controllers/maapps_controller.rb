@@ -28,7 +28,7 @@ class MaappsController < ApplicationController
 
     respond_to do |format|
       if @maapp.save
-        format.html { redirect_to @maapp, notice: 'Maapp was successfully created.' }
+        format.html { redirect_to action: :index }
         format.json { render :show, status: :created, location: @maapp }
       else
         format.html { render :new }
