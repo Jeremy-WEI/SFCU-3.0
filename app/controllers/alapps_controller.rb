@@ -16,6 +16,7 @@ class AlappsController < ApplicationController
 
       zip_folder_path = "public/uploads/alapp"
       zip_files(zip_folder_path, csv_path, params[:exports])
+
     end
 
   end
@@ -44,7 +45,9 @@ class AlappsController < ApplicationController
         csv << tmp
       end
     end
+
     send_file(file)
+
   end
 
   def zip_files(folder_path, csv_path, export_lists)
@@ -61,6 +64,7 @@ class AlappsController < ApplicationController
       csv_name = csv_path.sub(folder_path + '/','')
       zipfile.add(csv_name, csv_path)
     end
+
   end
 
   # GET /alapps/1
