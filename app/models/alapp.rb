@@ -13,11 +13,11 @@ class Alapp < ActiveRecord::Base
 
   before_validation :make_perm_address
 
-  validates :driver_license_file,
-            presence: true,
-            :file_size => {
-                :maximum => 5.megabytes.to_i
-            }
+  # validates :driver_license_file,
+  #           presence: true,
+  #           :file_size => {
+  #               :maximum => 5.megabytes.to_i
+  #           }
   validates :document1, :document3, :document4, :document5, :document2,
             :file_size => {
                 :maximum => 5.megabytes.to_i
