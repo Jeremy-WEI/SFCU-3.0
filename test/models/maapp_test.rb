@@ -4,7 +4,7 @@ class MaappTest < ActiveSupport::TestCase
 
 
   test "create an MAapplication" do
-    @maapp = maapps(:one)
+    @maapp = maapps(:Jeremy)
     assert @maapp.save
   end
 

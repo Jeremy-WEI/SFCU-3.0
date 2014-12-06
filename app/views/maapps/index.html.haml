@@ -15,7 +15,7 @@
     %tr{:class => "#{if applicant.application_status == 'Unprocessed' then 'active' elsif applicant.application_status == 'Processed' then 'success' else 'info' end}"}
       %td.text-center= check_box_tag 'exports[]', applicant.id, false, id: "exports_#{applicant.id}", form: "exports"
       %td.text-center= label_tag "exports_#{applicant.id}", applicant.created_at.strftime('%Y-%m-%d')
-      %td.text-center= label_tag "exports_#{applicant.id}", applicant.first_name +   ' ' + applicant.last_name
+      %td.text-center= label_tag "exports_#{applicant.id}", applicant.first_name.to_s +   ' ' + applicant.last_name.to_s
       %td.text-center= form_for applicant do |f| f.select :application_status, options_for_select([ "Unprocessed", "Processed", "Hold" ], applicant.application_status), {}, :onchange => 'this.form.submit()' end
       -#%td= label_tag applicant.application_status
       %td.text-center= link_to 'Show', applicant

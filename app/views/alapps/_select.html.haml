@@ -1,0 +1,11 @@
+.col-md-4
+  %b
+    = title
+  .col-md-12
+    = f.input :"#{var}",
+              as: :select,
+              collection: list,
+              selected: selected,
+              label: false,
+              error: "#{error_msg}"
+

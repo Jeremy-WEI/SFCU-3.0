@@ -19,11 +19,11 @@ one:
   local_address_zip: 19104
   local_home_phone: 2149023904
   biz_phone:
-  perm_address_line1:
+  perm_address_line1: Room 1503, 3600 Chestnut St.
   perm_address_line2:
-  perm_address_city:
-  perm_address_state:
-  perm_address_zip:
+  perm_address_city: Philadelphia
+  perm_address_state: PA
+  perm_address_zip: 19104
   perm_address_country: US
   perm_home_phone:
   student_status: International

@@ -21,6 +21,9 @@ class UlappsController < ApplicationController
   def edit
   end
 
+  def successful
+  end
+
   def export
     if params[:exports].nil?
       @ulapps = Ulapp.all
@@ -85,7 +88,8 @@ class UlappsController < ApplicationController
 
     respond_to do |format|
       if @ulapp.save
-        format.html { redirect_to @ulapp, notice: 'Ulapp was successfully created.' }
+        format.html { render :successful }
+        # format.html { redirect_to @ulapp, notice: 'Ulapp was successfully created.' }
         # format.html { redirect_to action: :index }
         format.json { render :show, status: :created, location: @ulapp }
       else

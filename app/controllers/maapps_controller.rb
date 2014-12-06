@@ -21,6 +21,9 @@ class MaappsController < ApplicationController
   def edit
   end
 
+  def successful
+  end
+
   # POST /maapps
   # POST /maapps.json
   def create
@@ -28,7 +31,8 @@ class MaappsController < ApplicationController
 
     respond_to do |format|
       if @maapp.save
-        format.html { redirect_to action: :index }
+        format.html { render :successful }
+        # format.html { redirect_to action: :index }
         format.json { render :show, status: :created, location: @maapp }
       else
         format.html { render :new }
@@ -42,14 +46,7 @@ class MaappsController < ApplicationController
   def update
     respond_to do |format|
       @maapp.update(maapp_params)
-      # if @maapp.update(maapp_params)
-        # format.html { redirect_to @maapp, notice: 'Maapp was successfully updated.' }
-        format.html { redirect_to action: :index }
-        # format.json { render :show, status: :ok, location: @maapp }
-      # else
-      #   format.html { render :edit }
-      #   format.json { render json: @maapp.errors, status: :unprocessable_entity }
-      # end
+      format.html { redirect_to action: :index }
     end
   end
 
@@ -60,7 +57,6 @@ class MaappsController < ApplicationController
     else
       csv_path = "public/uploads/maapp/maapps_file.csv"
       create_csv(csv_path)
-
 
       zip_folder_path = "public/uploads/maapp"
       zip_files(zip_folder_path, csv_path, params[:exports])

@@ -6,6 +6,9 @@ class AlappsController < ApplicationController
     @alapps = Alapp.all
   end
 
+  def successful
+  end
+
   def export
     if params[:exports].nil?
       @alapps = Alapp.all
@@ -77,23 +80,6 @@ class AlappsController < ApplicationController
     @alapp = Alapp.new
   end
 
-  #save updates at index page
-  def save
-    @alapp = Alapp.find(params[:id])
-    respond_to do |format|
-      @alapp.update(:application_status => 'Not working')
-      format.html { redirect_to @alapp, notice: 'Alapp was successfully updated.' }
-      format.json { render :show, status: :ok, location: @alapp }
-    end
-    # respond_to do |format|
-    #   #set_alapp
-    #   @alapp.update(alapp_status(@alapp))
-    #   #@alapps = Alapp.all
-    #   format.html { redirect_to alapps_url }
-    #   # format.json { head :no_content }
-    # end
-  end
-
   # GET /alapps/1/edit
   def edit
   end
@@ -107,7 +93,8 @@ class AlappsController < ApplicationController
     # end
     respond_to do |format|
       if @alapp.save
-        format.html { redirect_to @alapp, notice: 'Alapp was successfully created.' }
+        format.html { render :successful }
+        # format.html { redirect_to @alapp, notice: 'Alapp was successfully created.' }
         # flash[:notice] = "You have successfully submitted the form!"
         # format.html { redirect_to alapps_path }
         format.json { render :show, status: :created, location: @alapp }
@@ -122,8 +109,9 @@ class AlappsController < ApplicationController
   # PATCH/PUT /alapps/1.json
   def update
     respond_to do |format|
-      # if @alapp.update(alapp_params)
-        format.html { redirect_to action: :index }
+      @alapp.update(alapp_params)
+      format.html { redirect_to action: :index }
+      format.json { render :show, status: :ok, location: @alapp }
         # format.html { redirect_to @alapp, notice: 'Alapp was successfully updated.' }
         # format.json { render :show, status: :ok, location: @alapp }
       # else

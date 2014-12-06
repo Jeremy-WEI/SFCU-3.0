@@ -6,40 +6,28 @@
     .accordion-body
       .accordion-inner
         .row
-          = render "text_field6", :f => f, :title => "Employer", :var => "employ#{x}_employer", :place_holder => "Employer name"
-          = render "text_field6", :f => f, :title => "Employer Address", :var => "employ#{x}_employer_addr", :place_holder => "Address"
+          = render "text_field6", :f => f, :title => "Employer", :var => "employ#{x}_employer", :place_holder => "Employer name", :error_msg => ""
+          = render "text_field6", :f => f, :title => "Employer Address", :var => "employ#{x}_employer_addr", :place_holder => "Address", :error_msg => ""
         %br
         .row
-          = render "text_field6", :f => f, :title => "Position", :var => "employ#{x}_position", :place_holder => "Position"
-          = render "text_field6", :f => f, :title => "Supervisor", :var => "employ#{x}_supervisor", :place_holder => ""
+          = render "text_field6", :f => f, :title => "Position", :var => "employ#{x}_position", :place_holder => "Position", :error_msg => ""
+          = render "text_field6", :f => f, :title => "Supervisor", :var => "employ#{x}_supervisor", :place_holder => "", :error_msg => ""
         %br
         .row
-          = render "text_field6", :f => f, :title => "Grosspay", :var => "employ#{x}_grosspay", :place_holder => "In US dollars"
+          = render "text_field6", :f => f, :title => "Grosspay", :var => "employ#{x}_grosspay", :place_holder => "In US dollars", :error_msg => ""
           .col-md-6
             %b Frequency
-            .form-inline
-              = f.radio_button(:"employ#{x}_freq", "Weekly")
-              &nbsp
-              = f.label(:age_child_weekly, "Weekly")
-              &nbsp
-              = f.radio_button(:"employ#{x}_freq", "Monthly")
-              &nbsp
-              = f.label(:"employ#{x}_freq_monthly", "Monthly")
-              &nbsp
-              = f.radio_button(:"employ#{x}_freq", "Yearly")
-              &nbsp
-              = f.label(:"employ#{x}_freq_yearly", "Yearly")
+            = render "radio_button", :f => f,
+                                     :var => "employ#{x}_freq",
+                                     :list => ["Weekly", "Monthly", "Yearly"],
+                                     :error_msg => ""
         %br
         .row
           .col-md-6
             %b Will this job continue for term of this loan?
-            .form-inline
-              = f.radio_button(:"employ#{x}_continue", true)
-              &nbsp
-              = f.label(:"employ#{x}_continue_yes", "Yes")
-              &nbsp
-              = f.radio_button(:"employ#{x}_continue", false)
-              &nbsp
-              = f.label(:"employ#{x}_continue_no", "No")
-          = render "text_field6", :f => f, :title => 'If "No", please list expected duration:', :var => "employ#{x}_expect_duration", :place_holder => ""
+            = render "radio_button", :f => f,
+                                     :var => "employ#{x}_continue",
+                                     :list => [["yes", true], ["no", false]],
+                                     :error_msg => ""
+          = render "text_field6", :f => f, :title => 'If "No", please list expected duration:', :var => "employ#{x}_expect_duration", :place_holder => "", :error_msg => ""
 %br

@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+Jeremy:
   first_name: Jeremy
   middle_name:
   last_name: Wei
-  dob: 1990-11-15
-  student_status: Domestic
+  dob: 1992-08-07
+  student_status: International
   penn_affiliation: Graduate
   grad_year: Spring-2016
   penn_id: 12323242
@@ -33,26 +33,18 @@ one:
   checking_account: Regular
   courtesy_pay: true
   visa_checkcard: false
-  visa_pin:
-  visa_delivery:
   penncard_link: false
-  penncard_number:
   order_checks: false
-  address_on_checks: MyString
-  check_type: MyString
-  color: MyString
-  check_delivery: MyString
   signature: Jeremy Wei
-  apply_date: 2014-11-15
 
-two:
-  first_name: Jeremy
+Katie:
+  first_name: Katie
   middle_name:
-  last_name: Wei
+  last_name: Wu
   dob: 1990-11-15
   student_status: Domestic
   penn_affiliation: Graduate
-  grad_year: Spring-2016
+  grad_year: Fall-2016
   penn_id: 12323242
   ssn:
   w8ben_form:
@@ -62,33 +54,9 @@ two:
   file_id2: MyString.png
   mobile_phone: 2153992034
   home_phone: 3245467686
-  penn_email: jeremywei@seas.upenn.edu
-  alter_email: jeremywei@gmail.com
-  local_address_line1: Room 1302, 3600 Chestnut St.
-  local_address_line2:
-  local_address_city: Philadelphia
-  local_address_state: PA
-  local_address_zip: 19104
-  perm_address_line1: Room 1302, 3600 Chestnut St.
-  perm_address_line2:
-  perm_address_city: Philadelphia
-  perm_address_state: PA
-  perm_address_zip: 19104
-  statement_type: Paper
-  checking_account: Regular
-  courtesy_pay: true
-  visa_checkcard: false
-  visa_pin:
-  visa_delivery:
-  penncard_link: false
-  penncard_number:
-  order_checks: false
-  address_on_checks: MyString
-  check_type: MyString
-  color: MyString
-  check_delivery: MyString
-  signature: Jeremy Wei
-  apply_date: 2014-11-15
+  penn_email: KatieWu@seas.upenn.edu
+  alter_email: KatieWu@gmail.com
+  signature: Katie Wu
 
 three:
   first_name: Jeremy
@@ -133,7 +101,6 @@ three:
   color: MyString
   check_delivery: MyString
   signature: Jeremy Wei
-  apply_date: 2014-11-15
 
 #two:
 #  first_name: MyString
@@ -178,4 +145,3 @@ three:
 #  color: MyString
 #  check_delivery: MyString
 #  signature: MyString
-#  apply_date: 2014-11-15
