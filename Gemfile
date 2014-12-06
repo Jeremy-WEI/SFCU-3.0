@@ -4,13 +4,32 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+
+
+group :test, :development do
+  gem 'sqlite3'
+  gem 'simplecov', :require => false
+  gem 'sqlite3'
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'launchy'
+end
+
+group :production do
+  gem 'pg'
+end
+
+group :assets do
+  gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+  gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+  gem 'coffee-rails', '~> 4.0.0'
+end
+# Use SCSS for stylesheets
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
@@ -41,16 +60,10 @@ gem 'lob'
 
 gem 'rubyzip'
 gem 'zip-zip'
-group :test, :development do
-  gem 'cucumber-rails', :require => false
-  gem 'cucumber-rails-training-wheels'
-  gem 'database_cleaner'
-  gem 'capybara'
-  gem 'launchy'
-end
+
 
 gem 'simple_form'
-gem 'simplecov', :require => false, :group => :test
+
 
 gem 'momentjs-rails', '>= 2.8.1', :github => 'derekprior/momentjs-rails'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
