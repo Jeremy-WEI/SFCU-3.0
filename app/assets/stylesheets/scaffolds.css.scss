@@ -46,12 +46,12 @@ div {
 }
 
 #error_explanation {
-  width: 450px;
-  border: 2px solid red;
+  width: 100%;
   padding: 7px;
-  padding-bottom: 0;
+  padding-bottom: 7px;
+  font-size: 150%;
   margin-bottom: 20px;
-  background-color: #f0f0f0;
+  color: #BB2929;
   h2 {
     text-align: left;
     font-weight: bold;

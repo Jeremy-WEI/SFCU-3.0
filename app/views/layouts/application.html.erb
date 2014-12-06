@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SFCUProject</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <style>
@@ -10,7 +9,7 @@
   </style>
 </head>
 <body>
-<div class='container'>
+<div class='container', style="width:80%; maigin:auto;">
   <br>
 <div class='row'>
   <div class='col-xs-6'>
@@ -44,23 +43,13 @@
           <img height='20' width='25' src='/img/twitter.png' alt='Follow us on Twitter!'>
         </a>
       </p>
-      <!-- <p class='text-muted'>
-        <small>
-          Member Services: (215) 222-2604
-          <br>
-          (Mon-Fri 10am-6pm, Sat 12pm-5pm)
-        </small>
-      </p> -->
     </div>
   </div>
 </div>
 <div class='row'>
-
-</div>
   <%= yield %>
 </div>
-
-<div class="container">
+<div class="row">
   <div class="row">
     <div class="col-xs-12">
       <div class="well">
@@ -115,6 +104,6 @@
     </div>
   </div>
 </div>
-</footer>
+</div>
 </body>
 </html>

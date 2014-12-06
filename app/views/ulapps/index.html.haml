@@ -1,28 +1,31 @@
+%title Unsecured Loan Application Management System
+.panel.panel-default
+  .panel-heading
+    %h1.panel-title.text-center Unsecured Loan Application Management System
+  .panel-body
+    %table.table.table-hover.table-bordered
+      %tr
+        %th.col-md-1.text-center
+        %th.col-md-3.text-center Applicant
+        %th.col-md-2.text-center Loan Amount($)
+        %th.col-md-2.text-center Status
+        %th.col-md-2.text-center Date Submitted
+        %th.col-md-1.text-center
+        %th.col-md-1.text-center
 
-%table.table.table-hover.col-md-12
-  %tr
-    %th.col-md-1
-    %th.col-md-3 Date Submitted
-    %th.col-md-3 Applicant
-    %th.col-md-2 Loan Amount
-    %th.col-md-1 Status
-    %th.col-md-1
-    %th.col-md-1
-
-  - @ulapps.each do |applicant|
-    %tr{:class => "#{if applicant.application_status == 'Unprocessed' then 'active' elsif applicant.application_status == 'Processed' then 'success' else 'info' end}"}
-      %td= check_box_tag 'exports[]', applicant.id, false, id: "exports_#{applicant.id}", form: "exports"
-      %td= label_tag "exports_#{applicant.id}", applicant.created_at.strftime('%Y-%m-%d')
-      %td= label_tag "exports_#{applicant.id}", applicant.first_name.to_s +   ' ' + applicant.last_name.to_s
-      %td= label_tag "exports_#{applicant.id}", applicant.amount
-      %td.text-center= form_for applicant do |f| f.select :application_status, options_for_select([ "Unprocessed", "Processed", "Hold" ], applicant.application_status), {}, id: "status_#{applicant.id}", :onchange => 'this.form.submit()' end
-      %td= link_to 'Show', applicant
-      -#%td= link_to 'Edit', edit_maapp_path(applicant)
-      %td= link_to 'Destroy', applicant, :method => :delete, :data => { :confirm => 'Are you sure?' }
--#
-%br
-= form_tag url_for(:controller => 'ulapps', :action => 'export'), method: 'get', name: "exports", id: "exports" do
-  = submit_tag 'Export', id: "export_button", class: "btn btn-primary"
+      - @ulapps.each do |applicant|
+        %tr{:class => "#{if applicant.application_status == 'Unprocessed' then 'active' elsif applicant.application_status == 'Processed' then 'success' else 'info' end}"}
+          %td.text-center= check_box_tag 'exports[]', applicant.id, false, id: "exports_#{applicant.id}", form: "exports"
+          %td.text-center= label_tag "exports_#{applicant.id}", applicant.first_name.to_s +   ' ' + applicant.last_name.to_s
+          %td.text-center= label_tag "exports_#{applicant.id}", applicant.amount
+          %td.text-center= form_for applicant do |f| f.select :application_status, options_for_select([ "Unprocessed", "Processed", "Hold" ], applicant.application_status), {}, id: "status_#{applicant.id}", :onchange => 'this.form.submit()' end
+          %td.text-center= label_tag "exports_#{applicant.id}", applicant.created_at.strftime('%Y-%m-%d')
+          %td.text-center= link_to 'Detail', applicant
+          %td.text-center= link_to 'Delete', applicant, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    %hr
+    .div.text-center
+      = form_tag url_for(:controller => 'ulapps', :action => 'export'), method: 'get', name: "exports", id: "exports" do
+        = submit_tag 'Export', id: "export_button", class: "btn btn-primary"
 
 :javascript
   $(document).ready(function() {
@@ -36,10 +39,7 @@
           break;
         }
       }
-      if(empty) {
+      if(empty)
         alert("No application selected");
-
-      }
-    }
-    );
+    });
   });
