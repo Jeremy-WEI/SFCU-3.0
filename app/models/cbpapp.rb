@@ -7,7 +7,7 @@ class Cbpapp < ActiveRecord::Base
   validates :first_name, :last_name, :mother_maiden,:account_number, :how_know,
             :local_home_phone, :local_address_line1, :local_address_city, :local_address_state,
             :student_status, :period,:local_address_state,:local_address_zip, :local_address_line1,
-            :local_address_line2, :local_address_city, :local_address_country,
+            :local_address_city,
             presence: true
   validates :ssn, format: {with: SSN_FORMAT}
   validate :check_dob, :check_non_upenn_email, :check_grad_date
@@ -62,7 +62,6 @@ class Cbpapp < ActiveRecord::Base
       errors.add(:local_address_line2, "Invalid address")
       errors.add(:local_address_city, "Invalid address")
       errors.add(:local_address_state, "Invalid address")
-      errors.add(:local_address_country, "Invalid address")
       errors.add(:local_address_zip, "Invalid address")
     end
   end
