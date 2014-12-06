@@ -4,13 +4,13 @@
   - @y = ""
 %br
 .row
-  = render "text_field6", :f => f, :title => "#{x} address line 1#{@y}", :var => "#{x}_address_line1", :place_holder => "#{x} Address Line 1", :error_msg => ""
+  = render "text_field6", :f => f, :title => "#{x} address line 1#{@y}", :var => "#{x}_address_line1", :place_holder => "#{x} Address Line 1", :error_msg => "Invalid address"
 .row
   = render "text_field6", :f => f, :title => "#{x} address line 2#{@y}", :var => "#{x}_address_line2", :place_holder => "#{x} Address Line 2", :error_msg => ""
 .row
   = render "text_field4", :f => f, :title => "City#{@y}", :var => "#{x}_address_city", :place_holder => "City", :error_msg => ""
   = render "select", f: f, title: "State#{@y}", var: "#{x}_address_state", list: us_states, selected: "PA", error_msg: ""
-  = render "text_field4", :f => f, :title => "ZIP#{@y}", :var => "#{x}_address_zip", :place_holder => "#####", :error_msg => ""
+  = render "text_field4", :f => f, :title => "ZIP#{@y}", :var => "#{x}_address_zip", :place_holder => "#####", :error_msg => "Please enter your ZIP code in 5 digits."
 .row
   = render "select", f: f, title: "Country#{@y}", var: "#{x}_country", list: Country.all.sort, selected: "US", error_msg: ""
 %br
