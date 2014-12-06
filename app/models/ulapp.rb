@@ -105,10 +105,7 @@ class Ulapp < ActiveRecord::Base
     self.perm_country = "" if self.perm_country.nil?
     if ["us", "united states"].include? self.perm_country.chomp.downcase
       if empty_field?(perm_address_line1) and empty_field?(perm_address_line2) #if not filled (perm address not required)
-        self.perm_address_city = ""
-        self.perm_address_zip = ""
-        self.perm_address_state = ""
-        self.perm_country = ""
+        [self.perm_address_city, self.perm_address_zip, self.perm_address_state, self.perm_country].map {|x| x = ""}
       else
         begin
           @lob = Lob.load(api_key: USERNAME)
