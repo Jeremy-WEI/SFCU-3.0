@@ -17,16 +17,16 @@ class Maapp < ActiveRecord::Base
   attr_accessor :grad_season, :same_perm_address, :other_penn_affiliation
   before_validation :make_grad_year, :make_perm_address, :make_penn_affiliation
 
-  validates :w8ben_form,
-            presence: true,
-            file_size: {
-                maximum: 5.megabytes.to_i
-            }, if: lambda { not ssn.present? }
-  validates :file_id1, :file_id2,
-            presence: true,
-            file_size: {
-                maximum: 5.megabytes.to_i
-            }
+  # validates :w8ben_form,
+  #           presence: true,
+  #           file_size: {
+  #               maximum: 5.megabytes.to_i
+  #           }, if: lambda { not ssn.present? }
+  # validates :file_id1, :file_id2,
+  #           presence: true,
+  #           file_size: {
+  #               maximum: 5.megabytes.to_i
+  #           }
 
 
   validates :first_name, :last_name, :student_status, :penn_affiliation,
@@ -52,7 +52,7 @@ class Maapp < ActiveRecord::Base
 
   def dob_validation
     errors.add(:dob, "Date of Birth can't be blank.") unless dob.present?
-    errors.add(:dob, "Date of Birth must be in the past.") if dob >= Date.today
+    errors.add(:dob, "Date of Birth must be in the past.") if dob.present? and dob >= Date.today
   end
 
   def make_penn_affiliation

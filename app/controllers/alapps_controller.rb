@@ -77,23 +77,6 @@ class AlappsController < ApplicationController
     @alapp = Alapp.new
   end
 
-  #save updates at index page
-  # def save
-  #   @alapp = Alapp.find(params[:id])
-  #   respond_to do |format|
-  #     @alapp.update(:application_status => 'Not working')
-  #     format.html { redirect_to @alapp, notice: 'Alapp was successfully updated.' }
-  #     format.json { render :show, status: :ok, location: @alapp }
-  #   end
-  #   # respond_to do |format|
-  #   #   #set_alapp
-  #   #   @alapp.update(alapp_status(@alapp))
-  #   #   #@alapps = Alapp.all
-  #   #   format.html { redirect_to alapps_url }
-  #   #   # format.json { head :no_content }
-  #   # end
-  # end
-
   # GET /alapps/1/edit
   def edit
   end
