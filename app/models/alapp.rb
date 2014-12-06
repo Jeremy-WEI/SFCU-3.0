@@ -34,7 +34,7 @@ class Alapp < ActiveRecord::Base
   validates :first, :last, :alumni, :mother_maiden, :credit_req_type,
             :term, :vehicle_condition, :name_nearest_relative, :phone_nearest_relative,
             :driver_lisence_num, :signature, :today_date, :local_address_state,:local_address_zip, :local_address_line1,
-            :local_address_line2, :local_address_city, :local_country,
+            :local_address_city, :local_country,
             presence: true
   validate :check_dob
   validates :ssn, format: {with: SSN_FORMAT}

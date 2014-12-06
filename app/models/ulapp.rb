@@ -26,7 +26,7 @@ class Ulapp < ActiveRecord::Base
   validates :credit_type, :joint_applicant, :purpose, :first_name, :last_name,
             :name_relative, :phone_type, :employer,
             :supervisor_firstname, :supervisor_lastname, :local_address_state,:local_address_zip, :local_address_line1,
-            :local_address_line2, :local_address_city, :local_country,
+            :local_address_city, :local_country,
             presence: true
   validates :amount, numericality: { greater_than_or_equal_to: 0, only_integer: true}
   validate :check_sfcu_account
