@@ -1,5 +1,6 @@
 class AlappsController < ApplicationController
   before_action :set_alapp, only: [:show, :edit, :update, :destroy]
+  http_basic_authenticate_with :name => MainHelper.name, :password => MainHelper.password, except: [:new, :create, :successful]
   # GET /alapps
   # GET /alapps.json
   def index

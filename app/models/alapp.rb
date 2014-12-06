@@ -78,8 +78,14 @@ class Alapp < ActiveRecord::Base
   end
 
   def validates_vehicle_type
-    if not (veh_subcompact.present? or veh_compact.present? or veh_mid_size.present? or veh_full_size.present? or veh_sports_car.present? or veh_truck.present? or veh_van.present?)
-      errors.add(:veh_type, "You must choose a vehicle type")
+    unless veh_subcompact == true or veh_compact == true or veh_mid_size == true or veh_full_size == true or veh_sports_car == true or veh_truck == true or veh_van == true
+      errors.add(:veh_subcompact, "You must choose a vehicle type")
+      errors.add(:veh_compact, "You must choose a vehicle type")
+      errors.add(:veh_mid_size, "You must choose a vehicle type")
+      errors.add(:veh_full_size, "You must choose a vehicle type")
+      errors.add(:veh_sports_car, "You must choose a vehicle type")
+      errors.add(:veh_truck, "You must choose a vehicle type")
+      errors.add(:veh_van, "You must choose a vehicle type")
     end
   end
 

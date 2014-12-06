@@ -1,6 +1,6 @@
 class CbpappsController < ApplicationController
   before_action :set_cbpapp, only: [:show, :edit, :update, :destroy]
-
+  http_basic_authenticate_with :name => MainHelper.name, :password => MainHelper.password, except: [:new, :create, :successful]
   # GET /cbpapps
   # GET /cbpapps.json
   def index

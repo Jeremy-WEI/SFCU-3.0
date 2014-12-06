@@ -1,6 +1,6 @@
 class MaappsController < ApplicationController
   before_action :set_maapp, only: [:show, :edit, :update, :destroy]
-
+  http_basic_authenticate_with :name => MainHelper.name, :password => MainHelper.password, except: [:new, :create, :successful]
   # GET /maapps
   # GET /maapps.json
   def index

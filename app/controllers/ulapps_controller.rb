@@ -1,7 +1,7 @@
 class UlappsController < ApplicationController
   before_action :set_ulapp, only: [:show, :edit, :update, :destroy]
-
   # GET /ulapps
+  http_basic_authenticate_with :name => MainHelper.name, :password => MainHelper.password, except: [:new, :create, :successful]
   # GET /ulapps.json
   def index
     @ulapps = Ulapp.all

@@ -14,12 +14,12 @@
   .progress
     .progress-bar.progress-bar-success.progress-bar-striped.active.bar
   = simple_form_for @alapp, html: {class: "form-horizontal"} do |f|
-    - if @alapp.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(@alapp.errors.count, "error")} occured, please correct them and submit again"
-        %ul
-          - @alapp.errors.full_messages.each do |msg|
-            %li= msg
+    -#- if @alapp.errors.any?
+    -#  #error_explanation
+    -#    %h2= "#{pluralize(@alapp.errors.count, "error")} occured, please correct them and submit again"
+    -#    %ul
+    -#      - @alapp.errors.full_messages.each do |msg|
+    -#        %li= msg
     .tab-content
       #tab1.tab-pane
         %hr
