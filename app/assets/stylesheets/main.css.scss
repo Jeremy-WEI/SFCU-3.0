@@ -1,3 +1,24 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$black_80: rgba(0, 0, 0, 0.8);
+
+.carousel-caption {
+  background-color: $black_80;
+  //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
+  border-radius: 15px;
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  left: 10%;
+  right: 10%;
+  p {
+    line-height: 1.1;
+    font-size: 16px;
+    :last-child {
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+  }
+}

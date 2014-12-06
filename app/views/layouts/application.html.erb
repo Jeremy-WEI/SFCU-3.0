@@ -10,10 +10,111 @@
   </style>
 </head>
 <body>
-<div class="container" style="width:70%;margin-right:auto;margin-left:auto">
+<div class='container'>
   <br>
-  <br>
+<div class='row'>
+  <div class='col-xs-6'>
+    <a href='/'>
+      <img height='96' src='/img/logo.png' width='368'>
+    </a>
+  </div>
+  <div class='col-xs-4 col-xs-offset-2'>
+    <div class='text-right'>
+      <h4>Secure Banking Access</h4>
+      <form action='https://www6.homecu.net/hculive7/cuauth' class='form-inline' method='post' role='form' target='_blank'>
+        <input type='hidden' name='cu' value='PENNSFCU'>
+        <input type='hidden' name='cupg' value='pennsfcu'>
+        <input type='hidden' name='chrome' value='pennsfcu'>
+        <div class='form-group'>
+          <label class='sr-only' for='username'>Login ID</label>
+          <div class='input-group input-group-sm'>
+            <span class='input-group-addon'><span class='glyphicon glyphicon-lock'></span></span>
+            <input class='form-control input-sm' id='username' name='username' placeholder='User ID' tabindex='1' type='text'>
+            <span class='input-group-btn'><button class='btn btn-default btn-sm' type='submit'>Login</button></span>
+          </div>
+        </div>
+      </form>
+      <p class="pull-right" style="margin-top: 5px;">
+        Connect with us! &nbsp;&nbsp;
+        <a href='https://www.facebook.com/UPennStudentFederalCreditUnion' target='_blank' class='external-link'>
+          <img height='20' width='20' src='/img/fb.png' alt='Like us on Facebook!'>
+        </a>
+        &nbsp;
+        <a href='http://twitter.com/upennsfcu' target='_blank' class='external-link'>
+          <img height='20' width='25' src='/img/twitter.png' alt='Follow us on Twitter!'>
+        </a>
+      </p>
+      <!-- <p class='text-muted'>
+        <small>
+          Member Services: (215) 222-2604
+          <br>
+          (Mon-Fri 10am-6pm, Sat 12pm-5pm)
+        </small>
+      </p> -->
+    </div>
+  </div>
+</div>
+<div class='row'>
+
+</div>
   <%= yield %>
 </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="well">
+        <div class="row">
+          <div class="col-xs-12">
+            <p class="text-center"><strong>Thank you for banking with the SFCU, the first and only student-run Credit Union in the Ivy league!</strong></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <ul class="list-inline text-center">
+              <li><a href="https://www.upennsfcu.org/privacy/">Privacy Policy</a></li>
+              <!-- <li>&middot;</li>
+              <li><a href='#'>Security</a></li> -->
+              <li>·</li>
+              <li><a href="https://www.upennsfcu.org/legal/">Legal</a></li>
+              <!-- <li>&middot;</li>
+              <li><a href='#'>Site Map</a></li> -->
+              <li>·</li>
+              <li><a href="https://www.upennsfcu.org/about-us/contact-us/">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="logos text-center">
+              <ul class="list-inline">
+                <li>
+                  <a class="external-link" target="_blank" href="http://www.ncua.gov/">
+                    <img alt="NCUA" height="65" src="/img/ncua.png" width="114">
+                  </a>
+                </li>
+                <li><img alt="Equal Housing Opportunity" height="65" src="/img/FHEO.png" width="54"></li>
+                <li>
+                  <a class="external-link" target="_blank" href="https://www.allpointnetwork.com/">
+                    <img alt="Allpoint" height="65" src="/img/allpoint.png" width="130">
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <p class="text-center">Your savings federally insured to at least $250,000 and backed by the full faith and credit of the United States Government.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <p class="text-center">
+              <small>© 2014 University of Pennsylvania Student Federal Credit Union, all rights reserved.</small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</footer>
 </body>
 </html>
