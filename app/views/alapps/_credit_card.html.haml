@@ -5,26 +5,23 @@
     .accordion-body
       .accordion-inner
         .row
-          = render "text_field4", :f => f, :title => "Creditor Name", :var => "credit_card#{x}_name", :place_holder => ""
-          = render "text_field4", :f => f, :title => "Credit Limit", :var => "credit_card#{x}_limit", :place_holder => ""
-          = render "text_field4", :f => f, :title => "Credit Balance", :var => "credit_card#{x}_balance", :place_holder => ""
+          = render "text_field4", :f => f, :title => "Creditor Name", :var => "credit_card#{x}_name", :place_holder => "", :error_msg => ""
+          = render "text_field4", :f => f, :title => "Credit Limit", :var => "credit_card#{x}_limit", :place_holder => "", :error_msg => ""
+          = render "text_field4", :f => f, :title => "Credit Balance", :var => "credit_card#{x}_balance", :place_holder => "", :error_msg => ""
         %br
         .row
-          = render "text_field4", :f => f, :title => "Average Monthly Payment", :var => "credit_card#{x}_aveg_month_pay", :place_holder => ""
-          .col-md-5
+          = render "text_field4", :f => f, :title => "Average Monthly Payment", :var => "credit_card#{x}_aveg_month_pay", :place_holder => "", :error_msg => ""
+          .col-md-4
             %b Date of Next Payment
             %br
-            = f.date_select :"credit_card#{x}_date_payment", { start_year: Date.today.year, end_year: Date.today.year + 100}
+            .col-md-12
+              = f.input :"credit_card#{x}_date_payment", as: :date_picker, label: false
           .col-md-3
             %b Past Due
             %br
             .form-inline
-              = f.radio_button :"credit_card#{x}_pastdue", true
-              &nbsp
-              = f.label :"credit_card#{x}_pastdue", "Yes"
-              &nbsp
-              = f.radio_button :"credit_card#{x}_pastdue", false
-              &nbsp
-              = f.label :"credit_card#{x}_pastdue", "No"
-              &nbsp
+              = render "radio_button", :f => f,
+                                       :var => "credit_card#{x}_pastdue",
+                                       :list => [["yes", true], ["no", false]],
+                                       :error_msg => ""
 %br

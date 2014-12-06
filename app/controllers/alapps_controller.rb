@@ -122,7 +122,6 @@ class AlappsController < ApplicationController
   # PATCH/PUT /alapps/1.json
   def update
     respond_to do |format|
-
       @alapp.update(alapp_params)
       format.html { redirect_to action: :index }
       format.json { render :show, status: :ok, location: @alapp }

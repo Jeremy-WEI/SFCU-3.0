@@ -38,4 +38,4 @@ bower.json
 .DS_Store
 public/uploads/tmp/*
 public/uploads/**/*
-
+Gemfile.lock
