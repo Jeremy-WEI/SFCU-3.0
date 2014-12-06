@@ -52,7 +52,7 @@ class Maapp < ActiveRecord::Base
 
   def dob_validation
     errors.add(:dob, "Date of Birth can't be blank.") unless dob.present?
-    errors.add(:dob, "Date of Birth must be in the past.") if dob >= Date.today
+    errors.add(:dob, "Date of Birth must be in the past.") if dob.present? and dob >= Date.today
   end
 
   def make_penn_affiliation
