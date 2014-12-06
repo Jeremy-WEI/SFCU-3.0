@@ -13,7 +13,7 @@
           %a{"data-toggle" => "tab", :href => "#tab4"} Supporting Documents
   .progress
     .progress-bar.progress-bar-success.progress-bar-striped.active.bar
-  = form_for @alapp, html: {class: "form-horizontal"} do |f|
+  = simple_form_for @alapp, html: {class: "form-horizontal"} do |f|
     - if @alapp.errors.any?
       #error_explanation
         %h2= "#{pluralize(@alapp.errors.count, "error")} occured, please correct them and submit again"
@@ -29,95 +29,52 @@
             .col-md-12
               %strong Name*
               .row
-                .col-md-4
-                  First*
-                .col-md-4
-                  Middle
-                .col-md-4
-                  Last*
-              .row
-                .col-md-4
-                  = f.text_field :first, placeholder: "John", class: "form-control"
-                .col-md-4
-                  = f.text_field :middle, class: "form-control"
-                .col-md-4
-                  = f.text_field :last, placeholder: "Smith", class: "form-control"
-          %br
+                = render "text_field4", :f => f, :title => "First*", :var => "first", :place_holder => "John", :error_msg => "First name can't be blank"
+                = render "text_field4", :f => f, :title => "Middle", :var => "middle", :place_holder => "", :error_msg => ""
+                = render "text_field4", :f => f, :title => "Last*", :var => "last", :place_holder => "Smith", :error_msg => "Last name can't be blank"
           .row
             .col-md-12
               %b Date of birth*
               .row
-                .col-md-12
-                  = f.date_select :dob, { start_year: 1900, end_year: Date.today.year, class: "form-control"}
-          %br
+                .col-md-4
+                  .col-md-12
+                    = f.input :dob, as: :date_picker, label: false
+          .row
+            = render "text_field4", :f => f, :title => "Social Security Number*", :var => "ssn", :place_holder => "#########", :error_msg => ""
           .row
             .col-md-12
-              %b Social Security number*
-              .row
-                .col-md-4
-                  = f.text_field :ssn, placeholder: "#########", class: "form-control"
-              .row
               Please enter your SSN in the following format: ######### (nine digits).
               If you do not have an SSN, please enter 000000000.
           %br
           .row
-            .col-md-12
-              %b Mother's Maiden Name*
-              .row
-                .col-md-4
-                  = f.text_field :mother_maiden, class: "form-control"
-          %br
+            = render "text_field4", :f => f, :title => "Mother's Maiden Name*", :var => "mother_maiden", :place_holder => "", :error_msg => ""
           .row
             .col-md-12
               %b Alumni*
-              .form-inline
-                = f.radio_button :alumni, true
-                &nbsp
-                = f.label :alumni_yes, "Yes"
-                &nbsp
-                = f.radio_button :alumni, false
-                &nbsp
-                = f.label :alumni_yes, "No"
-                &nbsp
+              = render "radio_button", :f => f,
+                                       :var => "alumni",
+                                       :list => [["Yes", true], ["No", false]],
+                                       :error_msg => ""
         %hr
         .well
           %h2.text-center Credit Request
 
           %b Type*
           .row
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :credit_req_type, "Individual Credit"
-                Individual Credit
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :credit_req_type, "Joint Credit"
-                Joint Credit
-
-          %br
-          .row
             .col-md-12
-              %b Amount Requested*
-              .row
-                .col-md-4
-                  = f.text_field :amount_req, placeholder: "In US dollars", class: "form-control"
-          %br
+              = render "radio_button", :f => f,
+                                       :var => "credit_req_type",
+                                       :list => ["Individual Credit", "Joint Credit"],
+                                       :error_msg => ""
+          .row
+            = render "text_field4", :f => f, :title => "Amount Requested*", :var => "mother_maiden", :place_holder => "In US dollars", :error_msg => ""
           .row
             .col-md-12
               %b Term*
-              .form-inline
-                = f.radio_button :term, "36 months"
-                &nbsp
-                = f.label :month36, "36 months"
-                &nbsp
-                = f.radio_button :term, "48 months"
-                &nbsp
-                = f.label :month48, "48 months"
-                &nbsp
-                = f.radio_button :term, "60 months"
-                &nbsp
-                = f.label :month60, "60 months"
-                &nbsp
+              = render "radio_button", :f => f,
+                                       :var => "term",
+                                       :list => ["36 months", "48 months", "60 months"],
+                                       :error_msg => ""
         %hr
 
         .well
@@ -126,65 +83,47 @@
           .row
             .col-md-12
               %b Vehicle Condition*
-              .form-inline
-                = f.radio_button :vehicle_condition, "New"
-                &nbsp
-                = f.label :vehicle_condition_new, "New"
-                &nbsp
-                = f.radio_button :vehicle_condition, "Old"
-                &nbsp
-                = f.label :vehicle_condition_old, "Old"
-                &nbsp
-          %br
+              = render "radio_button", :f => f,
+                                       :var => "vehicle_condition",
+                                       :list => ["New", "Old"],
+                                       :error_msg => ""
           .row
             .col-md-12
               %b Price Range*
               .row
                 .col-md-4
                   Min
-                  = f.text_field :price_range_min, placeholder: "In US dollars", class: "form-control"
+                  %br
+                  .col-md-12
+                    = f.input :price_range_min, placeholder: "In US dollars", label: false, error: ""
                 .col-md-4
                   Max
-                  = f.text_field :price_range_max, placeholder: "In US dollars", class: "form-control"
+                  %br
+                  .col-md-12
+                    = f.input :price_range_max, placeholder: "In US dollars", label: false, error: ""
           %br
           .row
-            .col-md-4
-              %b Model Year*
-              .row
-              = f.select :model_year, options_for_select((1800..2050), 2014), {}, {placeholder: "YYYY", class: "form-control"}
+            = render "select", f: f, title: "Model Year*", var: "model_year", list: (1800..2050), selected: 2014, error_msg: ""
           %br
           .row
             .col-md-12
               %b Vehicle Type*
-              .form-inline
-                = f.check_box(:veh_subcompact)
-                &nbsp
-                = f.label(:veh_subcompact, "Subcompact")
-                &nbsp
-                = f.check_box(:veh_compact)
-                &nbsp
-                = f.label(:veh_compact, "Compact")
-                &nbsp
-                = f.check_box(:veh_mid_size)
-                &nbsp
-                = f.label(:veh_mid_size, "Mid-size")
-                &nbsp
-                = f.check_box(:veh_full_size)
-                &nbsp
-                = f.label(:veh_full_size, "Full-size")
-                &nbsp
-                = f.check_box(:veh_sports_car)
-                &nbsp
-                = f.label(:veh_sports_car, "Sports Car")
-                &nbsp
-                = f.check_box(:veh_truck)
-                &nbsp
-                = f.label(:veh_truck, "Truck")
-                &nbsp
-                = f.check_box(:veh_van)
-                &nbsp
-                = f.label(:veh_van, "Van")
-                &nbsp
+          .row
+            .col-md-12
+              .col-md-2
+                = f.input :veh_subcompact, as: :boolean, label: "subcompact", error: ""
+              .col-md-2
+                = f.input :veh_compact, as: :boolean, label: "compact", error: ""
+              .col-md-2
+                = f.input :veh_mid_size, as: :boolean, label: "middle size", error: ""
+              .col-md-2
+                = f.input :veh_full_size, as: :boolean, label: "full size", error: ""
+              .col-md-2
+                = f.input :veh_sports_car, as: :boolean, label: "sports car", error: ""
+              .col-md-1
+                = f.input :veh_truck, as: :boolean, label: "truck", error: ""
+              .col-md-1
+                = f.input :veh_van, as: :boolean, label: "van", error: ""
         %hr
         .well
           %h2.text-center Contact Information
@@ -206,19 +145,18 @@
           .row
             .col-md-12
               .row
-                = render "text_field4", :f => f, :title => "Email*", :var => "e_mail", :place_holder => "email"
-                = render "text_field4", :f => f, :title => "Phone*", :var => "phone_number", :place_holder => "###-###-####"
-              %br
+                = render "text_field4", :f => f, :title => "Email*", :var => "e_mail", :place_holder => "email", :error_msg => ""
+                = render "text_field4", :f => f, :title => "Phone*", :var => "phone_number", :place_holder => "###-###-####", :error_msg => ""
               .row
-                = render "text_field4", :f => f, :title => "Name of Nearest Relative*", :var => "name_nearest_relative", :place_holder => "Name of your relative"
-                = render "text_field4", :f => f, :title => "Phone of Nearest Relative*", :var => "phone_nearest_relative", :place_holder => "###-###-####"
+                = render "text_field4", :f => f, :title => "Name of Nearest Relative*", :var => "name_nearest_relative", :place_holder => "Name of your relative", :error_msg => ""
+                = render "text_field4", :f => f, :title => "Phone of Nearest Relative*", :var => "phone_nearest_relative", :place_holder => "###-###-####", :error_msg => ""
         %hr
         .well
           %h2.text-center Driver's License
           .row
             .col-md-12
               .row
-                = render "text_field4", :f => f, :title => "Driver's License Number*", :var => "driver_lisence_num", :place_holder => "##-##-###"
+                = render "text_field4", :f => f, :title => "Driver's License Number*", :var => "driver_lisence_num", :place_holder => "##-##-###", :error_msg => ""
               %br
               %b Driver's License
               .row
@@ -353,39 +291,39 @@
           %h2.text-center Montly Expenses
           %br
           .row
-            = render "text_field6", :f => f, :title => "Renting/Housing", :var => "rent_housing", :place_holder => ""
+            = render "text_field6", :f => f, :title => "Renting/Housing", :var => "rent_housing", :place_holder => "", :error_msg => ""
             .col-md-6
               If none, list the person who foots the expense
-              = f.text_field :rent_person, class: "form-control"
+              = f.input :rent_person, label: false, error: ""
           %br
           .row
-            = render "text_field6", :f => f, :title => "Food", :var => "utilities", :place_holder => ""
+            = render "text_field6", :f => f, :title => "Food", :var => "utilities", :place_holder => "", :error_msg => ""
             .col-md-6
               If none, list the person who foots the expense
-              = f.text_field :food_person, class: "form-control"
+              = f.input :food_person, label: false, error: ""
           %br
           .row
-            = render "text_field6", :f => f, :title => "Utilities", :var => "utilities", :place_holder => ""
+            = render "text_field6", :f => f, :title => "Utilities", :var => "utilities", :place_holder => "", :error_msg => ""
             .col-md-6
               If none, list the person who foots the expense
-              = f.text_field :utilities_person, class: "form-control"
+              = f.input :utilities_person, label: false, error: ""
           %br
           .row
-            = render "text_field6", :f => f, :title => "Phone Bill", :var => "phone_bill", :place_holder => ""
+            = render "text_field6", :f => f, :title => "Phone Bill", :var => "phone_bill", :place_holder => "", :error_msg => ""
             .col-md-6
               If none, list the person who foots the expense
-              = f.text_field :phone_bill_person, class: "form-control"
+              = f.input :phone_bill_person, label: false, error: ""
           %br
           .row
-            = render "text_field6", :f => f, :title => "Bursar Bill", :var => "bursar_bill", :place_holder => ""
+            = render "text_field6", :f => f, :title => "Bursar Bill", :var => "bursar_bill", :place_holder => "", :error_msg => ""
             .col-md-6
               Please provide a copy of your bursar bill (in supporting documents), which can be obtained from Penn-in-Touch for our verification.
           %br
           .row
-            = render "text_field6", :f => f, :title => "Miscellaneous", :var => "miscellaneous", :place_holder => ""
+            = render "text_field6", :f => f, :title => "Miscellaneous", :var => "miscellaneous", :place_holder => "", :error_msg => ""
             .col-md-6
               Explanation of miscellaneous expenses
-              = f.text_field :miscellaneous_expl, class: "form-control"
+              = f.input :miscellaneous_expl, label: false, error: ""
 
       #tab4.tab-pane
         %br
@@ -426,21 +364,23 @@
           %br
           .row.text-center
             .col-md-12.checkbox
+              %br
               %label
                 = f.check_box :agree_terms
-                Agree Terms
+                %b
+                  Agree Terms
           %br
           .row
             .col-md-2.col-md-offset-3
               %b Signature*
             .col-md-4
-              = f.text_field :signature, class: "form-control"
+              = f.input :signature, label: false, error: ""
           %br
           .row
             .col-md-2.col-md-offset-3
               %b Today's date
-            .col-md-6
-              = f.date_select :today_date, {class: "form-control"}, {}
+            .col-md-4
+              = f.input :today_date, as: :date_picker, label: false
           %br
         .actions.text-center
           = f.submit 'Submit', class: "btn btn-primary"

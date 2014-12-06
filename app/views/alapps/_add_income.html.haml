@@ -6,21 +6,11 @@
     .accordion-body
       .accordion-inner
         .row
-          = render "text_field4", :f => f, :title => "Source", :var => "add_income#{x}_source", :place_holder => ""
-          = render "text_field3", :f => f, :title => "Amount", :var => "add_income#{x}_amount", :place_holder => "in US dollars"
+          = render "text_field4", :f => f, :title => "Source", :var => "add_income#{x}_source", :place_holder => "", :error_msg => ""
+          = render "text_field3", :f => f, :title => "Amount", :var => "add_income#{x}_amount", :place_holder => "in US dollars", :error_msg => ""
           .col-md-5
             %b Frequency
-            .form-inline
-              = f.radio_button :"add_income#{x}_freq", "Weekly"
-              &nbsp
-              = f.label :"add_income#{x}_freq", "Weekly"
-              &nbsp
-              = f.radio_button :"add_income#{x}_freq", "Monthly"
-              &nbsp
-              = f.label :"add_income#{x}_freq", "Monthly"
-              &nbsp
-              = f.radio_button :"add_income#{x}_freq", "Yearly"
-              &nbsp
-              = f.label :"add_income#{x}_freq", "Yearly"
-              &nbsp
-%br
+            = render "radio_button", :f => f,
+                                     :var => "add_income#{x}_freq",
+                                     :list => ["Weekly", "Monthly", "Yearly"],
+                                     :error_msg => ""

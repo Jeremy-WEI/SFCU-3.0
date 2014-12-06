@@ -54,9 +54,7 @@ Rails.application.routes.draw do
 
   resources :cbpapps
 
-  resources :alapps do
-    post 'save', to: 'alapps#save', on: :member
-  end
+  resources :alapps
 
   resources :ulapps
 

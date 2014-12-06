@@ -2,4 +2,5 @@
   %b
     = title
   %br
-  = f.text_field :"#{var}", placeholder: "#{place_holder}", class: "form-control"
+  .col-md-12
+    = f.input :"#{var}", placeholder: "#{place_holder}", label: false, error: "#{error_msg}"
