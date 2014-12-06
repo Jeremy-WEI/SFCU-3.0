@@ -33,7 +33,8 @@ class Alapp < ActiveRecord::Base
 
   validates :first, :last, :alumni, :mother_maiden, :credit_req_type,
             :term, :vehicle_condition, :name_nearest_relative, :phone_nearest_relative,
-            :driver_lisence_num, :signature, :today_date,
+            :driver_lisence_num, :signature, :today_date, :local_address_state,:local_address_zip, :local_address_line1,
+            :local_address_line2, :local_address_city, :local_country,
             presence: true
   validate :check_dob
   validates :ssn, format: {with: SSN_FORMAT}
@@ -107,6 +108,11 @@ class Alapp < ActiveRecord::Base
         self.local_country = @result["address"]["address_country"]
       rescue
         errors.add(:local_address_line1, "Invalid address")
+        errors.add(:local_address_line2, "Invalid address")
+        errors.add(:local_address_city, "Invalid address")
+        errors.add(:local_address_state, "Invalid address")
+        errors.add(:local_country, "Invalid address")
+        errors.add(:local_address_zip, "Invalid address")
       end
     end
   end
@@ -134,6 +140,11 @@ class Alapp < ActiveRecord::Base
           self.perm_country = @result["address"]["address_country"]
         rescue
           errors.add(:perm_address_line1, "Invalid address")
+          errors.add(:perm_address_line2, "Invalid address")
+          errors.add(:perm_address_city, "Invalid address")
+          errors.add(:perm_address_state, "Invalid address")
+          errors.add(:perm_country, "Invalid address")
+          errors.add(:perm_address_zip, "Invalid address")
         end
       end
     end

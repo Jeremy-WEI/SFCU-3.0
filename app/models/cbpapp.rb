@@ -6,7 +6,8 @@ class Cbpapp < ActiveRecord::Base
 
   validates :first_name, :last_name, :mother_maiden,:account_number, :how_know,
             :local_home_phone, :local_address_line1, :local_address_city, :local_address_state,
-            :student_status, :period,
+            :student_status, :period,:local_address_state,:local_address_zip, :local_address_line1,
+            :local_address_line2, :local_address_city, :local_address_country,
             presence: true
   validates :ssn, format: {with: SSN_FORMAT}
   validate :check_dob, :check_non_upenn_email, :check_grad_date
@@ -58,6 +59,11 @@ class Cbpapp < ActiveRecord::Base
       self.local_address_zip = @result["address"]["address_zip"]
     rescue
       errors.add(:local_address_line1, "Invalid address")
+      errors.add(:local_address_line2, "Invalid address")
+      errors.add(:local_address_city, "Invalid address")
+      errors.add(:local_address_state, "Invalid address")
+      errors.add(:local_address_country, "Invalid address")
+      errors.add(:local_address_zip, "Invalid address")
     end
   end
 
@@ -88,6 +94,11 @@ class Cbpapp < ActiveRecord::Base
           self.perm_address_country = @result["address"]["address_country"]
         rescue
           errors.add(:perm_address_line1, "Invalid address")
+          errors.add(:perm_address_line2, "Invalid address")
+          errors.add(:perm_address_city, "Invalid address")
+          errors.add(:perm_address_state, "Invalid address")
+          errors.add(:perm_address_country, "Invalid address")
+          errors.add(:perm_address_zip, "Invalid address")
         end
       end
     end

@@ -25,7 +25,8 @@ class Ulapp < ActiveRecord::Base
 
   validates :credit_type, :joint_applicant, :purpose, :first_name, :last_name,
             :name_relative, :phone_type, :employer,
-            :supervisor_firstname, :supervisor_lastname,
+            :supervisor_firstname, :supervisor_lastname, :local_address_state,:local_address_zip, :local_address_line1,
+            :local_address_line2, :local_address_city, :local_country,
             presence: true
   validates :amount, numericality: { greater_than_or_equal_to: 0, only_integer: true}
   validate :check_sfcu_account
@@ -98,6 +99,11 @@ class Ulapp < ActiveRecord::Base
         self.local_country = @result["address"]["address_country"]
       rescue
         errors.add(:local_address_line1, "Invalid address")
+        errors.add(:local_address_line2, "Invalid address")
+        errors.add(:local_address_city, "Invalid address")
+        errors.add(:local_address_state, "Invalid address")
+        errors.add(:local_country, "Invalid address")
+        errors.add(:local_address_zip, "Invalid address")
       end
     end
   end
@@ -125,6 +131,11 @@ class Ulapp < ActiveRecord::Base
           self.perm_country = @result["address"]["address_country"]
         rescue
           errors.add(:perm_address_line1, "Invalid address")
+          errors.add(:perm_address_line2, "Invalid address")
+          errors.add(:perm_address_city, "Invalid address")
+          errors.add(:perm_address_state, "Invalid address")
+          errors.add(:perm_address_country, "Invalid address")
+          errors.add(:perm_address_zip, "Invalid address")
         end
       end
     end
