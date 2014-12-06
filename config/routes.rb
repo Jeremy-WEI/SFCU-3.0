@@ -41,10 +41,14 @@ Rails.application.routes.draw do
 
   get 'main/index'
   get 'cbpapps/export', to: 'cbpapps#export'
-  get '/ulapps/export', to: 'ulapps#export'
-  #get '/alapps/new', to: 'alapps#new'
-  get '/alapps/export', to: 'alapps#export'
+  get 'ulapps/export', to: 'ulapps#export'
+  get 'alapps/export', to: 'alapps#export'
   get 'maapps/export', to:  'maapps#export'
+
+  get 'ulapps/successful', to: 'ulapps#successful'
+  get 'cbpapps/successful', to: 'cbpapps#successful'
+  get 'maapps/successful', to: 'maapps#successful'
+  get 'alapps/successful', to: 'alapps#successful'
 
   resources :maapps
 
