@@ -192,19 +192,23 @@
                       = f.input :perm_address_line2, placeholder: "Permanent Address Line2", label: false
                   .col-md-1
                     City*
-                  .col-md-3
+                  .col-md-2
                     .col-md-12
                     = f.input :perm_address_city, placeholder: "City", label: false, error: "City is invalid"
                   .col-md-1
                     State*
-                  .col-md-3
+                  .col-md-2
                     .col-md-12
                     = f.input :perm_address_state, placeholder: "State", label: false, error: "State is invalid"
                   .col-md-1
                     ZIP*
-                  .col-md-3
+                  .col-md-2
                     .col-md-12
                       = f.input :perm_address_zip, placeholder: "ZIP", label: false, error: "Zip is invalid"
+                  .col-md-1
+                    Country
+                  .col-md-2
+                    = f.select :perm_address_country, options_for_select(Country.all.sort), {}, {class: "form-control"}
           #tab3.tab-pane
             %hr
             %div
@@ -230,11 +234,12 @@
                     label: false, :item_wrapper_class => 'radio-inline', error: false
               %div
                 %br
-                .accordion
-                  .accordion-group
-                    %h4.text-center Checking Account Customization
-                    .accordion-body
-                      .accordion-inner
+                .panel-group
+                  .panel.panel-default
+                    .panel-heading
+                      %h4.text-center Checking Account Customization
+                    .panel-collapse
+                      .panel-body
                         %b Courtesy Pay:
                         .row
                           .col-md-12.checkbox

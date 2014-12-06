@@ -123,12 +123,13 @@ class Maapp < ActiveRecord::Base
   end
 
   def make_perm_address
-    if same_perm_address == "1" then
+    if same_perm_address == '1' then
       self.perm_address_line1 = self.local_address_line1
       self.perm_address_line2 = self.local_address_line2
       self.perm_address_city = self.local_address_city
       self.perm_address_state = self.local_address_state
       self.perm_address_zip = self.local_address_zip
+      self.perm_address_country = 'US'
     end
   end
 
