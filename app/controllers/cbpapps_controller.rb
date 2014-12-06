@@ -1,6 +1,6 @@
 class CbpappsController < ApplicationController
   before_action :set_cbpapp, only: [:show, :edit, :update, :destroy]
-
+  http_basic_authenticate_with :name => MainHelper.name, :password => MainHelper.password, except: [:new, :create, :successful]
   # GET /cbpapps
   # GET /cbpapps.json
   def index
@@ -19,6 +19,10 @@ class CbpappsController < ApplicationController
 
   # GET /cbpapps/1/edit
   def edit
+  end
+
+  def successful
+
   end
 
   def export
@@ -86,7 +90,8 @@ class CbpappsController < ApplicationController
     respond_to do |format|
       if @cbpapp.save
         # format.html { redirect_to @cbpapp, notice: 'Cbpapp was successfully created.' }
-        format.html { redirect_to action: :index }
+        format.html { render :successful }
+        # format.html { redirect_to action: :index }
         format.json { render :show, status: :created, location: @cbpapp }
       else
         format.html { render :new }

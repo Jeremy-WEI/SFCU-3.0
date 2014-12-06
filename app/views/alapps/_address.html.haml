@@ -4,39 +4,13 @@
   - @y = ""
 %br
 .row
-  .col-md-8
-    %b
-      = "Address Line 1" + @y
-    = f.text_field :"#{x}_address_line1", placeholder: "#{y} Address Line 1", class:"form-control"
-%br
+  = render "text_field6", :f => f, :title => "#{x} address line 1#{@y}", :var => "#{x}_address_line1", :place_holder => "#{x} Address Line 1", :error_msg => ""
 .row
-  .col-md-8
-    %b
-      = "Address Line 2"
-    = f.text_field :"#{x}_address_line2", placeholder: "#{y} Address Line 2", class: "form-control"
-%br
+  = render "text_field6", :f => f, :title => "#{x} address line 2#{@y}", :var => "#{x}_address_line2", :place_holder => "#{x} Address Line 2", :error_msg => ""
 .row
-  .col-md-4
-    %b
-      = "City" + @y
-  .col-md-4
-    %b
-      = "State" + @y
-  .col-md-4
-    %b
-      = "ZIP" + @y
+  = render "text_field4", :f => f, :title => "City#{@y}", :var => "#{x}_address_city", :place_holder => "City", :error_msg => ""
+  = render "select", f: f, title: "State#{@y}", var: "#{x}_address_state", list: us_states, selected: "PA", error_msg: ""
+  = render "text_field4", :f => f, :title => "ZIP#{@y}", :var => "#{x}_address_zip", :place_holder => "#####", :error_msg => ""
 .row
-  .col-md-4
-    = f.text_field :"#{x}_address_city", placeholder: "City", class: "form-control"
-  .col-md-4
-    = f.select :"#{x}_address_state", options_for_select(us_states, "PA"), {}, {class: "form-control"}
-  .col-md-4
-    = f.text_field :"#{x}_address_zip", placeholder: "#####", class: "form-control"
-%br
-.row
-  .col-md-4
-    %b
-      = "Country" + @y
-    %br
-    = f.select :"#{x}_country", options_for_select(Country.all.sort, "US"), {}, {class: "form-control"}
+  = render "select", f: f, title: "Country#{@y}", var: "#{x}_country", list: Country.all.sort, selected: "US", error_msg: ""
 %br

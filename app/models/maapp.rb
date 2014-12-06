@@ -32,7 +32,8 @@ class Maapp < ActiveRecord::Base
   validates :first_name, :last_name, :student_status, :penn_affiliation,
             :local_address_line1, :local_address_city, :local_address_state, :local_address_zip,
             :perm_address_line1, :perm_address_city, :perm_address_state, :perm_address_zip,
-            :statement_type, :checking_account, :signature,
+            :statement_type, :checking_account, :signature, :local_address_state,:local_address_zip, :local_address_line1,
+            :local_address_city,
             presence: true
   validate :dob_validation
   validates :ssn, format: {with: SSN_FORMAT, allow_blank: true}
@@ -52,7 +53,7 @@ class Maapp < ActiveRecord::Base
 
   def dob_validation
     errors.add(:dob, "Date of Birth can't be blank.") unless dob.present?
-    errors.add(:dob, "Date of Birth must be in the past.") if dob >= Date.today
+    errors.add(:dob, "Date of Birth must be in the past.") if dob.present? and dob >= Date.today
   end
 
   def make_penn_affiliation
@@ -86,14 +87,16 @@ class Maapp < ActiveRecord::Base
       self.local_address_zip = @result["address"]["address_zip"]
     rescue
       errors.add(:local_address_line1, "Invalid address")
+      errors.add(:local_address_line2, "Invalid address")
+      errors.add(:local_address_city, "Invalid address")
+      errors.add(:local_address_state, "Invalid address")
+      errors.add(:local_address_zip, "Invalid address")
     end
   end
 
   def validates_perm_address
     if empty_field?(perm_address_line1) and empty_field?(perm_address_line2) #if not filled (perm address not required)
-      self.perm_address_city = ""
-      self.perm_address_zip = ""
-      self.perm_address_state = ""
+      [self.perm_address_city, self.perm_address_zip, self.perm_address_state].map {|x| x = ""}
     else
       begin
         @lob = Lob.load(api_key: USERNAME)
@@ -111,6 +114,10 @@ class Maapp < ActiveRecord::Base
         self.perm_address_zip = @result["address"]["address_zip"]
       rescue
         errors.add(:perm_address_line1, "Invalid address")
+        errors.add(:perm_address_line2, "Invalid address")
+        errors.add(:perm_address_city, "Invalid address")
+        errors.add(:perm_address_state, "Invalid address")
+        errors.add(:perm_address_zip, "Invalid address")
       end
     end
   end

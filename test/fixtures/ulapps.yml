@@ -346,7 +346,7 @@ three:
 #  creditor1: MyString
 #  cbalance1: 1
 #  nextpayment1: 2014-11-04
-#  avg1: 1
+  avg1: 1
 #  pastdue1: 1
 #  creditor2: MyString
 #  cbalance2: 1
@@ -367,7 +367,7 @@ three:
 #  creditor_type1: 1
 #  first_payment1: 2014-11-04
 #  last_payment1: 2014-11-04
-#  monthly1: 1
+  monthly1: 1
 #  past_due1: 1
 #  loan_creditor2: MyString
 #  creditor_type2: 1

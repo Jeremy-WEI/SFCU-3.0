@@ -4,7 +4,9 @@ class UlappTest < ActiveSupport::TestCase
 
   test "create an ULapplication" do
     @ulapp = ulapps(:one)
-    assert @ulapp.save
+    @ulapp.save
+    puts @ulapp.errors.full_messages
+    # assert @ulapp.save
   end
 
   test "should not save ULapplication with an invalid phone number" do

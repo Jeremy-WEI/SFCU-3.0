@@ -33,7 +33,8 @@ class Alapp < ActiveRecord::Base
 
   validates :first, :last, :alumni, :mother_maiden, :credit_req_type,
             :term, :vehicle_condition, :name_nearest_relative, :phone_nearest_relative,
-            :driver_lisence_num, :signature, :today_date,
+            :driver_lisence_num, :signature, :today_date, :local_address_state,:local_address_zip, :local_address_line1,
+            :local_address_city, :local_country,
             presence: true
   validate :check_dob
   validates :ssn, format: {with: SSN_FORMAT}
@@ -77,8 +78,14 @@ class Alapp < ActiveRecord::Base
   end
 
   def validates_vehicle_type
-    if not (veh_subcompact.present? or veh_compact.present? or veh_mid_size.present? or veh_full_size.present? or veh_sports_car.present? or veh_truck.present? or veh_van.present?)
-      errors.add(:veh_type, "You must choose a vehicle type")
+    unless veh_subcompact == true or veh_compact == true or veh_mid_size == true or veh_full_size == true or veh_sports_car == true or veh_truck == true or veh_van == true
+      errors.add(:veh_subcompact, "You must choose a vehicle type")
+      errors.add(:veh_compact, "You must choose a vehicle type")
+      errors.add(:veh_mid_size, "You must choose a vehicle type")
+      errors.add(:veh_full_size, "You must choose a vehicle type")
+      errors.add(:veh_sports_car, "You must choose a vehicle type")
+      errors.add(:veh_truck, "You must choose a vehicle type")
+      errors.add(:veh_van, "You must choose a vehicle type")
     end
   end
 
@@ -88,6 +95,7 @@ class Alapp < ActiveRecord::Base
   end
 
   def validates_local_address
+    self.local_country = "" if self.local_country.nil?
     if ["us", "united states"].include? self.local_country.chomp.downcase
       begin
         @lob = Lob.load(api_key: USERNAME)
@@ -106,11 +114,17 @@ class Alapp < ActiveRecord::Base
         self.local_country = @result["address"]["address_country"]
       rescue
         errors.add(:local_address_line1, "Invalid address")
+        errors.add(:local_address_line2, "Invalid address")
+        errors.add(:local_address_city, "Invalid address")
+        errors.add(:local_address_state, "Invalid address")
+        errors.add(:local_country, "Invalid address")
+        errors.add(:local_address_zip, "Invalid address")
       end
     end
   end
 
   def validates_perm_address
+    self.perm_country = "" if self.perm_country.nil?
     if ["us", "united states"].include? self.perm_country.chomp.downcase
       if empty_field?(perm_address_line1) and empty_field?(perm_address_line2) #if not filled (perm address not required)
         self.perm_address_city, self.perm_address_zip, self.perm_address_state, self.perm_country = "", "", "", "", ""
@@ -132,6 +146,11 @@ class Alapp < ActiveRecord::Base
           self.perm_country = @result["address"]["address_country"]
         rescue
           errors.add(:perm_address_line1, "Invalid address")
+          errors.add(:perm_address_line2, "Invalid address")
+          errors.add(:perm_address_city, "Invalid address")
+          errors.add(:perm_address_state, "Invalid address")
+          errors.add(:perm_country, "Invalid address")
+          errors.add(:perm_address_zip, "Invalid address")
         end
       end
     end

@@ -33,10 +33,8 @@ module UlappsHelper
     def validate(record)
       options[:fields].each do |field|
         amount = record.send(field)
-        if not amount.blank?
-          if not amount =~ /\A\d+\z/
-            record.errors.add(field, "The format of #{field} is invalid.")
-          end
+        if amount.present?
+          record.errors.add(field, "The format of #{field} is invalid.") unless amount =~ /\A\d+\z/
         end
       end
     end

@@ -25,7 +25,7 @@
           %a{"data-toggle" => "tab", :href => "#tab8"} Applicant's Signature
   .progress
     .progress-bar.progress-bar-success.progress-bar-striped.active.bar
-  = form_for @ulapp, html: {class: "form-horizontal"} do |f|
+  = simple_form_for @ulapp, html: {class: "form-horizontal"} do |f|
     - if @ulapp.errors.any?
       #error_explanation
         %h2= "#{pluralize(@ulapp.errors.count, "error")} prohibited this ulapp from being saved:"
@@ -39,33 +39,43 @@
           %h2.text-center Credit Request
           %b Type*
           .row
-            .col-md-4
-              %label.radio-inline
-                = f.radio_button :credit_type, "Individual Credit"
-                Individual Credit
-            .col-md-4
-              %label.radio-inline
-                = f.radio_button :credit_type, "Joint Credit"
-                Joint Credit
+            .col-md-9
+              = f.input :credit_type,
+                        :collection => ["Individual Credit", "Joint Credit"],
+                        :as => :radio_buttons, :item_wrapper_class => 'radio-inline', label: false, error: false
+            -#.col-md-4
+            -#  %label.radio-inline
+            -#    = f.radio_button :credit_type, "Individual Credit"
+            -#    Individual Credit
+            -#.col-md-4
+            -#  %label.radio-inline
+            -#    = f.radio_button :credit_type, "Joint Credit"
+            -#    Joint Credit
           %br
           .row
             .col-md-12
-              For joint accounts please make two seperate submissions of this form. On each form identify the full name and last 4 digits of SSN of the other co-signer/co-maker.
+              For joint accounts please make two separate submissions of this form. On each form identify the full name and last 4 digits of SSN of the other co-signer/co-maker.
           %br
           %b Joint applicants, please enter the full name and last 4 digits of SSN # of the other co-signer/co-marker*
           .row
             .col-md-6
-              = f.text_area :joint_applicant, class: "form-control"
+              .col-md-12
+                = f.input :joint_applicant, placeholder: "Joint applicant, SSN", label: false, error: "Joint Applicant cannot be blank."
+              -#= f.text_area :joint_applicant, class: "form-control"
           %br
           %b Amount Requested*
           .row
             .col-md-4
-              = f.text_field :amount, class: "form-control"
+              .col-md-12
+                = f.input :amount, label: false, error: "Amount Requested cannot be blank."
+              -#= f.text_field :amount, class: "form-control"
           %br
           %b Purpose*
           .row
             .col-md-12
-              = f.text_field :purpose, class: "form-control", placeholder: "Please enter your purpose here"
+              .col-md-12
+                = f.input :purpose, label: false, error: "Purpose cannot be blank."
+                -#= f.text_field :purpose, class: "form-control", placeholder: "Please enter your purpose here"
 
       #tab2.tab-pane
         %hr
@@ -74,14 +84,20 @@
           %b Name*
           .row
             .col-md-6
-              = f.text_field :first_name, class: "form-control", placeholder: "First Name"
+              .col-md-12
+                = f.input :first_name, label: false, placeholder: "First Name", error: "First Name cannot be blank."
+                -#= f.text_field :first_name, class: "form-control", placeholder: "First Name"
             .col-md-6
-              = f.text_field :last_name, class: "form-control", placeholder: "Last Name"
+              .col-md-12
+                = f.input :last_name, label: false, placeholder: "Last Name", error: "Last Name cannot be blank."
+                -#= f.text_field :last_name, class: "form-control", placeholder: "Last Name"
           %br
           %b Birth Date*
           .row
             .col-md-4
-              = f.date_select :dob, { start_year: 1900, end_year: Date.today.year }
+              .col-md-12
+                = f.input :dob, as: :date_picker, label: false
+              -#= f.date_select :dob, { start_year: 1900, end_year: Date.today.year }
           %br
           .row
             .col-md-6
@@ -90,9 +106,13 @@
               %b SFCU Account Number
           .row
             .col-md-6
-              = f.text_field :ssn, class: "form-control"
+              .col-md-12
+                = f.input :ssn, label: false, placeholder: "must be 9 digits", error: "SSN is invalid. eg. #########"
+                -#= f.text_field :ssn, class: "form-control"
             .col-md-6
-              = f.text_field :sfcu_account, class: "form-control"
+              .col-md-12
+                = f.input :sfcu_account, label: false
+                -#= f.text_field :sfcu_account, class: "form-control"
           .row
             .col-md-6
               %b Name of Nearest Relative*
@@ -100,9 +120,13 @@
               %b Phone Number of Nearest Relative*
           .row
             .col-md-6
-              = f.text_field :name_relative, class: "form-control"
+              .col-md-12
+                = f.input :name_relative, label: false, error: "Name of Nearest Relative cannot be blank."
+                -#= f.text_field :name_relative, class: "form-control"
             .col-md-6
-              = f.text_field :phone_relative, class: "form-control"
+              .col-md-12
+                = f.input :phone_relative, label: false, error: "Phone number is invalid. eg. ###-###-####"
+                -#= f.text_field :phone_relative, class: "form-control"
           %br
           %b Mothers Madien Name
           .row
@@ -112,7 +136,9 @@
           %b Expected Graduation Date
           .row
             .col-md-4
-              = f.date_select :graduation, class: "form-control"
+              .col-md-12
+                = f.input :graduation, as: :date_picker, label: false
+                -#= f.date_select :graduation, class: "form-control"
       #tab3.tab-pane
         %hr
         .well
@@ -123,30 +149,42 @@
             .col-md-3
               Address Line 1*
             .col-md-9
-              = f.text_field :local_address_line1, class: "form-control", placeholder: "Local Address Line1"
+              .col-md-12
+                = f.input :local_address_line1, label: false, placeholder: "Local Address Line1"
+                -#= f.text_field :local_address_line1, class: "form-control", placeholder: "Local Address Line1"
           .row
             .col-md-3
               Address Line 2
             .col-md-9
-              = f.text_field :local_address_line2, class: "form-control", placeholder: "Local Address Line2"
+              .col-md-12
+                = f.input :local_address_line2, label: false, placeholder: "Local Address Line2"
+                -#= f.text_field :local_address_line2, class: "form-control", placeholder: "Local Address Line2"
           .row
             .col-md-1
               City*
             .col-md-3
-              = f.text_field :local_address_city, placeholder: "City", class: "form-control"
+              .col-md-12
+                = f.input :local_address_city, label: false, placeholder: "City"
+                -#= f.text_field :local_address_city, placeholder: "City", class: "form-control"
             .col-md-1
               State*
             .col-md-3
-              = f.text_field :local_address_state, placeholder: "State", class: "form-control"
+              .col-md-12
+                = f.input :local_address_state, label: false, placeholder: "State"
+                -#= f.text_field :local_address_state, placeholder: "State", class: "form-control"
             .col-md-1
               ZIP*
             .col-md-3
-              = f.text_field :local_address_zip, placeholder: "ZIP", class: "form-control"
+              .col-md-12
+                = f.input :local_address_zip, label: false, placeholder: "ZIP"
+                -#= f.text_field :local_address_zip, placeholder: "ZIP", class: "form-control"
           .row
             .col-md-1
               Country*
             .col-md-4
-              = f.select :local_country, Country.all.sort, {}, {class: "form-control"}
+              .col-md-12
+                = f.select :local_country, options_for_select(Country.all.sort), {}, {class: "form-control"}
+                -#= f.select :local_country, Country.all.sort, {}, {class: "form-control"}
           %br
           .row
             .col-md-12.checkbox
@@ -158,44 +196,60 @@
             %b Permanent Address
             .row
               .col-md-3
-                Address Line 1
+                Address Line 1*
               .col-md-9
-                = f.text_field :perm_address_line1, class: "form-control", placeholder: "Permanent Address Line1"
+                .col-md-12
+                  = f.input :perm_address_line1, label: false, placeholder: "Permanent Address Line1"
+                  -#= f.text_field :local_address_line1, class: "form-control", placeholder: "Local Address Line1"
             .row
               .col-md-3
                 Address Line 2
               .col-md-9
-                = f.text_field :perm_address_line2, class: "form-control", placeholder: "Permanent Address Line2"
+                .col-md-12
+                  = f.input :perm_address_line2, label: false, placeholder: "Permanent Address Line2"
+                  -#= f.text_field :local_address_line2, class: "form-control", placeholder: "Local Address Line2"
             .row
               .col-md-1
-                City
+                City*
               .col-md-3
-                = f.text_field :perm_address_city, placeholder: "City", class: "form-control"
+                .col-md-12
+                  = f.input :perm_address_city, label: false, placeholder: "City"
+                  -#= f.text_field :local_address_city, placeholder: "City", class: "form-control"
               .col-md-1
-                State
+                State*
               .col-md-3
-                = f.text_field :perm_address_state, placeholder: "State", class: "form-control"
+                .col-md-12
+                  = f.input :perm_address_state, label: false, placeholder: "State"
+                  -#= f.text_field :local_address_state, placeholder: "State", class: "form-control"
               .col-md-1
-                ZIP
+                ZIP*
               .col-md-3
-                = f.text_field :perm_address_zip, placeholder: "ZIP", class: "form-control"
+                .col-md-12
+                  = f.input :perm_address_zip, label: false, placeholder: "ZIP"
+                  -#= f.text_field :local_address_zip, placeholder: "ZIP", class: "form-control"
             .row
               .col-md-1
-                Country
+                Country*
               .col-md-4
-                = f.select :perm_country, Country.all.sort, {}, {class: "form-control"}
+                .col-md-12
+                  = f.select :perm_country, options_for_select(Country.all.sort), {}, {class: "form-control"}
+                  -#= f.select :local_country, Country.all.sort, {}, {class: "form-control"}
             %br
           %b E-mail*
           .row
             .col-md-6
-              = f.text_field :e_mail, class: "form-control"
+              .col-md-12
+                = f.input :e_mail, label: false, placeholder: "email@example.com", error: "E-mail is invalid. eg. email@example.com"
+                -#= f.text_field :e_mail, class: "form-control"
           %br
           %b Phone*
           .row
             .col-md-3
               Phone Number
             .col-md-3
-              = f.text_field :phone_number, class: "form-control"
+              .col-md-12
+                = f.input :phone_number, label: false, placeholder: "must be 10 digits", error: "Phone Number is invalid. eg. ###-###-####"
+                -#= f.text_field :phone_number, class: "form-control"
             .col-md-2
               Phone Type*
             .col-md-4
@@ -206,7 +260,9 @@
             .col-md-3
               Phone Number
             .col-md-3
-              = f.text_field :alter_number, class: "form-control"
+              .col-md-12
+                = f.input :alter_number, label: false, error: "Phone Number is invalid. eg. ###-###-####"
+                -#= f.text_field :alter_number, class: "form-control"
             .col-md-2
               Phone Type
             .col-md-4
@@ -231,7 +287,9 @@
           %b Employer*
           .row
             .col-md-4
-              = f.text_field :employer, class: "form-control"
+              .col-md-12
+                = f.input :employer, label: false, error: "Employer cannot be blank."
+                -#= f.text_field :employer, class: "form-control"
           %br
           %b Employer Address
           .row
@@ -271,14 +329,20 @@
           %b Supervisor Name*
           .row
             .col-md-4
-              = f.text_field :supervisor_firstname, placeholder: "First Name", class: "form-control"
+              .col-md-12
+                = f.input :supervisor_firstname, placeholder: "First Name", label: false
+                -#= f.text_field :supervisor_firstname, placeholder: "First Name", class: "form-control"
             .col-md-4
-              = f.text_field :supervisor_lastname, placeholder: "Last Name", class: "form-control"
+              .col-md-12
+                = f.input :supervisor_lastname, placeholder: "Last Name", label: false
+                -#= f.text_field :supervisor_lastname, placeholder: "Last Name", class: "form-control"
           %br
           %b GrossPay*
           .row
             .col-md-4
-              = f.text_field :grosspay, class: "form-control"
+              .col-md-12
+                = f.input :grosspay, label: false, error: "Grosspay is invalid."
+                -#= f.text_field :grosspay, class: "form-control"
           %br
           %b Grosspay Disbursement
           .row
@@ -373,7 +437,9 @@
           %b GrossPay
           .row
             .col-md-4
-              = f.text_field :grosspay2, class: "form-control"
+              .col-md-12
+                = f.input :grosspay2, label: false, error: "Grosspay is invalid."
+              -#= f.text_field :grosspay2, class: "form-control"
           %br
           %b Grosspay Disbursement
           .row
@@ -427,7 +493,9 @@
             .col-md-1
               Amount
             .col-md-4
-              = f.text_field :amount1, class: "form-control"
+              .col-md-12
+                = f.input :amount1, label: false, error: "Amount is invalid."
+                -#= f.text_field :amount1, class: "form-control"
           %br
           #source_2
             %b Source 2
@@ -439,7 +507,9 @@
               .col-md-1
                 Amount
               .col-md-4
-                = f.text_field :amount2, class: "form-control"
+                .col-md-12
+                  = f.input :amount2, label: false, error: "Amount is invalid."
+                  -#= f.text_field :amount2, class: "form-control"
             %br
           #source_3
             %b Source 3
@@ -451,7 +521,9 @@
               .col-md-1
                 Amount
               .col-md-4
-                = f.text_field :amount3, class: "form-control"
+                .col-md-12
+                  = f.input :amount3, label: false, error: "Amount is invalid."
+                  -#= f.text_field :amount3, class: "form-control"
             %br
           .row
             .col-md-4
@@ -475,9 +547,12 @@
               .col-md-4
                 = f.text_field :depository1, {class: "form-control"}
               .col-md-4
-                = f.select :account_type1, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]]), {}, {class: "form-control"}
+                = f.select :account_type1, options_for_select(['Checking', 'Money Market', 'Savings', 'Other']), {}, {class: "form-control"}
+                -#= f.select :account_type1, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]]), {}, {class: "form-control"}
               .col-md-4
-                = f.text_field :balance1, {class: "form-control"}
+                .col-md-12
+                  = f.input :balance1, label: false, error: "Current Balance is invalid."
+                  -#= f.text_field :balance1, {class: "form-control"}
             %br
           #bank_account_2
             .well
@@ -495,9 +570,12 @@
                 .col-md-4
                   = f.text_field :depository2, {class: "form-control"}
                 .col-md-4
-                  = f.select :account_type2, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]]), {}, {class: "form-control"}
+                  = f.select :account_type2, options_for_select(['Checking', 'Money Market', 'Savings', 'Other']), {}, {class: "form-control"}
+                  -#= f.select :account_type2, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]]), {}, {class: "form-control"}
                 .col-md-4
-                  = f.text_field :balance2, {class: "form-control"}
+                  .col-md-12
+                    = f.input :balance2, label: false, error: "Current Balance is invalid."
+                    -#= f.text_field :balance2, {class: "form-control"}
               %br
           #bank_account_3
             .well
@@ -515,9 +593,12 @@
                 .col-md-4
                   = f.text_field :depository3, {class: "form-control"}
                 .col-md-4
-                  = f.select :account_type3, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]]), {}, {class: "form-control"}
+                  = f.select :account_type3, options_for_select(['Checking', 'Money Market', 'Savings', 'Other']), {}, {class: "form-control"}
+                  -#= f.select :account_type3, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]]), {}, {class: "form-control"}
                 .col-md-4
-                  = f.text_field :balance3, {class: "form-control"}
+                  .col-md-12
+                    = f.input :balance3, label: false, error: "Current Balance is invalid."
+                    -#= f.text_field :balance3, {class: "form-control"}
               %br
           .row
             .col-md-4
@@ -532,24 +613,26 @@
             %br
             %b Address
             .row
-              .col-md-4
-                = f.text_field :addr1
+              .col-md-9
+                = f.text_area :addr1
             %br
             %b Market Value
             .row
               .col-md-4
-                = f.text_field :market_value1
+                .col-md-12
+                  = f.input :market_value1, label: false, error: "Market Value is invalid."
+                  -#= f.text_field :market_value1
             %br
             %b Pledged as Collateral for Another Loan?
             .row
               .col-md-1
                 Yes
               .col-md-1
-                = f.radio_button :pledged1, 0
+                = f.radio_button :pledged1, "yes"
               .col-md-1
                 No
               .col-md-1
-                = f.radio_button :pledged1, 1
+                = f.radio_button :pledged1, "no"
             %br
           #property_2
             .well
@@ -557,24 +640,26 @@
               %br
               %b Address
               .row
-                .col-md-4
-                  = f.text_field :addr2
+                .col-md-9
+                  = f.text_area :addr2
               %br
               %b Market Value
               .row
                 .col-md-4
-                  = f.text_field :market_value2
+                  .col-md-12
+                    = f.input :market_value2, label: false, error: "Market Value is invalid."
+                    -#= f.text_field :market_value2
               %br
               %b Pledged as Collateral for Another Loan?
               .row
                 .col-md-1
                   Yes
                 .col-md-1
-                  = f.radio_button :pledged2, 0
+                  = f.radio_button :pledged2, "yes"
                 .col-md-1
                   No
                 .col-md-1
-                  = f.radio_button :pledged2, 1
+                  = f.radio_button :pledged2, "no"
               %br
           #property_3
             .well
@@ -588,18 +673,20 @@
               %b Market Value
               .row
                 .col-md-4
-                  = f.text_field :market_value3
+                  .col-md-12
+                    = f.input :market_value3, label: false, error: "Market Value is invalid."
+                    -#= f.text_field :market_value3
               %br
               %b Pledged as Collateral for Another Loan?
               .row
                 .col-md-1
                   Yes
                 .col-md-1
-                  = f.radio_button :pledged3, 0
+                  = f.radio_button :pledged3, "yes"
                 .col-md-1
                   No
                 .col-md-1
-                  = f.radio_button :pledged3, 1
+                  = f.radio_button :pledged3, "no"
               %br
           .row
             .col-md-4
@@ -621,7 +708,9 @@
               .col-md-6
                 = f.text_field :creditor1, class: "form-control"
               .col-md-6
-                = f.text_field :cbalance1, class: "form-control"
+                .col-md-12
+                  = f.input :cbalance1, label: false, error: "Current Balance is invalid."
+                  -#= f.text_field :cbalance1, class: "form-control"
             %br
             .row
               .col-md-6
@@ -633,7 +722,9 @@
               .col-md-6
                 = f.date_select :nextpayment1
               .col-md-6
-                = f.text_field :avg1, class: "form-control"
+                .col-md-12
+                  = f.input :avg1, label: false, error: "Average Monthly Payment is invalid."
+                  -#= f.text_field :avg1, class: "form-control"
             %br
             %b Past Due
             .row
@@ -659,7 +750,9 @@
                 .col-md-6
                   = f.text_field :creditor2, class: "form-control"
                 .col-md-6
-                  = f.text_field :cbalance2, class: "form-control"
+                  .col-md-12
+                    = f.input :cbalance2, label: false, error: "Current Balance is invalid."
+                  -#= f.text_field :cbalance2, class: "form-control"
               %br
               .row
                 .col-md-6
@@ -671,7 +764,9 @@
                 .col-md-6
                   = f.date_select :nextpayment2
                 .col-md-6
-                  = f.text_field :avg2, class: "form-control"
+                  .col-md-12
+                    = f.input :avg2, label: false, error: "Average Monthly Payment is invalid."
+                  -#= f.text_field :avg2, class: "form-control"
               %br
               %b Past Due
               .row
@@ -697,7 +792,9 @@
                 .col-md-6
                   = f.text_field :creditor3, class: "form-control"
                 .col-md-6
-                  = f.text_field :cbalance3, class: "form-control"
+                  .col-md-12
+                    = f.input :cbalance3, label: false, error: "Current Balance is invalid."
+                  -#= f.text_field :cbalance3, class: "form-control"
               %br
               .row
                 .col-md-6
@@ -735,7 +832,9 @@
                 .col-md-6
                   = f.text_field :creditor4, class: "form-control"
                 .col-md-6
-                  = f.text_field :cbalance4, class: "form-control"
+                  .col-md-12
+                    = f.input :cbalance4, label: false, error: "Current Balance is invalid."
+                  -#= f.text_field :cbalance4, class: "form-control"
               %br
               .row
                 .col-md-6
@@ -747,7 +846,9 @@
                 .col-md-6
                   = f.date_select :nextpayment4
                 .col-md-6
-                  = f.text_field :avg4, class: "form-control"
+                  .col-md-12
+                    = f.input :avg4, label: false, error: "Current Balance is invalid."
+                  -#= f.text_field :avg4, class: "form-control"
               %br
               %b Past Due
               .row
@@ -800,7 +901,9 @@
             %br
             .row
               .col-md-6
-                = f.text_field :monthly1, class: "form-control"
+                .col-md-12
+                  = f.input :monthly1, label: false, error: "Monthly Payment is invalid."
+                -#= f.text_field :monthly1, class: "form-control"
               .row
                 .col-md-3
                   %label.radio-inline
@@ -846,7 +949,9 @@
             %br
             .row
               .col-md-6
-                = f.text_field :monthly2, class: "form-control"
+                .col-md-12
+                  = f.input :monthly2, label: false, error: "Monthly Payment is invalid."
+                -#= f.text_field :monthly2, class: "form-control"
               .row
                 .col-md-3
                   %label.radio-inline
@@ -923,17 +1028,16 @@
               .col-md-12
                 You promise that everything you have stated in this application is correct to the best of your knowledge and that the above information is a complete listing of what you owe.  If there are any important changes you will notify us in writing immediately.  You authorize the SFCU to obtain credit reports in connection with this application for credit and for any update, increase, renewal, extension or collection of the credit received.  You understand that the SFCU will rely on the information in this application and your credit report to make its decision. If you request, the SFCU will tell you the name and address of any credit bureau from which it received a credit report on you. It is a federal crime to willfully and deliberately provide incomplete or incorrect information on loan applications made to federal credit unions or state chartered credit unions insured by the NCUA.
             %br
-            .col-md-12.checkbox
-              %label
-                = f.check_box :yesorno
-                I have read this disclosure and understand and agree to all terms, conditions and requirements here stated.*
+            .col-md-12
+              = f.input :yesorno, as: :boolean, label: "I have read this disclosure and understand and agree to all terms, conditions and requirements here stated.*", error: false
               %br
             .row
               .col-md-4.col-md-offset-4
                 %b Electronic Signature*
             .row
               .col-md-4.col-md-offset-4
-                = f.text_field :signature, class: "form-control"
+                = f.input :signature, placeholder: "Electronic Sigature", label: false, error: "Please Sign here"
+                -#= f.text_field :signature, class: "form-control"
         .actions.text-center
           = f.submit 'Submit', class: "btn btn-primary"
     %ul.pager.wizard

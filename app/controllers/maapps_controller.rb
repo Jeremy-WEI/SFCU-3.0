@@ -1,6 +1,6 @@
 class MaappsController < ApplicationController
   before_action :set_maapp, only: [:show, :edit, :update, :destroy]
-
+  http_basic_authenticate_with :name => MainHelper.name, :password => MainHelper.password, except: [:new, :create, :successful]
   # GET /maapps
   # GET /maapps.json
   def index
@@ -21,6 +21,9 @@ class MaappsController < ApplicationController
   def edit
   end
 
+  def successful
+  end
+
   # POST /maapps
   # POST /maapps.json
   def create
@@ -28,7 +31,8 @@ class MaappsController < ApplicationController
 
     respond_to do |format|
       if @maapp.save
-        format.html { redirect_to action: :index }
+        format.html { render :successful }
+        # format.html { redirect_to action: :index }
         format.json { render :show, status: :created, location: @maapp }
       else
         format.html { render :new }

@@ -23,9 +23,10 @@ class Ulapp < ActiveRecord::Base
 
   before_validation :make_perm_address
 
-  validates :credit_type, :purpose, :first_name, :last_name,
+  validates :credit_type, :joint_applicant, :purpose, :first_name, :last_name,
             :name_relative, :phone_type, :employer,
-            :supervisor_firstname, :supervisor_lastname,
+            :supervisor_firstname, :supervisor_lastname, :local_address_state,:local_address_zip, :local_address_line1,
+            :local_address_city, :local_country,
             presence: true
   validates :amount, numericality: { greater_than_or_equal_to: 0, only_integer: true}
   validate :check_sfcu_account
@@ -34,12 +35,13 @@ class Ulapp < ActiveRecord::Base
   validates :grosspay, numericality: { greater_than_or_equal_to: 0, only_integer: true}
   validates_with UlappsHelper::PhoneValidator, fields: [:phone_relative, :phone_number]
   validate :check_alter, :dob_validation, :check_grad_date
-  validates :yesorno, acceptance: { accept: 1 }
+  validates :yesorno, acceptance: { accept: true }
   validates_with UlappsHelper::AmountValidator, fields: [:grosspay2, :amount1, :amount2, :amount3,
                                                          :balance1, :balance2, :balance3,
                                                          :market_value1, :market_value2, :market_value3,
                                                          :cbalance1, :cbalance2, :cbalance3, :cbalance4,
                                                          :avg1, :avg2, :avg3, :avg4, :monthly1, :monthly2]
+  validates :signature, presence: true
   validate :validates_local_address
   validate :validates_perm_address
 
@@ -78,6 +80,7 @@ class Ulapp < ActiveRecord::Base
   end
 
   def validates_local_address
+    self.local_country = "" if self.local_country.nil?
     if ["us", "united states"].include? self.local_country.chomp.downcase
       begin
         @lob = Lob.load(api_key: USERNAME)
@@ -96,17 +99,20 @@ class Ulapp < ActiveRecord::Base
         self.local_country = @result["address"]["address_country"]
       rescue
         errors.add(:local_address_line1, "Invalid address")
+        errors.add(:local_address_line2, "Invalid address")
+        errors.add(:local_address_city, "Invalid address")
+        errors.add(:local_address_state, "Invalid address")
+        errors.add(:local_country, "Invalid address")
+        errors.add(:local_address_zip, "Invalid address")
       end
     end
   end
 
   def validates_perm_address
+    self.perm_country = "" if self.perm_country.nil?
     if ["us", "united states"].include? self.perm_country.chomp.downcase
       if empty_field?(perm_address_line1) and empty_field?(perm_address_line2) #if not filled (perm address not required)
-        self.perm_address_city = ""
-        self.perm_address_zip = ""
-        self.perm_address_state = ""
-        self.perm_country = ""
+        [self.perm_address_city, self.perm_address_zip, self.perm_address_state, self.perm_country].map {|x| x = ""}
       else
         begin
           @lob = Lob.load(api_key: USERNAME)
@@ -125,6 +131,11 @@ class Ulapp < ActiveRecord::Base
           self.perm_country = @result["address"]["address_country"]
         rescue
           errors.add(:perm_address_line1, "Invalid address")
+          errors.add(:perm_address_line2, "Invalid address")
+          errors.add(:perm_address_city, "Invalid address")
+          errors.add(:perm_address_state, "Invalid address")
+          errors.add(:perm_address_country, "Invalid address")
+          errors.add(:perm_address_zip, "Invalid address")
         end
       end
     end

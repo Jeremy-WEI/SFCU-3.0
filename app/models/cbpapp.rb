@@ -6,7 +6,8 @@ class Cbpapp < ActiveRecord::Base
 
   validates :first_name, :last_name, :mother_maiden,:account_number, :how_know,
             :local_home_phone, :local_address_line1, :local_address_city, :local_address_state,
-            :student_status, :period,
+            :student_status, :period,:local_address_state,:local_address_zip, :local_address_line1,
+            :local_address_city,
             presence: true
   validates :ssn, format: {with: SSN_FORMAT}
   validate :check_dob, :check_non_upenn_email, :check_grad_date
@@ -16,9 +17,9 @@ class Cbpapp < ActiveRecord::Base
   
   def check_dob
     if not dob.present?
-      errors.add(:dob, "can't be blank")
+      errors.add(:dob, "DoB can't be blank")
     elsif dob > Date.today
-      errors.add(:dob, "must be in the past")
+      errors.add(:dob, "DoB must be in the past")
     end
   end
 
@@ -58,6 +59,10 @@ class Cbpapp < ActiveRecord::Base
       self.local_address_zip = @result["address"]["address_zip"]
     rescue
       errors.add(:local_address_line1, "Invalid address")
+      errors.add(:local_address_line2, "Invalid address")
+      errors.add(:local_address_city, "Invalid address")
+      errors.add(:local_address_state, "Invalid address")
+      errors.add(:local_address_zip, "Invalid address")
     end
   end
 
@@ -66,12 +71,10 @@ class Cbpapp < ActiveRecord::Base
   end
 
   def validates_perm_address
+    self.perm_address_country = "" if self.perm_address_country.nil?
     if ["us", "united states"].include? self.perm_address_country.chomp.downcase
       if empty_field?(perm_address_line1) and empty_field?(perm_address_line2) #if not filled (perm address not required)
-        self.perm_address_city = ""
-        self.perm_address_zip = ""
-        self.perm_address_state = ""
-        self.perm_address_country = ""
+        [self.perm_address_city, self.perm_address_zip, self.perm_address_state, self.perm_address_country].map {|x| x = ""}
       else
         begin
           @lob = Lob.load(api_key: USERNAME)
@@ -90,6 +93,11 @@ class Cbpapp < ActiveRecord::Base
           self.perm_address_country = @result["address"]["address_country"]
         rescue
           errors.add(:perm_address_line1, "Invalid address")
+          errors.add(:perm_address_line2, "Invalid address")
+          errors.add(:perm_address_city, "Invalid address")
+          errors.add(:perm_address_state, "Invalid address")
+          errors.add(:perm_address_country, "Invalid address")
+          errors.add(:perm_address_zip, "Invalid address")
         end
       end
     end
