@@ -16,9 +16,9 @@ class Cbpapp < ActiveRecord::Base
   
   def check_dob
     if not dob.present?
-      errors.add(:dob, "can't be blank")
+      errors.add(:dob, "DoB can't be blank")
     elsif dob > Date.today
-      errors.add(:dob, "must be in the past")
+      errors.add(:dob, "DoB must be in the past")
     end
   end
 
