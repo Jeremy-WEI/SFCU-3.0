@@ -23,7 +23,7 @@ class CbpappsController < ApplicationController
 
   def export
     if params[:exports].nil?
-      @ulapps = Cbpapp.all
+      @cbpapps = Cbpapp.all
       render :index
     else
       csv_path = "public/uploads/cbpapp/cbpapps_file.csv"
@@ -99,14 +99,14 @@ class CbpappsController < ApplicationController
   # PATCH/PUT /cbpapps/1.json
   def update
     respond_to do |format|
-      if @cbpapp.update(cbpapp_params)
+      # if @cbpapp.update(cbpapp_params)
         format.html { redirect_to action: :index }
         # format.html { redirect_to @cbpapp, notice: 'Cbpapp was successfully updated.' }
-        format.json { render :show, status: :ok, location: @cbpapp }
-      else
-        format.html { render :edit }
-        format.json { render json: @cbpapp.errors, status: :unprocessable_entity }
-      end
+        # format.json { render :show, status: :ok, location: @cbpapp }
+      # else
+      #   format.html { render :edit }
+      #   format.json { render json: @cbpapp.errors, status: :unprocessable_entity }
+      # end
     end
   end
 

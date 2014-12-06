@@ -263,10 +263,10 @@ three:
   amount: 10000
   purpose: I want to pay for my tuition.
   first_name: Jingyuan
-  last_name: Wu
+  last_name:
   dob: 1992-03-04
   ssn: 218938972
-  sfcu_account:
+  sfcu_account: Wu
   name_relative: Yiping Wu
   phone_relative: 2157778930
   mothers: Liu
