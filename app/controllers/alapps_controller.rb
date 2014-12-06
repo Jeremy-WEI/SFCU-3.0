@@ -6,6 +6,9 @@ class AlappsController < ApplicationController
     @alapps = Alapp.all
   end
 
+  def successful
+  end
+
   def export
     if params[:exports].nil?
       @alapps = Alapp.all
@@ -90,7 +93,8 @@ class AlappsController < ApplicationController
     # end
     respond_to do |format|
       if @alapp.save
-        format.html { redirect_to @alapp, notice: 'Alapp was successfully created.' }
+        format.html { render :successful }
+        # format.html { redirect_to @alapp, notice: 'Alapp was successfully created.' }
         # flash[:notice] = "You have successfully submitted the form!"
         # format.html { redirect_to alapps_path }
         format.json { render :show, status: :created, location: @alapp }
