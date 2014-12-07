@@ -1,6 +1,7 @@
 class CreateUlapps < ActiveRecord::Migration
   def change
     create_table :ulapps do |t|
+      t.string :application_status, default: "Unprocessed"
       t.string :credit_type
       t.text :joint_applicant
       t.string :amount
@@ -119,7 +120,6 @@ class CreateUlapps < ActiveRecord::Migration
       t.string :monthly2
       t.boolean :past_due2
       t.text :expenses
-      t.string :ulapp_file1
       t.string :file1
       t.string :file2
       t.string :file3

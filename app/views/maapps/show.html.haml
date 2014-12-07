@@ -1,133 +1,149 @@
-%p#notice= notice
+.panel.panel-default
+  .panel-heading
+    %h1.panel-title.text-center Member Account Application Information
+  .panel-body
+    %p
+      .row
+        .col-md-4
+          %b First name:
+          = @maapp.first_name
+        .col-md-4
+          %b Middle name:
+          = @maapp.middle_name
+        .col-md-4
+          %b Last name:
+          = @maapp.last_name
+    %p
+      %b Date of Birth
+      = @maapp.dob
+    %p
+      %b Student status:
+      = @maapp.student_status
+    %p
+      %b Penn affiliation:
+      = @maapp.penn_affiliation
+    %p
+      %b Graduate year:
+      = @maapp.grad_year
+    %p
+      %b Penn ID:
+      = @maapp.penn_id
+    %p
+      %b SSN:
+      = @maapp.ssn
+    %p
+      %b W8ben Form:
+      = @maapp.w8ben_form
+    %p
+      .row
+        .col-md-4
+          %b Document Type:
+          = @maapp.doc_type
+        .col-md-4
+          %b Document ID:
+          = @maapp.doc_id
+    %p
+      %b File ID1:
+      = @maapp.file_id1
+    %p
+      %b File ID2:
+      = @maapp.file_id2
+    %p
+      .row
+        .col-md-4
+          %b Mobile Phone:
+          = @maapp.mobile_phone
+        .col-md-4
+          %b Home Phone:
+          = @maapp.home_phone
+    %p
+      .row
+        .col-md-4
+          %b Penn Email:
+          = @maapp.penn_email
+        .col-md-4
+          %b Alternate Email:
+          = @maapp.alter_email
+    %p
+      %b Local Address Line1:
+      = @maapp.local_address_line1
+    %p
+      %b Local Address Line2:
+      = @maapp.local_address_line2
+    %p
+      .row
+        .col-md-4
+          %b City:
+          = @maapp.local_address_city
+        .col-md-4
+          %b State:
+          = @maapp.local_address_state
+        .col-md-4
+          %b Zip:
+          = @maapp.local_address_zip
+    %p
+      %b Permanent Address Line1:
+      = @maapp.perm_address_line1
+    %p
+      %b Permanent Address Line2:
+      = @maapp.perm_address_line2
+    %p
+      .row
+        .col-md-3
+          %b City:
+          = @maapp.perm_address_city
+        .col-md-3
+          %b State:
+          = @maapp.perm_address_state
+        .col-md-3
+          %b Zip:
+          = @maapp.perm_address_zip
+        .col-md-3
+          %b Country:
+          = @maapp.perm_address_country
+    %p
+      %b Statement Type:
+      = @maapp.statement_type
+    %p
+      %b Checking Account:
+      = @maapp.checking_account
+    %p
+      %b Courtesy Pay:
+      = @maapp.courtesy_pay
+    %p
+      %b Visa Checkcard:
+      = @maapp.visa_checkcard
+    %p
+      %b Visa Pin:
+      = @maapp.visa_pin
+    %p
+      %b Visa Delivery:
+      = @maapp.visa_delivery
+    %p
+      %b Penncard Link:
+      = @maapp.penncard_link
+    %p
+      %b Penncard Number:
+      = @maapp.penncard_number
+    %p
+      %b Order Checks:
+      = @maapp.order_checks
+    %p
+      %b Address on Checks:
+      = @maapp.address_on_checks
+    %p
+      %b Check Type:
+      = @maapp.check_type
+    %p
+      %b Color:
+      = @maapp.color
+    %p
+      %b Check Delivery:
+      = @maapp.check_delivery
+    %p
+      %b Signature:
+      = @maapp.signature
 
-%p
-  %b First name:
-  = @maapp.first_name
-%p
-  %b Middle name:
-  = @maapp.middle_name
-%p
-  %b Last name:
-  = @maapp.last_name
-%p
-  %b Dob:
-  = @maapp.dob
-%p
-  %b Student status:
-  = @maapp.student_status
-%p
-  %b Penn affiliation:
-  = @maapp.penn_affiliation
-%p
-  %b Grad year:
-  = @maapp.grad_year
-%p
-  %b Penn:
-  = @maapp.penn_id
-%p
-  %b Ssn:
-  = @maapp.ssn
-%p
-  %b W8ben form:
-  = @maapp.w8ben_form
-%p
-  %b Doc type:
-  = @maapp.doc_type
-%p
-  %b Doc:
-  = @maapp.doc_id
-%p
-  %b File id1:
-  = @maapp.file_id1
-%p
-  %b File id2:
-  = @maapp.file_id2
-%p
-  %b Mobile phone:
-  = @maapp.mobile_phone
-%p
-  %b Home phone:
-  = @maapp.home_phone
-%p
-  %b Penn email:
-  = @maapp.penn_email
-%p
-  %b Alter email:
-  = @maapp.alter_email
-%p
-  %b Local address line1:
-  = @maapp.local_address_line1
-%p
-  %b Local address line2:
-  = @maapp.local_address_line2
-%p
-  %b Local address city:
-  = @maapp.local_address_city
-%p
-  %b Local address state:
-  = @maapp.local_address_state
-%p
-  %b Local address zip:
-  = @maapp.local_address_zip
-%p
-  %b Perm address line1:
-  = @maapp.perm_address_line1
-%p
-  %b Perm address line2:
-  = @maapp.perm_address_line2
-%p
-  %b Perm address city:
-  = @maapp.perm_address_city
-%p
-  %b Perm address state:
-  = @maapp.perm_address_state
-%p
-  %b Perm address zip:
-  = @maapp.perm_address_zip
-%p
-  %b Statement type:
-  = @maapp.statement_type
-%p
-  %b Checking account:
-  = @maapp.checking_account
-%p
-  %b Courtesy pay:
-  = @maapp.courtesy_pay
-%p
-  %b Visa checkcard:
-  = @maapp.visa_checkcard
-%p
-  %b Visa pin:
-  = @maapp.visa_pin
-%p
-  %b Visa delivery:
-  = @maapp.visa_delivery
-%p
-  %b Penncard link:
-  = @maapp.penncard_link
-%p
-  %b Penncard number:
-  = @maapp.penncard_number
-%p
-  %b Order checks:
-  = @maapp.order_checks
-%p
-  %b Address on checks:
-  = @maapp.address_on_checks
-%p
-  %b Check type:
-  = @maapp.check_type
-%p
-  %b Color:
-  = @maapp.color
-%p
-  %b Check delivery:
-  = @maapp.check_delivery
-%p
-  %b Signature:
-  = @maapp.signature
-%p
-
-= link_to 'Edit', edit_maapp_path(@maapp)
-\|
-= link_to 'Back', maapps_path
+    .text-center
+      = form_tag url_for(:controller => 'maapps', :action => 'index'), method: 'get' do
+        = submit_tag 'Back', class: "btn btn-primary"
