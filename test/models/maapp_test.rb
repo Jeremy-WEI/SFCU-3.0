@@ -47,8 +47,6 @@ class MaappTest < ActiveSupport::TestCase
   test "should not save an invalid permanent address" do
     @maapp = maapps(:three)
     assert_not @maapp.save
-    puts @maapp.errors.full_messages
-
   end
 
 end
