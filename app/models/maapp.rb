@@ -29,21 +29,21 @@ class Maapp < ActiveRecord::Base
   #           }
 
 
-  # validates :first_name, :last_name, :student_status, :penn_affiliation,
-  #           :local_address_line1, :local_address_city, :local_address_state, :local_address_zip,
-  #           :perm_address_line1, :perm_address_city, :perm_address_state, :perm_address_zip,
-  #           :statement_type, :checking_account, :signature,
-  #           presence: true
-  # validate :dob_validation
-  # validates :ssn, format: {with: SSN_FORMAT, allow_blank: true}
-  # validates :mobile_phone, format: {with: PHONE_FORMAT}
-  # validates :home_phone, format: {with: PHONE_FORMAT, allow_blank: true}
-  # validates :penn_email, format: {with: PENNEMAIL_FORMAT}, if: lambda { penn_affiliation == 'Graduate' || penn_affiliation == 'Undergraduate'}
-  # validates :alter_email, format: {with: EMAIL_FORMAT}
-  # validates :penncard_number, format: {with: PENNCARD_NUMBER_FORMAT}, if: lambda { penncard_link == true }
-  # validates :check_type, :check_delivery, :address_on_checks, :color, presence: true, if: lambda {order_checks == true}
-  # validate :validates_local_address
-  # validate :validates_perm_address
+  validates :first_name, :last_name, :student_status, :penn_affiliation,
+            :local_address_line1, :local_address_city, :local_address_state, :local_address_zip,
+            :perm_address_line1, :perm_address_city, :perm_address_state, :perm_address_zip,
+            :statement_type, :checking_account, :signature,
+            presence: true
+  validate :dob_validation
+  validates :ssn, format: {with: SSN_FORMAT, allow_blank: true}
+  validates :mobile_phone, format: {with: PHONE_FORMAT}
+  validates :home_phone, format: {with: PHONE_FORMAT, allow_blank: true}
+  validates :penn_email, format: {with: PENNEMAIL_FORMAT}, if: lambda { penn_affiliation == 'Graduate' || penn_affiliation == 'Undergraduate'}
+  validates :alter_email, format: {with: EMAIL_FORMAT}
+  validates :penncard_number, format: {with: PENNCARD_NUMBER_FORMAT}, if: lambda { penncard_link == true }
+  validates :check_type, :check_delivery, :address_on_checks, :color, presence: true, if: lambda {order_checks == true}
+  validate :validates_local_address
+  validate :validates_perm_address
   validates :visa_pin, presence:true, confirmation: true, if: lambda {visa_checkcard == true}
   validates :visa_pin_confirmation, presence: true, if: lambda {visa_checkcard == true}
   validates :visa_delivery, presence: true, if: lambda {visa_checkcard == true}
