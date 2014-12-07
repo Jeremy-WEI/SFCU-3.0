@@ -24,18 +24,31 @@
       = form_tag url_for(:controller => 'maapps', :action => 'export'), method: 'get', name: "exports", id: "exports" do
         = submit_tag 'Export', id: "export_button", class: "btn btn-primary"
 
+#WarningModal.modal.fade{:role => "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h4.modal-title Warning
+      .modal-body
+        %h3.lead Please select at least one applicant!
+      .modal-footer
+        .text-center
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Go back
+
 :javascript
   $(document).ready(function() {
-    $('#export_button').click(function(){
-      var lists = true;
+    $('#export_button').click(function(e){
+      var empty = true;
       var checkboxes = document.getElementsByName('exports[]');
       for(var i = 0, n = checkboxes.length;i < n; i++) {
         if(checkboxes[i].checked) {
-          lists = false;
+          empty = false;
           break;
         }
       }
-      if(lists)
-        alert("No application selected");
+      if(empty) {
+        e.preventDefault();
+        $('#WarningModal').modal();
+      }
     });
   });

@@ -18,3 +18,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+//colors
+$color_white: rgba(255, 255, 255, 0);
+
+.white {
+  background: $color_white;
+}
+
+
+a:hover {
+  background: $color_white;
+}

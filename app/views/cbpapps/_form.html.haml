@@ -17,7 +17,7 @@
         .progress-bar.progress-bar-success.progress-bar-striped.active.bar
       = simple_form_for @cbpapp, html: {class: "form-horizontal"} do |f|
         - if @cbpapp.errors.any?
-          #error_explanation.text-center
+          .text-center.alert.alert-danger.alert-error
             = "There are some problems in your application form, please correct them and submit again.\n"
         -#- if @cbpapp.errors.any?
         -#  #error_explanation
@@ -30,7 +30,7 @@
             %hr
             %h2.text-center Section I: Credit Request
             %hr
-            %div
+            .well.white
               You are applying for credit under the terms disclosed in this Credit Agreement.
               %br
               %b Amount Requested: $1000
@@ -47,7 +47,7 @@
             %hr
             %h2.text-center Section II: Applicant Information
             %hr
-            %div
+            .well.white
               %h2.text-center A. General Information
               %br
               %b Name*
@@ -110,7 +110,7 @@
             %hr
             %h2.text-center Section II: Applicant Information
             %hr
-            %div
+            .well.white
               %h2.text-center B. Contact Information
               %br
               .row
@@ -189,7 +189,7 @@
                     = f.input :perm_home_phone, placeholder: "(XXX)XXX-XXXX", label: false
               %br
             %hr
-            %div
+            .well.white
               %h2.text-center C. Residency
               %br
               %b Student Status*
@@ -198,7 +198,6 @@
                   = f.input :student_status,
                             :collection => ["US Citizen or permanent resident", "International"],
                             :as => :radio_buttons, :item_wrapper_class => 'radio-inline', label: false, error: false
-            %hr
             .actions.text-center
               = f.submit 'Submit', class: "btn btn-primary"
             %hr

@@ -14,7 +14,7 @@
     .progress-bar.progress-bar-success.progress-bar-striped.active.bar
   = simple_form_for @alapp, html: {class: "form-horizontal"} do |f|
     - if @alapp.errors.any?
-      #error_explanation.text-center
+      .text-center.alert.alert-danger.alert-error
         = "There are some problems in your application form, please correct them and submit again.\n"
         -#%ul
         -#  - @alapp.errors.full_messages.each do |msg|
@@ -22,7 +22,7 @@
     .tab-content
       #tab1.tab-pane
         %hr
-        .well
+        .well.white
           %h2.text-center General Information
           .row
             .col-md-12
@@ -55,7 +55,7 @@
                                        :list => [["Yes", true], ["No", false]],
                                        :error_msg => ""
         %hr
-        .well
+        .well.white
           %h2.text-center Credit Request
 
           %b Type*
@@ -76,7 +76,7 @@
                                        :error_msg => ""
         %hr
 
-        .well
+        .well.white
           %h2.text-center Vehicle Information
 
           .row
@@ -124,7 +124,7 @@
               .col-md-1
                 = f.input :veh_van, as: :boolean, label: "van", error: ""
         %hr
-        .well
+        .well.white
           %h2.text-center Contact Information
           .row
             .col-md-12
@@ -150,7 +150,7 @@
                 = render "text_field4", :f => f, :title => "Name of Nearest Relative*", :var => "name_nearest_relative", :place_holder => "Name of your relative", :error_msg => ""
                 = render "text_field4", :f => f, :title => "Phone of Nearest Relative*", :var => "phone_nearest_relative", :place_holder => "###-###-####", :error_msg => ""
         %hr
-        .well
+        .well.white
           %h2.text-center Driver's License
           .row
             .col-md-12
@@ -167,7 +167,7 @@
                   = f.file_field :driver_license_file
       #tab2.tab-pane
         %hr
-        .well
+        .well.white
           %h2.text-center Employment
           .row
             .col-md-12
@@ -186,7 +186,7 @@
             .col-md-4
               %button.btn.btn-primary{id: "add_employment", type: "button"} Add Another Employment
         %hr
-        .well
+        .well.white
           %h2.text-center Additional Income
           .row
             .col-md-12
@@ -206,7 +206,7 @@
             .col-md-4
               %button.btn.btn-primary{id: "add_additional_income", type: "button"} Add Another Income
         %hr
-        .well
+        .well.white
           %h2.text-center Assets
           .row
             .col-md-12
@@ -247,7 +247,7 @@
               %button.btn.btn-primary{id: "add_property", type: "button"} Add Another Property Owned
       #tab3.tab-pane
         %hr
-        .well
+        .well.white
           %h2.text-center Outstanding Debts
           %h3.text-left Credit Cards
           .row
@@ -286,7 +286,7 @@
             .row
               .col-md-4
                 %button.btn.btn-primary{id: "add_another_loan", type: "button"} Add Another Loan
-        .well
+        .well.white
           %h2.text-center Montly Expenses
           %br
           .row
@@ -326,7 +326,7 @@
 
       #tab4.tab-pane
         %br
-        .well
+        .well.white
           %h2.text-center Supporting Documents
           #file_option_1
             = render 'file', :f => f, :x => 1
@@ -342,7 +342,7 @@
           .row
             .col-md-4
               %button.btn.btn-primary{id: "add_another_file", type: "button"} Add Another File
-        .well
+        .well.white
           %h2.text-center Terms & Conditions
           %br
           You promise that everything you have stated in this application is correct to
@@ -383,7 +383,7 @@
           %br
         .actions.text-center
           = f.submit 'Submit', class: "btn btn-primary"
-
+        %hr
     %ul.pager.wizard
       %li.previous.first
         %a{:href => "javascript:;"} First

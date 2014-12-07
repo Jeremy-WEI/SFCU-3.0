@@ -7,7 +7,7 @@
       %tr
         %th.col-md-1.text-center
         %th.col-md-3.text-center Applicant
-        %th.col-md-2.text-center Loan Amount($)
+        %th.col-md-2.text-center Loan Amount
         %th.col-md-2.text-center Status
         %th.col-md-2.text-center Date Submitted
         %th.col-md-1.text-center
@@ -26,11 +26,20 @@
     .div.text-center
       = form_tag url_for(:controller => 'ulapps', :action => 'export'), method: 'get', name: "exports", id: "exports" do
         = submit_tag 'Export', id: "export_button", class: "btn btn-primary"
+#WarningModal.modal.fade{:role => "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h4.modal-title Warning
+      .modal-body
+        %h3.lead Please select at least one applicant!
+      .modal-footer
+        .text-center
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Go back
 
 :javascript
   $(document).ready(function() {
-
-    $('#export_button').click(function(){
+    $('#export_button').click(function(e){
       var empty = true;
       var checkboxes = document.getElementsByName('exports[]');
       for(var i = 0, n = checkboxes.length;i < n; i++) {
@@ -39,7 +48,9 @@
           break;
         }
       }
-      if(empty)
-        alert("No application selected");
+      if(empty){
+        e.preventDefault();
+        $('#WarningModal').modal();
+      }
     });
   });

@@ -51,17 +51,11 @@ class MaappsController < ApplicationController
   end
 
   def export
-    if params[:exports].nil?
-      @maapps = Maapp.all
-      render :index
-    else
       csv_path = "public/uploads/maapp/maapps_file.csv"
       create_csv(csv_path)
 
       zip_folder_path = "public/uploads/maapp"
       zip_files(zip_folder_path, csv_path, params[:exports])
-    end
-
   end
 
   def create_csv(file)

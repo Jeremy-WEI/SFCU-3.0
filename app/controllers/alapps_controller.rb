@@ -11,18 +11,11 @@ class AlappsController < ApplicationController
   end
 
   def export
-    if params[:exports].nil?
-      @alapps = Alapp.all
-      render :index
-    else
       csv_path = "public/uploads/alapp/alapps_file.csv"
       create_csv(csv_path)
 
       zip_folder_path = "public/uploads/alapp"
       zip_files(zip_folder_path, csv_path, params[:exports])
-
-    end
-
   end
 
   def create_csv(file)

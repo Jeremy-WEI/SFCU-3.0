@@ -27,12 +27,12 @@
         .progress-bar.progress-bar-success.progress-bar-striped.active.bar
       = simple_form_for @ulapp, html: {class: "form-horizontal"} do |f|
         - if @ulapp.errors.any?
-          #error_explanation.text-center
+          .text-center.alert.alert-danger.alert-error
             = "There are some problems in your application form, please correct them and submit again.\n"
         .tab-content
           #tab1.tab-pane
             %hr
-            %div
+            .well.white
               %h2.text-center Credit Request
               %b Type*
               .row
@@ -65,7 +65,7 @@
 
           #tab2.tab-pane
             %hr
-            %div
+            .well.white
               %h2.text-center General Information
               %b Name*
               .row
@@ -126,7 +126,7 @@
               %br
           #tab3.tab-pane
             %hr
-            %div
+            .well.white
               %h2.text-center Contact Information
               %br
               %b Local Address
@@ -252,7 +252,7 @@
                   = f.select :alter_type, ([['Home', 'Home'], ['Cell', 'Cell'], ['Business', 'Business']]), {}, {class: "form-control"}
           #tab4.tab-pane
             %hr
-            %div
+            .well.white
               %h2.text-center Employment Income
               %br
               Instructions: Please complete the following section regarding current employment and attach the necessary documentation.
@@ -260,11 +260,11 @@
               %ul
               %li If you are a current student at the University of Pennsylvania, please list both employment during the  regular semester and summer employment (if applicable).
               %li If you are a graduating senior, please list information on your employment after graduation.
-              %li Please supply your most recent pay stub or an email from your employer confirming your employment as  well as income or a fellowship/financial aid offer letter.
+              %li Please supply your most recent pay stub or an email from your employer confirming your employment as  well.white as income or a fellowship/financial aid offer letter.
               %li If you have just graduated and will be starting a new job, please provide an employment offer acceptance  letter for verification of income.
               %li If you are self-employed, please provide IRS returns for the last two years.
               %br
-            .well
+            .well.white
               %h3.text-center Employment I
               %b Employer*
               .row
@@ -368,7 +368,7 @@
                 .col-md-12
                   = f.text_area :additional, class: "form-control"
               %br
-            .well
+            .well.white
               %h3.text-center Employment II
               %b Employer
               .row
@@ -463,7 +463,7 @@
               %br
           #tab5.tab-pane
             %hr
-            %div
+            .well.white
               %h2.text-center Additional Income
               %br
               Please list any additional income or benefits, including parental allowance, investment accounts, etc and attach copies of verification.  Alimony, separate maintenance, and child support need not be revealed unless you desire them to be considered in determining your credit worthiness.
@@ -512,12 +512,12 @@
               .row
                 .col-md-4
                   %button.btn.btn-primary{id: "add_another_source", type: "button"} Add Another Source
-            .well
+            .well.white
               %h3.text-center Bank Accounts
               %br
               If you want the SFCU to consider balances in your bank account(s), please provide statements for the last 2 months as verification.
               %br
-              .well
+              .well.white
                 %h4.text-center Bank Account1
                 %br
                 .row
@@ -538,7 +538,7 @@
                       = f.input :balance1, label: false, error: "Current Balance is invalid."
                       -#= f.text_field :balance1, {class: "form-control"}
               #bank_account_2
-                .well
+                .well.white
                   %h4.text-center Bank Account2
                   %br
                   .row
@@ -561,7 +561,7 @@
                         -#= f.text_field :balance2, {class: "form-control"}
                   %br
               #bank_account_3
-                .well
+                .well.white
                   %h4.text-center Bank Account3
                   %br
                   .row
@@ -586,12 +586,12 @@
               .row
                 .col-md-4
                   %button.btn.btn-primary{id: "add_another_bankaccount", type: "button"} Add Another Bank Account
-            .well
+            .well.white
               %h3.text-center Property Owned
               %br
               Please provide copies of title(s) as verification.
               %br
-              .well
+              .well.white
                 %h4.text-center Property Owned1
                 %br
                 %b Address
@@ -618,7 +618,7 @@
                     = f.radio_button :pledged1, "no"
                 %br
               #property_2
-                .well
+                .well.white
                   %h4.text-center Property Owned2
                   %br
                   %b Address
@@ -645,7 +645,7 @@
                       = f.radio_button :pledged2, "no"
                   %br
               #property_3
-                .well
+                .well.white
                   %h4.text-center Property Owned3
                   %br
                   %b Address
@@ -676,10 +676,10 @@
                   %button.btn.btn-primary{id: "add_another_property", type: "button"} Add Another Property Owned
           #tab6.tab-pane
             %hr
-            %div
+            .well.white
               %h2.text-center Credit Cards
               %br
-              .well
+              .well.white
                 %h3.text-center Creditor1
                 .row
                   .col-md-6
@@ -721,7 +721,7 @@
                       Yes
                 %br
               #creditor_2
-                .well
+                .well.white
                   %h3.text-center Creditor2
                   .row
                     .col-md-6
@@ -763,7 +763,7 @@
                         Yes
                   %br
               #creditor_3
-                .well
+                .well.white
                   %h3.text-center Creditor3
                   .row
                     .col-md-6
@@ -803,7 +803,7 @@
                         Yes
                   %br
               #creditor_4
-                .well
+                .well.white
                   %h3.text-center Creditor4
                   .row
                     .col-md-6
@@ -847,10 +847,10 @@
               .row
                 .col-md-4
                   %button.btn.btn-primary{id: "add_another_creditor", type: "button"} Add Another Creditor
-            %div
+            .well.white
               %h2.text-center Loans
               %br
-              .well
+              .well.white
                 %h3.text-center Creditor 1
                 .row
                   .col-md-6
@@ -898,7 +898,7 @@
                         Yes
 
                 %br
-              .well
+              .well.white
                 %h3.text-center Creditor 2
                 .row
                   .col-md-6
@@ -948,7 +948,7 @@
                 %br
           #tab7.tab-pane
             %hr
-            %div
+            .well.white
               %h2.text-center Monthly Expenses
               %br
               Please estimate your monthly expenses.  If any expense is paid by another party, you must show provide proof of this.  Proof can be in the form of a notarized letter from that party.
@@ -1004,7 +1004,7 @@
                   %button.btn.btn-primary{id: "add_another_file", type: "button"} Add Another File
           #tab8.tab-pane
             %hr
-              %div
+              .well.white
                 %h2.text-center Applicant's Signature
                 %br
                 .row
@@ -1021,7 +1021,6 @@
                   .col-md-4.col-md-offset-4
                     = f.input :signature, placeholder: "Electronic Sigature", label: false, error: "Please Sign here"
                     -#= f.text_field :signature, class: "form-control"
-            %hr
             .actions.text-center
               = f.submit 'Submit', class: "btn btn-primary"
             %hr

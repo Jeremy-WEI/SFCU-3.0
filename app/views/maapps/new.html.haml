@@ -19,12 +19,12 @@
         .progress-bar.progress-bar-success.progress-bar-striped.active.bar
       = simple_form_for @maapp, html: {class: "form-horizontal"} do |f|
         - if @maapp.errors.any?
-          #error_explanation.text-center
+          .text-center.alert.alert-danger.alert-error
             = "There are some problems in your application form, please correct them and submit again.\n"
         .tab-content
           #tab1.tab-pane
             %hr
-            %div
+            .well.white
               %h2.text-center Personal Info
               .row
                 .col-md-12
@@ -118,7 +118,7 @@
               *Please email us your ID's if there is a "Could not access file" error. *
           #tab2.tab-pane
             %hr
-            %div
+            .well.white
               %h2.text-center Contact Info
               .row
                 .col-md-6
@@ -211,7 +211,7 @@
                     = f.select :perm_address_country, options_for_select(Country.all.sort), {}, {class: "form-control"}
           #tab3.tab-pane
             %hr
-            %div
+            .well.white
               %h2.text-center Account Options
               %b Statement Type*
               .row
@@ -249,7 +249,7 @@
                         %br
                         %em *What is courtesy pay? With courtesy pay, the SFCU will approve all one-time debit and ATM transactions regardless of account balance. There is no fee for signing up for courtesy pay; however, a charge applies every time that you use it.
                         %br
-                        .well
+                        .well.white
                           %b Visa©CheckCard
                           .row
                             .col-md-12.checkbox
@@ -276,7 +276,7 @@
                             .row
                               .col-md-12
                                 = f.input :visa_delivery, :collection => ["Local Address", "Permanent Address", "SFCU Office for Pickup"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
-                        .well
+                        .well.white
                           %b PennCard Linkage
                           .row
                             .col-md-12.checkbox
@@ -297,7 +297,7 @@
                                 %br
                                 You can submit this application without requesting to link your PennCard, and contact us once you have the correct prefix to request it.
                             %br
-                        .well
+                        .well.white
                           %b Order Checks
                           .row
                             .col-md-12.checkbox
@@ -324,7 +324,7 @@
                                 = f.input :check_delivery, :collection => ["Local Address", "Permanent Address", "SFCU Office for pockup"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
           #tab4.tab-pane
             %hr
-            %div
+            .well.white
               %h2.text-center Terms and Conditions
               .row
                 .col-md-12
@@ -344,7 +344,6 @@
                   Signature
                 .col-md-4
                   = f.input :signature, placeholder: "Electronic Sigature", label: false, error: "Please Sign here"
-            %hr
             .actions.text-center
               = f.submit 'Submit', class: "btn btn-primary"
             %hr
