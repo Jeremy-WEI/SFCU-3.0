@@ -12,7 +12,8 @@ class Alapp < ActiveRecord::Base
   mount_uploader :document5, NormalFileUploader
 
   before_validation :make_perm_address
-
+  attr_accessor :same
+  validates :agree_terms, acceptance: true
   # validates :driver_license_file,
   #           presence: true,
   #           :file_size => {
@@ -23,7 +24,7 @@ class Alapp < ActiveRecord::Base
                 :maximum => 5.megabytes.to_i
             }
 
-  attr_accessor :same
+
 
   has_many :employments
 
@@ -60,7 +61,7 @@ class Alapp < ActiveRecord::Base
             :rent_housing, :food, :utilities, :phone_bill, :bursar_bill, :miscellaneous,
             numericality: {greater_than_or_equal_to: 0.0}, allow_nil: true
 
-   validates :agree_terms, acceptance: true
+
 
   def validate_alumni
     if(alumni.nil? or alumni == "")
