@@ -6,6 +6,7 @@ class MaappsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
+    @request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials("admin","password")
     get :index
     assert_response :success
     assert_not_nil assigns(:maapps)
@@ -25,6 +26,7 @@ class MaappsControllerTest < ActionController::TestCase
   end
 
   test "should show maapp" do
+    @request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials("admin","password")
     get :show, id: @maapp
     assert_response :success
   end
@@ -35,12 +37,14 @@ class MaappsControllerTest < ActionController::TestCase
   # end
 
   test "should update maapp" do
+    @request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials("admin","password")
     patch :update, id: @maapp, maapp: { w8ben_form: @maapp.w8ben_form, address_on_checks: @maapp.address_on_checks, alter_email: @maapp.alter_email, check_delivery: @maapp.check_delivery, check_type: @maapp.check_type, checking_account: @maapp.checking_account, color: @maapp.color, courtesy_pay: @maapp.courtesy_pay, dob: @maapp.dob, doc_id: @maapp.doc_id, doc_type: @maapp.doc_type, file_id1: @maapp.file_id1, file_id2: @maapp.file_id2, first_name: @maapp.first_name, grad_year: @maapp.grad_year, home_phone: @maapp.home_phone, last_name: @maapp.last_name, local_address_city: @maapp.local_address_city, local_address_line1: @maapp.local_address_line1, local_address_line2: @maapp.local_address_line2, local_address_state: @maapp.local_address_state, local_address_zip: @maapp.local_address_zip, middle_name: @maapp.middle_name, mobile_phone: @maapp.mobile_phone, order_checks: @maapp.order_checks, penn_affiliation: @maapp.penn_affiliation, penn_email: @maapp.penn_email, penn_id: @maapp.penn_id, penncard_link: @maapp.penncard_link, penncard_number: @maapp.penncard_number, same_perm_address: '1', signature: @maapp.signature, ssn: @maapp.ssn, statement_type: @maapp.statement_type, student_status: @maapp.student_status, visa_checkcard: @maapp.visa_checkcard, visa_delivery: @maapp.visa_delivery, visa_pin: @maapp.visa_pin }
     # assert_redirected_to maapp_path(assigns(:maapp))
     assert_redirected_to maapps_path
   end
 
   test "should destroy maapp" do
+    @request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials("admin","password")
     assert_difference('Maapp.count', -1) do
       delete :destroy, id: @maapp
     end
@@ -49,6 +53,7 @@ class MaappsControllerTest < ActionController::TestCase
   end
 
   test "should generate csv file and zip file" do
+    @request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials("admin","password")
     get :export, exports: [@maapp.id]
     assert File.exists? ("public/uploads/maapp/maapps_file.csv")
     assert File.exists? ("public/uploads/maapp/maapp.zip")
