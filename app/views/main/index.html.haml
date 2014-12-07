@@ -101,11 +101,10 @@
                 %p.text-center
                   %strong Routing #
                   036-089-053
-                  %br
-                    %small
-                      (For incoming wires, click
-                      = succeed ")" do
-                        %a{:href => "https://www.upennsfcu.org/services/wire-transfers/"} here
+                  %small
+                    (For incoming wires, click
+                    = succeed ")" do
+                      %a{:href => "https://www.upennsfcu.org/services/wire-transfers/"} here
             .row
               .col-xs-12
                 %p.text-center
@@ -127,6 +126,7 @@
                 %input#ZipCode.form-control{:maxlength => "7", :name => "zipcode", :placeholder => "ZIP Code", :tabindex => "2", :type => "text"}
                   %span.input-group-btn
                     %button.btn.btn-default.btn-sm{:type => "submit"} Search
+          %br
           .row
             .col-xs-6
               %dl
