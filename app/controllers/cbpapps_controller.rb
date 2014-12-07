@@ -98,8 +98,8 @@ class CbpappsController < ApplicationController
   # PATCH/PUT /cbpapps/1.json
   def update
     respond_to do |format|
-      # if @cbpapp.update(cbpapp_params)
-        format.html { redirect_to action: :index }
+      @cbpapp.update(cbpapp_params)
+      format.html { redirect_to action: :index }
         # format.html { redirect_to @cbpapp, notice: 'Cbpapp was successfully updated.' }
         # format.json { render :show, status: :ok, location: @cbpapp }
       # else
