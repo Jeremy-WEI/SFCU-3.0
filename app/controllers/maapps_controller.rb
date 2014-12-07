@@ -51,17 +51,11 @@ class MaappsController < ApplicationController
   end
 
   def export
-    if params[:exports].nil?
-      @maapps = Maapp.all
-      render :index
-    else
       csv_path = "public/uploads/maapp/maapps_file.csv"
       create_csv(csv_path)
 
       zip_folder_path = "public/uploads/maapp"
       zip_files(zip_folder_path, csv_path, params[:exports])
-    end
-
   end
 
   def create_csv(file)
@@ -125,6 +119,6 @@ class MaappsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def maapp_params
-      params.require(:maapp).permit(:other_penn_affiliation, :application_status, :first_name, :middle_name, :last_name, :dob, :student_status, :penn_affiliation, :grad_season, :grad_year, :penn_id, :ssn, :w8ben_form, :doc_type, :doc_id, :file_id1, :file_id2, :mobile_phone, :home_phone, :penn_email, :alter_email, :local_address_line1, :local_address_line2, :local_address_city, :local_address_state, :local_address_zip, :same_perm_address, :perm_address_line1, :perm_address_line2, :perm_address_city, :perm_address_state, :perm_address_zip, :statement_type, :checking_account, :courtesy_pay, :visa_checkcard, :visa_pin, :visa_pin_confirmation, :visa_delivery, :penncard_link, :penncard_number, :order_checks, :address_on_checks, :check_type, :color, :check_delivery, :signature, :terms, :understand)
+      params.require(:maapp).permit(:other_penn_affiliation, :application_status, :first_name, :middle_name, :last_name, :dob, :student_status, :penn_affiliation, :grad_season, :grad_year, :penn_id, :ssn, :w8ben_form, :doc_type, :doc_id, :file_id1, :file_id2, :mobile_phone, :home_phone, :penn_email, :alter_email, :local_address_line1, :local_address_line2, :local_address_city, :local_address_state, :local_address_zip, :same_perm_address, :perm_address_line1, :perm_address_line2, :perm_address_city, :perm_address_state, :perm_address_zip, :perm_address_country, :statement_type, :checking_account, :courtesy_pay, :visa_checkcard, :visa_pin, :visa_pin_confirmation, :visa_delivery, :penncard_link, :penncard_number, :order_checks, :address_on_checks, :check_type, :color, :check_delivery, :signature, :terms, :understand)
     end
 end

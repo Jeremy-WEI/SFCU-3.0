@@ -29,6 +29,7 @@ Jeremy:
   perm_address_city: Philadelphia
   perm_address_state: PA
   perm_address_zip: 19104
+  perm_address_country: US
   statement_type: Paper
   checking_account: Regular
   courtesy_pay: true
@@ -82,11 +83,12 @@ three:
   local_address_city: Philadelphia
   local_address_state: PA
   local_address_zip: 19104
-  perm_address_line1: Room 1302, 3600 Chestnut St.
+  perm_address_line1: Room
   perm_address_line2:
-  perm_address_city: Philadelphia
+  perm_address_city: Phily
   perm_address_state: PA
   perm_address_zip: 19104
+  perm_address_country: US
   statement_type: Paper
   checking_account: Regular
   courtesy_pay: true

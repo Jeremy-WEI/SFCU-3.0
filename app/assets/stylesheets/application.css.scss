@@ -18,3 +18,27 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+//colors
+$color_white: rgba(255, 255, 255, 0);
+
+.white {
+  background: $color_white;
+}
+
+
+a:hover {
+  background: $color_white;
+}
+
+//colors
+//select {
+//  background-size: 24px 20px;
+//  background-position: right center;
+//  border-radius:2px;
+//  border: 1px solid;
+//  outline: none;
+//  display: inline-block;
+//  appearance: none;
+//  cursor: pointer;
+//}
+

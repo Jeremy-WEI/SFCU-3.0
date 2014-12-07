@@ -95,40 +95,46 @@ class Maapp < ActiveRecord::Base
   end
 
   def validates_perm_address
-    if empty_field?(perm_address_line1) and empty_field?(perm_address_line2) #if not filled (perm address not required)
-      [self.perm_address_city, self.perm_address_zip, self.perm_address_state].map {|x| x = ""}
-    else
-      begin
-        @lob = Lob.load(api_key: USERNAME)
-        @result = @lob.addresses.verify(
-            address_line1: self.perm_address_line1,
-            address_line2: self.perm_address_line2,
-            city: self.perm_address_city,
-            state: self.perm_address_state,
-            zip: self.perm_address_zip
-        )
-        self.perm_address_line1 = @result["address"]["address_line1"]
-        self.perm_address_line2 = @result["address"]["address_line2"]
-        self.perm_address_city = @result["address"]["address_city"]
-        self.perm_address_state = @result["address"]["address_state"]
-        self.perm_address_zip = @result["address"]["address_zip"]
-      rescue
-        errors.add(:perm_address_line1, "Invalid address")
-        errors.add(:perm_address_line2, "Invalid address")
-        errors.add(:perm_address_city, "Invalid address")
-        errors.add(:perm_address_state, "Invalid address")
-        errors.add(:perm_address_zip, "Invalid address")
+    self.perm_address_country = "" if self.perm_address_country.nil?
+    if ["us", "united states"].include? self.perm_address_country.chomp.downcase
+      if empty_field?(perm_address_line1) and empty_field?(perm_address_line2) #if not filled (perm address not required)
+        [self.perm_address_city, self.perm_address_zip, self.perm_address_state, self.perm_address_country].map {|x| x = ""}
+      else
+        begin
+          @lob = Lob.load(api_key: USERNAME)
+          @result = @lob.addresses.verify(
+              address_line1: self.perm_address_line1,
+              address_line2: self.perm_address_line2,
+              city: self.perm_address_city,
+              state: self.perm_address_state,
+              zip: self.perm_address_zip
+          )
+          self.perm_address_line1 = @result["address"]["address_line1"]
+          self.perm_address_line2 = @result["address"]["address_line2"]
+          self.perm_address_city = @result["address"]["address_city"]
+          self.perm_address_state = @result["address"]["address_state"]
+          self.perm_address_zip = @result["address"]["address_zip"]
+          self.perm_address_country = @result["address"]["address_country"]
+        rescue
+          errors.add(:perm_address_line1, "Invalid address")
+          errors.add(:perm_address_line2, "Invalid address")
+          errors.add(:perm_address_city, "Invalid address")
+          errors.add(:perm_address_state, "Invalid address")
+          errors.add(:perm_address_country, "Invalid address")
+          errors.add(:perm_address_zip, "Invalid address")
+        end
       end
     end
   end
 
   def make_perm_address
-    if same_perm_address == "1" then
+    if same_perm_address == '1' then
       self.perm_address_line1 = self.local_address_line1
       self.perm_address_line2 = self.local_address_line2
       self.perm_address_city = self.local_address_city
       self.perm_address_state = self.local_address_state
       self.perm_address_zip = self.local_address_zip
+      self.perm_address_country = "US"
     end
   end
 

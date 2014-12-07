@@ -153,6 +153,36 @@ one:
   document5: MyString
   signature: MyString
   today_date: 2014-11-04
+  property3_st_addr: MyString
+  property3_city: MyString
+  property3_state: MyString
+  property3_market_val: 11
+  property3_another_loan: false
+  property4_st_addr: MyString
+  property4_city: MyString
+  property4_state: MyString
+  property4_market_val: 11
+  property4_another_loan: true
+  add_income4_source: MyString
+  add_income4_amount: 11
+  add_income4_freq: MyString
+  employ3_employer: MyString
+  employ3_employer_addr: MyString
+  employ3_position: MyString
+  employ3_supervisor: MyString
+  employ3_grosspay: 11
+  employ3_freq: MyString
+  employ3_continue: true
+  employ3_expect_duration: MyString
+  employ4_employer: MyString
+  employ4_employer_addr: MyString
+  employ4_position: MyString
+  employ4_supervisor: MyString
+  employ4_grosspay: 11
+  employ4_freq: MyString
+  employ4_continue: true
+  employ4_expect_duration: MyString
+  local_country: us
 
 two:
   first: Dichen
@@ -307,3 +337,33 @@ two:
   document5: MyString
   signature:
   today_date: 2014-11-04
+  property3_st_addr: MyString
+  property3_city: MyString
+  property3_state: MyString
+  property3_market_val: 11
+  property3_another_loan: false
+  property4_st_addr: MyString
+  property4_city: MyString
+  property4_state: MyString
+  property4_market_val: 11
+  property4_another_loan: true
+  add_income4_source: MyString
+  add_income4_amount: 11
+  add_income4_freq: MyString
+  employ3_employer: MyString
+  employ3_employer_addr: MyString
+  employ3_position: MyString
+  employ3_supervisor: MyString
+  employ3_grosspay: 11
+  employ3_freq: MyString
+  employ3_continue: true
+  employ3_expect_duration: MyString
+  employ4_employer: MyString
+  employ4_employer_addr: MyString
+  employ4_position: MyString
+  employ4_supervisor: MyString
+  employ4_grosspay: 11
+  employ4_freq: MyString
+  employ4_continue: true
+  employ4_expect_duration: MyString
+  local_country: us
