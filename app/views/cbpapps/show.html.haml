@@ -1,68 +1,68 @@
 .panel.panel-default
   .panel-heading
-    %h1.panel-title.text-center Unsecured Loan Application
+    %h1.panel-title.text-center Credit Builder Program Application
   .panel-body
-  %p
-    %b Period:
-    = @cbpapp.period
-  %p
-    %b First Name:
-    = @cbpapp.first_name
-  %p
-    %b Middle Name:
-    = @cbpapp.middle_name
-  %p
-    %b Last Name:
-    = @cbpapp.last_name
-  %p
-    %b SSN:
-    = @cbpapp.ssn
-  %p
-    %b DoB:
-    = @cbpapp.dob
-  %p
-    %b Mother Maiden:
-    = @cbpapp.mother_maiden
-  %p
-    %b Account Number:
-    = @cbpapp.account_number
-  %p
-    %b Graduation Date:
-    = @cbpapp.grad_date
-  %p
-    %b Non Upenn Email:
-    = @cbpapp.non_upenn_email
-  %p
-    %b How Do You Know This Program:
-    = @cbpapp.how_know
-  %p
-    %b Local Address:
-    - address_line2 = (@cbpapp.local_address_line2.empty?) ? '' : ' ' + @cbpapp.local_address_line2.to_s + ', '
-    = @cbpapp.local_address_line1.to_s + ', ' + address_line2 + @cbpapp.local_address_city.to_s + ', ' + @cbpapp.local_address_state.to_s + ', ' + @cbpapp.local_address_zip.to_s
+    %p
+      %b Period:
+      = @cbpapp.period
+    %p
+      %b First Name:
+      = @cbpapp.first_name
+    %p
+      %b Middle Name:
+      = @cbpapp.middle_name
+    %p
+      %b Last Name:
+      = @cbpapp.last_name
+    %p
+      %b SSN:
+      = @cbpapp.ssn
+    %p
+      %b DoB:
+      = @cbpapp.dob
+    %p
+      %b Mother Maiden:
+      = @cbpapp.mother_maiden
+    %p
+      %b Account Number:
+      = @cbpapp.account_number
+    %p
+      %b Graduation Date:
+      = @cbpapp.grad_date
+    %p
+      %b Non Upenn Email:
+      = @cbpapp.non_upenn_email
+    %p
+      %b How Do You Know This Program:
+      = @cbpapp.how_know
+    %p
+      %b Local Address:
+      - address_line2 = (@cbpapp.local_address_line2.nil?) ? '' : ' ' + @cbpapp.local_address_line2.to_s + ', '
+      = @cbpapp.local_address_line1.to_s + ', ' + address_line2 + @cbpapp.local_address_city.to_s + ', ' + @cbpapp.local_address_state.to_s + ', ' + @cbpapp.local_address_zip.to_s
 
-  %p
-    %b Local home phone:
-    = @cbpapp.local_home_phone
-  %p
-    %b Biz phone:
-    = @cbpapp.biz_phone
-  %p
-    %b Permanent Address:
-    - line1 = (@cbpapp.perm_address_line1.empty?) ? '' : ' ' + @cbpapp.perm_address_line1.to_s + ', '
-    - line2 = (@cbpapp.perm_address_line2.empty?) ? '' : ' ' + @cbpapp.perm_address_line2.to_s + ', '
-    - city = (@cbpapp.perm_address_city.empty?) ? '' : ' ' + @cbpapp.perm_address_city.to_s + ', '
-    - state = (@cbpapp.perm_address_state.empty?) ? '' : ' ' + @cbpapp.perm_address_state.to_s + ', '
-    - zip = (@cbpapp.perm_address_zip.empty?) ? '' : ' ' + @cbpapp.perm_address_zip.to_s + ', '
-    - country = (@cbpapp.perm_address_country.empty?) ? '' : ' ' + @cbpapp.perm_address_country.to_s
-    = line1 + line2 + city + state + zip + country
+    %p
+      %b Local home phone:
+      = @cbpapp.local_home_phone
+    %p
+      %b Biz phone:
+      = @cbpapp.biz_phone
+    %p
+      %b Permanent Address:
+      - line1 = (@cbpapp.perm_address_line1.nil?) ? '' : ' ' + @cbpapp.perm_address_line1.to_s + ', '
+      - line2 = (@cbpapp.perm_address_line2.nil?) ? '' : ' ' + @cbpapp.perm_address_line2.to_s + ', '
+      - city = (@cbpapp.perm_address_city.nil?) ? '' : ' ' + @cbpapp.perm_address_city.to_s + ', '
+      - state = (@cbpapp.perm_address_state.nil?) ? '' : ' ' + @cbpapp.perm_address_state.to_s + ', '
+      - zip = (@cbpapp.perm_address_zip.nil?) ? '' : ' ' + @cbpapp.perm_address_zip.to_s + ', '
+      - country = (@cbpapp.perm_address_country.nil?) ? '' : ' ' + @cbpapp.perm_address_country.to_s
+      = line1 + line2 + city + state + zip + country
 
-  %p
-    %b Permanent Home Phone:
-    = @cbpapp.perm_home_phone
-  %p
-    %b Student Status:
-    = @cbpapp.student_status
+    %p
+      %b Permanent Home Phone:
+      = @cbpapp.perm_home_phone
+    %p
+      %b Student Status:
+      = @cbpapp.student_status
 
-  .text-center
-    = form_tag url_for(:controller => 'cbpapps', :action => 'index'), method: 'get' do
-      = submit_tag 'Back', class: "btn btn-primary"
+    .text-center
+      = form_tag url_for(:controller => 'cbpapps', :action => 'index'), method: 'get' do
+        = submit_tag 'Back', class: "btn btn-primary"

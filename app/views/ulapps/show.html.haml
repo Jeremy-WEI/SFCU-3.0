@@ -1,6 +1,6 @@
 .panel.panel-default
   .panel-heading
-    %h1.panel-title.text-center Unsecured Loan Applicant: #{@ulapp.id}
+    %h1.panel-title.text-center Unsecured Loan Application
   .panel-body
     %p
       %b Credit Type:
@@ -46,7 +46,7 @@
       = @ulapp.local_address_line1.to_s + " " + @ulapp.local_address_line2.to_s + ", " + @ulapp.local_address_city.to_s + ", " + @ulapp.local_address_state.to_s + ", " + @ulapp.local_country.to_s
     %p
       %b Permanent Address:
-      - if @ulapp.perm_address_line1.empty?
+      - if @ulapp.perm_address_line1.nil?
         = " "
       - else
         = @ulapp.perm_address_line1.to_s + " " + @ulapp.perm_address_line2.to_s + ", " + @ulapp.perm_address_city.to_s + ", " + @ulapp.perm_address_state.to_s + ", " + @ulapp.perm_country.to_s
@@ -58,7 +58,7 @@
       = @ulapp.phone_number.to_s + ", " + @ulapp.phone_type.to_s
     %p
       %b Alternative Phone Number:
-      - if @ulapp.alter_number.empty?
+      - if @ulapp.alter_number.nil?
         = " "
       - else
         = @ulapp.alter_number.to_s + "  " + @ulapp.alter_type.to_s
@@ -69,7 +69,7 @@
       = @ulapp.employer
     %p
       %b Employer Address:
-      - if @ulapp.employee_address_line1.empty?
+      - if @ulapp.employee_address_line1.nil?
         = "  "
       - else
         = @ulapp.employee_address_line1.to_s + ", " + @ulapp.employee_address_line2.to_s + ", " + @ulapp.employee_address_city.to_s + ", " + @ulapp.employee_address_state.to_s + ", " + @ulapp.employee_country.to_s
@@ -104,7 +104,7 @@
       = @ulapp.employer2
     %p
       %b Employer Address:
-      - if @ulapp.employee2_address_line1.empty?
+      - if @ulapp.employee2_address_line1.nil?
         = "  "
       - else
         = @ulapp.employee2_address_line1.to_s + ", " + @ulapp.employee2_address_line2.to_s + ", " + @ulapp.employee2_address_city.to_s + ", " + @ulapp.employee2_address_state.to_s + ", " + @ulapp.employee2_country.to_s
