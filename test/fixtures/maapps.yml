@@ -88,6 +88,7 @@ three:
   perm_address_city: Phily
   perm_address_state: PA
   perm_address_zip: 19104
+  perm_address_country: US
   statement_type: Paper
   checking_account: Regular
   courtesy_pay: true

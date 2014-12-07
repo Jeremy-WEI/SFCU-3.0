@@ -7,7 +7,7 @@ one:
   dob: 1990-11-04
   mother_maiden: Li
   ssn: 213456789
-  alumni: false
+  alumni: No
   credit_req_type: Individual Credit
   amount_req: 123040
   term: 36 months
