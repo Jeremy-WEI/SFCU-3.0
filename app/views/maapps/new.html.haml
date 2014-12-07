@@ -4,7 +4,7 @@
     %h1.panel-title.text-center Member Account Application
   .panel-body
     #rootwizard
-      %nav.navbar.navbar-default{:role => "navigation"}
+      %nav.navbar.navbar-default.white{:role => "navigation"}
         .container{style:"width:100%"}
           %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
             %li
@@ -15,8 +15,9 @@
               %a{"data-toggle" => "tab", :href => "#tab3"} Account Options
             %li
               %a{"data-toggle" => "tab", :href => "#tab4"} Terms and Conditions
-      .progress
-        .progress-bar.progress-bar-success.progress-bar-striped.active.bar
+          %br
+          .progress
+            .progress-bar.progress-bar-success.progress-bar-striped.active.bar
       = simple_form_for @maapp, html: {class: "form-horizontal"} do |f|
         - if @maapp.errors.any?
           .text-center.alert.alert-danger.alert-error

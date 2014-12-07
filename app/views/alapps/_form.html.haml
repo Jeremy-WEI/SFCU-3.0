@@ -1,5 +1,5 @@
 #rootwizard
-  %nav.navbar.navbar-default{:role => "navigation"}
+  %nav.navbar.navbar-default.white{:role => "navigation"}
     .container{style:"width:100%"}
       %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
         %li
@@ -10,8 +10,9 @@
           %a{"data-toggle" => "tab", :href => "#tab3"} Debts and Expenses
         %li
           %a{"data-toggle" => "tab", :href => "#tab4"} Supporting Documents
-  .progress
-    .progress-bar.progress-bar-success.progress-bar-striped.active.bar
+      %br
+      .progress
+        .progress-bar.progress-bar-success.progress-bar-striped.active.bar
   = simple_form_for @alapp, html: {class: "form-horizontal"} do |f|
     - if @alapp.errors.any?
       .text-center.alert.alert-danger.alert-error
