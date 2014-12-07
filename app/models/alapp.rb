@@ -48,7 +48,7 @@ class Alapp < ActiveRecord::Base
   validate :validates_vehicle_type
   validate :validates_local_address
   validate :validates_perm_address
-  validate :validate_alumni_presence
+  validate :validate_alumni
 
   validates :e_mail, format: {with: EMAIL_FORMAT}
   validates :phone_number, :phone_nearest_relative, format: {with: PHONE_FORMAT}
@@ -62,11 +62,16 @@ class Alapp < ActiveRecord::Base
 
    validates :agree_terms, acceptance: true
 
-  def validate_alumni_presence
-    if alumni.nil?
+  def validate_alumni
+    if(alumni.nil? or alumni == "")
       errors.add(:alumni, "Alumni can't be blank")
+    elsif alumni == "t" or alumni == "yes" or alumni == "true"
+      self.alumni = "Yes"
+    elsif alumni == "f" or alumni == "no" or alumni == "false"
+      self.alumni = "No"
     end
   end
+
   def check_dob
     if not dob.present?
       errors.add(:dob, "Date of birth can't be blank")

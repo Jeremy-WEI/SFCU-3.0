@@ -43,10 +43,10 @@ class AlappTest < ActiveSupport::TestCase
     @alapp.alumni = ""
     assert_not @alapp.save
   end
-  test "should save false when user select false" do
+  test "should save No when user select No" do
     @alapp = alapps(:one)
     assert @alapp.save
-    assert_equal @alapp.alumni, false
+    assert_equal @alapp.alumni, "No"
   end
   test "should not save when credit type is blank" do
     @alapp = alapps(:one)
