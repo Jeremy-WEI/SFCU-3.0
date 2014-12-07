@@ -14,7 +14,7 @@ class Cbpapp < ActiveRecord::Base
   validates_with CbpappsHelper::PhoneValidator, fields: [:local_home_phone, :biz_phone, :perm_home_phone]
   validate :validates_local_address
   validate :validates_perm_address
-  
+
   def check_dob
     if not dob.present?
       errors.add(:dob, "DoB can't be blank")

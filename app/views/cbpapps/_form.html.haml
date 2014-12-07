@@ -132,15 +132,13 @@
               .row
                 .col-md-2
                   Address Line 1*
-                .col-md-10
-                  .col-md-12
-                    = f.input :local_address_line1, placeholder: "Local Address Line1", label: false, error: "Address is invalid"
+                .col-md-4
+                  = f.input :local_address_line1, placeholder: "Local Address Line1", label: false, error: "Address is invalid"
               .row
                 .col-md-2
                   Address Line 2
-                .col-md-10
-                  .col-md-12
-                    = f.input :local_address_line2, placeholder: "Local Address Line2", label: false
+                .col-md-4
+                  = f.input :local_address_line2, placeholder: "Local Address Line2", label: false
 
               .row
                 .col-md-1
@@ -160,6 +158,16 @@
                     = f.input :local_address_zip, placeholder: "ZIP", label: false, error: "Zip is invalid"
               %br
               %b Permanent Address
+              .row
+                .col-md-2
+                  Address Line 1
+                .col-md-4
+                  = f.input :perm_address_line1, placeholder: "Permanent Address Line1", label: false
+              .row
+                .col-md-2
+                  Address Line 2
+                .col-md-4
+                  = f.input :perm_address_line2, placeholder: "Permanent Address Line2", label: false
               .row
                 .col-md-1
                   City
