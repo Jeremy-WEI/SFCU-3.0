@@ -51,7 +51,7 @@
                   = f.input :student_status,
                             :collection => ["Domestic", "International"],
                             :as => :radio_buttons, :item_wrapper_class => 'radio-inline', label: false, error: false
-              %b Penn Affiliation
+              %b Penn Affiliation*
               .row
                 .col-md-8
                   = f.input :penn_affiliation,
@@ -342,7 +342,7 @@
               %br
               .row
                 .col-md-2
-                  Signature
+                  Signature*
                 .col-md-4
                   = f.input :signature, placeholder: "Electronic Sigature", label: false, error: "Please Sign here"
             .actions.text-center
