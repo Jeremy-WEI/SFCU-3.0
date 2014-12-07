@@ -1,6 +1,7 @@
 class CreateUlapps < ActiveRecord::Migration
   def change
     create_table :ulapps do |t|
+      t.string :application_status, default: "Unprocessed"
       t.string :credit_type
       t.text :joint_applicant
       t.string :amount

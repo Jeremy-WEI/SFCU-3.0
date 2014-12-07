@@ -1,6 +1,7 @@
 class CreateMaapps < ActiveRecord::Migration
   def change
     create_table :maapps do |t|
+      t.string :application_status, default: "Unprocessed"
       t.string :first_name
       t.string :middle_name
       t.string :last_name
