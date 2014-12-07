@@ -37,4 +37,5 @@ bower.json
 !/config/secrets.yml
 .DS_Store
 public/uploads/tmp/*
-public/uploads/**/*`
+public/uploads/*/*.csv
+public/uploads/*/*.zip
