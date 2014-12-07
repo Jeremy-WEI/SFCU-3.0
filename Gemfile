@@ -4,14 +4,16 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
+
+
 group :test, :development do
   gem 'sqlite3'
+  gem 'simplecov', :require => false
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
   gem 'database_cleaner'
   gem 'capybara'
   gem 'launchy'
-  gem 'simplecov', :require => false
 end
 
 group :production do
@@ -24,9 +26,9 @@ group :assets do
   gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
   gem 'coffee-rails', '~> 4.0.0'
-
 end
 # Use SCSS for stylesheets
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

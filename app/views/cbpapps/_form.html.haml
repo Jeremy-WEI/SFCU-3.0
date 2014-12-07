@@ -1,214 +1,217 @@
-%br
-%br
-%h1.text-center Credit Builder Program Application
-#rootwizard
-  %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
-    .container
-      %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
-        %li
-          %a{"data-toggle" => "tab", :href => "#tab1"} Credit Request
-        %li
-          %a{"data-toggle" => "tab", :href => "#tab2"} General Information
-        %li
-          %a{"data-toggle" => "tab", :href => "#tab3"} Contact Information
-  .progress
-    .progress-bar.progress-bar-success.progress-bar-striped.active.bar
-  = simple_form_for @cbpapp, html: {class: "form-horizontal"} do |f|
-    -#- if @cbpapp.errors.any?
-    -#  #error_explanation
-    -#    %h2= "#{pluralize(@cbpapp.errors.count, "error")} prohibited this maapp from being saved:"
-    -#    %ul
-    -#      - @cbpapp.errors.full_messages.each do |msg|
-    -#        %li= msg
-    .tab-content
-      #tab1.tab-pane
-        %hr
-        %h2.text-center Section I: Credit Request
-        %hr
-        .well
-          You are applying for credit under the terms disclosed in this Credit Agreement.
-          %br
-          %b Amount Requested: $1000
-          %br
-          %br
-          %b Period*
-          .row
-            .col-md-4
-              = f.input :period,
-                        :collection => ["12 Months", "24 Months"],
-                        :as => :radio_buttons, :item_wrapper_class => 'radio-inline', label: false, error: false
+%title Credit Builder Program Application
+.panel.panel-default
+  .panel-heading
+    %h1.panel-title.text-center Credit Builder Program Application
+  .panel-body
+    #rootwizard
+      %nav.navbar.navbar-default{:role => "navigation"}
+        .container{style:"width:100%"}
+          %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab1"} Credit Request
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab2"} General Information
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab3"} Contact Information
+      .progress
+        .progress-bar.progress-bar-success.progress-bar-striped.active.bar
+      = simple_form_for @cbpapp, html: {class: "form-horizontal"} do |f|
+        - if @cbpapp.errors.any?
+          .text-center.alert.alert-danger.alert-error
+            = "There are some problems in your application form, please correct them and submit again.\n"
+        -#- if @cbpapp.errors.any?
+        -#  #error_explanation
+        -#    %h2= "#{pluralize(@cbpapp.errors.count, "error")} prohibited this maapp from being saved:"
+        -#    %ul
+        -#      - @cbpapp.errors.full_messages.each do |msg|
+        -#        %li= msg
+        .tab-content
+          #tab1.tab-pane
+            %hr
+            %h2.text-center Section I: Credit Request
+            %hr
+            .well.white
+              You are applying for credit under the terms disclosed in this Credit Agreement.
+              %br
+              %b Amount Requested: $1000
+              %br
+              %br
+              %b Period*
+              .row
+                .col-md-4
+                  = f.input :period,
+                            :collection => ["12 Months", "24 Months"],
+                            :as => :radio_buttons, :item_wrapper_class => 'radio-inline', label: false, error: false
 
-      #tab2.tab-pane
-        %hr
-        %h2.text-center Section II: Applicant Information
-        %hr
-        .well
-          %h2.text-center A. General Information
-          %br
-          %b Name*
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :first_name, placeholder: "First Name", label: false, error: "First Name can't be blank"
-            .col-md-4
-              .col-md-12
-                = f.input :middle_name, placeholder: "Middle Name", label: false
-            .col-md-4
-              .col-md-12
-                = f.input :last_name, placeholder: "Last Name", label: false, error: "Last Name can't be blank"
-          %br
-          %b Social Security Number*
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :ssn, placeholder: "SSN", label: false, error: "SSN is invalid"
-          %br
-          %b Date of Birth*
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :dob, as: :date_picker, label: false
+          #tab2.tab-pane
+            %hr
+            %h2.text-center Section II: Applicant Information
+            %hr
+            .well.white
+              %h2.text-center A. General Information
+              %br
+              %b Name*
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :first_name, placeholder: "First Name", label: false, error: "First Name can't be blank"
+                .col-md-4
+                  .col-md-12
+                    = f.input :middle_name, placeholder: "Middle Name", label: false
+                .col-md-4
+                  .col-md-12
+                    = f.input :last_name, placeholder: "Last Name", label: false, error: "Last Name can't be blank"
+              %br
+              %b Social Security Number*
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :ssn, placeholder: "SSN", label: false, error: "SSN is invalid"
+              %br
+              %b Date of Birth*
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :dob, as: :date_picker, label: false
 
-          %br
-          %b Mother's Maiden Name*
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :mother_maiden, placeholder: "Mother's Maiden Name", label: false, error: "Mother's Maiden Name can't be blank"
+              %br
+              %b Mother's Maiden Name*
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :mother_maiden, placeholder: "Mother's Maiden Name", label: false, error: "Mother's Maiden Name can't be blank"
 
-          %br
-          %b SFCU Account Number*
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :account_number, placeholder: "Account Number", label: false, error: "SFCU Account Number can't be blank"
-          %br
-          %b Expected Graduation Date
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :grad_date, as: :date_picker, label: false
-          %br
-          %b Non-UPenn Email Address*
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :non_upenn_email, placeholder: "Alternate Email Address", label: false, error: "Alternate Email is invalid"
+              %br
+              %b SFCU Account Number*
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :account_number, placeholder: "Account Number", label: false, error: "SFCU Account Number can't be blank"
+              %br
+              %b Expected Graduation Date
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :grad_date, as: :date_picker, label: false
+              %br
+              %b Non-UPenn Email Address*
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :non_upenn_email, placeholder: "Alternate Email Address", label: false, error: "Alternate Email is invalid"
 
-          %br
-          %b How did you hear about this program?*
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :how_know, placeholder: "How did you hear about this program?", label: false, error: "How do you know this program can't be blank"
-          %br
-      #tab3.tab-pane
-        %hr
-        %h2.text-center Section II: Applicant Information
-        %hr
-        .well
-          %h2.text-center B. Contact Information
-          %br
-          .row
-            .col-md-6
-              %b Local Home Phone*
-            .col-md-6
-              %b Business Phone
-          .row
-            .col-md-6
-              .col-md-12
-                = f.input :local_home_phone, placeholder: "(XXX)XXX-XXXX", label: false, error: "Home Phone is invalid"
-            .col-md-6
-              .col-md-12
-                = f.input :biz_phone, placeholder: "(XXX)XXX-XXXX", label: false
+              %br
+              %b How did you hear about this program?*
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :how_know, placeholder: "How did you hear about this program?", label: false, error: "How do you know this program can't be blank"
+          #tab3.tab-pane
+            %hr
+            %h2.text-center Section II: Applicant Information
+            %hr
+            .well.white
+              %h2.text-center B. Contact Information
+              %br
+              .row
+                .col-md-6
+                  %b Local Home Phone*
+                .col-md-6
+                  %b Business Phone
+              .row
+                .col-md-6
+                  .col-md-12
+                    = f.input :local_home_phone, placeholder: "(XXX)XXX-XXXX", label: false, error: "Home Phone is invalid"
+                .col-md-6
+                  .col-md-12
+                    = f.input :biz_phone, placeholder: "(XXX)XXX-XXXX", label: false
 
-          %br
-          %b Local Address*
-          .row
-            .col-md-2
-              Address Line 1*
-            .col-md-6
-              .col-md-12
-                = f.input :local_address_line1, placeholder: "Local Address Line1", label: false, error: "Address is invalid"
-          .row
-            .col-md-2
-              Address Line 2
-            .col-md-6
-              .col-md-12
-                = f.input :local_address_line2, placeholder: "Local Address Line2", label: false
+              %br
+              %b Local Address*
+              .row
+                .col-md-2
+                  Address Line 1*
+                .col-md-10
+                  .col-md-12
+                    = f.input :local_address_line1, placeholder: "Local Address Line1", label: false, error: "Address is invalid"
+              .row
+                .col-md-2
+                  Address Line 2
+                .col-md-10
+                  .col-md-12
+                    = f.input :local_address_line2, placeholder: "Local Address Line2", label: false
 
-          .row
-            .col-md-1
-              City*
-            .col-md-3
-              .col-md-12
-                = f.input :local_address_city, placeholder: "City", label: false, error: "City is invalid"
-            .col-md-1
-              State*
-            .col-md-3
-              .col-md-12
-                = f.input :local_address_state, placeholder: "State", label: false, error: "State is invalid"
-            .col-md-1
-              ZIP*
-            .col-md-3
-              .col-md-12
-                = f.input :local_address_zip, placeholder: "ZIP", label: false, error: "Zip is invalid"
-          %br
-          %b Permanent Address
-          .row
-            .col-md-1
-              City
-            .col-md-3
-              .col-md-12
-                = f.input :perm_address_city, placeholder: "City", label: false
-            .col-md-1
-              State
-            .col-md-3
-              .col-md-12
-                = f.input :perm_address_state, placeholder: "State", label: false
-            .col-md-1
-              ZIP
-            .col-md-3
-              .col-md-12
-                = f.input :perm_address_zip, placeholder: "ZIP", label: false
-          .row
-            .col-md-1
-              Country
-            .col-md-4
-              .col-md-12
-                = f.select :perm_address_country, options_for_select(Country.all.sort), {}, {class: "form-control"}
-          %br
-          %b Permanent Home Phone
-          .row
-            .col-md-12
-              .col-md-6
-                = f.input :perm_home_phone, placeholder: "(XXX)XXX-XXXX", label: false
-          %br
-        %hr
-        .well
-          %h2.text-center C. Residency
-          %br
-          %b Student Status*
-          .row
-            .col-md-5
-              = f.input :student_status,
-                        :collection => ["US Citizen or permanent resident", "International"],
-                        :as => :radio_buttons, :item_wrapper_class => 'radio-inline', label: false, error: false
-          %br
-          %br
-        .actions.text-center
-          = f.submit 'Submit', class: "btn btn-primary"
-    %ul.pager.wizard
-      %li.previous.first
-        %a{:href => "javascript:;"} First
-      %li.previous
-        %a{:href => "javascript:;"} Previous
-      %li.next.last
-        %a{:href => "javascript:;"} Last
-      %li.next
-        %a{:href => "javascript:;"} Next
-      %li.next.finish{:style => "display:none;"}
-        %a{:href => "javascript:;"} Finish
+              .row
+                .col-md-1
+                  City*
+                .col-md-3
+                  .col-md-12
+                    = f.input :local_address_city, placeholder: "City", label: false, error: "City is invalid"
+                .col-md-1
+                  State*
+                .col-md-3
+                  .col-md-12
+                    = f.input :local_address_state, placeholder: "State", label: false, error: "State is invalid"
+                .col-md-1
+                  ZIP*
+                .col-md-3
+                  .col-md-12
+                    = f.input :local_address_zip, placeholder: "ZIP", label: false, error: "Zip is invalid"
+              %br
+              %b Permanent Address
+              .row
+                .col-md-1
+                  City
+                .col-md-3
+                  .col-md-12
+                    = f.input :perm_address_city, placeholder: "City", label: false
+                .col-md-1
+                  State
+                .col-md-3
+                  .col-md-12
+                    = f.input :perm_address_state, placeholder: "State", label: false
+                .col-md-1
+                  ZIP
+                .col-md-3
+                  .col-md-12
+                    = f.input :perm_address_zip, placeholder: "ZIP", label: false
+              .row
+                .col-md-1
+                  Country
+                .col-md-4
+                  .col-md-12
+                    = f.select :perm_address_country, options_for_select(Country.all.sort), {}, {class: "form-control"}
+              %br
+              %b Permanent Home Phone
+              .row
+                .col-md-12
+                  .col-md-6
+                    = f.input :perm_home_phone, placeholder: "(XXX)XXX-XXXX", label: false
+              %br
+            %hr
+            .well.white
+              %h2.text-center C. Residency
+              %br
+              %b Student Status*
+              .row
+                .col-md-5
+                  = f.input :student_status,
+                            :collection => ["US Citizen or permanent resident", "International"],
+                            :as => :radio_buttons, :item_wrapper_class => 'radio-inline', label: false, error: false
+            .actions.text-center
+              = f.submit 'Submit', class: "btn btn-primary"
+            %hr
+        %ul.pager.wizard
+          %li.previous.first
+            %a{:href => "javascript:;"} First
+          %li.previous
+            %a{:href => "javascript:;"} Previous
+          %li.next.last
+            %a{:href => "javascript:;"} Last
+          %li.next
+            %a{:href => "javascript:;"} Next
+          %li.next.finish{:style => "display:none;"}
+            %a{:href => "javascript:;"} Finish
 -#= link_to 'Back', cbpapps_path
 
 :javascript

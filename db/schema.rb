@@ -261,6 +261,7 @@ ActiveRecord::Schema.define(version: 20141203025309) do
     t.string   "perm_address_city"
     t.string   "perm_address_state"
     t.string   "perm_address_zip"
+    t.string   "perm_address_country"
     t.string   "statement_type"
     t.string   "checking_account"
     t.boolean  "courtesy_pay"
@@ -278,7 +279,7 @@ ActiveRecord::Schema.define(version: 20141203025309) do
     t.date     "apply_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "application_status",  default: "Unprocessed"
+    t.string   "application_status",   default: "Unprocessed"
   end
 
   create_table "ulapps", force: true do |t|

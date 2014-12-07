@@ -1,21 +1,20 @@
-
 #rootwizard
-  %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
-    .container
+  %nav.navbar.navbar-default{:role => "navigation"}
+    .container{style:"width:100%"}
       %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
         %li
           %a{"data-toggle" => "tab", :href => "#tab1"} General Information
         %li
           %a{"data-toggle" => "tab", :href => "#tab2"} Incomes and Assets
         %li
-          %a{"data-toggle" => "tab", :href => "#tab3"} Outstanding Debts and Expenses
+          %a{"data-toggle" => "tab", :href => "#tab3"} Debts and Expenses
         %li
           %a{"data-toggle" => "tab", :href => "#tab4"} Supporting Documents
   .progress
     .progress-bar.progress-bar-success.progress-bar-striped.active.bar
   = simple_form_for @alapp, html: {class: "form-horizontal"} do |f|
     - if @alapp.errors.any?
-      #error_explanation
+      .text-center.alert.alert-danger.alert-error
         = "There are some problems in your application form, please correct them and submit again.\n"
         -#%ul
         -#  - @alapp.errors.full_messages.each do |msg|
@@ -23,7 +22,7 @@
     .tab-content
       #tab1.tab-pane
         %hr
-        .well
+        .well.white
           %h2.text-center General Information
           .row
             .col-md-12
@@ -56,7 +55,7 @@
                                        :list => [["Yes", true], ["No", false]],
                                        :error_msg => "Are you an alumni of Penn?"
         %hr
-        .well
+        .well.white
           %h2.text-center Credit Request
 
           %b Type*
@@ -77,7 +76,7 @@
                                        :error_msg => "Amount is required (in dollars) and must be a positive number"
         %hr
 
-        .well
+        .well.white
           %h2.text-center Vehicle Information
 
           .row
@@ -127,7 +126,7 @@
               .col-md-4
                 = f.input :veh_van, as: :boolean, label: "van", error: "You must choose a vehicle type"
         %hr
-        .well
+        .well.white
           %h2.text-center Contact Information
           .row
             .col-md-12
@@ -153,7 +152,7 @@
                 = render "text_field4", :f => f, :title => "Name of Nearest Relative*", :var => "name_nearest_relative", :place_holder => "Name of your relative", :error_msg => "This field is required."
                 = render "text_field4", :f => f, :title => "Phone of Nearest Relative*", :var => "phone_nearest_relative", :place_holder => "###-###-####", :error_msg => "Invalid phone number"
         %hr
-        .well
+        .well.white
           %h2.text-center Driver's License
           .row
             .col-md-12
@@ -170,7 +169,7 @@
                   = f.file_field :driver_license_file
       #tab2.tab-pane
         %hr
-        .well
+        .well.white
           %h2.text-center Employment
           .row
             .col-md-12
@@ -187,9 +186,9 @@
           %br
           .row
             .col-md-4
-              %button{id: "add_employment", type: "button"} Add Another Employment
+              %button.btn.btn-primary{id: "add_employment", type: "button"} Add Another Employment
         %hr
-        .well
+        .well.white
           %h2.text-center Additional Income
           .row
             .col-md-12
@@ -207,9 +206,9 @@
           %br
           .row
             .col-md-4
-              %button{id: "add_additional_income", type: "button"} Add Another Income
+              %button.btn.btn-primary{id: "add_additional_income", type: "button"} Add Another Income
         %hr
-        .well
+        .well.white
           %h2.text-center Assets
           .row
             .col-md-12
@@ -226,7 +225,7 @@
               = render "account", :f => f, :x =>4
           .row
             .col-md-4
-              %button{id: "add_account", type: "button"} Add Another Account
+              %button.btn.btn-primary{id: "add_account", type: "button"} Add Another Account
           %br
           %br
           .row
@@ -247,10 +246,10 @@
           %br
           .row
             .col-md-4
-              %button{id: "add_property", type: "button"} Add Another Property Owned
+              %button.btn.btn-primary{id: "add_property", type: "button"} Add Another Property Owned
       #tab3.tab-pane
         %hr
-        .well
+        .well.white
           %h2.text-center Outstanding Debts
           %h3.text-left Credit Cards
           .row
@@ -269,7 +268,7 @@
             %br
             .row
               .col-md-4
-                %button{id: "add_credit_card", type: "button"} Add Another Credit Card
+                %button.btn.btn-primary{id: "add_credit_card", type: "button"} Add Another Credit Card
           %br
           %h3.text-left Loans
           .row
@@ -288,8 +287,8 @@
             %br
             .row
               .col-md-4
-                %button{id: "add_another_loan", type: "button"} Add Another Loan
-        .well
+                %button.btn.btn-primary{id: "add_another_loan", type: "button"} Add Another Loan
+        .well.white
           %h2.text-center Montly Expenses
           %br
           .row
@@ -329,7 +328,7 @@
 
       #tab4.tab-pane
         %br
-        .well
+        .well.white
           %h2.text-center Supporting Documents
           #file_option_1
             = render 'file', :f => f, :x => 1
@@ -344,8 +343,8 @@
           %br
           .row
             .col-md-4
-              %button{id: "add_another_file", type: "button"} Add Another File
-        .well
+              %button.btn.btn-primary{id: "add_another_file", type: "button"} Add Another File
+        .well.white
           %h2.text-center Terms & Conditions
           %br
           You promise that everything you have stated in this application is correct to
@@ -384,7 +383,7 @@
           %br
         .actions.text-center
           = f.submit 'Submit', class: "btn btn-primary"
-
+        %hr
     %ul.pager.wizard
       %li.previous.first
         %a{:href => "javascript:;"} First
@@ -476,8 +475,6 @@
             $('#add_another_loan').hide();
           }
         });
-
-
   		for ( var i = 2; i <= 5; i++ ) {
             $("#file_option_"+i).hide();
         }
@@ -489,7 +486,7 @@
             $('#add_another_file').hide();
           }
         });
-
+        $('#permanent_address').toggle(!$('#alapp_same').is(":checked"));
         $('#alapp_same').change(function(){
           if(this.checked){
             $("#permanent_address").hide();

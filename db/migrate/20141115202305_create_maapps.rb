@@ -29,6 +29,7 @@ class CreateMaapps < ActiveRecord::Migration
       t.string :perm_address_city
       t.string :perm_address_state
       t.string :perm_address_zip
+      t.string :perm_address_country
       t.string :statement_type
       t.string :checking_account
       t.boolean :courtesy_pay

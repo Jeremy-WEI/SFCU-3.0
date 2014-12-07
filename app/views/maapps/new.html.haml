@@ -1,358 +1,363 @@
-%br
-%br
-%h1.text-center Individual Account Application
-
-#rootwizard
-  %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
-    .container
-      %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
-        %li
-          %a{"data-toggle" => "tab", :href => "#tab1"} Personal Info
-        %li
-          %a{"data-toggle" => "tab", :href => "#tab2"} Contact Info
-        %li
-          %a{"data-toggle" => "tab", :href => "#tab3"} Account Options
-        %li
-          %a{"data-toggle" => "tab", :href => "#tab4"} Terms and Conditions
-  .progress
-    .progress-bar.progress-bar-success.progress-bar-striped.active.bar
-  = simple_form_for @maapp, html: {class: "form-horizontal"} do |f|
-    -#- if @maapp.errors.any?
-    -#  #error_explanation
-    -#    %h2= "#{pluralize(@maapp.errors.count, "error")} prohibited this maapp from being saved:"
-    -#    %ul
-    -#      - @maapp.errors.full_messages.each do |msg|
-    -#        %li= msg
-    .tab-content
-      #tab1.tab-pane
-        %hr
-        .well.well-lg
-          %h2.text-center Personal Info
-          .row
-            .col-md-12
-              %b Name*
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :first_name, placeholder: "First Name", label: false, error: "First Name can't be blank"
-            .col-md-4
-              .col-md-12
-                = f.input :middle_name, placeholder: "Middle Name", label: false
-            .col-md-4
-              .col-md-12
-                = f.input :last_name, placeholder: "Last Name", label: false, error: "Last Name can't be blank"
-          %b Date of birth*
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :dob, as: :date_picker, label: false
-          %b Student Status*
-          .row
-            .col-md-9
-              = f.input :student_status,
-                        :collection => ["Domestic", "International"],
-                        :as => :radio_buttons, :item_wrapper_class => 'radio-inline', label: false, error: false
-          %b Penn Affiliation
-          .row
-            .col-md-8
-              = f.input :penn_affiliation,
-                        :collection => ["Undergraduate", "Graduate", "Alumnus", "others"],
-                        :as => :radio_buttons,
-                        label: false, :item_wrapper_class => 'radio-inline', error: false
-            .col-md-3.form-inline
-              = f.input :other_penn_affiliation, placeholder: "Others", id: "other_penn_affiliation", label: false
-          %b  Year of Graduation
-          .row
-            .col-md-4
-              = f.select :grad_season, options_for_select(['Spring', 'Summer', 'Autumn', 'Winter'], 'Spring'), {}, {class: "form-control"}
-            .col-md-4
-              = f.select :grad_year, 1980..2030, {}, {class: "form-control"}
-          %br
-          %b PennID
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :penn_id, placeholder: "Penn ID", label: false
-          %b Social Security Number*
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :ssn, placeholder: "SSN", label: false
-          .row
-            .col-md-12
-              = surround 'If you do not have an SSN, we are required to have a W8BEN form on file for you. Please download one ', ', fill it out, and include it in your application.' do
-                %a{href: "http://www.irs.gov/pub/irs-pdf/fw8ben.pdf", target: "_blank"} here
-          %br
-          %b W8BEN File Upload (.pdf only, max file size: 5MB)
-          .row
-            .col-md-12
-              .col-md-12
-                = f.input :w8ben_form, as: :file, label: false, error: "You must upload the W8BEN form or fill in your SSN"
-          %b Passport # or Driver's License #*
-          .row
-            .col-md-4
-              = f.select :doc_type, options_for_select([["Passport", "Passport"],["Driver's License", "Driver's License"]], 0), {}, {class: "form-control"}
-            .col-md-4
-              = f.text_field :doc_id, class: "form-control", placeholder: "ID Number"
-          %br
-          %b Identification*
-          Please attach two forms of photo-bearing identification.
-          At least one must be government issued (e.g. passport or driver's license;
-          the other may be any form of ID that has a picture of you and your name
-          (e.g. PennCard, high school ID). Please note that we cannot open
-          your account unless you have included valid IDs; they are required by our Member Identification Program,
-          as required by the Bank Secrecy Act.
-          %br
-          %br
-          Note: a picture of yourself is not a valid form of identification.
-          %br
-          %br
-          .row
-            .col-md-1
-              ID1:
-            .col-md-4
-              = f.input :file_id1, as: :file, label: false, error: "Please upload the file"
-          .row
-            .col-md-1
-              ID2:
-            .col-md-4
-              = f.input :file_id2, as: :file, label: false, error: "Please upload the file"
-          *Please email us your ID's if there is a "Could not access file" error. *
-      #tab2.tab-pane
-        %hr
-        .well
-          %h2.text-center Contact Info
-          .row
-            .col-md-6
-              %b Mobile Phone*
-            .col-md-6
-              %b Home Phone
-          .row
-            .col-md-6
-              .col-md-12
-                = f.input :mobile_phone, placeholder: "(XXX)XXX-XXXX", label: false, error: "Mobile Phone is invalid"
-            .col-md-6
-              .col-md-12
-                = f.input :home_phone, placeholder: "(XXX)XXX-XXXX", label: false
-          .row
-            .col-md-6
-              %b Penn Email*
-            .col-md-6
-              %b Alternate Email*
-          .row
-            .col-md-6
-              .col-md-12
-                = f.input :penn_email, placeholder: "Penn Email Address", label: false, error: "Penn Email is invalid"
-            .col-md-6
-              .col-md-12
-                = f.input :alter_email, placeholder: "Alternate Email Address", label: false, error: "Alternate Email is invalid"
-          %b Local Address
-          .row
-            .col-md-2
-              Address Line 1*
-            .col-md-10
-              .col-md-12
-                = f.input :local_address_line1, placeholder: "Local Address Line1", label: false, error: "Address is invalid"
-            .col-md-2
-              Address Line 2
-            .col-md-10
-              .col-md-12
-                = f.input :local_address_line2, placeholder: "Local Address Line2", label: false
-            .col-md-1
-              City*
-            .col-md-3
-              .col-md-12
-              = f.input :local_address_city, placeholder: "City", label: false, error: "City is invalid"
-            .col-md-1
-              State*
-            .col-md-3
-              .col-md-12
-              = f.input :local_address_state, placeholder: "State", label: false, error: "State is invalid"
-            .col-md-1
-              ZIP*
-            .col-md-3
-              .col-md-12
-                = f.input :local_address_zip, placeholder: "ZIP", label: false, error: "Zip is invalid"
-          .row
-            .col-md-12.checkbox
-              %label
-                = f.check_box :same_perm_address
-                Is your permanent address the same as your local address?
-          %br
-          #permanent_address
-            %b Permanent Address
-            .row
-              .col-md-2
-                Address Line 1*
-              .col-md-10
+%title Member Account Application
+.panel.panel-default
+  .panel-heading
+    %h1.panel-title.text-center Member Account Application
+  .panel-body
+    #rootwizard
+      %nav.navbar.navbar-default{:role => "navigation"}
+        .container{style:"width:100%"}
+          %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab1"} Personal Info
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab2"} Contact Info
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab3"} Account Options
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab4"} Terms and Conditions
+      .progress
+        .progress-bar.progress-bar-success.progress-bar-striped.active.bar
+      = simple_form_for @maapp, html: {class: "form-horizontal"} do |f|
+        - if @maapp.errors.any?
+          .text-center.alert.alert-danger.alert-error
+            = "There are some problems in your application form, please correct them and submit again.\n"
+        .tab-content
+          #tab1.tab-pane
+            %hr
+            .well.white
+              %h2.text-center Personal Info
+              .row
                 .col-md-12
-                  = f.input :perm_address_line1, placeholder: "perm Address Line1", label: false, error: "Address is invalid"
-              .col-md-2
-                Address Line 2
-              .col-md-10
+                  %b Name*
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :first_name, placeholder: "First Name", label: false, error: "First Name can't be blank"
+                .col-md-4
+                  .col-md-12
+                    = f.input :middle_name, placeholder: "Middle Name", label: false
+                .col-md-4
+                  .col-md-12
+                    = f.input :last_name, placeholder: "Last Name", label: false, error: "Last Name can't be blank"
+              %b Date of birth*
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :dob, as: :date_picker, label: false
+              %b Student Status*
+              .row
+                .col-md-9
+                  = f.input :student_status,
+                            :collection => ["Domestic", "International"],
+                            :as => :radio_buttons, :item_wrapper_class => 'radio-inline', label: false, error: false
+              %b Penn Affiliation
+              .row
+                .col-md-8
+                  = f.input :penn_affiliation,
+                            :collection => ["Undergraduate", "Graduate", "Alumnus", "others"],
+                            :as => :radio_buttons,
+                            label: false, :item_wrapper_class => 'radio-inline', error: false
+                .col-md-3.form-inline
+                  = f.input :other_penn_affiliation, placeholder: "Others", id: "other_penn_affiliation", label: false
+              %b  Year of Graduation
+              .row
+                .col-md-4
+                  = f.select :grad_season, options_for_select(['Spring', 'Summer', 'Autumn', 'Winter'], 'Spring'), {}, {class: "form-control"}
+                .col-md-4
+                  = f.select :grad_year, 1980..2030, {}, {class: "form-control"}
+              %br
+              %b PennID
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :penn_id, placeholder: "Penn ID", label: false
+              %b Social Security Number*
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :ssn, placeholder: "SSN", label: false
+              .row
                 .col-md-12
-                  = f.input :perm_address_line2, placeholder: "perm Address Line1", label: false
-              .col-md-1
-                City*
-              .col-md-3
+                  = surround 'If you do not have an SSN, we are required to have a W8BEN form on file for you. Please download one ', ', fill it out, and include it in your application.' do
+                    %a{href: "http://www.irs.gov/pub/irs-pdf/fw8ben.pdf", target: "_blank"} here
+              %br
+              %b W8BEN File Upload (.pdf only, max file size: 5MB)
+              .row
                 .col-md-12
-                = f.input :perm_address_city, placeholder: "City", label: false, error: "City is invalid"
-              .col-md-1
-                State*
-              .col-md-3
+                  .col-md-12
+                    = f.input :w8ben_form, as: :file, label: false, error: "You must upload the W8BEN form or fill in your SSN"
+              %b Passport # or Driver's License #*
+              .row
+                .col-md-4
+                  = f.select :doc_type, options_for_select([["Passport", "Passport"],["Driver's License", "Driver's License"]], 0), {}, {class: "form-control"}
+                .col-md-4
+                  = f.text_field :doc_id, class: "form-control", placeholder: "ID Number"
+              %br
+              %b Identification*
+              Please attach two forms of photo-bearing identification.
+              At least one must be government issued (e.g. passport or driver's license;
+              the other may be any form of ID that has a picture of you and your name
+              (e.g. PennCard, high school ID). Please note that we cannot open
+              your account unless you have included valid IDs; they are required by our Member Identification Program,
+              as required by the Bank Secrecy Act.
+              %br
+              %br
+              Note: a picture of yourself is not a valid form of identification.
+              %br
+              %br
+              .row
+                .col-md-1
+                  ID1:
+                .col-md-4
+                  = f.input :file_id1, as: :file, label: false, error: "Please upload the file"
+              .row
+                .col-md-1
+                  ID2:
+                .col-md-4
+                  = f.input :file_id2, as: :file, label: false, error: "Please upload the file"
+              *Please email us your ID's if there is a "Could not access file" error. *
+          #tab2.tab-pane
+            %hr
+            .well.white
+              %h2.text-center Contact Info
+              .row
+                .col-md-6
+                  %b Mobile Phone*
+                .col-md-6
+                  %b Home Phone
+              .row
+                .col-md-6
+                  .col-md-12
+                    = f.input :mobile_phone, placeholder: "(XXX)XXX-XXXX", label: false, error: "Mobile Phone is invalid"
+                .col-md-6
+                  .col-md-12
+                    = f.input :home_phone, placeholder: "(XXX)XXX-XXXX", label: false
+              .row
+                .col-md-6
+                  %b Penn Email*
+                .col-md-6
+                  %b Alternate Email*
+              .row
+                .col-md-6
+                  .col-md-12
+                    = f.input :penn_email, placeholder: "Penn Email Address", label: false, error: "Penn Email is invalid"
+                .col-md-6
+                  .col-md-12
+                    = f.input :alter_email, placeholder: "Alternate Email Address", label: false, error: "Alternate Email is invalid"
+              %b Local Address
+              .row
+                .col-md-2
+                  Address Line 1*
+                .col-md-10
+                  .col-md-12
+                    = f.input :local_address_line1, placeholder: "Local Address Line1", label: false, error: "Address is invalid"
+                .col-md-2
+                  Address Line 2
+                .col-md-10
+                  .col-md-12
+                    = f.input :local_address_line2, placeholder: "Local Address Line2", label: false
+                .col-md-1
+                  City*
+                .col-md-3
+                  .col-md-12
+                  = f.input :local_address_city, placeholder: "City", label: false, error: "City is invalid"
+                .col-md-1
+                  State*
+                .col-md-3
+                  .col-md-12
+                  = f.input :local_address_state, placeholder: "State", label: false, error: "State is invalid"
+                .col-md-1
+                  ZIP*
+                .col-md-3
+                  .col-md-12
+                    = f.input :local_address_zip, placeholder: "ZIP", label: false, error: "Zip is invalid"
+              .row
+                .col-md-12.checkbox
+                  %label
+                    = f.check_box :same_perm_address
+                    Is your permanent address the same as your local address?
+              %br
+              #permanent_address
+                %b Permanent Address
+                .row
+                  .col-md-2
+                    Address Line 1*
+                  .col-md-10
+                    .col-md-12
+                      = f.input :perm_address_line1, placeholder: "Permanent Address Line1", label: false, error: "Address is invalid"
+                  .col-md-2
+                    Address Line 2
+                  .col-md-10
+                    .col-md-12
+                      = f.input :perm_address_line2, placeholder: "Permanent Address Line2", label: false
+                  .col-md-1
+                    City*
+                  .col-md-2
+                    .col-md-12
+                    = f.input :perm_address_city, placeholder: "City", label: false, error: "City is invalid"
+                  .col-md-1
+                    State*
+                  .col-md-2
+                    .col-md-12
+                    = f.input :perm_address_state, placeholder: "State", label: false, error: "State is invalid"
+                  .col-md-1
+                    ZIP*
+                  .col-md-2
+                    .col-md-12
+                      = f.input :perm_address_zip, placeholder: "ZIP", label: false, error: "Zip is invalid"
+                  .col-md-1
+                    Country
+                  .col-md-2
+                    = f.select :perm_address_country, options_for_select(Country.all.sort), {}, {class: "form-control"}
+          #tab3.tab-pane
+            %hr
+            .well.white
+              %h2.text-center Account Options
+              %b Statement Type*
+              .row
                 .col-md-12
-                = f.input :perm_address_state, placeholder: "State", label: false, error: "State is invalid"
-              .col-md-1
-                ZIP*
-              .col-md-3
+                  = f.input :statement_type,
+                    :collection => ["Paper", "Electronic", "Paper + Electronic"],
+                    :as => :radio_buttons,
+                    label: false, :item_wrapper_class => 'radio-inline', error: false
+              %b Savings Account
+              .row
                 .col-md-12
-                  = f.input :perm_address_zip, placeholder: "ZIP", label: false, error: "Zip is invalid"
-      #tab3.tab-pane
-        %hr
-        .well
-          %h2.text-center Account Options
-          %b Statement Type*
-          .row
-            .col-md-12
-              = f.input :statement_type,
-                :collection => ["Paper", "Electronic", "Paper + Electronic"],
-                :as => :radio_buttons,
-                label: false, :item_wrapper_class => 'radio-inline', error: false
-          %b Savings Account
-          .row
-            .col-md-12
-              All members of the Credit Union are required to maintain a regular savings account with a balance of $5.
-          %br
-          %b Checking Account*
-          .row
-            .col-md-12
-              = f.input :checking_account,
-                :collection => ["None", "Regular", "Signature"],
-                :as => :radio_buttons,
-                label: false, :item_wrapper_class => 'radio-inline', error: false
-          %div
-            %br
-            .accordion
-              .accordion-group
-                %h4.text-center Checking Account Customization
-                .accordion-body
-                  .accordion-inner
-                    %b Courtesy Pay:
-                    .row
-                      .col-md-12.checkbox
-                        %label
-                          = f.check_box :courtesy_pay
-                          Yes, I would like to enable courtesy pay
-                    %br
-                    %em *What is courtesy pay? With courtesy pay, the SFCU will approve all one-time debit and ATM transactions regardless of account balance. There is no fee for signing up for courtesy pay; however, a charge applies every time that you use it.
-                    %br
-                    .well
-                      %b Visa©CheckCard
-                      .row
-                        .col-md-12.checkbox
-                          %label
-                            = f.check_box :visa_checkcard
-                            I would like to order a VISA debit card (free)
-                      #visa_options
+                  All members of the Credit Union are required to maintain a regular savings account with a balance of $5.
+              %br
+              %b Checking Account*
+              .row
+                .col-md-12
+                  = f.input :checking_account,
+                    :collection => ["None", "Regular", "Signature"],
+                    :as => :radio_buttons,
+                    label: false, :item_wrapper_class => 'radio-inline', error: false
+              %div
+                %br
+                .panel-group
+                  .panel.panel-default
+                    .panel-heading
+                      %h4.text-center Checking Account Customization
+                    .panel-collapse
+                      .panel-body
+                        %b Courtesy Pay:
+                        .row
+                          .col-md-12.checkbox
+                            %label
+                              = f.check_box :courtesy_pay
+                              Yes, I would like to enable courtesy pay
                         %br
-                        %b Visa©CheckCard PIN
-                        .row
-                          .col-md-3
-                            PIN
-                          .col-md-3
-                            = f.input :visa_pin, as: :password, placeholder: "PIN", label: false, error: "Visa Pin can't be blank"
-                          .col-md-4
-                            PIN cannot start with 0
-                        .row
-                          .col-md-3
-                            Please repeat PIN
-                          .col-md-3
-                            = f.input :visa_pin_confirmation, as: :password, placeholder: "Repeat Your PIN", label: false, error: "Pin Mismatched"
+                        %em *What is courtesy pay? With courtesy pay, the SFCU will approve all one-time debit and ATM transactions regardless of account balance. There is no fee for signing up for courtesy pay; however, a charge applies every time that you use it.
                         %br
-                        %b Visa©CheckCard Delivery
-                        .row
-                          .col-md-12
-                            = f.input :visa_delivery, :collection => ["Local Address", "Permanent Address", "SFCU Office for Pickup"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
-                    .well
-                      %b PennCard Linkage
-                      .row
-                        .col-md-12.checkbox
-                          %label
-                            = f.check_box :penncard_link
-                            I would like to link my account to my PennCard (free)
-                      #penncard_linkage
-                        %b 16-digit PennCard Number
-                        .row
-                          .col-md-4
-                            .col-md-12
-                              = f.input :penncard_number, placeholder: "564343-XXXX-XXXX-XX", label: false, error: "Penncard Number is invalid"
-                          .col-md-12
-                            Please come to our main branch to pin your card and complete the link to your account.
+                        .well.white
+                          %b Visa©CheckCard
+                          .row
+                            .col-md-12.checkbox
+                              %label
+                                = f.check_box :visa_checkcard
+                                I would like to order a VISA debit card (free)
+                          #visa_options
                             %br
-                            Note:
-                            %em If your PennCard does not start with 564343, please visit the PennCard center to get it replaced with a card that does start with these digits. This is completely free of charge and only takes a couple of minutes.
+                            %b Visa©CheckCard PIN
+                            .row
+                              .col-md-3
+                                PIN
+                              .col-md-3
+                                = f.input :visa_pin, as: :password, placeholder: "PIN", label: false, error: "Visa Pin can't be blank"
+                              .col-md-4
+                                PIN cannot start with 0
+                            .row
+                              .col-md-3
+                                Please repeat PIN
+                              .col-md-3
+                                = f.input :visa_pin_confirmation, as: :password, placeholder: "Repeat Your PIN", label: false, error: "Pin Mismatched"
                             %br
-                            You can submit this application without requesting to link your PennCard, and contact us once you have the correct prefix to request it.
-                    .well
-                      %b Order Checks
-                      .row
-                        .col-md-12.checkbox
-                          %label
-                            = f.check_box :order_checks
-                            I would like to order additional checks (charges apply) Address on check
-                      #check_options
-                        %br
-                        %b Address on Checks:
-                        .row
-                          .col-md-12
-                            = f.input :address_on_checks, :collection => ["Local Address", "Permanent Address", "None"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
-                        %b Check Type:
-                        .row
-                          .col-md-12
-                            = f.input :check_type, :collection => ["Single", "Duplicate"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
-                        %b Color(Speciality)
-                        .row
-                          .col-md-12
-                            = f.input :color, :collection => ["Lemon", "Blue", "Gray", "Mint", "Personalized(Please Contact Us)"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
-                        %b Check Delivery
-                        .row
-                          .col-md-12
-                            = f.input :check_delivery, :collection => ["Local Address", "Permanent Address", "SFCU Office for pockup"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
-        %br
-      #tab4.tab-pane
-        %hr
-        .well
-          %h2.text-center Terms and Conditions
-          .row
-            .col-md-12
-              By submitting this application, I hereby make application for membership in and agree to all the by-laws and any amendments thereof in University of Pennsylvania Student Federal Credit Union and subscribed to the par value of one share ($5) in Savings Account. I acknowledge the receipt of the Account Disclosure Statements of the Credit Union. I acknowledge that terms and conditions in these statements are subject to change without notice. I authorize the Credit Union to verify credit and employment history by any necessary means, including preparation of a credit report by a credit reporting agency. I furthermore acknoweledge that the terms I agree to my submission of this form shall constitute the execution of this document in exactly the same manner as if I had signed, by hand, a paper version of this agreement. I certify that the information provided on this application is true and correct and that the ownership designated hereon apply to the type of account(s) noted above.
-          %br
-          .row
-            .col-md-12
-              .col-md-12
-                = f.input :terms, as: :boolean, label: "I agree to the terms and conditions stated above and in the Account Disclosure", error: false
-          .row
-            .col-md-12
-              .col-md-12
-                = f.input :understand, as: :boolean, label: "I understand that once my account is opened, I must make the minimum deposit of $5 into my account at the SFCU within 30 days.", error: false
-          .row
-            .col-md-2
-              Signature
-            .col-md-4
-              = f.input :signature, placeholder: "Electronic Sigature", label: false, error: "Please Sign here"
-        .actions.text-center
-          = f.submit 'Submit', class: "btn btn-primary"
-    %ul.pager.wizard
-      %li.previous.first
-        %a{:href => "javascript:;"} First
-      %li.previous
-        %a{:href => "javascript:;"} Previous
-      %li.next.last
-        %a{:href => "javascript:;"} Last
-      %li.next
-        %a{:href => "javascript:;"} Next
-      %li.next.finish{:style => "display:none;"}
-        %a{:href => "javascript:;"} Finish
+                            %b Visa©CheckCard Delivery
+                            .row
+                              .col-md-12
+                                = f.input :visa_delivery, :collection => ["Local Address", "Permanent Address", "SFCU Office for Pickup"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
+                        .well.white
+                          %b PennCard Linkage
+                          .row
+                            .col-md-12.checkbox
+                              %label
+                                = f.check_box :penncard_link
+                                I would like to link my account to my PennCard (free)
+                          #penncard_linkage
+                            %b 16-digit PennCard Number
+                            .row
+                              .col-md-4
+                                .col-md-12
+                                  = f.input :penncard_number, placeholder: "564343-XXXX-XXXX-XX", label: false, error: "Penncard Number is invalid"
+                              .col-md-12
+                                Please come to our main branch to pin your card and complete the link to your account.
+                                %br
+                                Note:
+                                %em If your PennCard does not start with 564343, please visit the PennCard center to get it replaced with a card that does start with these digits. This is completely free of charge and only takes a couple of minutes.
+                                %br
+                                You can submit this application without requesting to link your PennCard, and contact us once you have the correct prefix to request it.
+                            %br
+                        .well.white
+                          %b Order Checks
+                          .row
+                            .col-md-12.checkbox
+                              %label
+                                = f.check_box :order_checks
+                                I would like to order additional checks (charges apply) Address on check
+                          #check_options
+                            %br
+                            %b Address on Checks:
+                            .row
+                              .col-md-12
+                                = f.input :address_on_checks, :collection => ["Local Address", "Permanent Address", "None"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
+                            %b Check Type:
+                            .row
+                              .col-md-12
+                                = f.input :check_type, :collection => ["Single", "Duplicate"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
+                            %b Color(Speciality)
+                            .row
+                              .col-md-12
+                                = f.input :color, :collection => ["Lemon", "Blue", "Gray", "Mint", "Personalized(Please Contact Us)"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
+                            %b Check Delivery
+                            .row
+                              .col-md-12
+                                = f.input :check_delivery, :collection => ["Local Address", "Permanent Address", "SFCU Office for pockup"], :as => :radio_buttons, label: false, :item_wrapper_class => 'radio-inline', error: false
+          #tab4.tab-pane
+            %hr
+            .well.white
+              %h2.text-center Terms and Conditions
+              .row
+                .col-md-12
+                  By submitting this application, I hereby make application for membership in and agree to all the by-laws and any amendments thereof in University of Pennsylvania Student Federal Credit Union and subscribed to the par value of one share ($5) in Savings Account. I acknowledge the receipt of the Account Disclosure Statements of the Credit Union. I acknowledge that terms and conditions in these statements are subject to change without notice. I authorize the Credit Union to verify credit and employment history by any necessary means, including preparation of a credit report by a credit reporting agency. I furthermore acknoweledge that the terms I agree to my submission of this form shall constitute the execution of this document in exactly the same manner as if I had signed, by hand, a paper version of this agreement. I certify that the information provided on this application is true and correct and that the ownership designated hereon apply to the type of account(s) noted above.
+              %br
+              .row
+                .col-md-12
+                  .col-md-12
+                    = f.input :terms, as: :boolean, label: "I agree to the terms and conditions stated above and in the Account Disclosure", error: false
+              .row
+                .col-md-12
+                  .col-md-12
+                    = f.input :understand, as: :boolean, label: "I understand that once my account is opened, I must make the minimum deposit of $5 into my account at the SFCU within 30 days.", error: false
+              %br
+              .row
+                .col-md-2
+                  Signature
+                .col-md-4
+                  = f.input :signature, placeholder: "Electronic Sigature", label: false, error: "Please Sign here"
+            .actions.text-center
+              = f.submit 'Submit', class: "btn btn-primary"
+            %hr
+        %ul.pager.wizard
+          %li.previous.first
+            %a{:href => "javascript:;"} First
+          %li.previous
+            %a{:href => "javascript:;"} Previous
+          %li.next.last
+            %a{:href => "javascript:;"} Last
+          %li.next
+            %a{:href => "javascript:;"} Next
+          %li.next.finish{:style => "display:none;"}
+            %a{:href => "javascript:;"} Finish
 -#= render 'form'
 
 -#= link_to 'Back', maapps_path
