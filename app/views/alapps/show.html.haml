@@ -1,468 +1,470 @@
-%p#notice= notice
+.panel.panel-default
+  .panel-heading
+    %h1.panel-title.text-center Unsecured Loan Application
+  .panel-body
+    %p
+      %b
+        = attributes_translator[:first] + ": "
+    %p
+      %b
+        = attributes_translator[:middle] + ": "
+    %p
+      %b
+        = attributes_translator[:last] + ": "
+    %p
+      %b
+        = attributes_translator[:dob] + ": "
+    %p
+      %b
+        = attributes_translator[:mother_maiden] + ": "
+    %p
+      %b
+        = attributes_translator[:ssn] + ": "
+    %p
+      %b
+        = attributes_translator[:alumni] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_req_type] + ": "
+    %p
+      %b
+        = attributes_translator[:amount_req] + ": "
+    %p
+      %b
+        = attributes_translator[:term] + ": "
+    %p
+      %b
+        = attributes_translator[:vehicle_condition] + ": "
+    %p
+      %b
+        = attributes_translator[:price_range_min] + ": "
+    %p
+      %b
+        = attributes_translator[:price_range_max] + ": "
+    %p
+      %b
+        = attributes_translator[:model_year] + ": "
+    %p
+      %b
+        = attributes_translator[:veh_subcompact] + ": "
+    %p
+      %b
+        = attributes_translator[:veh_compact] + ": "
+    %p
+      %b
+        = attributes_translator[:veh_mid_size] + ": "
+    %p
+      %b
+        = attributes_translator[:veh_full_size] + ": "
+    %p
+      %b
+        = attributes_translator[:veh_sports_car] + ": "
+    %p
+      %b
+        = attributes_translator[:veh_truck] + ": "
+    %p
+      %b
+        = attributes_translator[:veh_van] + ": "
+    %p
+      %b
+        = attributes_translator[:local_address_line1] + ": "
+    %p
+      %b
+        = attributes_translator[:local_address_line2] + ": "
+    %p
+      %b
+        = attributes_translator[:local_address_city] + ": "
+    %p
+      %b
+        = attributes_translator[:local_address_state] + ": "
+    %p
+      %b
+        = attributes_translator[:local_address_zip] + ": "
+    %p
+      %b
+        = attributes_translator[:local_country] + ": "
+    %p
+      %b
+        = attributes_translator[:perm_address_line1] + ": "
+    %p
+      %b
+        = attributes_translator[:perm_address_line2] + ": "
+    %p
+      %b
+        = attributes_translator[:perm_address_city] + ": "
+    %p
+      %b
+        = attributes_translator[:perm_address_state] + ": "
+    %p
+      %b
+        = attributes_translator[:perm_address_zip] + ": "
+    %p
+      %b
+        = attributes_translator[:perm_country] + ": "
+    %p
+      %b
+        = attributes_translator[:e_mail] + ": "
+    %p
+      %b
+        = attributes_translator[:phone_number] + ": "
+    %p
+      %b
+        = attributes_translator[:name_nearest_relative] + ": "
+    %p
+      %b
+        = attributes_translator[:phone_nearest_relative] + ": "
+    %p
+      %b
+        = attributes_translator[:driver_lisence_num] + ": "
+    %p
+      %b
+        = attributes_translator[:driver_license_file] + ": "
+    %p
+      %b
+        = attributes_translator[:employ1_employer] + ": "
+    %p
+      %b
+        = attributes_translator[:employ1_employer_addr] + ": "
+    %p
+      %b
+        = attributes_translator[:employ1_position] + ": "
+    %p
+      %b
+        = attributes_translator[:employ1_supervisor] + ": "
+    %p
+      %b
+        = attributes_translator[:employ1_grosspay] + ": "
+    %p
+      %b
+        = attributes_translator[:employ1_freq] + ": "
+    %p
+      %b
+        = attributes_translator[:employ1_continue] + ": "
+    %p
+      %b
+        = attributes_translator[:employ1_expect_duration] + ": "
+    %p
+      %b
+        = attributes_translator[:employ2_employer] + ": "
+    %p
+      %b
+        = attributes_translator[:employ2_employer_addr] + ": "
+    %p
+      %b
+        = attributes_translator[:employ2_position] + ": "
+    %p
+      %b
+        = attributes_translator[:employ2_supervisor] + ": "
+    %p
+      %b
+        = attributes_translator[:employ2_grosspay] + ": "
+    %p
+      %b
+        = attributes_translator[:employ2_freq] + ": "
+    %p
+      %b
+        = attributes_translator[:employ2_continue] + ": "
+    %p
+      %b
+        = attributes_translator[:employ2_expect_duration] + ": "
+    %p
+      %b
+        = attributes_translator[:add_income1_source] + ": "
+    %p
+      %b
+        = attributes_translator[:add_income1_amount] + ": "
+    %p
+      %b
+        = attributes_translator[:add_income1_freq] + ": "
+    %p
+      %b
+        = attributes_translator[:add_income2_source] + ": "
+    %p
+      %b
+        = attributes_translator[:add_income2_amount] + ": "
+    %p
+      %b
+        = attributes_translator[:add_income2_freq] + ": "
+    %p
+      %b
+        = attributes_translator[:add_income3_source] + ": "
+    %p
+      %b
+        = attributes_translator[:add_income3_amount] + ": "
+    %p
+      %b
+        = attributes_translator[:add_income3_freq] + ": "
+    %p
+      %b
+        = attributes_translator[:account1_depository] + ": "
+    %p
+      %b
+        = attributes_translator[:account1_type] + ": "
+    %p
+      %b
+        = attributes_translator[:account1_current_balance] + ": "
+    %p
+      %b
+        = attributes_translator[:account2_depository] + ": "
+    %p
+      %b
+        = attributes_translator[:account2_type] + ": "
+    %p
+      %b
+        = attributes_translator[:account2_current_balance] + ": "
+    %p
+      %b
+        = attributes_translator[:account3_depository] + ": "
+    %p
+      %b
+        = attributes_translator[:account3_type] + ": "
+    %p
+      %b
+        = attributes_translator[:account3_current_balance] + ": "
+    %p
+      %b
+        = attributes_translator[:account4_depository] + ": "
+    %p
+      %b
+        = attributes_translator[:account4_type] + ": "
+    %p
+      %b
+        = attributes_translator[:account4_current_balance] + ": "
+    %p
+      %b
+        = attributes_translator[:property1_st_addr] + ": "
+    %p
+      %b
+        = attributes_translator[:property1_city] + ": "
+    %p
+      %b
+        = attributes_translator[:property1_state] + ": "
+    %p
+      %b
+        = attributes_translator[:property1_market_val] + ": "
+    %p
+      %b
+        = attributes_translator[:property1_another_loan] + ": "
+    %p
+      %b
+        = attributes_translator[:property2_st_addr] + ": "
+    %p
+      %b
+        = attributes_translator[:property2_city] + ": "
+    %p
+      %b
+        = attributes_translator[:property2_state] + ": "
+    %p
+      %b
+        = attributes_translator[:property2_market_val] + ": "
+    %p
+      %b
+        = attributes_translator[:property2_another_loan] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card1_name] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card1_limit] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card1_balance] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card1_date_payment] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card1_aveg_month_pay] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card1_pastdue] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card2_name] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card2_limit] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card2_balance] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card2_date_payment] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card2_aveg_month_pay] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card2_pastdue] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card3_name] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card3_limit] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card3_balance] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card3_date_payment] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card3_aveg_month_pay] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card3_pastdue] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card4_name] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card4_limit] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card4_balance] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card4_date_payment] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card4_aveg_month_pay] + ": "
+    %p
+      %b
+        = attributes_translator[:credit_card4_pastdue] + ": "
+    %p
+      %b
+        = attributes_translator[:loan1_name] + ": "
+    %p
+      %b
+        = attributes_translator[:loan1_type] + ": "
+    %p
+      %b
+        = attributes_translator[:loan1_principal] + ": "
+    %p
+      %b
+        = attributes_translator[:loan1_date_payment] + ": "
+    %p
+      %b
+        = attributes_translator[:loan1_month_payment] + ": "
+    %p
+      %b
+        = attributes_translator[:loan1_pastdue] + ": "
+    %p
+      %b
+        = attributes_translator[:loan2_name] + ": "
+    %p
+      %b
+        = attributes_translator[:loan2_type] + ": "
+    %p
+      %b
+        = attributes_translator[:loan2_principal] + ": "
+    %p
+      %b
+        = attributes_translator[:loan2_date_payment] + ": "
+    %p
+      %b
+        = attributes_translator[:loan2_month_payment] + ": "
+    %p
+      %b
+        = attributes_translator[:loan2_pastdue] + ": "
+    %p
+      %b
+        = attributes_translator[:loan3_name] + ": "
+    %p
+      %b
+        = attributes_translator[:loan3_type] + ": "
+    %p
+      %b
+        = attributes_translator[:loan3_principal] + ": "
+    %p
+      %b
+        = attributes_translator[:loan3_date_payment] + ": "
+    %p
+      %b
+        = attributes_translator[:loan3_month_payment] + ": "
+    %p
+      %b
+        = attributes_translator[:loan3_pastdue] + ": "
+    %p
+      %b
+        = attributes_translator[:loan4_name] + ": "
+    %p
+      %b
+        = attributes_translator[:loan4_type] + ": "
+    %p
+      %b
+        = attributes_translator[:loan4_principal] + ": "
+    %p
+      %b
+        = attributes_translator[:loan4_date_payment] + ": "
+    %p
+      %b
+        = attributes_translator[:loan4_month_payment] + ": "
+    %p
+      %b
+        = attributes_translator[:loan4_pastdue] + ": "
+    %p
+      %b
+        = attributes_translator[:rent_housing] + ": "
+    %p
+      %b
+        = attributes_translator[:rent_person] + ": "
+    %p
+      %b
+        = attributes_translator[:food] + ": "
+    %p
+      %b
+        = attributes_translator[:food_person] + ": "
+    %p
+      %b
+        = attributes_translator[:utilities] + ": "
+    %p
+      %b
+        = attributes_translator[:utilities_person] + ": "
+    %p
+      %b
+        = attributes_translator[:phone_bill] + ": "
+    %p
+      %b
+        = attributes_translator[:phone_bill_person] + ": "
+    %p
+      %b
+        = attributes_translator[:bursar_bill] + ": "
+    %p
+      %b
+        = attributes_translator[:miscellaneous] + ": "
+    %p
+      %b
+        = attributes_translator[:miscellaneous_expl] + ": "
+    %p
+      %b
+        = attributes_translator[:document1] + ": "
+    %p
+      %b
+        = attributes_translator[:document2] + ": "
+    %p
+      %b
+        = attributes_translator[:document3] + ": "
+    %p
+      %b
+        = attributes_translator[:document4] + ": "
+    %p
+      %b
+        = attributes_translator[:document5] + ": "
+    %p
+      %b
+        = attributes_translator[:agree_terms] + ": "
+    %p
+      %b
+        = attributes_translator[:signature] + ": "
+    %p
+      %b
+        = attributes_translator[:today_date] + ": "
 
-%p
-  %b First:
-  = @alapp.first
-%p
-  %b Middle:
-  = @alapp.middle
-%p
-  %b Last:
-  = @alapp.last
-%p
-  %b Dob:
-  = @alapp.dob
-%p
-  %b Mother maiden:
-  = @alapp.mother_maiden
-%p
-  %b Ssn:
-  = @alapp.ssn
-%p
-  %b Alumni:
-  = @alapp.alumni
-%p
-  %b Credit req type:
-  = @alapp.credit_req_type
-%p
-  %b Amount req:
-  = @alapp.amount_req
-%p
-  %b Term:
-  = @alapp.term
-%p
-  %b Vehicle condition:
-  = @alapp.vehicle_condition
-%p
-  %b Price range min:
-  = @alapp.price_range_min
-%p
-  %b Price range max:
-  = @alapp.price_range_max
-%p
-  %b Model year:
-  = @alapp.model_year
-%p
-  %b Veh subcompact:
-  = @alapp.veh_subcompact
-%p
-  %b Veh compact:
-  = @alapp.veh_compact
-%p
-  %b Veh mid size:
-  = @alapp.veh_mid_size
-%p
-  %b Veh full size:
-  = @alapp.veh_full_size
-%p
-  %b Veh sports car:
-  = @alapp.veh_sports_car
-%p
-  %b Veh truck:
-  = @alapp.veh_truck
-%p
-  %b Veh van:
-  = @alapp.veh_van
-%p
-  %b Local address line1:
-  = @alapp.local_address_line1
-%p
-  %b Local address line2:
-  = @alapp.local_address_line2
-%p
-  %b Local address city:
-  = @alapp.local_address_city
-%p
-  %b Local address state:
-  = @alapp.local_address_state
-%p
-  %b Local address zip:
-  = @alapp.local_address_zip
-%p
-  %b Local country:
-  = @alapp.local_country
-%p
-  %b Perm address line1:
-  = @alapp.perm_address_line1
-%p
-  %b Perm address line2:
-  = @alapp.perm_address_line2
-%p
-  %b Perm address city:
-  = @alapp.perm_address_city
-%p
-  %b Perm address state:
-  = @alapp.perm_address_state
-%p
-  %b Perm address zip:
-  = @alapp.perm_address_zip
-%p
-  %b Perm country:
-  = @alapp.perm_country
-%p
-  %b E mail:
-  = @alapp.e_mail
-%p
-  %b Phone number:
-  = @alapp.phone_number
-%p
-  %b Name nearest relative:
-  = @alapp.name_nearest_relative
-%p
-  %b Phone nearest relative:
-  = @alapp.phone_nearest_relative
-%p
-  %b Driver lisence num:
-  = @alapp.driver_lisence_num
-%p
-  %b Driver license file:
-  = @alapp.driver_license_file
-%p
-  %b Employ1 employer:
-  = @alapp.employ1_employer
-%p
-  %b Employ1 employer addr:
-  = @alapp.employ1_employer_addr
-%p
-  %b Employ1 position:
-  = @alapp.employ1_position
-%p
-  %b Employ1 supervisor:
-  = @alapp.employ1_supervisor
-%p
-  %b Employ1 grosspay:
-  = @alapp.employ1_grosspay
-%p
-  %b Employ1 freq:
-  = @alapp.employ1_freq
-%p
-  %b Employ1 continue:
-  = @alapp.employ1_continue
-%p
-  %b Employ1 expect duration:
-  = @alapp.employ1_expect_duration
-%p
-  %b Employ2 employer:
-  = @alapp.employ2_employer
-%p
-  %b Employ2 employer addr:
-  = @alapp.employ2_employer_addr
-%p
-  %b Employ2 position:
-  = @alapp.employ2_position
-%p
-  %b Employ2 supervisor:
-  = @alapp.employ2_supervisor
-%p
-  %b Employ2 grosspay:
-  = @alapp.employ2_grosspay
-%p
-  %b Employ2 freq:
-  = @alapp.employ2_freq
-%p
-  %b Employ2 continue:
-  = @alapp.employ2_continue
-%p
-  %b Employ2 expect duration:
-  = @alapp.employ2_expect_duration
-%p
-  %b Add income1 source:
-  = @alapp.add_income1_source
-%p
-  %b Add income1 amount:
-  = @alapp.add_income1_amount
-%p
-  %b Add income1 freq:
-  = @alapp.add_income1_freq
-%p
-  %b Add income2 source:
-  = @alapp.add_income2_source
-%p
-  %b Add income2 amount:
-  = @alapp.add_income2_amount
-%p
-  %b Add income2 freq:
-  = @alapp.add_income2_freq
-%p
-  %b Add income3 source:
-  = @alapp.add_income3_source
-%p
-  %b Add income3 amount:
-  = @alapp.add_income3_amount
-%p
-  %b Add income3 freq:
-  = @alapp.add_income3_freq
-%p
-  %b Account1 depository:
-  = @alapp.account1_depository
-%p
-  %b Account1 type:
-  = @alapp.account1_type
-%p
-  %b Account1 current balance:
-  = @alapp.account1_current_balance
-%p
-  %b Account2 depository:
-  = @alapp.account2_depository
-%p
-  %b Account2 type:
-  = @alapp.account2_type
-%p
-  %b Account2 current balance:
-  = @alapp.account2_current_balance
-%p
-  %b Account3 depository:
-  = @alapp.account3_depository
-%p
-  %b Account3 type:
-  = @alapp.account3_type
-%p
-  %b Account3 current balance:
-  = @alapp.account3_current_balance
-%p
-  %b Account4 depository:
-  = @alapp.account4_depository
-%p
-  %b Account4 type:
-  = @alapp.account4_type
-%p
-  %b Account4 current balance:
-  = @alapp.account4_current_balance
-%p
-  %b Property1 st addr:
-  = @alapp.property1_st_addr
-%p
-  %b Property1 city:
-  = @alapp.property1_city
-%p
-  %b Property1 state:
-  = @alapp.property1_state
-%p
-  %b Property1 market val:
-  = @alapp.property1_market_val
-%p
-  %b Property1 another loan:
-  = @alapp.property1_another_loan
-%p
-  %b Property2 st addr:
-  = @alapp.property2_st_addr
-%p
-  %b Property2 city:
-  = @alapp.property2_city
-%p
-  %b Property2 state:
-  = @alapp.property2_state
-%p
-  %b Property2 market val:
-  = @alapp.property2_market_val
-%p
-  %b Property2 another loan:
-  = @alapp.property2_another_loan
-%p
-  %b Credit card1 name:
-  = @alapp.credit_card1_name
-%p
-  %b Credit card1 limit:
-  = @alapp.credit_card1_limit
-%p
-  %b Credit card1 balance:
-  = @alapp.credit_card1_balance
-%p
-  %b Credit card1 date payment:
-  = @alapp.credit_card1_date_payment
-%p
-  %b Credit card1 aveg month pay:
-  = @alapp.credit_card1_aveg_month_pay
-%p
-  %b Credit card1 pastdue:
-  = @alapp.credit_card1_pastdue
-%p
-  %b Credit card2 name:
-  = @alapp.credit_card2_name
-%p
-  %b Credit card2 limit:
-  = @alapp.credit_card2_limit
-%p
-  %b Credit card2 balance:
-  = @alapp.credit_card2_balance
-%p
-  %b Credit card2 date payment:
-  = @alapp.credit_card2_date_payment
-%p
-  %b Credit card2 aveg month pay:
-  = @alapp.credit_card2_aveg_month_pay
-%p
-  %b Credit card2 pastdue:
-  = @alapp.credit_card2_pastdue
-%p
-  %b Credit card3 name:
-  = @alapp.credit_card3_name
-%p
-  %b Credit card3 limit:
-  = @alapp.credit_card3_limit
-%p
-  %b Credit card3 balance:
-  = @alapp.credit_card3_balance
-%p
-  %b Credit card3 date payment:
-  = @alapp.credit_card3_date_payment
-%p
-  %b Credit card3 aveg month pay:
-  = @alapp.credit_card3_aveg_month_pay
-%p
-  %b Credit card3 pastdue:
-  = @alapp.credit_card3_pastdue
-%p
-  %b Credit card4 name:
-  = @alapp.credit_card4_name
-%p
-  %b Credit card4 limit:
-  = @alapp.credit_card4_limit
-%p
-  %b Credit card4 balance:
-  = @alapp.credit_card4_balance
-%p
-  %b Credit card4 date payment:
-  = @alapp.credit_card4_date_payment
-%p
-  %b Credit card4 aveg month pay:
-  = @alapp.credit_card4_aveg_month_pay
-%p
-  %b Credit card4 pastdue:
-  = @alapp.credit_card4_pastdue
-%p
-  %b Loan1 name:
-  = @alapp.loan1_name
-%p
-  %b Loan1 type:
-  = @alapp.loan1_type
-%p
-  %b Loan1 principal:
-  = @alapp.loan1_principal
-%p
-  %b Loan1 date payment:
-  = @alapp.loan1_date_payment
-%p
-  %b Loan1 month payment:
-  = @alapp.loan1_month_payment
-%p
-  %b Loan1 pastdue:
-  = @alapp.loan1_pastdue
-%p
-  %b Loan2 name:
-  = @alapp.loan2_name
-%p
-  %b Loan2 type:
-  = @alapp.loan2_type
-%p
-  %b Loan2 principal:
-  = @alapp.loan2_principal
-%p
-  %b Loan2 date payment:
-  = @alapp.loan2_date_payment
-%p
-  %b Loan2 month payment:
-  = @alapp.loan2_month_payment
-%p
-  %b Loan2 pastdue:
-  = @alapp.loan2_pastdue
-%p
-  %b Loan3 name:
-  = @alapp.loan3_name
-%p
-  %b Loan3 type:
-  = @alapp.loan3_type
-%p
-  %b Loan3 principal:
-  = @alapp.loan3_principal
-%p
-  %b Loan3 date payment:
-  = @alapp.loan3_date_payment
-%p
-  %b Loan3 month payment:
-  = @alapp.loan3_month_payment
-%p
-  %b Loan3 pastdue:
-  = @alapp.loan3_pastdue
-%p
-  %b Loan4 name:
-  = @alapp.loan4_name
-%p
-  %b Loan4 type:
-  = @alapp.loan4_type
-%p
-  %b Loan4 principal:
-  = @alapp.loan4_principal
-%p
-  %b Loan4 date payment:
-  = @alapp.loan4_date_payment
-%p
-  %b Loan4 month payment:
-  = @alapp.loan4_month_payment
-%p
-  %b Loan4 pastdue:
-  = @alapp.loan4_pastdue
-%p
-  %b Rent housing:
-  = @alapp.rent_housing
-%p
-  %b Rent person:
-  = @alapp.rent_person
-%p
-  %b Food:
-  = @alapp.food
-%p
-  %b Food person:
-  = @alapp.food_person
-%p
-  %b Utilities:
-  = @alapp.utilities
-%p
-  %b Utilities person:
-  = @alapp.utilities_person
-%p
-  %b Phone bill:
-  = @alapp.phone_bill
-%p
-  %b Phone bill person:
-  = @alapp.phone_bill_person
-%p
-  %b Bursar bill:
-  = @alapp.bursar_bill
-%p
-  %b Miscellaneous:
-  = @alapp.miscellaneous
-%p
-  %b Miscellaneous expl:
-  = @alapp.miscellaneous_expl
-%p
-  %b Document1:
-  = @alapp.document1
-%p
-  %b Document2:
-  = @alapp.document2
-%p
-  %b Document3:
-  = @alapp.document3
-%p
-  %b Document4:
-  = @alapp.document4
-%p
-  %b Document5:
-  = @alapp.document5
-%p
-  %b Agree terms:
-  = @alapp.agree_terms
-%p
-  %b Signature:
-  = @alapp.signature
-%p
-  %b Today date:
-  = @alapp.today_date
-
-%p
-  %b Application status:
-  = @alapp.application_status
+    %p
+      %b
+        = attributes_translator[:application_status] + ": "
 
 = link_to 'Edit', edit_alapp_path(@alapp)
 \|
