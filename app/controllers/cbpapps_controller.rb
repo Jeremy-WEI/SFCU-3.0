@@ -26,17 +26,11 @@ class CbpappsController < ApplicationController
   end
 
   def export
-    if params[:exports].nil?
-      @cbpapps = Cbpapp.all
-      render :index
-    else
       csv_path = "public/uploads/cbpapp/cbpapps_file.csv"
       create_csv(csv_path)
 
       zip_folder_path = "public/uploads/cbpapp"
       zip_files(zip_folder_path, csv_path, params[:exports])
-    end
-
   end
 
   def create_csv(file)

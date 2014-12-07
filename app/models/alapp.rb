@@ -31,11 +31,12 @@ class Alapp < ActiveRecord::Base
   EMAIL_FORMAT = /\A[^@\s]+@(?:\w+\.)+[a-z]{2,}\z/i
   PHONE_FORMAT =/\A\(?\d{3}[-\.)]?\d{3}[-\.]?\d{4}\z/
 
-  validates :first, :last, :alumni, :mother_maiden, :credit_req_type,
+  validates :first, :last, :mother_maiden, :credit_req_type,
             :term, :vehicle_condition, :name_nearest_relative, :phone_nearest_relative,
             :driver_lisence_num, :signature, :today_date, :local_address_state,:local_address_zip, :local_address_line1,
             :local_address_city, :local_country,
             presence: true
+
   validate :check_dob
   validates :ssn, format: {with: SSN_FORMAT}
 
@@ -47,6 +48,7 @@ class Alapp < ActiveRecord::Base
   validate :validates_vehicle_type
   validate :validates_local_address
   validate :validates_perm_address
+  validate :validate_alumni_presence
 
   validates :e_mail, format: {with: EMAIL_FORMAT}
   validates :phone_number, :phone_nearest_relative, format: {with: PHONE_FORMAT}
@@ -60,6 +62,11 @@ class Alapp < ActiveRecord::Base
 
    validates :agree_terms, acceptance: true
 
+  def validate_alumni_presence
+    if alumni.nil?
+      errors.add(:alumni, "Alumni can't be blank")
+    end
+  end
   def check_dob
     if not dob.present?
       errors.add(:dob, "Date of birth can't be blank")

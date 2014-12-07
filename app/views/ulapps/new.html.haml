@@ -1,1056 +1,1041 @@
-%br
-%br
-%h1.text-center Unsecured Loan Application
-
-
-.vcenter#rootwizard
-  %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
-    .container
-      %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
-        %li
-          %a{"data-toggle" => "tab", :href => "#tab1"} Credit Request
-        %li
-          %a{"data-toggle" => "tab", :href => "#tab2"} General Information
-        %li
-          %a{"data-toggle" => "tab", :href => "#tab3"} Contact Information
-        %li
-          %a{"data-toggle" => "tab", :href => "#tab4"} Employment Income
-        %li
-          %a{"data-toggle" => "tab", :href => "#tab5"} Additional Income
-        %li
-          %a{"data-toggle" => "tab", :href => "#tab6"} Outstanding Debts
-        %li
-          %a{"data-toggle" => "tab", :href => "#tab7"} Monthly Expenses
-        %li
-          %a{"data-toggle" => "tab", :href => "#tab8"} Applicant's Signature
-  .progress
-    .progress-bar.progress-bar-success.progress-bar-striped.active.bar
-  = simple_form_for @ulapp, html: {class: "form-horizontal"} do |f|
-    - if @ulapp.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(@ulapp.errors.count, "error")} prohibited this ulapp from being saved:"
-        %ul
-          - @ulapp.errors.full_messages.each do |msg|
-            %li= msg
-    .tab-content
-      #tab1.tab-pane
-        %hr
-        .well
-          %h2.text-center Credit Request
-          %b Type*
-          .row
-            .col-md-9
-              = f.input :credit_type,
-                        :collection => ["Individual Credit", "Joint Credit"],
-                        :as => :radio_buttons, :item_wrapper_class => 'radio-inline', label: false, error: false
-            -#.col-md-4
-            -#  %label.radio-inline
-            -#    = f.radio_button :credit_type, "Individual Credit"
-            -#    Individual Credit
-            -#.col-md-4
-            -#  %label.radio-inline
-            -#    = f.radio_button :credit_type, "Joint Credit"
-            -#    Joint Credit
+%title Unsecured Loan Application
+.panel.panel-default
+  .panel-heading
+    %h1.panel-title.text-center Unsecured Loan Application
+  .panel-body
+    #rootwizard
+      %nav.navbar.navbar-default.white{:role => "navigation"}
+        .container{style:"width:100%"}
+          %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab1"} Credit Request
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab2"} General Information
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab3"} Contact Information
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab4"} Employment Income
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab5"} Additional Income
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab6"} Outstanding Debts
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab7"} Monthly Expenses
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab8"} Applicant's Signature
           %br
-          .row
-            .col-md-12
-              For joint accounts please make two separate submissions of this form. On each form identify the full name and last 4 digits of SSN of the other co-signer/co-maker.
-          %br
-          %b Joint applicants, please enter the full name and last 4 digits of SSN # of the other co-signer/co-marker*
-          .row
-            .col-md-6
-              .col-md-12
-                = f.input :joint_applicant, placeholder: "Joint applicant, SSN", label: false, error: "Joint Applicant cannot be blank."
-              -#= f.text_area :joint_applicant, class: "form-control"
-          %br
-          %b Amount Requested*
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :amount, label: false, error: "Amount Requested cannot be blank."
-              -#= f.text_field :amount, class: "form-control"
-          %br
-          %b Purpose*
-          .row
-            .col-md-12
-              .col-md-12
-                = f.input :purpose, label: false, error: "Purpose cannot be blank."
-                -#= f.text_field :purpose, class: "form-control", placeholder: "Please enter your purpose here"
-
-      #tab2.tab-pane
-        %hr
-        .well
-          %h2.text-center General Information
-          %b Name*
-          .row
-            .col-md-6
-              .col-md-12
-                = f.input :first_name, label: false, placeholder: "First Name", error: "First Name cannot be blank."
-                -#= f.text_field :first_name, class: "form-control", placeholder: "First Name"
-            .col-md-6
-              .col-md-12
-                = f.input :last_name, label: false, placeholder: "Last Name", error: "Last Name cannot be blank."
-                -#= f.text_field :last_name, class: "form-control", placeholder: "Last Name"
-          %br
-          %b Birth Date*
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :dob, as: :date_picker, label: false
-              -#= f.date_select :dob, { start_year: 1900, end_year: Date.today.year }
-          %br
-          .row
-            .col-md-6
-              %b Social Security Number*
-            .col-md-6
-              %b SFCU Account Number
-          .row
-            .col-md-6
-              .col-md-12
-                = f.input :ssn, label: false, placeholder: "must be 9 digits", error: "SSN is invalid. eg. #########"
-                -#= f.text_field :ssn, class: "form-control"
-            .col-md-6
-              .col-md-12
-                = f.input :sfcu_account, label: false
-                -#= f.text_field :sfcu_account, class: "form-control"
-          .row
-            .col-md-6
-              %b Name of Nearest Relative*
-            .col-md-6
-              %b Phone Number of Nearest Relative*
-          .row
-            .col-md-6
-              .col-md-12
-                = f.input :name_relative, label: false, error: "Name of Nearest Relative cannot be blank."
-                -#= f.text_field :name_relative, class: "form-control"
-            .col-md-6
-              .col-md-12
-                = f.input :phone_relative, label: false, error: "Phone number is invalid. eg. ###-###-####"
-                -#= f.text_field :phone_relative, class: "form-control"
-          %br
-          %b Mothers Madien Name
-          .row
-            .col-md-4
-              = f.text_field :mothers, class: "form-control"
-          %br
-          %b Expected Graduation Date
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :graduation, as: :date_picker, label: false
-                -#= f.date_select :graduation, class: "form-control"
-      #tab3.tab-pane
-        %hr
-        .well
-          %h2.text-center Contact Information
-          %br
-          %b Local Address
-          .row
-            .col-md-3
-              Address Line 1*
-            .col-md-9
-              .col-md-12
-                = f.input :local_address_line1, label: false, placeholder: "Local Address Line1"
-                -#= f.text_field :local_address_line1, class: "form-control", placeholder: "Local Address Line1"
-          .row
-            .col-md-3
-              Address Line 2
-            .col-md-9
-              .col-md-12
-                = f.input :local_address_line2, label: false, placeholder: "Local Address Line2"
-                -#= f.text_field :local_address_line2, class: "form-control", placeholder: "Local Address Line2"
-          .row
-            .col-md-1
-              City*
-            .col-md-3
-              .col-md-12
-                = f.input :local_address_city, label: false, placeholder: "City"
-                -#= f.text_field :local_address_city, placeholder: "City", class: "form-control"
-            .col-md-1
-              State*
-            .col-md-3
-              .col-md-12
-                = f.input :local_address_state, label: false, placeholder: "State"
-                -#= f.text_field :local_address_state, placeholder: "State", class: "form-control"
-            .col-md-1
-              ZIP*
-            .col-md-3
-              .col-md-12
-                = f.input :local_address_zip, label: false, placeholder: "ZIP"
-                -#= f.text_field :local_address_zip, placeholder: "ZIP", class: "form-control"
-          .row
-            .col-md-1
-              Country*
-            .col-md-4
-              .col-md-12
-                = f.select :local_country, options_for_select(Country.all.sort), {}, {class: "form-control"}
-                -#= f.select :local_country, Country.all.sort, {}, {class: "form-control"}
-          %br
-          .row
-            .col-md-12.checkbox
-              %label
-                = f.check_box :same
-                %b Permanent Address Same as Local Address?
-          %br
-          #permanent_address
-            %b Permanent Address
-            .row
-              .col-md-3
-                Address Line 1*
-              .col-md-9
-                .col-md-12
-                  = f.input :perm_address_line1, label: false, placeholder: "Permanent Address Line1"
-                  -#= f.text_field :local_address_line1, class: "form-control", placeholder: "Local Address Line1"
-            .row
-              .col-md-3
-                Address Line 2
-              .col-md-9
-                .col-md-12
-                  = f.input :perm_address_line2, label: false, placeholder: "Permanent Address Line2"
-                  -#= f.text_field :local_address_line2, class: "form-control", placeholder: "Local Address Line2"
-            .row
-              .col-md-1
-                City*
-              .col-md-3
-                .col-md-12
-                  = f.input :perm_address_city, label: false, placeholder: "City"
-                  -#= f.text_field :local_address_city, placeholder: "City", class: "form-control"
-              .col-md-1
-                State*
-              .col-md-3
-                .col-md-12
-                  = f.input :perm_address_state, label: false, placeholder: "State"
-                  -#= f.text_field :local_address_state, placeholder: "State", class: "form-control"
-              .col-md-1
-                ZIP*
-              .col-md-3
-                .col-md-12
-                  = f.input :perm_address_zip, label: false, placeholder: "ZIP"
-                  -#= f.text_field :local_address_zip, placeholder: "ZIP", class: "form-control"
-            .row
-              .col-md-1
-                Country*
-              .col-md-4
-                .col-md-12
-                  = f.select :perm_country, options_for_select(Country.all.sort), {}, {class: "form-control"}
-                  -#= f.select :local_country, Country.all.sort, {}, {class: "form-control"}
-            %br
-          %b E-mail*
-          .row
-            .col-md-6
-              .col-md-12
-                = f.input :e_mail, label: false, placeholder: "email@example.com", error: "E-mail is invalid. eg. email@example.com"
-                -#= f.text_field :e_mail, class: "form-control"
-          %br
-          %b Phone*
-          .row
-            .col-md-3
-              Phone Number
-            .col-md-3
-              .col-md-12
-                = f.input :phone_number, label: false, placeholder: "must be 10 digits", error: "Phone Number is invalid. eg. ###-###-####"
-                -#= f.text_field :phone_number, class: "form-control"
-            .col-md-2
-              Phone Type*
-            .col-md-4
-              = f.select :phone_type, ([['Home', 'Home'], ['Cell', 'Cell'], ['Business', 'Business']]), {}, {class: "form-control"}
-          %br
-          %b Alternate Phone
-          .row
-            .col-md-3
-              Phone Number
-            .col-md-3
-              .col-md-12
-                = f.input :alter_number, label: false, error: "Phone Number is invalid. eg. ###-###-####"
-                -#= f.text_field :alter_number, class: "form-control"
-            .col-md-2
-              Phone Type
-            .col-md-4
-              = f.select :alter_type, ([['Home', 'Home'], ['Cell', 'Cell'], ['Business', 'Business']]), {}, {class: "form-control"}
-          %br
-      #tab4.tab-pane
-        %hr
-        .well
-          %h2.text-center Employment Income
-          %br
-          Instructions: Please complete the following section regarding current employment and attach the necessary documentation.
-          %br
-          %ul
-          %li If you are a current student at the University of Pennsylvania, please list both employment during the  regular semester and summer employment (if applicable).
-          %li If you are a graduating senior, please list information on your employment after graduation.
-          %li Please supply your most recent pay stub or an email from your employer confirming your employment as  well as income or a fellowship/financial aid offer letter.
-          %li If you have just graduated and will be starting a new job, please provide an employment offer acceptance  letter for verification of income.
-          %li If you are self-employed, please provide IRS returns for the last two years.
-          %br
-        .well
-          %h3.text-center Employment I
-          %b Employer*
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :employer, label: false, error: "Employer cannot be blank."
-                -#= f.text_field :employer, class: "form-control"
-          %br
-          %b Employer Address
-          .row
-            .col-md-3
-              Address Line 1
-            .col-md-9
-              = f.text_field :employee_address_line1, class: "form-control", placeholder: "Address Line1"
-          .row
-            .col-md-3
-              Address Line 2
-            .col-md-9
-              = f.text_field :employee_address_line2, class: "form-control", placeholder: "Address Line2"
-          .row
-            .col-md-1
-              City
-            .col-md-3
-              = f.text_field :employee_address_city, placeholder: "City", class: "form-control"
-            .col-md-1
-              State
-            .col-md-3
-              = f.text_field :employee_address_state, placeholder: "State", class: "form-control"
-            .col-md-1
-              ZIP
-            .col-md-3
-              = f.text_field :employee_address_zip, placeholder: "ZIP", class: "form-control"
-          .row
-            .col-md-1
-              Country
-            .col-md-4
-              = f.select :employee_country, Country.all.sort, {}, {class: "form-control"}
-          %br
-          %b Position
-          .row
-            .col-md-4
-              = f.text_field :position, class: "form-control"
-          %br
-          %b Supervisor Name*
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :supervisor_firstname, placeholder: "First Name", label: false
-                -#= f.text_field :supervisor_firstname, placeholder: "First Name", class: "form-control"
-            .col-md-4
-              .col-md-12
-                = f.input :supervisor_lastname, placeholder: "Last Name", label: false
-                -#= f.text_field :supervisor_lastname, placeholder: "Last Name", class: "form-control"
-          %br
-          %b GrossPay*
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :grosspay, label: false, error: "Grosspay is invalid."
-                -#= f.text_field :grosspay, class: "form-control"
-          %br
-          %b Grosspay Disbursement
-          .row
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :disbursement, "Week"
-                Week
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :disbursement, "Month"
-                Month
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :disbursement, "Year"
-                Year
-          %br
-          %b Date Started/Starting
-          .row
-            .col-md-4
-              = f.date_select :startingdate
-          %br
-          %b Will this job continue for term of this loan?
-          .row
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :continue, true
-                Yes
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :continue, false
-                No
-          %br
-          %b If "No", please list expected duration
-          .row
-            .col-md-12
-              = f.text_area :no, class: "form-control"
-          %br
-          %b Additional Information
-          .row
-            .col-md-12
-              = f.text_area :additional, class: "form-control"
-          %br
-        .well
-          %h3.text-center Employment II
-          %b Employer
-          .row
-            .col-md-4
-              = f.text_field :employer2, class: "form-control"
-          %br
-          %b Employer Address
-          .row
-            .col-md-3
-              Address Line 1
-            .col-md-9
-              = f.text_field :employee2_address_line1, class: "form-control", placeholder: "Address Line1"
-          .row
-            .col-md-3
-              Address Line 2
-            .col-md-9
-              = f.text_field :employee2_address_line2, class: "form-control", placeholder: "Address Line2"
-          .row
-            .col-md-1
-              City
-            .col-md-3
-              = f.text_field :employee2_address_city, placeholder: "City", class: "form-control"
-            .col-md-1
-              State
-            .col-md-3
-              = f.text_field :employee2_address_state, placeholder: "State", class: "form-control"
-            .col-md-1
-              ZIP
-            .col-md-3
-              = f.text_field :employee2_address_zip, placeholder: "ZIP", class: "form-control"
-          .row
-            .col-md-1
-              Country
-            .col-md-4
-              = f.select :employee2_country, Country.all.sort, {}, {class: "form-control"}
-          %br
-          %b Position
-          .row
-            .col-md-4
-              = f.text_field :position2, class: "form-control"
-          %br
-          %b Supervisor Name
-          .row
-            .col-md-4
-              = f.text_field :supervisor2_firstname, placeholder: "First Name", class: "form-control"
-            .col-md-4
-              = f.text_field :supervisor2_lastname, placeholder: "Last Name", class: "form-control"
-          %br
-          %b GrossPay
-          .row
-            .col-md-4
-              .col-md-12
-                = f.input :grosspay2, label: false, error: "Grosspay is invalid."
-              -#= f.text_field :grosspay2, class: "form-control"
-          %br
-          %b Grosspay Disbursement
-          .row
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :disbursement, "Week"
-                Week
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :disbursement, "Month"
-                Month
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :disbursement, "Year"
-                Year
-          %br
-          %b Date Started/Starting
-          .row
-            .col-md-4
-              = f.date_select :startingdate2
-          %br
-          %b Will this job continue for term of this loan?
-          .row
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :continue2, false
-                No
-            .col-md-3
-              %label.radio-inline
-                = f.radio_button :continue2, true
-                Yes
-          %br
-          %b If "No", please list expected duration
-          .row
-            .col-md-12
-              = f.text_area :no2, class: "form-control", class: "form-control"
-          %br
-      #tab5.tab-pane
-        %hr
-        .well
-          %h2.text-center Additional Income
-          %br
-          Please list any additional income or benefits, including parental allowance, investment accounts, etc and attach copies of verification.  Alimony, separate maintenance, and child support need not be revealed unless you desire them to be considered in determining your credit worthiness.
-          %br
-          %b Source 1
-          .row
-            .col-md-1
-              Source
-            .col-md-4
-              = f.text_field :source1, class: "form-control"
-            .col-md-1
-              Amount
-            .col-md-4
-              .col-md-12
-                = f.input :amount1, label: false, error: "Amount is invalid."
-                -#= f.text_field :amount1, class: "form-control"
-          %br
-          #source_2
-            %b Source 2
-            .row
-              .col-md-1
-                Source
-              .col-md-4
-                = f.text_field :source2, class: "form-control"
-              .col-md-1
-                Amount
-              .col-md-4
-                .col-md-12
-                  = f.input :amount2, label: false, error: "Amount is invalid."
-                  -#= f.text_field :amount2, class: "form-control"
-            %br
-          #source_3
-            %b Source 3
-            .row
-              .col-md-1
-                Source
-              .col-md-4
-                = f.text_field :source3, class: "form-control"
-              .col-md-1
-                Amount
-              .col-md-4
-                .col-md-12
-                  = f.input :amount3, label: false, error: "Amount is invalid."
-                  -#= f.text_field :amount3, class: "form-control"
-            %br
-          .row
-            .col-md-4
-              %button{id: "add_another_source", type: "button"} Add Another Source
-        .well
-          %h3.text-center Bank Accounts
-          %br
-          If you want the SFCU to consider balances in your bank account(s), please provide statements for the last 2 months as verification.
-          %br
-          .well
-            %h4.text-center Bank Account1
-            %br
-            .row
-              .col-md-4
-                %b Name of Depository
-              .col-md-4
-                %b Type of Account
-              .col-md-4
-                %b Current Balance
-            .row
-              .col-md-4
-                = f.text_field :depository1, {class: "form-control"}
-              .col-md-4
-                = f.select :account_type1, options_for_select(['Checking', 'Money Market', 'Savings', 'Other']), {}, {class: "form-control"}
-                -#= f.select :account_type1, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]]), {}, {class: "form-control"}
-              .col-md-4
-                .col-md-12
-                  = f.input :balance1, label: false, error: "Current Balance is invalid."
-                  -#= f.text_field :balance1, {class: "form-control"}
-            %br
-          #bank_account_2
-            .well
-              %h4.text-center Bank Account2
-              %br
-              .row
-                .col-md-4
-                  %b Name of Depository
-                .col-md-4
-                  %b Type of Account
-                .col-md-4
-                  %b Current Balance
-              %br
-              .row
-                .col-md-4
-                  = f.text_field :depository2, {class: "form-control"}
-                .col-md-4
-                  = f.select :account_type2, options_for_select(['Checking', 'Money Market', 'Savings', 'Other']), {}, {class: "form-control"}
-                  -#= f.select :account_type2, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]]), {}, {class: "form-control"}
-                .col-md-4
-                  .col-md-12
-                    = f.input :balance2, label: false, error: "Current Balance is invalid."
-                    -#= f.text_field :balance2, {class: "form-control"}
-              %br
-          #bank_account_3
-            .well
-              %h4.text-center Bank Account3
-              %br
-              .row
-                .col-md-4
-                  %b Name of Depository
-                .col-md-4
-                  %b Type of Account
-                .col-md-4
-                  %b Current Balance
-              %br
-              .row
-                .col-md-4
-                  = f.text_field :depository3, {class: "form-control"}
-                .col-md-4
-                  = f.select :account_type3, options_for_select(['Checking', 'Money Market', 'Savings', 'Other']), {}, {class: "form-control"}
-                  -#= f.select :account_type3, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]]), {}, {class: "form-control"}
-                .col-md-4
-                  .col-md-12
-                    = f.input :balance3, label: false, error: "Current Balance is invalid."
-                    -#= f.text_field :balance3, {class: "form-control"}
-              %br
-          .row
-            .col-md-4
-              %button{id: "add_another_bankaccount", type: "button"} Add Another Bank Account
-        .well
-          %h3.text-center Property Owned
-          %br
-          Please provide copies of title(s) as verification.
-          %br
-          .well
-            %h4.text-center Property Owned1
-            %br
-            %b Address
-            .row
-              .col-md-9
-                = f.text_area :addr1
-            %br
-            %b Market Value
-            .row
-              .col-md-4
-                .col-md-12
-                  = f.input :market_value1, label: false, error: "Market Value is invalid."
-                  -#= f.text_field :market_value1
-            %br
-            %b Pledged as Collateral for Another Loan?
-            .row
-              .col-md-1
-                Yes
-              .col-md-1
-                = f.radio_button :pledged1, "yes"
-              .col-md-1
-                No
-              .col-md-1
-                = f.radio_button :pledged1, "no"
-            %br
-          #property_2
-            .well
-              %h4.text-center Property Owned2
-              %br
-              %b Address
+          .progress
+            .progress-bar.progress-bar-success.progress-bar-striped.active.bar
+      = simple_form_for @ulapp, html: {class: "form-horizontal"} do |f|
+        - if @ulapp.errors.any?
+          .text-center.alert.alert-danger.alert-error
+            = "There are some problems in your application form, please correct them and submit again.\n"
+        .tab-content
+          #tab1.tab-pane
+            %hr
+            .well.white
+              %h2.text-center Credit Request
+              %b Type*
               .row
                 .col-md-9
-                  = f.text_area :addr2
-              %br
-              %b Market Value
+                  = f.input :credit_type,
+                            :collection => ["Individual Credit", "Joint Credit"],
+                            :as => :radio_buttons, :item_wrapper_class => 'radio-inline', label: false, error: false
               .row
-                .col-md-4
-                  .col-md-12
-                    = f.input :market_value2, label: false, error: "Market Value is invalid."
-                    -#= f.text_field :market_value2
-              %br
-              %b Pledged as Collateral for Another Loan?
-              .row
-                .col-md-1
-                  Yes
-                .col-md-1
-                  = f.radio_button :pledged2, "yes"
-                .col-md-1
-                  No
-                .col-md-1
-                  = f.radio_button :pledged2, "no"
-              %br
-          #property_3
-            .well
-              %h4.text-center Property Owned3
-              %br
-              %b Address
-              .row
-                .col-md-4
-                  = f.text_field :addr3
-              %br
-              %b Market Value
-              .row
-                .col-md-4
-                  .col-md-12
-                    = f.input :market_value3, label: false, error: "Market Value is invalid."
-                    -#= f.text_field :market_value3
-              %br
-              %b Pledged as Collateral for Another Loan?
-              .row
-                .col-md-1
-                  Yes
-                .col-md-1
-                  = f.radio_button :pledged3, "yes"
-                .col-md-1
-                  No
-                .col-md-1
-                  = f.radio_button :pledged3, "no"
-              %br
-          .row
-            .col-md-4
-              %button{id: "add_another_property", type: "button"} Add Another Property Owned
-      #tab6.tab-pane
-        %hr
-        .well
-          %h2.text-center Credit Cards
-          %br
-          .well
-            %h3.text-center Creditor1
-            .row
-              .col-md-6
-                %b Creditor Name
-              .col-md-6
-                %b Current Balance
-            %br
-            .row
-              .col-md-6
-                = f.text_field :creditor1, class: "form-control"
-              .col-md-6
                 .col-md-12
-                  = f.input :cbalance1, label: false, error: "Current Balance is invalid."
-                  -#= f.text_field :cbalance1, class: "form-control"
-            %br
-            .row
-              .col-md-6
-                %b Date of Next Payment
-              .col-md-6
-                %b Average Monthly Payment
-            %br
-            .row
-              .col-md-6
-                = f.date_select :nextpayment1
-              .col-md-6
-                .col-md-12
-                  = f.input :avg1, label: false, error: "Average Monthly Payment is invalid."
-                  -#= f.text_field :avg1, class: "form-control"
-            %br
-            %b Past Due
-            .row
-              .col-md-3
-                %label.radio-inline
-                  = f.radio_button :pastdue1, false
-                  No
-              .col-md-3
-                %label.radio-inline
-                  = f.radio_button :pastdue1, true
-                  Yes
-            %br
-          #creditor_2
-            .well
-              %h3.text-center Creditor2
-              .row
-                .col-md-6
-                  %b Creditor Name
-                .col-md-6
-                  %b Current Balance
+                  For joint accounts please make two separate submissions of this form. On each form identify the full name and last 4 digits of SSN of the other co-signer/co-maker.
               %br
+              %b Joint applicants, please enter the full name and last 4 digits of SSN # of the other co-signer/co-marker*
               .row
-                .col-md-6
-                  = f.text_field :creditor2, class: "form-control"
                 .col-md-6
                   .col-md-12
-                    = f.input :cbalance2, label: false, error: "Current Balance is invalid."
-                  -#= f.text_field :cbalance2, class: "form-control"
-              %br
+                    = f.input :joint_applicant, placeholder: "Joint applicant, SSN", label: false, error: "Joint Applicant cannot be blank."
+                  -#= f.text_area :joint_applicant, class: "form-control"
+              %b Amount Requested*
               .row
-                .col-md-6
-                  %b Date of Next Payment
-                .col-md-6
-                  %b Average Monthly Payment
-              %br
-              .row
-                .col-md-6
-                  = f.date_select :nextpayment2
                 .col-md-6
                   .col-md-12
-                    = f.input :avg2, label: false, error: "Average Monthly Payment is invalid."
-                  -#= f.text_field :avg2, class: "form-control"
-              %br
-              %b Past Due
+                    = f.input :amount, label: false, error: "Amount Requested cannot be blank."
+                  -#= f.text_field :amount, class: "form-control"
+              %b Purpose*
               .row
-                .col-md-3
-                  %label.radio-inline
-                    = f.radio_button :pastdue2, false
-                    No
-                .col-md-3
-                  %label.radio-inline
-                    = f.radio_button :pastdue2, true
-                    Yes
-              %br
-          #creditor_3
-            .well
-              %h3.text-center Creditor3
-              .row
-                .col-md-6
-                  %b Creditor Name
-                .col-md-6
-                  %b Current Balance
-              %br
-              .row
-                .col-md-6
-                  = f.text_field :creditor3, class: "form-control"
                 .col-md-6
                   .col-md-12
-                    = f.input :cbalance3, label: false, error: "Current Balance is invalid."
-                  -#= f.text_field :cbalance3, class: "form-control"
-              %br
-              .row
-                .col-md-6
-                  %b Date of Next Payment
-                .col-md-6
-                  %b Average Monthly Payment
-              %br
-              .row
-                .col-md-6
-                  = f.date_select :nextpayment3
-                .col-md-6
-                  = f.text_field :avg3, class: "form-control"
-              %br
-              %b Past Due
-              .row
-                .col-md-3
-                  %label.radio-inline
-                    = f.radio_button :pastdue3, false
-                    No
-                .col-md-3
-                  %label.radio-inline
-                    = f.radio_button :pastdue3, true
-                    Yes
-              %br
-          #creditor_4
-            .well
-              %h3.text-center Creditor4
-              .row
-                .col-md-6
-                  %b Creditor Name
-                .col-md-6
-                  %b Current Balance
-              %br
-              .row
-                .col-md-6
-                  = f.text_field :creditor4, class: "form-control"
-                .col-md-6
-                  .col-md-12
-                    = f.input :cbalance4, label: false, error: "Current Balance is invalid."
-                  -#= f.text_field :cbalance4, class: "form-control"
-              %br
-              .row
-                .col-md-6
-                  %b Date of Next Payment
-                .col-md-6
-                  %b Average Monthly Payment
-              %br
-              .row
-                .col-md-6
-                  = f.date_select :nextpayment4
-                .col-md-6
-                  .col-md-12
-                    = f.input :avg4, label: false, error: "Current Balance is invalid."
-                  -#= f.text_field :avg4, class: "form-control"
-              %br
-              %b Past Due
-              .row
-                .col-md-3
-                  %label.radio-inline
-                    = f.radio_button :pastdue4, false
-                    No
-                .col-md-3
-                  %label.radio-inline
-                    = f.radio_button :pastdue4, true
-                    Yes
-              %br
-          .row
-            .col-md-4
-              %button{id: "add_another_creditor", type: "button"} Add Another Creditor
-        .well
-          %h2.text-center Loans
-          %br
-          .well
-            %h3.text-center Creditor 1
-            .row
-              .col-md-6
-                %b Creditor Name
-              .col-md-6
-                %b Creditor Type
-            %br
-            .row
-              .col-md-6
-                = f.text_field :loan_creditor1, class: "form-control"
-              .col-md-6
-                = f.text_field :creditor_type1, class: "form-control"
-            %br
-            .row
-              .col-md-6
-                %b Date of First Payment
-              .col-md-6
-                %b Date of Last Payment
-            %br
-            .row
-              .col-md-6
-                = f.date_select :first_payment1, class: "form-control"
-              .col-md-6
-                = f.date_select :last_payment1, class: "form-control"
-            %br
-            .row
-              .col-md-6
-                %b Monthly Payment
-              .col-md-6
-                %b Past Due
-            %br
-            .row
-              .col-md-6
-                .col-md-12
-                  = f.input :monthly1, label: false, error: "Monthly Payment is invalid."
-                -#= f.text_field :monthly1, class: "form-control"
-              .row
-                .col-md-3
-                  %label.radio-inline
-                    = f.radio_button :past_due1, false
-                    No
-                .col-md-3
-                  %label.radio-inline
-                    = f.radio_button :past_due1, true
-                    Yes
+                    = f.input :purpose, label: false, error: "Purpose cannot be blank."
+                    -#= f.text_field :purpose, class: "form-control", placeholder: "Please enter your purpose here"
 
-            %br
-          .well
-            %h3.text-center Creditor 2
-            .row
-              .col-md-6
-                %b Creditor Name
-              .col-md-6
-                %b Creditor Type
-            %br
-            .row
-              .col-md-6
-                = f.text_field :loan_creditor2, class: "form-control"
-              .col-md-6
-                = f.text_field :creditor_type2, class: "form-control"
-            %br
-            .row
-              .col-md-6
-                %b Date of First Payment
-              .col-md-6
-                %b Date of Last Payment
-            %br
-            .row
-              .col-md-6
-                = f.date_select :first_payment2
-              .col-md-6
-                = f.date_select :last_payment2, class: "form-control"
-            %br
-            .row
-              .col-md-6
-                %b Monthly Payment
-              .col-md-6
-                %b Past Due
-            %br
-            .row
-              .col-md-6
-                .col-md-12
-                  = f.input :monthly2, label: false, error: "Monthly Payment is invalid."
-                -#= f.text_field :monthly2, class: "form-control"
+          #tab2.tab-pane
+            %hr
+            .well.white
+              %h2.text-center General Information
+              %b Name*
+              .row
+                .col-md-6
+                  .col-md-12
+                    = f.input :first_name, label: false, placeholder: "First Name", error: "First Name cannot be blank."
+                    -#= f.text_field :first_name, class: "form-control", placeholder: "First Name"
+                .col-md-6
+                  .col-md-12
+                    = f.input :last_name, label: false, placeholder: "Last Name", error: "Last Name cannot be blank."
+                    -#= f.text_field :last_name, class: "form-control", placeholder: "Last Name"
+              .row
+                .col-md-6
+                  %b Birth Date*
+                .col-md-6
+                  %b Expected Graduation Date
+              .row
+                .col-md-6
+                  .col-md-12
+                    = f.input :dob, as: :date_picker, label: false
+                  -#= f.date_select :dob, { start_year: 1900, end_year: Date.today.year }
+                .col-md-6
+                  .col-md-12
+                    = f.input :graduation, as: :date_picker, label: false
+              -#= f.date_select :graduation, class: "form-control"
+              .row
+                .col-md-6
+                  %b Social Security Number*
+                .col-md-6
+                  %b SFCU Account Number
+              .row
+                .col-md-6
+                  .col-md-12
+                    = f.input :ssn, label: false, placeholder: "must be 9 digits", error: "SSN is invalid. eg. #########"
+                    -#= f.text_field :ssn, class: "form-control"
+                .col-md-6
+                  .col-md-12
+                    = f.input :sfcu_account, label: false
+                    -#= f.text_field :sfcu_account, class: "form-control"
+              .row
+                .col-md-6
+                  %b Name of Nearest Relative*
+                .col-md-6
+                  %b Phone Number of Nearest Relative*
+              .row
+                .col-md-6
+                  .col-md-12
+                    = f.input :name_relative, label: false, error: "Name of Nearest Relative cannot be blank."
+                    -#= f.text_field :name_relative, class: "form-control"
+                .col-md-6
+                  .col-md-12
+                    = f.input :phone_relative, label: false, error: "Phone number is invalid. eg. ###-###-####"
+                    -#= f.text_field :phone_relative, class: "form-control"
+              %b Mothers Madien Name
+              .row
+                .col-md-6
+                  = f.text_field :mothers, class: "form-control"
+              %br
+          #tab3.tab-pane
+            %hr
+            .well.white
+              %h2.text-center Contact Information
+              %br
+              %b Local Address
+              .row
+                .col-md-2
+                  Address Line 1*
+                .col-md-10
+                  .col-md-12
+                    = f.input :local_address_line1, label: false, placeholder: "Local Address Line1"
+                    -#= f.text_field :local_address_line1, class: "form-control", placeholder: "Local Address Line1"
+              .row
+                .col-md-2
+                  Address Line 2
+                .col-md-10
+                  .col-md-12
+                    = f.input :local_address_line2, label: false, placeholder: "Local Address Line2"
+                    -#= f.text_field :local_address_line2, class: "form-control", placeholder: "Local Address Line2"
+              .row
+                .col-md-1
+                  City*
+                .col-md-3
+                  .col-md-12
+                    = f.input :local_address_city, label: false, placeholder: "City"
+                    -#= f.text_field :local_address_city, placeholder: "City", class: "form-control"
+                .col-md-1
+                  State*
+                .col-md-3
+                  .col-md-12
+                    = f.input :local_address_state, label: false, placeholder: "State"
+                    -#= f.text_field :local_address_state, placeholder: "State", class: "form-control"
+                .col-md-1
+                  ZIP*
+                .col-md-3
+                  .col-md-12
+                    = f.input :local_address_zip, label: false, placeholder: "ZIP"
+                    -#= f.text_field :local_address_zip, placeholder: "ZIP", class: "form-control"
+              .row
+                .col-md-1
+                  Country*
+                .col-md-4
+                  .col-md-12
+                    = f.select :local_country, options_for_select(Country.all.sort), {}, {class: "form-control"}
+                    -#= f.select :local_country, Country.all.sort, {}, {class: "form-control"}
+              %br
+              .row
+                .col-md-12.checkbox
+                  %label
+                    = f.check_box :same
+                    %b Permanent Address Same as Local Address?
+              %br
+              #permanent_address
+                %b Permanent Address
+                .row
+                  .col-md-2
+                    Address Line 1*
+                  .col-md-10
+                    .col-md-12
+                      = f.input :perm_address_line1, label: false, placeholder: "Permanent Address Line1"
+                      -#= f.text_field :local_address_line1, class: "form-control", placeholder: "Local Address Line1"
+                .row
+                  .col-md-2
+                    Address Line 2
+                  .col-md-10
+                    .col-md-12
+                      = f.input :perm_address_line2, label: false, placeholder: "Permanent Address Line2"
+                      -#= f.text_field :local_address_line2, class: "form-control", placeholder: "Local Address Line2"
+                .row
+                  .col-md-1
+                    City*
+                  .col-md-3
+                    .col-md-12
+                      = f.input :perm_address_city, label: false, placeholder: "City"
+                      -#= f.text_field :local_address_city, placeholder: "City", class: "form-control"
+                  .col-md-1
+                    State*
+                  .col-md-3
+                    .col-md-12
+                      = f.input :perm_address_state, label: false, placeholder: "State"
+                      -#= f.text_field :local_address_state, placeholder: "State", class: "form-control"
+                  .col-md-1
+                    ZIP*
+                  .col-md-3
+                    .col-md-12
+                      = f.input :perm_address_zip, label: false, placeholder: "ZIP"
+                      -#= f.text_field :local_address_zip, placeholder: "ZIP", class: "form-control"
+                .row
+                  .col-md-1
+                    Country*
+                  .col-md-4
+                    .col-md-12
+                      = f.select :perm_country, options_for_select(Country.all.sort), {}, {class: "form-control"}
+                      -#= f.select :local_country, Country.all.sort, {}, {class: "form-control"}
+                %br
+              %b E-mail*
+              .row
+                .col-md-6
+                  .col-md-12
+                    = f.input :e_mail, label: false, placeholder: "email@example.com", error: "E-mail is invalid. eg. email@example.com"
+                    -#= f.text_field :e_mail, class: "form-control"
+              %b Phone*
+              .row
+                .col-md-3
+                  Phone Number
+                .col-md-3
+                  .col-md-12
+                    = f.input :phone_number, label: false, placeholder: "must be 10 digits", error: "Phone Number is invalid. eg. ###-###-####"
+                    -#= f.text_field :phone_number, class: "form-control"
+                .col-md-2
+                  Phone Type*
+                .col-md-4
+                  = f.select :phone_type, ([['Home', 'Home'], ['Cell', 'Cell'], ['Business', 'Business']]), {}, {class: "form-control"}
+              %b Alternate Phone
+              .row
+                .col-md-3
+                  Phone Number
+                .col-md-3
+                  .col-md-12
+                    = f.input :alter_number, label: false, error: "Phone Number is invalid. eg. ###-###-####"
+                    -#= f.text_field :alter_number, class: "form-control"
+                .col-md-2
+                  Phone Type
+                .col-md-4
+                  = f.select :alter_type, ([['Home', 'Home'], ['Cell', 'Cell'], ['Business', 'Business']]), {}, {class: "form-control"}
+          #tab4.tab-pane
+            %hr
+            .well.white
+              %h2.text-center Employment Income
+              %br
+              Instructions: Please complete the following section regarding current employment and attach the necessary documentation.
+              %br
+              %ul
+              %li If you are a current student at the University of Pennsylvania, please list both employment during the  regular semester and summer employment (if applicable).
+              %li If you are a graduating senior, please list information on your employment after graduation.
+              %li Please supply your most recent pay stub or an email from your employer confirming your employment as  well.white as income or a fellowship/financial aid offer letter.
+              %li If you have just graduated and will be starting a new job, please provide an employment offer acceptance  letter for verification of income.
+              %li If you are self-employed, please provide IRS returns for the last two years.
+              %br
+            .well.white
+              %h3.text-center Employment I
+              %b Employer*
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :employer, label: false, error: "Employer cannot be blank."
+                    -#= f.text_field :employer, class: "form-control"
+              %br
+              %b Employer Address
+              .row
+                .col-md-2
+                  Address Line 1
+                .col-md-10
+                  = f.text_field :employee_address_line1, class: "form-control", placeholder: "Address Line1"
+              .row
+                .col-md-2
+                  Address Line 2
+                .col-md-10
+                  = f.text_field :employee_address_line2, class: "form-control", placeholder: "Address Line2"
+              .row
+                .col-md-1
+                  City
+                .col-md-3
+                  = f.text_field :employee_address_city, placeholder: "City", class: "form-control"
+                .col-md-1
+                  State
+                .col-md-3
+                  = f.text_field :employee_address_state, placeholder: "State", class: "form-control"
+                .col-md-1
+                  ZIP
+                .col-md-3
+                  = f.text_field :employee_address_zip, placeholder: "ZIP", class: "form-control"
+              .row
+                .col-md-1
+                  Country
+                .col-md-4
+                  = f.select :employee_country, Country.all.sort, {}, {class: "form-control"}
+              %br
+              %b Position
+              .row
+                .col-md-4
+                  = f.text_field :position, class: "form-control"
+              %br
+              %b Supervisor Name*
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :supervisor_firstname, placeholder: "First Name", label: false
+                    -#= f.text_field :supervisor_firstname, placeholder: "First Name", class: "form-control"
+                .col-md-4
+                  .col-md-12
+                    = f.input :supervisor_lastname, placeholder: "Last Name", label: false
+                    -#= f.text_field :supervisor_lastname, placeholder: "Last Name", class: "form-control"
+              %br
+              %b GrossPay*
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :grosspay, label: false, error: "Grosspay is invalid."
+                    -#= f.text_field :grosspay, class: "form-control"
+              %br
+              %b Grosspay Disbursement
               .row
                 .col-md-3
                   %label.radio-inline
-                    = f.radio_button :past_due2, false
+                    = f.radio_button :disbursement, "Week"
+                    Week
+                .col-md-3
+                  %label.radio-inline
+                    = f.radio_button :disbursement, "Month"
+                    Month
+                .col-md-3
+                  %label.radio-inline
+                    = f.radio_button :disbursement, "Year"
+                    Year
+              %br
+              %b Date Started/Starting
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :startingdate, as: :date_picker, label: false
+              %br
+              %b Will this job continue for term of this loan?
+              .row
+                .col-md-3
+                  %label.radio-inline
+                    = f.radio_button :continue, true
+                    Yes
+                .col-md-3
+                  %label.radio-inline
+                    = f.radio_button :continue, false
+                    No
+              %br
+              %b If "No", please list expected duration
+              .row
+                .col-md-12
+                  = f.text_area :no, class: "form-control"
+              %br
+              %b Additional Information
+              .row
+                .col-md-12
+                  = f.text_area :additional, class: "form-control"
+              %br
+            .well.white
+              %h3.text-center Employment II
+              %b Employer
+              .row
+                .col-md-4
+                  = f.text_field :employer2, class: "form-control"
+              %br
+              %b Employer Address
+              .row
+                .col-md-2
+                  Address Line 1
+                .col-md-10
+                  = f.text_field :employee2_address_line1, class: "form-control", placeholder: "Address Line1"
+              .row
+                .col-md-2
+                  Address Line 2
+                .col-md-10
+                  = f.text_field :employee2_address_line2, class: "form-control", placeholder: "Address Line2"
+              .row
+                .col-md-1
+                  City
+                .col-md-3
+                  = f.text_field :employee2_address_city, placeholder: "City", class: "form-control"
+                .col-md-1
+                  State
+                .col-md-3
+                  = f.text_field :employee2_address_state, placeholder: "State", class: "form-control"
+                .col-md-1
+                  ZIP
+                .col-md-3
+                  = f.text_field :employee2_address_zip, placeholder: "ZIP", class: "form-control"
+              .row
+                .col-md-1
+                  Country
+                .col-md-4
+                  = f.select :employee2_country, Country.all.sort, {}, {class: "form-control"}
+              %br
+              %b Position
+              .row
+                .col-md-4
+                  = f.text_field :position2, class: "form-control"
+              %br
+              %b Supervisor Name
+              .row
+                .col-md-4
+                  = f.text_field :supervisor2_firstname, placeholder: "First Name", class: "form-control"
+                .col-md-4
+                  = f.text_field :supervisor2_lastname, placeholder: "Last Name", class: "form-control"
+              %br
+              %b GrossPay
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :grosspay2, label: false, error: "Grosspay is invalid."
+                  -#= f.text_field :grosspay2, class: "form-control"
+              %br
+              %b Grosspay Disbursement
+              .row
+                .col-md-3
+                  %label.radio-inline
+                    = f.radio_button :disbursement, "Week"
+                    Week
+                .col-md-3
+                  %label.radio-inline
+                    = f.radio_button :disbursement, "Month"
+                    Month
+                .col-md-3
+                  %label.radio-inline
+                    = f.radio_button :disbursement, "Year"
+                    Year
+              %br
+              %b Date Started/Starting
+              .row
+                .col-md-4
+                  .col-md-12
+                    = f.input :startingdate2, as: :date_picker, label: false
+              %br
+              %b Will this job continue for term of this loan?
+              .row
+                .col-md-3
+                  %label.radio-inline
+                    = f.radio_button :continue2, false
                     No
                 .col-md-3
                   %label.radio-inline
-                    = f.radio_button :past_due2, true
+                    = f.radio_button :continue2, true
                     Yes
+              %br
+              %b If "No", please list expected duration
+              .row
+                .col-md-12
+                  = f.text_area :no2, class: "form-control", class: "form-control"
+              %br
+          #tab5.tab-pane
+            %hr
+            .well.white
+              %h2.text-center Additional Income
+              %br
+              Please list any additional income or benefits, including parental allowance, investment accounts, etc and attach copies of verification.  Alimony, separate maintenance, and child support need not be revealed unless you desire them to be considered in determining your credit worthiness.
+              %br
+              %b Source 1
+              .row
+                .col-md-1
+                  Source
+                .col-md-4
+                  = f.text_field :source1, class: "form-control"
+                .col-md-1
+                  Amount
+                .col-md-4
+                  .col-md-12
+                    = f.input :amount1, label: false, error: "Amount is invalid."
+                    -#= f.text_field :amount1, class: "form-control"
+              %br
+              #source_2
+                %b Source 2
+                .row
+                  .col-md-1
+                    Source
+                  .col-md-4
+                    = f.text_field :source2, class: "form-control"
+                  .col-md-1
+                    Amount
+                  .col-md-4
+                    .col-md-12
+                      = f.input :amount2, label: false, error: "Amount is invalid."
+                      -#= f.text_field :amount2, class: "form-control"
+                %br
+              #source_3
+                %b Source 3
+                .row
+                  .col-md-1
+                    Source
+                  .col-md-4
+                    = f.text_field :source3, class: "form-control"
+                  .col-md-1
+                    Amount
+                  .col-md-4
+                    .col-md-12
+                      = f.input :amount3, label: false, error: "Amount is invalid."
+                      -#= f.text_field :amount3, class: "form-control"
+                %br
+              .row
+                .col-md-4
+                  %button.btn.btn-primary{id: "add_another_source", type: "button"} Add Another Source
+            .well.white
+              %h3.text-center Bank Accounts
+              %br
+              If you want the SFCU to consider balances in your bank account(s), please provide statements for the last 2 months as verification.
+              %br
+              .well.white
+                %h4.text-center Bank Account1
+                %br
+                .row
+                  .col-md-4
+                    %b Name of Depository
+                  .col-md-4
+                    %b Type of Account
+                  .col-md-4
+                    %b Current Balance
+                .row
+                  .col-md-4
+                    = f.text_field :depository1, {class: "form-control"}
+                  .col-md-4
+                    = f.select :account_type1, options_for_select(['Checking', 'Money Market', 'Savings', 'Other']), {}, {class: "form-control"}
+                    -#= f.select :account_type1, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]]), {}, {class: "form-control"}
+                  .col-md-4
+                    .col-md-12
+                      = f.input :balance1, label: false, error: "Current Balance is invalid."
+                      -#= f.text_field :balance1, {class: "form-control"}
+              #bank_account_2
+                .well.white
+                  %h4.text-center Bank Account2
+                  %br
+                  .row
+                    .col-md-4
+                      %b Name of Depository
+                    .col-md-4
+                      %b Type of Account
+                    .col-md-4
+                      %b Current Balance
+                  %br
+                  .row
+                    .col-md-4
+                      = f.text_field :depository2, {class: "form-control"}
+                    .col-md-4
+                      = f.select :account_type2, options_for_select(['Checking', 'Money Market', 'Savings', 'Other']), {}, {class: "form-control"}
+                      -#= f.select :account_type2, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]]), {}, {class: "form-control"}
+                    .col-md-4
+                      .col-md-12
+                        = f.input :balance2, label: false, error: "Current Balance is invalid."
+                        -#= f.text_field :balance2, {class: "form-control"}
+                  %br
+              #bank_account_3
+                .well.white
+                  %h4.text-center Bank Account3
+                  %br
+                  .row
+                    .col-md-4
+                      %b Name of Depository
+                    .col-md-4
+                      %b Type of Account
+                    .col-md-4
+                      %b Current Balance
+                  %br
+                  .row
+                    .col-md-4
+                      = f.text_field :depository3, {class: "form-control"}
+                    .col-md-4
+                      = f.select :account_type3, options_for_select(['Checking', 'Money Market', 'Savings', 'Other']), {}, {class: "form-control"}
+                      -#= f.select :account_type3, ([['Checking', 1], ['Money Market', 2], ['Savings', 3], ['Other',4]]), {}, {class: "form-control"}
+                    .col-md-4
+                      .col-md-12
+                        = f.input :balance3, label: false, error: "Current Balance is invalid."
+                        -#= f.text_field :balance3, {class: "form-control"}
+                  %br
+              .row
+                .col-md-4
+                  %button.btn.btn-primary{id: "add_another_bankaccount", type: "button"} Add Another Bank Account
+            .well.white
+              %h3.text-center Property Owned
+              %br
+              Please provide copies of title(s) as verification.
+              %br
+              .well.white
+                %h4.text-center Property Owned1
+                %br
+                %b Address
+                .row
+                  .col-md-9
+                    = f.text_area :addr1
+                %br
+                %b Market Value
+                .row
+                  .col-md-4
+                    .col-md-12
+                      = f.input :market_value1, label: false, error: "Market Value is invalid."
+                      -#= f.text_field :market_value1
+                %br
+                %b Pledged as Collateral for Another Loan?
+                .row
+                  .col-md-1
+                    Yes
+                  .col-md-1
+                    = f.radio_button :pledged1, "yes"
+                  .col-md-1
+                    No
+                  .col-md-1
+                    = f.radio_button :pledged1, "no"
+                %br
+              #property_2
+                .well.white
+                  %h4.text-center Property Owned2
+                  %br
+                  %b Address
+                  .row
+                    .col-md-9
+                      = f.text_area :addr2
+                  %br
+                  %b Market Value
+                  .row
+                    .col-md-4
+                      .col-md-12
+                        = f.input :market_value2, label: false, error: "Market Value is invalid."
+                        -#= f.text_field :market_value2
+                  %br
+                  %b Pledged as Collateral for Another Loan?
+                  .row
+                    .col-md-1
+                      Yes
+                    .col-md-1
+                      = f.radio_button :pledged2, "yes"
+                    .col-md-1
+                      No
+                    .col-md-1
+                      = f.radio_button :pledged2, "no"
+                  %br
+              #property_3
+                .well.white
+                  %h4.text-center Property Owned3
+                  %br
+                  %b Address
+                  .row
+                    .col-md-4
+                      = f.text_field :addr3
+                  %br
+                  %b Market Value
+                  .row
+                    .col-md-4
+                      .col-md-12
+                        = f.input :market_value3, label: false, error: "Market Value is invalid."
+                        -#= f.text_field :market_value3
+                  %br
+                  %b Pledged as Collateral for Another Loan?
+                  .row
+                    .col-md-1
+                      Yes
+                    .col-md-1
+                      = f.radio_button :pledged3, "yes"
+                    .col-md-1
+                      No
+                    .col-md-1
+                      = f.radio_button :pledged3, "no"
+                  %br
+              .row
+                .col-md-4
+                  %button.btn.btn-primary{id: "add_another_property", type: "button"} Add Another Property Owned
+          #tab6.tab-pane
+            %hr
+            .well.white
+              %h2.text-center Credit Cards
+              %br
+              .well.white
+                %h3.text-center Creditor1
+                .row
+                  .col-md-6
+                    %b Creditor Name
+                  .col-md-6
+                    %b Current Balance
+                %br
+                .row
+                  .col-md-6
+                    = f.text_field :creditor1, class: "form-control"
+                  .col-md-6
+                    .col-md-12
+                      = f.input :cbalance1, label: false, error: "Current Balance is invalid."
+                      -#= f.text_field :cbalance1, class: "form-control"
+                %br
+                .row
+                  .col-md-6
+                    %b Date of Next Payment
+                  .col-md-6
+                    %b Average Monthly Payment
+                %br
+                .row
+                  .col-md-6
+                    = f.date_select :nextpayment1
+                  .col-md-6
+                    .col-md-12
+                      = f.input :avg1, label: false, error: "Average Monthly Payment is invalid."
+                      -#= f.text_field :avg1, class: "form-control"
+                %br
+                %b Past Due
+                .row
+                  .col-md-3
+                    %label.radio-inline
+                      = f.radio_button :pastdue1, false
+                      No
+                  .col-md-3
+                    %label.radio-inline
+                      = f.radio_button :pastdue1, true
+                      Yes
+                %br
+              #creditor_2
+                .well.white
+                  %h3.text-center Creditor2
+                  .row
+                    .col-md-6
+                      %b Creditor Name
+                    .col-md-6
+                      %b Current Balance
+                  %br
+                  .row
+                    .col-md-6
+                      = f.text_field :creditor2, class: "form-control"
+                    .col-md-6
+                      .col-md-12
+                        = f.input :cbalance2, label: false, error: "Current Balance is invalid."
+                      -#= f.text_field :cbalance2, class: "form-control"
+                  %br
+                  .row
+                    .col-md-6
+                      %b Date of Next Payment
+                    .col-md-6
+                      %b Average Monthly Payment
+                  %br
+                  .row
+                    .col-md-6
+                      = f.date_select :nextpayment2
+                    .col-md-6
+                      .col-md-12
+                        = f.input :avg2, label: false, error: "Average Monthly Payment is invalid."
+                      -#= f.text_field :avg2, class: "form-control"
+                  %br
+                  %b Past Due
+                  .row
+                    .col-md-3
+                      %label.radio-inline
+                        = f.radio_button :pastdue2, false
+                        No
+                    .col-md-3
+                      %label.radio-inline
+                        = f.radio_button :pastdue2, true
+                        Yes
+                  %br
+              #creditor_3
+                .well.white
+                  %h3.text-center Creditor3
+                  .row
+                    .col-md-6
+                      %b Creditor Name
+                    .col-md-6
+                      %b Current Balance
+                  %br
+                  .row
+                    .col-md-6
+                      = f.text_field :creditor3, class: "form-control"
+                    .col-md-6
+                      .col-md-12
+                        = f.input :cbalance3, label: false, error: "Current Balance is invalid."
+                      -#= f.text_field :cbalance3, class: "form-control"
+                  %br
+                  .row
+                    .col-md-6
+                      %b Date of Next Payment
+                    .col-md-6
+                      %b Average Monthly Payment
+                  %br
+                  .row
+                    .col-md-6
+                      = f.date_select :nextpayment3
+                    .col-md-6
+                      = f.text_field :avg3, class: "form-control"
+                  %br
+                  %b Past Due
+                  .row
+                    .col-md-3
+                      %label.radio-inline
+                        = f.radio_button :pastdue3, false
+                        No
+                    .col-md-3
+                      %label.radio-inline
+                        = f.radio_button :pastdue3, true
+                        Yes
+                  %br
+              #creditor_4
+                .well.white
+                  %h3.text-center Creditor4
+                  .row
+                    .col-md-6
+                      %b Creditor Name
+                    .col-md-6
+                      %b Current Balance
+                  %br
+                  .row
+                    .col-md-6
+                      = f.text_field :creditor4, class: "form-control"
+                    .col-md-6
+                      .col-md-12
+                        = f.input :cbalance4, label: false, error: "Current Balance is invalid."
+                      -#= f.text_field :cbalance4, class: "form-control"
+                  %br
+                  .row
+                    .col-md-6
+                      %b Date of Next Payment
+                    .col-md-6
+                      %b Average Monthly Payment
+                  %br
+                  .row
+                    .col-md-6
+                      = f.date_select :nextpayment4
+                    .col-md-6
+                      .col-md-12
+                        = f.input :avg4, label: false, error: "Current Balance is invalid."
+                      -#= f.text_field :avg4, class: "form-control"
+                  %br
+                  %b Past Due
+                  .row
+                    .col-md-3
+                      %label.radio-inline
+                        = f.radio_button :pastdue4, false
+                        No
+                    .col-md-3
+                      %label.radio-inline
+                        = f.radio_button :pastdue4, true
+                        Yes
+                  %br
+              .row
+                .col-md-4
+                  %button.btn.btn-primary{id: "add_another_creditor", type: "button"} Add Another Creditor
+            .well.white
+              %h2.text-center Loans
+              %br
+              .well.white
+                %h3.text-center Creditor 1
+                .row
+                  .col-md-6
+                    %b Creditor Name
+                  .col-md-6
+                    %b Creditor Type
+                %br
+                .row
+                  .col-md-6
+                    = f.text_field :loan_creditor1, class: "form-control"
+                  .col-md-6
+                    = f.text_field :creditor_type1, class: "form-control"
+                %br
+                .row
+                  .col-md-6
+                    %b Date of First Payment
+                  .col-md-6
+                    %b Date of Last Payment
+                %br
+                .row
+                  .col-md-6
+                    = f.date_select :first_payment1, class: "form-control"
+                  .col-md-6
+                    = f.date_select :last_payment1, class: "form-control"
+                %br
+                .row
+                  .col-md-6
+                    %b Monthly Payment
+                  .col-md-6
+                    %b Past Due
+                %br
+                .row
+                  .col-md-6
+                    .col-md-12
+                      = f.input :monthly1, label: false, error: "Monthly Payment is invalid."
+                    -#= f.text_field :monthly1, class: "form-control"
+                  .row
+                    .col-md-3
+                      %label.radio-inline
+                        = f.radio_button :past_due1, false
+                        No
+                    .col-md-3
+                      %label.radio-inline
+                        = f.radio_button :past_due1, true
+                        Yes
 
-            %br
-      #tab7.tab-pane
-        %hr
-        .well
-          %h2.text-center Monthly Expenses
-          %br
-          Please estimate your monthly expenses.  If any expense is paid by another party, you must show provide proof of this.  Proof can be in the form of a notarized letter from that party.
-          %br
-          %br
-          %b Expenses
-          .col-md-12
-            = f.text_area :expenses, value: "Rent/Housing $_______________ If none, list the person who foots the expense_______________ Food $_______________ If none, list the person who foots the expense_______________ Utilities $_______________ If none, list the person who foots the expense_______________ Bursar Bill.", rows:3, class:"form-control"
-          %br
-          %b Upload Documents
-          .row
-            .col-md-12
-              Please use the attachment upload features below to upload any necessary documentation previously mention within the form. Additional upload field will propogate when file is uploaded.
-          %br
-          %br
-          %b File1
-          .row
-            .col-md-4
-              = f.file_field :file1
-          %br
-          #file_option_2
-            %b File2
-            .row
-              .col-md-4
-                = f.file_field :file2
-            %br
-          #file_option_3
-            %b File3
-            .row
-              .col-md-4
-                = f.file_field :file3
-            %br
-          #file_option_4
-            %b File4
-            .row
-              .col-md-4
-                = f.file_field :file4
-            %br
-          #file_option_5
-            %b File5
-            .row
-              .col-md-4
-                = f.file_field :file5
-            %br
-          #file_option_6
-            %b File6
-            .row
-              .col-md-4
-                = f.file_field :file6
-            %br
-          .row
-            .col-md-4
-              %button{id: "add_another_file", type: "button"} Add Another File
-      #tab8.tab-pane
-        %hr
-          .well
-            %h2.text-center Applicant's Signature
-            %br
-            .row
+                %br
+              .well.white
+                %h3.text-center Creditor 2
+                .row
+                  .col-md-6
+                    %b Creditor Name
+                  .col-md-6
+                    %b Creditor Type
+                %br
+                .row
+                  .col-md-6
+                    = f.text_field :loan_creditor2, class: "form-control"
+                  .col-md-6
+                    = f.text_field :creditor_type2, class: "form-control"
+                %br
+                .row
+                  .col-md-6
+                    %b Date of First Payment
+                  .col-md-6
+                    %b Date of Last Payment
+                %br
+                .row
+                  .col-md-6
+                    = f.date_select :first_payment2
+                  .col-md-6
+                    = f.date_select :last_payment2, class: "form-control"
+                %br
+                .row
+                  .col-md-6
+                    %b Monthly Payment
+                  .col-md-6
+                    %b Past Due
+                %br
+                .row
+                  .col-md-6
+                    .col-md-12
+                      = f.input :monthly2, label: false, error: "Monthly Payment is invalid."
+                    -#= f.text_field :monthly2, class: "form-control"
+                  .row
+                    .col-md-3
+                      %label.radio-inline
+                        = f.radio_button :past_due2, false
+                        No
+                    .col-md-3
+                      %label.radio-inline
+                        = f.radio_button :past_due2, true
+                        Yes
+
+                %br
+          #tab7.tab-pane
+            %hr
+            .well.white
+              %h2.text-center Monthly Expenses
+              %br
+              Please estimate your monthly expenses.  If any expense is paid by another party, you must show provide proof of this.  Proof can be in the form of a notarized letter from that party.
+              %br
+              %br
+              %b Expenses
               .col-md-12
-                You promise that everything you have stated in this application is correct to the best of your knowledge and that the above information is a complete listing of what you owe.  If there are any important changes you will notify us in writing immediately.  You authorize the SFCU to obtain credit reports in connection with this application for credit and for any update, increase, renewal, extension or collection of the credit received.  You understand that the SFCU will rely on the information in this application and your credit report to make its decision. If you request, the SFCU will tell you the name and address of any credit bureau from which it received a credit report on you. It is a federal crime to willfully and deliberately provide incomplete or incorrect information on loan applications made to federal credit unions or state chartered credit unions insured by the NCUA.
-            %br
-            .col-md-12
-              = f.input :yesorno, as: :boolean, label: "I have read this disclosure and understand and agree to all terms, conditions and requirements here stated.*", error: false
+                = f.text_area :expenses, value: "Rent/Housing $_______________ If none, list the person who foots the expense_______________ Food $_______________ If none, list the person who foots the expense_______________ Utilities $_______________ If none, list the person who foots the expense_______________ Bursar Bill.", rows:3, class:"form-control"
               %br
-            .row
-              .col-md-4.col-md-offset-4
-                %b Electronic Signature*
-            .row
-              .col-md-4.col-md-offset-4
-                = f.input :signature, placeholder: "Electronic Sigature", label: false, error: "Please Sign here"
-                -#= f.text_field :signature, class: "form-control"
-        .actions.text-center
-          = f.submit 'Submit', class: "btn btn-primary"
-    %ul.pager.wizard
-      %li.previous.first
-        %a{:href => "javascript:;"} First
-      %li.previous
-        %a{:href => "javascript:;"} Previous
-      %li.next.last
-        %a{:href => "javascript:;"} Last
-      %li.next
-        %a{:href => "javascript:;"} Next
-      %li.next.finish{:style => "display:none;"}
-        %a{:href => "javascript:;"} Finish
+              %b Upload Documents
+              .row
+                .col-md-12
+                  Please use the attachment upload features below to upload any necessary documentation previously mention within the form. Additional upload field will propogate when file is uploaded.
+              %br
+              %br
+              %b File1
+              .row
+                .col-md-4
+                  = f.file_field :file1
+              %br
+              #file_option_2
+                %b File2
+                .row
+                  .col-md-4
+                    = f.file_field :file2
+                %br
+              #file_option_3
+                %b File3
+                .row
+                  .col-md-4
+                    = f.file_field :file3
+                %br
+              #file_option_4
+                %b File4
+                .row
+                  .col-md-4
+                    = f.file_field :file4
+                %br
+              #file_option_5
+                %b File5
+                .row
+                  .col-md-4
+                    = f.file_field :file5
+                %br
+              #file_option_6
+                %b File6
+                .row
+                  .col-md-4
+                    = f.file_field :file6
+                %br
+              .row
+                .col-md-4
+                  %button.btn.btn-primary{id: "add_another_file", type: "button"} Add Another File
+          #tab8.tab-pane
+            %hr
+              .well.white
+                %h2.text-center Applicant's Signature
+                %br
+                .row
+                  .col-md-12
+                    You promise that everything you have stated in this application is correct to the best of your knowledge and that the above information is a complete listing of what you owe.  If there are any important changes you will notify us in writing immediately.  You authorize the SFCU to obtain credit reports in connection with this application for credit and for any update, increase, renewal, extension or collection of the credit received.  You understand that the SFCU will rely on the information in this application and your credit report to make its decision. If you request, the SFCU will tell you the name and address of any credit bureau from which it received a credit report on you. It is a federal crime to willfully and deliberately provide incomplete or incorrect information on loan applications made to federal credit unions or state chartered credit unions insured by the NCUA.
+                %br
+                .col-md-12
+                  = f.input :yesorno, as: :boolean, label: "I have read this disclosure and understand and agree to all terms, conditions and requirements here stated.*", error: false
+                  %br
+                .row
+                  .col-md-4.col-md-offset-4
+                    %b Electronic Signature*
+                .row
+                  .col-md-4.col-md-offset-4
+                    = f.input :signature, placeholder: "Electronic Sigature", label: false, error: "Please Sign here"
+                    -#= f.text_field :signature, class: "form-control"
+            .actions.text-center
+              = f.submit 'Submit', class: "btn btn-primary"
+            %hr
+        %ul.pager.wizard
+          %li.previous.first
+            %a{:href => "javascript:;"} First
+          %li.previous
+            %a{:href => "javascript:;"} Previous
+          %li.next.last
+            %a{:href => "javascript:;"} Last
+          %li.next
+            %a{:href => "javascript:;"} Next
+          %li.next.finish{:style => "display:none;"}
+            %a{:href => "javascript:;"} Finish
 -#= render 'form'
 
 -#= link_to 'Back', maapps_path
@@ -1117,7 +1102,7 @@
             $('#add_another_creditor').hide();
           }
         });
-
+        $('#permanent_address').toggle(!$('#ulapp_same').is(":checked"));
         $('#ulapp_same').change(function(){
           if(this.checked){
             $("#permanent_address").hide();
@@ -1126,8 +1111,6 @@
           }
 
         });
-
-
   	}});
   });
 

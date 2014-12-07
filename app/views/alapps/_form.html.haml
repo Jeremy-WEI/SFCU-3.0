@@ -1,21 +1,21 @@
-
 #rootwizard
-  %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
-    .container
+  %nav.navbar.navbar-default.white{:role => "navigation"}
+    .container{style:"width:100%"}
       %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
         %li
           %a{"data-toggle" => "tab", :href => "#tab1"} General Information
         %li
           %a{"data-toggle" => "tab", :href => "#tab2"} Incomes and Assets
         %li
-          %a{"data-toggle" => "tab", :href => "#tab3"} Outstanding Debts and Expenses
+          %a{"data-toggle" => "tab", :href => "#tab3"} Debts and Expenses
         %li
           %a{"data-toggle" => "tab", :href => "#tab4"} Supporting Documents
-  .progress
-    .progress-bar.progress-bar-success.progress-bar-striped.active.bar
+      %br
+      .progress
+        .progress-bar.progress-bar-success.progress-bar-striped.active.bar
   = simple_form_for @alapp, html: {class: "form-horizontal"} do |f|
     - if @alapp.errors.any?
-      #error_explanation
+      .text-center.alert.alert-danger.alert-error
         = "There are some problems in your application form, please correct them and submit again.\n"
         -#%ul
         -#  - @alapp.errors.full_messages.each do |msg|
@@ -23,7 +23,7 @@
     .tab-content
       #tab1.tab-pane
         %hr
-        .well
+        .well.white
           %h2.text-center General Information
           .row
             .col-md-12
@@ -40,23 +40,23 @@
                   .col-md-12
                     = f.input :dob, as: :date_picker, label: false
           .row
-            = render "text_field4", :f => f, :title => "Social Security Number*", :var => "ssn", :place_holder => "#########", :error_msg => ""
+            = render "text_field4", :f => f, :title => "Social Security Number*", :var => "ssn", :place_holder => "#########", :error_msg => "SSN can't be blank, and it must be 9 digits with no other symbols, for example: 123456789"
           .row
             .col-md-12
               Please enter your SSN in the following format: ######### (nine digits).
               If you do not have an SSN, please enter 000000000.
           %br
           .row
-            = render "text_field4", :f => f, :title => "Mother's Maiden Name*", :var => "mother_maiden", :place_holder => "", :error_msg => ""
+            = render "text_field4", :f => f, :title => "Mother's Maiden Name*", :var => "mother_maiden", :place_holder => "", :error_msg => "Mother's maiden name can't be blank"
           .row
             .col-md-12
               %b Alumni*
               = render "radio_button", :f => f,
                                        :var => "alumni",
                                        :list => [["Yes", true], ["No", false]],
-                                       :error_msg => ""
+                                       :error_msg => "Are you an alumni of Penn?"
         %hr
-        .well
+        .well.white
           %h2.text-center Credit Request
 
           %b Type*
@@ -65,19 +65,19 @@
               = render "radio_button", :f => f,
                                        :var => "credit_req_type",
                                        :list => ["Individual Credit", "Joint Credit"],
-                                       :error_msg => ""
+                                       :error_msg => "You must select a credit request type"
           .row
-            = render "text_field4", :f => f, :title => "Amount Requested*", :var => "mother_maiden", :place_holder => "In US dollars", :error_msg => ""
+            = render "text_field4", :f => f, :title => "Amount Requested*", :var => "mother_maiden", :place_holder => "In US dollars", :error_msg => "Amount is required (in dollars) and must be in numerical form"
           .row
             .col-md-12
               %b Term*
               = render "radio_button", :f => f,
                                        :var => "term",
                                        :list => ["36 months", "48 months", "60 months"],
-                                       :error_msg => ""
+                                       :error_msg => "Amount is required (in dollars) and must be a positive number"
         %hr
 
-        .well
+        .well.white
           %h2.text-center Vehicle Information
 
           .row
@@ -86,7 +86,7 @@
               = render "radio_button", :f => f,
                                        :var => "vehicle_condition",
                                        :list => ["New", "Old"],
-                                       :error_msg => ""
+                                       :error_msg => "What is the condition of your vehicle?"
           .row
             .col-md-12
               %b Price Range*
@@ -95,12 +95,12 @@
                   Min
                   %br
                   .col-md-12
-                    = f.input :price_range_min, placeholder: "In US dollars", label: false, error: ""
+                    = f.input :price_range_min, placeholder: "In US dollars", label: false, error: "Price range is required and must be a positive number"
                 .col-md-4
                   Max
                   %br
                   .col-md-12
-                    = f.input :price_range_max, placeholder: "In US dollars", label: false, error: ""
+                    = f.input :price_range_max, placeholder: "In US dollars", label: false, error: "Maximum price must be numeric and larger than minimum price"
           %br
           .row
             = render "select", f: f, title: "Model Year*", var: "model_year", list: (1800..2050), selected: 2014, error_msg: ""
@@ -118,14 +118,16 @@
                 = f.input :veh_mid_size, as: :boolean, label: "middle size", error: ""
               .col-md-2
                 = f.input :veh_full_size, as: :boolean, label: "full size", error: ""
+          .row
+            .col-md-12
               .col-md-2
                 = f.input :veh_sports_car, as: :boolean, label: "sports car", error: ""
-              .col-md-1
+              .col-md-2
                 = f.input :veh_truck, as: :boolean, label: "truck", error: ""
-              .col-md-1
-                = f.input :veh_van, as: :boolean, label: "van", error: ""
+              .col-md-4
+                = f.input :veh_van, as: :boolean, label: "van", error: "You must choose a vehicle type"
         %hr
-        .well
+        .well.white
           %h2.text-center Contact Information
           .row
             .col-md-12
@@ -145,18 +147,18 @@
           .row
             .col-md-12
               .row
-                = render "text_field4", :f => f, :title => "Email*", :var => "e_mail", :place_holder => "email", :error_msg => ""
-                = render "text_field4", :f => f, :title => "Phone*", :var => "phone_number", :place_holder => "###-###-####", :error_msg => ""
+                = render "text_field4", :f => f, :title => "Email*", :var => "e_mail", :place_holder => "email", :error_msg => "Invalid email address"
+                = render "text_field4", :f => f, :title => "Phone*", :var => "phone_number", :place_holder => "###-###-####", :error_msg => "Invalid phone number"
               .row
-                = render "text_field4", :f => f, :title => "Name of Nearest Relative*", :var => "name_nearest_relative", :place_holder => "Name of your relative", :error_msg => ""
-                = render "text_field4", :f => f, :title => "Phone of Nearest Relative*", :var => "phone_nearest_relative", :place_holder => "###-###-####", :error_msg => ""
+                = render "text_field4", :f => f, :title => "Name of Nearest Relative*", :var => "name_nearest_relative", :place_holder => "Name of your relative", :error_msg => "This field is required."
+                = render "text_field4", :f => f, :title => "Phone of Nearest Relative*", :var => "phone_nearest_relative", :place_holder => "###-###-####", :error_msg => "Invalid phone number"
         %hr
-        .well
+        .well.white
           %h2.text-center Driver's License
           .row
             .col-md-12
               .row
-                = render "text_field4", :f => f, :title => "Driver's License Number*", :var => "driver_lisence_num", :place_holder => "##-##-###", :error_msg => ""
+                = render "text_field4", :f => f, :title => "Driver's License Number*", :var => "driver_lisence_num", :place_holder => "Your driver's license number", :error_msg => "Invalid driver's license."
               %br
               %b Driver's License
               .row
@@ -168,7 +170,7 @@
                   = f.file_field :driver_license_file
       #tab2.tab-pane
         %hr
-        .well
+        .well.white
           %h2.text-center Employment
           .row
             .col-md-12
@@ -185,9 +187,9 @@
           %br
           .row
             .col-md-4
-              %button{id: "add_employment", type: "button"} Add Another Employment
+              %button.btn.btn-primary{id: "add_employment", type: "button"} Add Another Employment
         %hr
-        .well
+        .well.white
           %h2.text-center Additional Income
           .row
             .col-md-12
@@ -205,9 +207,9 @@
           %br
           .row
             .col-md-4
-              %button{id: "add_additional_income", type: "button"} Add Another Income
+              %button.btn.btn-primary{id: "add_additional_income", type: "button"} Add Another Income
         %hr
-        .well
+        .well.white
           %h2.text-center Assets
           .row
             .col-md-12
@@ -224,7 +226,7 @@
               = render "account", :f => f, :x =>4
           .row
             .col-md-4
-              %button{id: "add_account", type: "button"} Add Another Account
+              %button.btn.btn-primary{id: "add_account", type: "button"} Add Another Account
           %br
           %br
           .row
@@ -245,10 +247,10 @@
           %br
           .row
             .col-md-4
-              %button{id: "add_property", type: "button"} Add Another Property Owned
+              %button.btn.btn-primary{id: "add_property", type: "button"} Add Another Property Owned
       #tab3.tab-pane
         %hr
-        .well
+        .well.white
           %h2.text-center Outstanding Debts
           %h3.text-left Credit Cards
           .row
@@ -267,7 +269,7 @@
             %br
             .row
               .col-md-4
-                %button{id: "add_credit_card", type: "button"} Add Another Credit Card
+                %button.btn.btn-primary{id: "add_credit_card", type: "button"} Add Another Credit Card
           %br
           %h3.text-left Loans
           .row
@@ -286,48 +288,48 @@
             %br
             .row
               .col-md-4
-                %button{id: "add_another_loan", type: "button"} Add Another Loan
-        .well
+                %button.btn.btn-primary{id: "add_another_loan", type: "button"} Add Another Loan
+        .well.white
           %h2.text-center Montly Expenses
           %br
           .row
-            = render "text_field6", :f => f, :title => "Renting/Housing", :var => "rent_housing", :place_holder => "", :error_msg => ""
+            = render "text_field6", :f => f, :title => "Renting/Housing", :var => "rent_housing", :place_holder => "", :error_msg => "amount must be positive and in numeric form"
             .col-md-6
               If none, list the person who foots the expense
               = f.input :rent_person, label: false, error: ""
           %br
           .row
-            = render "text_field6", :f => f, :title => "Food", :var => "utilities", :place_holder => "", :error_msg => ""
+            = render "text_field6", :f => f, :title => "Food", :var => "utilities", :place_holder => "", :error_msg => "amount must be positive and in numeric form"
             .col-md-6
               If none, list the person who foots the expense
               = f.input :food_person, label: false, error: ""
           %br
           .row
-            = render "text_field6", :f => f, :title => "Utilities", :var => "utilities", :place_holder => "", :error_msg => ""
+            = render "text_field6", :f => f, :title => "Utilities", :var => "utilities", :place_holder => "", :error_msg => "amount must be positive and in numeric form"
             .col-md-6
               If none, list the person who foots the expense
               = f.input :utilities_person, label: false, error: ""
           %br
           .row
-            = render "text_field6", :f => f, :title => "Phone Bill", :var => "phone_bill", :place_holder => "", :error_msg => ""
+            = render "text_field6", :f => f, :title => "Phone Bill", :var => "phone_bill", :place_holder => "", :error_msg => "amount must be positive and in numeric form"
             .col-md-6
               If none, list the person who foots the expense
               = f.input :phone_bill_person, label: false, error: ""
           %br
           .row
-            = render "text_field6", :f => f, :title => "Bursar Bill", :var => "bursar_bill", :place_holder => "", :error_msg => ""
+            = render "text_field6", :f => f, :title => "Bursar Bill", :var => "bursar_bill", :place_holder => "", :error_msg => "amount must be positive and in numeric form"
             .col-md-6
               Please provide a copy of your bursar bill (in supporting documents), which can be obtained from Penn-in-Touch for our verification.
           %br
           .row
-            = render "text_field6", :f => f, :title => "Miscellaneous", :var => "miscellaneous", :place_holder => "", :error_msg => ""
+            = render "text_field6", :f => f, :title => "Miscellaneous", :var => "miscellaneous", :place_holder => "", :error_msg => "amount must be positive and in numeric form"
             .col-md-6
               Explanation of miscellaneous expenses
               = f.input :miscellaneous_expl, label: false, error: ""
 
       #tab4.tab-pane
         %br
-        .well
+        .well.white
           %h2.text-center Supporting Documents
           #file_option_1
             = render 'file', :f => f, :x => 1
@@ -342,8 +344,8 @@
           %br
           .row
             .col-md-4
-              %button{id: "add_another_file", type: "button"} Add Another File
-        .well
+              %button.btn.btn-primary{id: "add_another_file", type: "button"} Add Another File
+        .well.white
           %h2.text-center Terms & Conditions
           %br
           You promise that everything you have stated in this application is correct to
@@ -359,32 +361,30 @@
           or state chartered credit unions insured by the NCUA.
           %br
           %br
-          %b I have read this disclosure and understand and agree to all terms, conditions and
-          %b requirements here stated.*
+          -#%b I have read this disclosure and understand and agree to all terms, conditions and
+          -#%b requirements here stated.*
           %br
-          .row.text-center
-            .col-md-12.checkbox
-              %br
+          .row
+            .col-md-2.col-md-offset-3
+              %b
+                Agree Terms*
+            .col-md-7
               %label
-                = f.check_box :agree_terms
-                %b
-                  Agree Terms
-          %br
+                = f.input :agree_terms, as: :boolean, label: "I have read this disclosure and understand and agree to all terms, conditions and requirements here stated.", error: ""
           .row
             .col-md-2.col-md-offset-3
               %b Signature*
             .col-md-4
-              = f.input :signature, label: false, error: ""
-          %br
+              = f.input :signature, label: false, error: "You must agree the terms and sign in order to submit the form."
           .row
             .col-md-2.col-md-offset-3
-              %b Today's date
+              %b Today's date*
             .col-md-4
-              = f.input :today_date, as: :date_picker, label: false
+              = f.input :today_date, as: :date_picker, label: false, error: "Please enter today's date"
           %br
         .actions.text-center
           = f.submit 'Submit', class: "btn btn-primary"
-
+        %hr
     %ul.pager.wizard
       %li.previous.first
         %a{:href => "javascript:;"} First
@@ -476,8 +476,6 @@
             $('#add_another_loan').hide();
           }
         });
-
-
   		for ( var i = 2; i <= 5; i++ ) {
             $("#file_option_"+i).hide();
         }
@@ -489,7 +487,7 @@
             $('#add_another_file').hide();
           }
         });
-
+        $('#permanent_address').toggle(!$('#alapp_same').is(":checked"));
         $('#alapp_same').change(function(){
           if(this.checked){
             $("#permanent_address").hide();
