@@ -82,7 +82,6 @@ class MaappsController < ApplicationController
         csv << tmp
       end
     end
-    send_file(file)
   end
 
   def zip_files(folder_path, csv_path, export_lists)
@@ -99,6 +98,8 @@ class MaappsController < ApplicationController
       csv_name = csv_path.sub(folder_path + '/','')
       zipfile.add(csv_name, csv_path)
     end
+    send_file(archive)
+
   end
 
   # DELETE /maapps/1
