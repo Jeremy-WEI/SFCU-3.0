@@ -1,6 +1,7 @@
 class CreateAlapps < ActiveRecord::Migration
   def change
     create_table :alapps do |t|
+      t.string :application_status, default: "Unprocessed"
       t.string :first
       t.string :middle
       t.string :last
@@ -28,6 +29,7 @@ class CreateAlapps < ActiveRecord::Migration
       t.string :local_address_state
       t.string :local_address_zip
       t.integer :local_country
+      t.string :local_country
       t.string :perm_address_line1
       t.string :perm_address_line2
       t.string :perm_address_city
@@ -56,6 +58,30 @@ class CreateAlapps < ActiveRecord::Migration
       t.string :employ2_freq
       t.boolean :employ2_continue
       t.string :employ2_expect_duration
+      t.string :employ2_employer
+      t.string :employ2_employer_addr
+      t.string :employ2_position
+      t.string :employ2_supervisor
+      t.float :employ2_grosspay
+      t.string :employ2_freq
+      t.boolean :employ2_continue
+      t.string :employ2_expect_duration
+      t.string :employ3_employer
+      t.string :employ3_employer_addr
+      t.string :employ3_position
+      t.string :employ3_supervisor
+      t.float :employ3_grosspay
+      t.string :employ3_freq
+      t.boolean :employ3_continue
+      t.string :employ3_expect_duration
+      t.string :employ4_employer
+      t.string :employ4_employer_addr
+      t.string :employ4_position
+      t.string :employ4_supervisor
+      t.float :employ4_grosspay
+      t.string :employ4_freq
+      t.boolean :employ4_continue
+      t.string :employ4_expect_duration
       t.string :add_income1_source
       t.float :add_income1_amount
       t.string :add_income1_freq
@@ -65,6 +91,9 @@ class CreateAlapps < ActiveRecord::Migration
       t.string :add_income3_source
       t.float :add_income3_amount
       t.string :add_income3_freq
+      t.string :add_income4_source
+      t.float :add_income4_amount
+      t.string :add_income4_freq
       t.string :account1_depository
       t.string :account1_type
       t.float :account1_current_balance
@@ -87,6 +116,16 @@ class CreateAlapps < ActiveRecord::Migration
       t.string :property2_state
       t.float :property2_market_val
       t.boolean :property2_another_loan
+      t.string :property3_st_addr
+      t.string :property3_city
+      t.string :property3_state
+      t.float :property3_market_val
+      t.boolean :property3_another_loan
+      t.string :property4_st_addr
+      t.string :property4_city
+      t.string :property4_state
+      t.float :property4_market_val
+      t.boolean :property4_another_loan
       t.string :credit_card1_name
       t.float :credit_card1_limit
       t.float :credit_card1_balance

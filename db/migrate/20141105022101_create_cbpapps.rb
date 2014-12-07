@@ -1,6 +1,7 @@
 class CreateCbpapps < ActiveRecord::Migration
   def change
     create_table :cbpapps do |t|
+      t.string :application_status, default: "Unprocessed"
       t.string :period
       t.string :first_name
       t.string :middle_name
