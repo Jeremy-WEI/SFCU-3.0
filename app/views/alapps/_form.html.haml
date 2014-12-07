@@ -1,21 +1,20 @@
-
 #rootwizard
-  %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
-    .container
+  %nav.navbar.navbar-default{:role => "navigation"}
+    .container{style:"width:100%"}
       %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
         %li
           %a{"data-toggle" => "tab", :href => "#tab1"} General Information
         %li
           %a{"data-toggle" => "tab", :href => "#tab2"} Incomes and Assets
         %li
-          %a{"data-toggle" => "tab", :href => "#tab3"} Outstanding Debts and Expenses
+          %a{"data-toggle" => "tab", :href => "#tab3"} Debts and Expenses
         %li
           %a{"data-toggle" => "tab", :href => "#tab4"} Supporting Documents
   .progress
     .progress-bar.progress-bar-success.progress-bar-striped.active.bar
   = simple_form_for @alapp, html: {class: "form-horizontal"} do |f|
     - if @alapp.errors.any?
-      #error_explanation
+      #error_explanation.text-center
         = "There are some problems in your application form, please correct them and submit again.\n"
         -#%ul
         -#  - @alapp.errors.full_messages.each do |msg|
@@ -185,7 +184,7 @@
           %br
           .row
             .col-md-4
-              %button{id: "add_employment", type: "button"} Add Another Employment
+              %button.btn.btn-primary{id: "add_employment", type: "button"} Add Another Employment
         %hr
         .well
           %h2.text-center Additional Income
@@ -205,7 +204,7 @@
           %br
           .row
             .col-md-4
-              %button{id: "add_additional_income", type: "button"} Add Another Income
+              %button.btn.btn-primary{id: "add_additional_income", type: "button"} Add Another Income
         %hr
         .well
           %h2.text-center Assets
@@ -224,7 +223,7 @@
               = render "account", :f => f, :x =>4
           .row
             .col-md-4
-              %button{id: "add_account", type: "button"} Add Another Account
+              %button.btn.btn-primary{id: "add_account", type: "button"} Add Another Account
           %br
           %br
           .row
@@ -245,7 +244,7 @@
           %br
           .row
             .col-md-4
-              %button{id: "add_property", type: "button"} Add Another Property Owned
+              %button.btn.btn-primary{id: "add_property", type: "button"} Add Another Property Owned
       #tab3.tab-pane
         %hr
         .well
@@ -267,7 +266,7 @@
             %br
             .row
               .col-md-4
-                %button{id: "add_credit_card", type: "button"} Add Another Credit Card
+                %button.btn.btn-primary{id: "add_credit_card", type: "button"} Add Another Credit Card
           %br
           %h3.text-left Loans
           .row
@@ -286,7 +285,7 @@
             %br
             .row
               .col-md-4
-                %button{id: "add_another_loan", type: "button"} Add Another Loan
+                %button.btn.btn-primary{id: "add_another_loan", type: "button"} Add Another Loan
         .well
           %h2.text-center Montly Expenses
           %br
@@ -342,7 +341,7 @@
           %br
           .row
             .col-md-4
-              %button{id: "add_another_file", type: "button"} Add Another File
+              %button.btn.btn-primary{id: "add_another_file", type: "button"} Add Another File
         .well
           %h2.text-center Terms & Conditions
           %br
@@ -476,8 +475,6 @@
             $('#add_another_loan').hide();
           }
         });
-
-
   		for ( var i = 2; i <= 5; i++ ) {
             $("#file_option_"+i).hide();
         }
@@ -489,7 +486,7 @@
             $('#add_another_file').hide();
           }
         });
-
+        $('#permanent_address').toggle(!$('#alapp_same').is(":checked"));
         $('#alapp_same').change(function(){
           if(this.checked){
             $("#permanent_address").hide();
