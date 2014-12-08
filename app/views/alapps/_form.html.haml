@@ -17,9 +17,9 @@
     - if @alapp.errors.any?
       .text-center.alert.alert-danger.alert-error
         = "There are some problems in your application form, please correct them and submit again.\n"
-        %ul
-          - @alapp.errors.full_messages.each do |msg|
-            %li= msg
+        -#%ul
+        -#  - @alapp.errors.full_messages.each do |msg|
+        -#    %li= msg
     .tab-content
       #tab1.tab-pane
         %hr
