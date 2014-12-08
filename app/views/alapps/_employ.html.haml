@@ -14,7 +14,7 @@
           = render "text_field6", :f => f, :title => "Supervisor", :var => "employ#{x}_supervisor", :place_holder => "", :error_msg => ""
         %br
         .row
-          = render "text_field6", :f => f, :title => "Grosspay", :var => "employ#{x}_grosspay", :place_holder => "In US dollars", :error_msg => ""
+          = render "text_field6", :f => f, :title => "Grosspay", :var => "employ#{x}_grosspay", :place_holder => "In US dollars", :error_msg => "amount must be positive and in numeric form"
           .col-md-6
             %b Frequency
             = render "radio_button", :f => f,

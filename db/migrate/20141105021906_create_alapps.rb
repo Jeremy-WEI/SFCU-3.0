@@ -10,11 +10,11 @@ class CreateAlapps < ActiveRecord::Migration
       t.string :ssn
       t.string :alumni
       t.string :credit_req_type
-      t.float :amount_req
+      t.string :amount_req
       t.string :term
       t.string :vehicle_condition
-      t.float :price_range_min
-      t.float :price_range_max
+      t.string :price_range_min
+      t.string :price_range_max
       t.integer :model_year
       t.boolean :veh_subcompact
       t.boolean :veh_compact
@@ -46,7 +46,7 @@ class CreateAlapps < ActiveRecord::Migration
       t.string :employ1_employer_addr
       t.string :employ1_position
       t.string :employ1_supervisor
-      t.float :employ1_grosspay
+      t.string :employ1_grosspay
       t.string :employ1_freq
       t.boolean :employ1_continue
       t.string :employ1_expect_duration
@@ -54,7 +54,7 @@ class CreateAlapps < ActiveRecord::Migration
       t.string :employ2_employer_addr
       t.string :employ2_position
       t.string :employ2_supervisor
-      t.float :employ2_grosspay
+      t.string :employ2_grosspay
       t.string :employ2_freq
       t.boolean :employ2_continue
       t.string :employ2_expect_duration
@@ -62,7 +62,7 @@ class CreateAlapps < ActiveRecord::Migration
       t.string :employ2_employer_addr
       t.string :employ2_position
       t.string :employ2_supervisor
-      t.float :employ2_grosspay
+      t.string :employ2_grosspay
       t.string :employ2_freq
       t.boolean :employ2_continue
       t.string :employ2_expect_duration
@@ -70,7 +70,7 @@ class CreateAlapps < ActiveRecord::Migration
       t.string :employ3_employer_addr
       t.string :employ3_position
       t.string :employ3_supervisor
-      t.float :employ3_grosspay
+      t.string :employ3_grosspay
       t.string :employ3_freq
       t.boolean :employ3_continue
       t.string :employ3_expect_duration
@@ -78,112 +78,112 @@ class CreateAlapps < ActiveRecord::Migration
       t.string :employ4_employer_addr
       t.string :employ4_position
       t.string :employ4_supervisor
-      t.float :employ4_grosspay
+      t.string :employ4_grosspay
       t.string :employ4_freq
       t.boolean :employ4_continue
       t.string :employ4_expect_duration
       t.string :add_income1_source
-      t.float :add_income1_amount
+      t.string :add_income1_amount
       t.string :add_income1_freq
       t.string :add_income2_source
-      t.float :add_income2_amount
+      t.string :add_income2_amount
       t.string :add_income2_freq
       t.string :add_income3_source
-      t.float :add_income3_amount
+      t.string :add_income3_amount
       t.string :add_income3_freq
       t.string :add_income4_source
-      t.float :add_income4_amount
+      t.string :add_income4_amount
       t.string :add_income4_freq
       t.string :account1_depository
       t.string :account1_type
-      t.float :account1_current_balance
+      t.string :account1_current_balance
       t.string :account2_depository
       t.string :account2_type
-      t.float :account2_current_balance
+      t.string :account2_current_balance
       t.string :account3_depository
       t.string :account3_type
-      t.float :account3_current_balance
+      t.string :account3_current_balance
       t.string :account4_depository
       t.string :account4_type
-      t.float :account4_current_balance
+      t.string :account4_current_balance
       t.string :property1_st_addr
       t.string :property1_city
       t.string :property1_state
-      t.float :property1_market_val
+      t.string :property1_market_val
       t.boolean :property1_another_loan
       t.string :property2_st_addr
       t.string :property2_city
       t.string :property2_state
-      t.float :property2_market_val
+      t.string :property2_market_val
       t.boolean :property2_another_loan
       t.string :property3_st_addr
       t.string :property3_city
       t.string :property3_state
-      t.float :property3_market_val
+      t.string :property3_market_val
       t.boolean :property3_another_loan
       t.string :property4_st_addr
       t.string :property4_city
       t.string :property4_state
-      t.float :property4_market_val
+      t.string :property4_market_val
       t.boolean :property4_another_loan
       t.string :credit_card1_name
-      t.float :credit_card1_limit
-      t.float :credit_card1_balance
+      t.string :credit_card1_limit
+      t.string :credit_card1_balance
       t.date :credit_card1_date_payment
-      t.float :credit_card1_aveg_month_pay
+      t.string :credit_card1_aveg_month_pay
       t.boolean :credit_card1_pastdue
       t.string :credit_card2_name
-      t.float :credit_card2_limit
-      t.float :credit_card2_balance
+      t.string :credit_card2_limit
+      t.string :credit_card2_balance
       t.date :credit_card2_date_payment
-      t.float :credit_card2_aveg_month_pay
+      t.string :credit_card2_aveg_month_pay
       t.boolean :credit_card2_pastdue
       t.string :credit_card3_name
-      t.float :credit_card3_limit
-      t.float :credit_card3_balance
+      t.string :credit_card3_limit
+      t.string :credit_card3_balance
       t.date :credit_card3_date_payment
-      t.float :credit_card3_aveg_month_pay
+      t.string :credit_card3_aveg_month_pay
       t.boolean :credit_card3_pastdue
       t.string :credit_card4_name
-      t.float :credit_card4_limit
-      t.float :credit_card4_balance
+      t.string :credit_card4_limit
+      t.string :credit_card4_balance
       t.date :credit_card4_date_payment
-      t.float :credit_card4_aveg_month_pay
+      t.string :credit_card4_aveg_month_pay
       t.boolean :credit_card4_pastdue
       t.string :loan1_name
       t.string :loan1_type
-      t.float :loan1_principal
+      t.string :loan1_principal
       t.date :loan1_date_payment
-      t.float :loan1_month_payment
+      t.string :loan1_month_payment
       t.boolean :loan1_pastdue
       t.string :loan2_name
       t.string :loan2_type
-      t.float :loan2_principal
+      t.string :loan2_principal
       t.date :loan2_date_payment
-      t.float :loan2_month_payment
+      t.string :loan2_month_payment
       t.boolean :loan2_pastdue
       t.string :loan3_name
       t.string :loan3_type
-      t.float :loan3_principal
+      t.string :loan3_principal
       t.date :loan3_date_payment
-      t.float :loan3_month_payment
+      t.string :loan3_month_payment
       t.boolean :loan3_pastdue
       t.string :loan4_name
       t.string :loan4_type
-      t.float :loan4_principal
+      t.string :loan4_principal
       t.date :loan4_date_payment
-      t.float :loan4_month_payment
+      t.string :loan4_month_payment
       t.boolean :loan4_pastdue
-      t.float :rent_housing
+      t.string :rent_housing
       t.string :rent_person
-      t.float :food
+      t.string :food
       t.string :food_person
-      t.float :utilities
+      t.string :utilities
       t.string :utilities_person
-      t.float :phone_bill
+      t.string :phone_bill
       t.string :phone_bill_person
-      t.float :bursar_bill
-      t.float :miscellaneous
+      t.string :bursar_bill
+      t.string :miscellaneous
       t.string :miscellaneous_expl
       t.string :document1
       t.string :document2

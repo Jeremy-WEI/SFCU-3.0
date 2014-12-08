@@ -17,9 +17,9 @@
     - if @alapp.errors.any?
       .text-center.alert.alert-danger.alert-error
         = "There are some problems in your application form, please correct them and submit again.\n"
-        -#%ul
-        -#  - @alapp.errors.full_messages.each do |msg|
-        -#    %li= msg
+        %ul
+          - @alapp.errors.full_messages.each do |msg|
+            %li= msg
     .tab-content
       #tab1.tab-pane
         %hr
@@ -67,7 +67,7 @@
                                        :list => ["Individual Credit", "Joint Credit"],
                                        :error_msg => "You must select a credit request type"
           .row
-            = render "text_field4", :f => f, :title => "Amount Requested*", :var => "mother_maiden", :place_holder => "In US dollars", :error_msg => "Amount is required (in dollars) and must be in numerical form"
+            = render "text_field4", :f => f, :title => "Amount Requested*", :var => "amount_req", :place_holder => "In US dollars", :error_msg => "Amount is required (in dollars) and must be in numerical form"
           .row
             .col-md-12
               %b Term*

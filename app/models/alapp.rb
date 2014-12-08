@@ -41,30 +41,37 @@ class Alapp < ActiveRecord::Base
   validate :check_dob
   validates :ssn, format: {with: SSN_FORMAT}
 
-  validates :amount_req, numericality: { greater_than_or_equal_to: 0.0}
+  validates :amount_req, numericality: { greater_than_or_equal_to: 0.0}, allow_blank: false
 
+  validates :price_range_min, numericality: { greater_than_or_equal_to: 0.0}, allow_blank: false
+  validates :price_range_max, numericality: { greater_than_or_equal_to: 0.0}, allow_blank: false
   validate :validates_vehicle_price_range
-  validates :price_range_min, numericality: { greater_than_or_equal_to: 0.0}
-  validates :price_range_max, numericality: { greater_than_or_equal_to: :price_range_min}
+
+  # validate :validates_amount_req_present?
   validate :validates_vehicle_type
   validate :validates_local_address
   validate :validates_perm_address
-  validate :validate_alumni
+  validate :validates_alumni
 
   validates :e_mail, format: {with: EMAIL_FORMAT}
   validates :phone_number, :phone_nearest_relative, format: {with: PHONE_FORMAT}
 
 
-  validates :employ1_grosspay, :employ2_grosspay, :employ3_grosspay,
-            :account1_current_balance, :account2_current_balance, :account3_current_balance, :account4_current_balance,
-            :property1_market_val, :property2_market_val,
+  validates :employ1_grosspay, :employ2_grosspay,       :employ3_grosspay,            :employ4_grosspay,
+            :add_income1_amount,          :add_income2_amount,          :add_income3_amount,          :add_income4_amount,
+            :account1_current_balance,    :account2_current_balance,    :account3_current_balance,    :account4_current_balance,
+            :property1_market_val,        :property2_market_val,        :property3_market_val,        :property4_market_val,
+            :credit_card1_limit,          :credit_card2_limit,          :credit_card3_limit,          :credit_card4_limit,
+            :credit_card1_balance,        :credit_card2_balance,        :credit_card3_balance,        :credit_card4_balance,
+            :credit_card1_aveg_month_pay, :credit_card2_aveg_month_pay, :credit_card3_aveg_month_pay, :credit_card4_aveg_month_pay,
+            :loan1_principal,             :loan2_principal,             :loan3_principal,             :loan4_principal,
+            :loan1_month_payment,         :loan2_month_payment,         :loan3_month_payment,         :loan4_month_payment,
             :rent_housing, :food, :utilities, :phone_bill, :bursar_bill, :miscellaneous,
-            numericality: {greater_than_or_equal_to: 0.0}, allow_nil: true
+            allow_blank: true, numericality: {greater_than_or_equal_to: 0.0}
 
 
-
-  def validate_alumni
-    if(alumni.nil? or alumni == "")
+  def validates_alumni
+    if alumni.nil? or alumni == ""
       errors.add(:alumni, "Alumni can't be blank")
     elsif alumni == "t" or alumni == "yes" or alumni == "true"
       self.alumni = "Yes"
@@ -81,12 +88,10 @@ class Alapp < ActiveRecord::Base
     end
   end
 
+
   def validates_vehicle_price_range
-    if not price_range_min.present?
-      errors.add(:price_range_min, "Price range required and must be in numerical form")
-    end
-    if not price_range_max.present?
-      errors.add(:price_range_max, "Price range required and must be in numerical form")
+    if price_range_max.to_i < price_range_min.to_i
+      errors.add(:price_range_max, "Maximum price must be numeric and larger than minimum price")
     end
   end
 

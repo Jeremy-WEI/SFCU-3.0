@@ -7,7 +7,7 @@
       .accordion-inner
         .row
           = render "text_field4", :f => f, :title => "Source", :var => "add_income#{x}_source", :place_holder => "", :error_msg => ""
-          = render "text_field3", :f => f, :title => "Amount", :var => "add_income#{x}_amount", :place_holder => "in US dollars", :error_msg => ""
+          = render "text_field3", :f => f, :title => "Amount", :var => "add_income#{x}_amount", :place_holder => "in US dollars", :error_msg => "amount must be positive and in numeric form"
           .col-md-5
             %b Frequency
             = render "radio_button", :f => f,

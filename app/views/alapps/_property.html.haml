@@ -13,7 +13,7 @@
             = f.select :"property#{x}_state", options_for_select(us_states), {}, {class: "form-control"}
         %br
         .row
-          = render "text_field4", :f => f, :title => "Market Value", :var => "property#{x}_market_val", :place_holder => "", :error_msg => ""
+          = render "text_field4", :f => f, :title => "Market Value", :var => "property#{x}_market_val", :place_holder => "", :error_msg => "amount must be positive and in numeric form"
           .col-md-6
             %b Pledged as Collateral for Another Loan?
             = render "radio_button", :f => f,

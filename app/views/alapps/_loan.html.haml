@@ -14,7 +14,7 @@
           = render "text_field4", :f => f, :title => "Principal", :var => "loan#{x}_principal", :place_holder => "", :error_msg => ""
         %br
         .row
-          = render "text_field4", :f => f, :title => "Monthly Payment", :var => "loan#{x}_month_payment", :place_holder => "", :error_msg => ""
+          = render "text_field4", :f => f, :title => "Monthly Payment", :var => "loan#{x}_month_payment", :place_holder => "", :error_msg => "amount must be positive and in numeric form"
           .col-md-4
             %b Date of Next Payment
             %br

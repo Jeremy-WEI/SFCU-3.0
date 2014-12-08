@@ -11,5 +11,5 @@
             %b Type of Account
             %br
             = f.select :"account#{x}_type", options_for_select(type_of_account, 'Checking'), {}, {class: "form-control"}
-          = render "text_field4", :f => f, :title => "Current Balance", :var => "account#{x}_current_balance", :place_holder => "In US Dollars", :error_msg => ""
+          = render "text_field4", :f => f, :title => "Current Balance", :var => "account#{x}_current_balance", :place_holder => "In US Dollars", :error_msg => "amount must be positive and in numeric form"
         %br

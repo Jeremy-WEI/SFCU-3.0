@@ -14,7 +14,6 @@
         %th.col-md-1.text-center
       - @alapps.each do |applicant|
         %tr{:class => "#{if applicant.application_status == 'Unprocessed' then 'active' elsif applicant.application_status == 'Processed' then 'success' else 'info' end}"}
-        %tr
           %td.text-center= check_box_tag 'exports[]', applicant.id, false, id: "exports_#{applicant.id}", class: "checkbox", form: "exports"
           %td.text-center= label_tag "exports_#{applicant.id}", applicant.first.to_s + ' ' + applicant.last.to_s
           %td.text-center= label_tag "exports_#{applicant.id}", applicant.amount_req.to_s

@@ -6,11 +6,11 @@
       .accordion-inner
         .row
           = render "text_field4", :f => f, :title => "Creditor Name", :var => "credit_card#{x}_name", :place_holder => "", :error_msg => ""
-          = render "text_field4", :f => f, :title => "Credit Limit", :var => "credit_card#{x}_limit", :place_holder => "", :error_msg => ""
-          = render "text_field4", :f => f, :title => "Credit Balance", :var => "credit_card#{x}_balance", :place_holder => "", :error_msg => ""
+          = render "text_field4", :f => f, :title => "Credit Limit", :var => "credit_card#{x}_limit", :place_holder => "", :error_msg => "amount must be positive and in numeric form"
+          = render "text_field4", :f => f, :title => "Credit Balance", :var => "credit_card#{x}_balance", :place_holder => "", :error_msg => "amount must be positive and in numeric form"
         %br
         .row
-          = render "text_field4", :f => f, :title => "Average Monthly Payment", :var => "credit_card#{x}_aveg_month_pay", :place_holder => "", :error_msg => ""
+          = render "text_field4", :f => f, :title => "Average Monthly Payment", :var => "credit_card#{x}_aveg_month_pay", :place_holder => "", :error_msg => "amount must be positive and in numeric form"
           .col-md-4
             %b Date of Next Payment
             %br
