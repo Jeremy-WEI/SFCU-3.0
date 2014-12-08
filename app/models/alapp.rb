@@ -132,7 +132,7 @@ class Alapp < ActiveRecord::Base
         self.local_country = @result["address"]["address_country"]
       rescue
         errors.add(:local_address_line1, "Invalid address")
-        errors.add(:local_address_line2, "Invalid address")
+        # errors.add(:local_address_line2, "Invalid address")
         errors.add(:local_address_city, "Invalid address")
         errors.add(:local_address_state, "Invalid address")
         errors.add(:local_country, "Invalid address")
@@ -164,7 +164,7 @@ class Alapp < ActiveRecord::Base
           self.perm_country = @result["address"]["address_country"]
         rescue
           errors.add(:perm_address_line1, "Invalid address")
-          errors.add(:perm_address_line2, "Invalid address")
+          # errors.add(:perm_address_line2, "Invalid address")
           errors.add(:perm_address_city, "Invalid address")
           errors.add(:perm_address_state, "Invalid address")
           errors.add(:perm_country, "Invalid address")
