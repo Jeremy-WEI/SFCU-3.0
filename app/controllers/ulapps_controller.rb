@@ -56,7 +56,6 @@ class UlappsController < ApplicationController
         csv << tmp
       end
     end
-    send_file(file)
   end
 
   def zip_files(folder_path, csv_path, export_lists)
@@ -73,6 +72,7 @@ class UlappsController < ApplicationController
       csv_name = csv_path.sub(folder_path + '/','')
       zipfile.add(csv_name, csv_path)
     end
+    send_file(archive)
   end
 
   # POST /ulapps

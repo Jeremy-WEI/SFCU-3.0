@@ -7,7 +7,6 @@
         %b
           = attributes_string_translator[attr[0]] + ": "
         = attr[1]
-
     .text-center
       = form_tag url_for(:controller => 'alapps', :action => 'index'), method: 'get' do
         = submit_tag 'Back', class: "btn btn-primary"
