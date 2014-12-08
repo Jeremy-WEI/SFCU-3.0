@@ -31,7 +31,7 @@ Rails.application.configure do
 
   # Generate digests for assets URLs.
   config.assets.digest = true
-  config.cache_classes = true
+  # config.cache_classes = true
   config.serve_static_assets = true
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
