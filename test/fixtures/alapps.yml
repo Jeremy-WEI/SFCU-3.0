@@ -39,7 +39,7 @@ one:
   name_nearest_relative: Dili
   phone_nearest_relative: 234-345-4902
   driver_lisence_num: 6738298
-  driver_license_file:
+  driver_license_file: /public/alapps/driver_license.pdf
   employ1_employer: MyString
   employ1_employer_addr: MyString
   employ1_position: MyString

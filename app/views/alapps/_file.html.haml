@@ -4,5 +4,5 @@
   .col-md-2
     %b
       = "Document#{x}"
-  .col-md-1
-    = f.file_field :"document#{x}"
+  .col-md-4
+    = f.input :"document#{x}", as: :file, label: false, error: "The maximum file size is 5 MB."

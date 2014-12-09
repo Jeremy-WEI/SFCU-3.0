@@ -166,8 +166,10 @@
                   Please attach your driver's license in order to proceed with this application.
                   We cannot move forward with your auto loan application without a valid driver's license.
                   %br
-                  = f.label :driver_license_file
-                  = f.file_field :driver_license_file
+                  .col-md-12
+                    = f.label :driver_license_file
+                    = f.input :driver_license_file, as: :file, label: false, error: "Please upload a driver's license file. The maximum file size is 5 MB."
+                  -#= f.file_field :driver_license_file
       #tab2.tab-pane
         %hr
         .well.white
