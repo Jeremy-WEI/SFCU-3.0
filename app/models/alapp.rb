@@ -15,7 +15,7 @@ class Alapp < ActiveRecord::Base
   attr_accessor :same
   validates :agree_terms, acceptance: true
   validates :driver_license_file,
-            # presence: true,
+            presence: true,
             :file_size => {
                 :maximum => 5.megabytes.to_i
             }
