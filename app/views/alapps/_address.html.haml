@@ -1,12 +1,14 @@
 - if x == "local" #when it's local, it's required, permanent address is not required
   - @y = "*"
+  - @x = "Local"
 - else
   - @y = ""
+  - @x = "Permanent"
 %br
 .row
-  = render "text_field6", :f => f, :title => "#{x} address line 1#{@y}", :var => "#{x}_address_line1", :place_holder => "#{x} Address Line 1", :error_msg => "Invalid address"
+  = render "text_field6", :f => f, :title => "#{@x} address line 1#{@y}", :var => "#{x}_address_line1", :place_holder => "#{x} Address Line 1", :error_msg => "Invalid address"
 .row
-  = render "text_field6", :f => f, :title => "#{x} address line 2", :var => "#{x}_address_line2", :place_holder => "#{x} Address Line 2", :error_msg => ""
+  = render "text_field6", :f => f, :title => "#{@x} address line 2", :var => "#{x}_address_line2", :place_holder => "#{x} Address Line 2", :error_msg => ""
 .row
   = render "text_field4", :f => f, :title => "City#{@y}", :var => "#{x}_address_city", :place_holder => "City", :error_msg => ""
   = render "select", f: f, title: "State#{@y}", var: "#{x}_address_state", list: us_states, selected: "PA", error_msg: ""
