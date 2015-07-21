@@ -1,9 +1,13 @@
-SFCU
-=========
-Members: Jingyuan Wu, Dichen Li, Yunchen Wei, Yan Zhou
+# [SFCU](https://upennsfcu.herokuapp.com/) -- Online Credit Application System
+### Project for Upenn CIT 597
+`Framework: Ruby on Rails`
+> Team Members: Yunchen Wei, Jingyuan Wu, Dichen Li, Yan Zhou
 
-Repository for CIT 597 project: SFCU
+This is a new application system for Upenn *Student Federal Student Union*
 
-github link: https://github.com/Jeremy-WEI/SFCU-3.0
-
-pivotal tracker link: https://www.pivotaltracker.com/s/projects/1197436
+Feature List:
+- [x] Public-facing web interface for clients to apply for credit accounts
+- [x] Greatly improved front-end design with reponsive UI (Bootstrap 3)
+- [x] New back-end control panel for easy database management and maintenance
+- [x] Support export functionality into .csv file format
+- [x] Add data validation
